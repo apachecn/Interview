@@ -82,7 +82,7 @@ Featured：这些通常是由公司、组织甚至政府赞助的，奖金池最
 
 有任何建议反馈, 或想参与文档翻译, 麻烦联系下面的企鹅
 * 企鹅: 529815144(片刻) 1042658081(那伊抹微笑) 190442212(瑶妹)
-* **ApacheCN - 学习机器学习群【629470233】<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=30e5f1123a79867570f665aa3a483ca404b1c3f77737bc01ec520ed5f078ddef"><img border="0" src="/images/MainPage/ApacheCN-group.png" alt="ApacheCN - 学习机器学习群[629470233]" title="ApacheCN - 学习机器学习群[629470233]"></a>**
+* **ApacheCN - 学习机器学习群【629470233】<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=30e5f1123a79867570f665aa3a483ca404b1c3f77737bc01ec520ed5f078ddef"><img border="0" src="/images/MainPage/ApacheCN-group.png" alt="ApacheCN - 学习机器学习群【629470233】" title="ApacheCN - 学习机器学习群【629470233】"></a>**
 
 ## 其它中文文档
 
