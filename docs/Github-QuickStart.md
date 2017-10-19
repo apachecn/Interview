@@ -23,18 +23,20 @@
 
 **后面会持续更新**
 
-## GitHub 使用
+## GitHub 使用指南
 
-[![IMAGE ALT TEXT](http://media.w3.org/2010/05/sintel/poster.png)](http://media.w3.org/2010/05/sintel/trailer.mp4)
+<a href=""> 此图片链接为 bilibili 视频地址: (视频图片下面为文本操作指南)
+<img src="../static/images/doc/ApacheCN-GitHub入门操作-Fork到PullRequests.png">
+</a>
 
-> fork apachecn/kaggle 项目
+> 一) fork apachecn/kaggle 项目
 
 ![](../static/images/doc/github-step-1-fork.jpg)
 
 ![](../static/images/doc/github-step-2-clone.jpg)
 
 
-> jiangzhonglian/kaggle 第一次初始化
+> 二) jiangzhonglian/kaggle 第一次初始化
 
 可以使用 vscode 进行可视化操作
 
@@ -52,7 +54,7 @@ $ git remote
 $ git remote add origin_online https://github.com/apachecn/kaggle.git
 ```
 
-> jiangzhonglian/kaggle 文件更新（修改文件后，第二次要进行提交）
+> 三) jiangzhonglian/kaggle 文件更新（修改文件后，第二次要进行提交）
 
 ```
 # 用于 pull 保持和 apachecn 同步
@@ -62,5 +64,10 @@ $ git pull origin_online master
 $ git push origin master
 ```
 
-> pull requests 到 apachecn/kaggle
+> 四) pull requests 到 apachecn/kaggle
 
+![](../static/images/doc/github-step-3-PullRequests.jpg)
+
+![](../static/images/doc/github-step-4-PullRequests.jpg)
+
+![](../static/images/doc/github-step-5-PullRequests.jpg)
