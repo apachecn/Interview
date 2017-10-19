@@ -39,7 +39,7 @@ Recruitment：这些是由想要招聘数据科学家的公司赞助的。目前
 Research：这些是研究方向的竞赛，只有很少或没有奖金。它们也有非传统的提交流程。
 
 
-> [第6部分： 大型组织比赛(大奖金) Featured](https://www.kaggle.com/competitions?sortBy=deadline&group=all&page=1&pageSize=20&segment=gettingStarted)
+> [第6部分： 大型组织比赛(大奖金) Featured](https://www.kaggle.com/competitions?sortBy=deadline&group=all&page=1&pageSize=20&segment=gettingStarted)
 
 Featured：这些通常是由公司、组织甚至政府赞助的，奖金池最大。
 
