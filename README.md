@@ -11,46 +11,51 @@
 
 ## [竞赛](https://www.kaggle.com/competitions)
 
-`现在我们已经准备好尝试 Kaggle 竞赛了，这些竞赛分成以下几个类别。`
+```
+机器学习比赛，奖金很高，业界承认分数。
+现在我们已经准备好尝试 Kaggle 竞赛了，这些竞赛分成以下几个类别。
+```
 
-> [第1部分： 在课堂 InClass](https://www.kaggle.com/competitions?sortBy=deadline&group=all&page=1&pageSize=20&segment=inClass)
+### [第1部分： 在课堂 InClass](https://www.kaggle.com/competitions?sortBy=deadline&group=all&page=1&pageSize=20&segment=inClass)
 
 InClass： 为您的学生举办免费竞赛，将机器学习应用于实际问题。
 
 
-> [第2部分： 操场 Playground](https://www.kaggle.com/competitions?sortBy=deadline&group=all&page=1&pageSize=20&segment=playground)
+### [第2部分： 操场 Playground](https://www.kaggle.com/competitions?sortBy=deadline&group=all&page=1&pageSize=20&segment=playground)
 
 
 
-> [第3部分： 快速入门 Getting Started](https://www.kaggle.com/competitions?sortBy=deadline&group=all&page=1&pageSize=20&segment=gettingStarted)
+### [第3部分： 快速入门 Getting Started](https://www.kaggle.com/competitions?sortBy=deadline&group=all&page=1&pageSize=20&segment=gettingStarted)
 
 Getting Started：这些竞赛的结构和 Featured 竞赛类似，但没有奖金。它们有更简单的数据集、大量教程和滚动的提交窗口让你可以随时输入。
 
 Getting Started 竞赛非常适合初学者，因为它们给你提供了低风险的学习环境，并且还有很多社区创造的教程：https://www.kaggle.com/c/titanic#tutorials
 
+> [**数字识别**](competitions/GettingStarted/DigitRecognizer.md): 使用著名的 MNIST 数据来学习计算机视觉基础原理
 
-> [第4部分： 企业招聘 Recruitment](https://www.kaggle.com/competitions?sortBy=deadline&group=all&page=1&pageSize=20&segment=gettingStarted)
+
+### [第4部分： 企业招聘 Recruitment](https://www.kaggle.com/competitions?sortBy=deadline&group=all&page=1&pageSize=20&segment=gettingStarted)
 
 Recruitment：这些是由想要招聘数据科学家的公司赞助的。目前仍然相对少见。
 
 
-> [第5部分： 研究项目(少奖金) Research](https://www.kaggle.com/competitions?sortBy=deadline&group=all&page=1&pageSize=20&segment=gettingStarted)
+### [第5部分： 研究项目(少奖金) Research](https://www.kaggle.com/competitions?sortBy=deadline&group=all&page=1&pageSize=20&segment=gettingStarted)
 
 Research：这些是研究方向的竞赛，只有很少或没有奖金。它们也有非传统的提交流程。
 
 
-> [第6部分： 大型组织比赛(大奖金) Featured](https://www.kaggle.com/competitions?sortBy=deadline&group=all&page=1&pageSize=20&segment=gettingStarted)
+### [第6部分： 大型组织比赛(大奖金) Featured](https://www.kaggle.com/competitions?sortBy=deadline&group=all&page=1&pageSize=20&segment=gettingStarted)
 
 Featured：这些通常是由公司、组织甚至政府赞助的，奖金池最大。
 
 
 ## [数据集](https://www.kaggle.com/datasets)
 
-存放数据集的位置
+数据集，可直接用于机器学习。
 
 ## [核心思想](https://www.kaggle.com/kernels)
 
-记录作者核心思想的位置
+在线编程。（猜测，基于 jupyter 实现）
 
 ## [论坛](https://www.kaggle.com/discussion)
 
@@ -87,6 +92,7 @@ Featured：这些通常是由公司、组织甚至政府赞助的，奖金池最
 
 ## 其它中文文档
 
+* [Beam 中文文档](http://beam.apachecn.org/)
 * [Sklearn 0.19 中文文档](http://sklearn.apachecn.org/)
 * [Spark 2.2.0和2.0.2 中文文档](http://spark.apachecn.org)
 * [Storm 1.1.0和1.0.1 中文文档](http://storm.apachecn.org/)
