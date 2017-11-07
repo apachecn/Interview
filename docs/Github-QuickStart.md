@@ -1,7 +1,7 @@
 # GitHub 入门操作指南
 
-<a href="https://www.bilibili.com/video/av15705305/"> 此图片链接为 bilibili 视频地址: (视频图片下面为文本操作指南)
-<img src="../static/images/doc/ApacheCN-GitHub入门操作-Fork到PullRequests.png" >
+<a href="https://www.bilibili.com/video/av15705305/" target="_blank">此图片链接为 bilibili 视频地址: (视频图片下面为文本操作指南)
+<img src="../static/images/doc/ApacheCN-GitHub入门操作-Fork到PullRequests.png">
 </a>
 
 > 一) fork apachecn/kaggle 项目
