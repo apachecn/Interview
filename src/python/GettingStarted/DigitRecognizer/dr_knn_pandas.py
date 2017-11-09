@@ -12,7 +12,7 @@ import csv
 import time
 import pandas as pd
 from numpy import *
-from sklearn.neighbors import KNeighborsClassifier  
+from sklearn.neighbors import KNeighborsClassifier
 
 
 # 加载数据
@@ -41,28 +41,33 @@ def saveResult(result, csvName):
             myWriter.writerow(tmp)
 
 
-def knnClassify(trainData, trainLabel, testData): 
+def knnClassify(trainData, trainLabel, testData):
     knnClf = KNeighborsClassifier()   # default:k = 5,defined by yourself:KNeighborsClassifier(n_neighbors=10)
     knnClf.fit(trainData, ravel(trainLabel))
     testLabel = knnClf.predict(testData)
-    saveResult(testLabel, 'datasets/ouput/GettingStarted/DigitRecognizer/Result_sklearn_knn.csv')
     return testLabel
 
 
 def dRecognition_knn():
-    loadStartTime = time.time()
+    start_time = time.time()
+
+    # 加载数据
     trainData, trainLabel, testData = opencsv()
-    # print "trainData==>", type(trainData), shape(trainData)
-    # print "trainLabel==>", type(trainLabel), shape(trainLabel)
-    # print "testData==>", type(testData), shape(testData)
-    loadEndTime = time.time()
+    print "trainData==>", type(trainData), shape(trainData)
+    print "trainLabel==>", type(trainLabel), shape(trainLabel)
+    print "testData==>", type(testData), shape(testData)
     print "load data finish"
-    print('load data time used:%f' % (loadEndTime - loadStartTime))
-    t = time.time()
-    # result = knnClassify(trainData, trainLabel, testData)   
+    stop_time_l = time.time()
+    print('load data time used:%f' % (stop_time_l - start_time))
+
+    # 模型训练
+    testLabel = knnClassify(trainData, trainLabel, testData)
+
+    # 结果的输出
+    saveResult(testLabel, 'datasets/ouput/GettingStarted/DigitRecognizer/Result_sklearn_knn.csv')
     print "finish!"
-    k = time.time()
-    print('classify time used:%f' % (k - t))
+    stop_time_r = time.time()
+    print('classify time used:%f' % (stop_time_r - start_time))
 
 
 if __name__ == '__main__':
