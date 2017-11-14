@@ -8,6 +8,7 @@
 * [GitHub 入门操作指南](docs/Github-QuickStart.md) 和 [Kaggle 入门操作指南](docs/Kaggle-QuickStart.md)，适合于学习过 [MachineLearning(机器学习实战)](https://github.com/apachecn/MachineLearning) 的小盆友
 * Kaggle 已被 Google 收购，请参阅[《谷歌收购 Kaggle 为什么会震动三界（AI、机器学习、数据科学界）》](https://www.leiphone.com/news/201703/ZjpnddCoUDr3Eh8c.html)
 * [关于 ApacheCN](http://cwiki.apachecn.org/pages/viewpage.action?pageId=2887240): 一边学习和整理，一边录制项目视频，希望能组建一个开源的公益团队对国内机器学习社区做一些贡献，同时也为装逼做准备!!
+* 号外号外 [kaggle组队开始啦](docs/kaggleStart.md) 
 
 ## [竞赛](https://www.kaggle.com/competitions)
 
