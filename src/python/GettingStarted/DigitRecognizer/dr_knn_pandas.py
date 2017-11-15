@@ -4,8 +4,8 @@
 '''
 Created on 2017-10-26
 Update  on 2017-10-26
-@author: 片刻
-Github:  https://github.com/apachecn/kaggle
+Author: 片刻
+Github: https://github.com/apachecn/kaggle
 '''
 
 import csv
