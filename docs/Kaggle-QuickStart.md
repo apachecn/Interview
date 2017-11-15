@@ -46,6 +46,24 @@
     3. 训练模型
     4. 评估模型(可没)
     5. 导出数据
+* 标注python和编码格式
+
+```python
+#!/usr/bin/python
+# coding: utf-8
+```
+
+*  标注项目的描述
+
+```python
+'''
+Created on 2017-10-26
+Update  on 2017-10-26
+Author: 【如果是个人】片刻
+Team:   【如果是团队】装逼从不退缩（张三、李四 等等）
+Github: https://github.com/apachecn/kaggle
+'''
+```
 
 > 数据：结尾文件名可自由定义
 
