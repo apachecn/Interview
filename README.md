@@ -91,12 +91,11 @@ Featured：这些通常是由公司、组织甚至政府赞助的，奖金池最
 
 ## [ApacheCN 组织翻译](http://www.apachecn.org/)
 
-* [Beam 中文文档](http://beam.apachecn.org/)
-* [Sklearn 0.19 中文文档](http://sklearn.apachecn.org/)
-* [Spark 2.2.0和2.0.2 中文文档](http://spark.apachecn.org)
-* [Storm 1.1.0和1.0.1 中文文档](http://storm.apachecn.org/)
-* [TensorFlow R1.2 中文文档](http://cwiki.apachecn.org/pages/viewpage.action?pageId=10030122)
-* [Kudu 1.4.0 中文文档](http://cwiki.apachecn.org/pages/viewpage.action?pageId=10813594)
-* [Zeppelin 0.7.2 中文文档](http://cwiki.apachecn.org/pages/viewpage.action?pageId=10030467)
-* [Elasticsearch 5.4 中文文档](http://cwiki.apachecn.org/pages/viewpage.action?pageId=4260364)
-* [Kibana 5.2 中文文档](http://cwiki.apachecn.org/pages/viewpage.action?pageId=8159377)
+> [kaggle: 机器学习竞赛](https://github.com/apachecn/kaggle)
+
+| 深度学习 | 机器学习  | 大数据 | 运维工具 |
+| --- | --- | --- | --- |
+| [TensorFlow R1.2 中文文档](http://cwiki.apachecn.org/pages/viewpage.action?pageId=10030122) | [Sklearn 0.19 中文文档](http://sklearn.apachecn.org/) | [Spark 2.2.0和2.0.2 中文文档](http://spark.apachecn.org/) | [Zeppelin 0.7.2 中文文档](http://cwiki.apachecn.org/pages/viewpage.action?pageId=10030467) |
+| pytorch 计划中 | [机器学习实战-教学版](https://github.com/apachecn/MachineLearning) | [Storm 1.1.0和1.0.1 中文文档](http://storm.apachecn.org/) | [Kibana 5.2 中文文档](http://cwiki.apachecn.org/pages/viewpage.action?pageId=8159377) |
+| | [Beam 中文文档](http://beam.apachecn.org/) | [Kudu 1.4.0 中文文档](http://cwiki.apachecn.org/pages/viewpage.action?pageId=10813594) | |
+| | | [Elasticsearch 5.4 中文文档](http://cwiki.apachecn.org/pages/viewpage.action?pageId=4260364) | |
