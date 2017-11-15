@@ -61,7 +61,7 @@ testLabel = knnClf.predict(testData)
 
 > 结果导出
 
-```
+```python
 def saveResult(result, csvName):
     with open(csvName, 'wb') as myFile:
         myWriter = csv.writer(myFile)
