@@ -39,7 +39,7 @@ trainData, trainLabel, testData = opencsv()
 > 模型训练: 产生训练模型
 
 ```python
-# 训练算法
+# 模型训练
 def knnClassify(trainData, trainLabel):
     knnClf = KNeighborsClassifier()   # default:k = 5,defined by yourself:KNeighborsClassifier(n_neighbors=10)
     knnClf.fit(trainData, ravel(trainLabel))
@@ -55,7 +55,7 @@ knnClf = knnClassify(trainData, trainLabel)
 > 结果预测: 通过模型来预测新来数据的结果
 
 ```python
-# 测试算法
+# 结果预测
 testLabel = knnClf.predict(testData)
 ```
 

@@ -59,10 +59,10 @@ def dRecognition_knn():
     stop_time_l = time.time()
     print('load data time used:%f' % (stop_time_l - start_time))
 
-    # 训练算法
+    # 模型训练
     knnClf = knnClassify(trainData, trainLabel)
 
-    # 测试算法
+    # 结果预测
     testLabel = knnClf.predict(testData)
 
     # 结果的输出
