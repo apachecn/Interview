@@ -28,9 +28,7 @@ InClass： 为您的学生举办免费竞赛，将机器学习应用于实际问
 
 ### [第3部分： 快速入门 Getting Started](https://www.kaggle.com/competitions?sortBy=deadline&group=all&page=1&pageSize=20&segment=gettingStarted)
 
-Getting Started：这些竞赛的结构和 Featured 竞赛类似，但没有奖金。它们有更简单的数据集、大量教程和滚动的提交窗口让你可以随时输入。
-
-Getting Started 竞赛非常适合初学者，因为它们给你提供了低风险的学习环境，并且还有很多社区创造的教程：https://www.kaggle.com/c/titanic#tutorials
+Getting Started：这些竞赛的结构和 Featured 竞赛类似，但没有奖金。它们有更简单的数据集、大量教程和滚动的提交窗口让你可以随时输入。Getting Started 竞赛非常适合初学者，因为它们给你提供了低风险的学习环境，并且还有很多社区创造的教程：https://www.kaggle.com/c/titanic#tutorials
 
 > [**数字识别**](competitions/GettingStarted/DigitRecognizer.md): 使用著名的 MNIST 数据来学习计算机视觉基础原理
 
