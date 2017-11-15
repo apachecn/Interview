@@ -76,7 +76,7 @@ Featured：这些通常是由公司、组织甚至政府赞助的，奖金池最
 
 * [@jiangzhonglian](https://github.com/jiangzhonglian)（片刻）
 
-> 项目贡献者
+> 项目贡献者（请手动添加）
 
 * [@jiangzhonglian](https://github.com/jiangzhonglian)（片刻）
 * [@wangyangting](https://github.com/wangyangting)（那伊抹微笑）
