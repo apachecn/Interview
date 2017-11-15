@@ -74,7 +74,7 @@
 * **ApacheCN - 学习机器学习群【629470233】<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=30e5f1123a79867570f665aa3a483ca404b1c3f77737bc01ec520ed5f078ddef"><img border="0" src="static/images/logos/ApacheCN-group.png" alt="ApacheCN - 学习机器学习群【629470233】" title="ApacheCN - 学习机器学习群【629470233】"></a>**
 * **Kaggle (数据科学竞赛平台) | [ApacheCN(apache中文网)](http://www.apachecn.org/)**
 
-## [ApacheCN 组织翻译](http://www.apachecn.org/)
+## [ApacheCN 组织资源](http://www.apachecn.org/)
 
 > [kaggle: 机器学习竞赛](https://github.com/apachecn/kaggle)
 
@@ -82,5 +82,7 @@
 | --- | --- | --- | --- |
 | [TensorFlow R1.2 中文文档](http://cwiki.apachecn.org/pages/viewpage.action?pageId=10030122) | [Sklearn 0.19 中文文档](http://sklearn.apachecn.org/) | [Spark 2.2.0和2.0.2 中文文档](http://spark.apachecn.org/) | [Zeppelin 0.7.2 中文文档](http://cwiki.apachecn.org/pages/viewpage.action?pageId=10030467) |
 | pytorch 计划中 | [机器学习实战-教学版](https://github.com/apachecn/MachineLearning) | [Storm 1.1.0和1.0.1 中文文档](http://storm.apachecn.org/) | [Kibana 5.2 中文文档](http://cwiki.apachecn.org/pages/viewpage.action?pageId=8159377) |
-| | [Beam 中文文档](http://beam.apachecn.org/) | [Kudu 1.4.0 中文文档](http://cwiki.apachecn.org/pages/viewpage.action?pageId=10813594) | |
-| | | [Elasticsearch 5.4 中文文档](http://cwiki.apachecn.org/pages/viewpage.action?pageId=4260364) | |
+|  |  | [Kudu 1.4.0 中文文档](http://cwiki.apachecn.org/pages/viewpage.action?pageId=10813594) |  |
+|  |  | [Elasticsearch 5.4 中文文档](http://cwiki.apachecn.org/pages/viewpage.action?pageId=4260364) |
+|  |  | [Beam 中文文档](http://beam.apachecn.org/) |
+
