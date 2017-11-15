@@ -32,8 +32,8 @@
 
 > 图片：结尾文件名可自由定义
 
-* 案例：`static/images/comprtitions/GettingStarted/front_page.png`
-* 例如：数字识别，文档是属于 `competitions -> GettingStarted` 下面，所以创建 `competitions/GettingStarted` 存放文档的图片就行
+* 案例：`static/images/comprtitions/GettingStarted/DigitRecognizer/front_page.png`
+* 例如：数字识别，图片是属于 `competitions -> GettingStarted -> DigitRecognizer` 下面，所以创建 `competitions/GettingStarted/DigitRecognizer` 存放文档的图片就行
 
 
 > 代码：结尾文件名可自由定义.py
