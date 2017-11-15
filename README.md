@@ -8,7 +8,7 @@
 * [GitHub 入门操作指南](docs/Github-QuickStart.md) 和 [Kaggle 入门操作指南](docs/Kaggle-QuickStart.md)，适合于学习过 [MachineLearning(机器学习实战)](https://github.com/apachecn/MachineLearning) 的小盆友
 * Kaggle 已被 Google 收购，请参阅[《谷歌收购 Kaggle 为什么会震动三界（AI、机器学习、数据科学界）》](https://www.leiphone.com/news/201703/ZjpnddCoUDr3Eh8c.html)
 * [关于 ApacheCN](http://cwiki.apachecn.org/pages/viewpage.action?pageId=2887240): 一边学习和整理，一边录制项目视频，希望能组建一个开源的公益团队对国内机器学习社区做一些贡献，同时也为装逼做准备!!
-* 号外号外 [kaggle组队开始啦](docs/kaggleStart.md) 
+* 号外号外 [**kaggle组队开始啦**](docs/kaggleStart.md) 
 
 ## [竞赛](https://www.kaggle.com/competitions)
 
@@ -17,52 +17,39 @@
 现在我们已经准备好尝试 Kaggle 竞赛了，这些竞赛分成以下几个类别。
 ```
 
-### [第1部分： 在课堂 InClass](https://www.kaggle.com/competitions?sortBy=deadline&group=all&page=1&pageSize=20&segment=inClass)
+### [第1部分：课业比赛 InClass](https://www.kaggle.com/competitions?sortBy=deadline&group=all&page=1&pageSize=20&segment=inClass)
 
-InClass： 为您的学生举办免费竞赛，将机器学习应用于实际问题。
+`课业比赛 InClass` 是学校教授机器学习的老师留作业的地方，这里的竞赛有些会向public开放参赛，也有些仅仅是学校内部教学使用。
 
+### [第2部分：入门比赛 Getting Started](https://www.kaggle.com/competitions?sortBy=deadline&group=all&page=1&pageSize=20&segment=gettingStarted)
 
-### [第2部分： 操场 Playground](https://www.kaggle.com/competitions?sortBy=deadline&group=all&page=1&pageSize=20&segment=playground)
-
-
-
-### [第3部分： 快速入门 Getting Started](https://www.kaggle.com/competitions?sortBy=deadline&group=all&page=1&pageSize=20&segment=gettingStarted)
-
-Getting Started：这些竞赛的结构和 Featured 竞赛类似，但没有奖金。它们有更简单的数据集、大量教程和滚动的提交窗口让你可以随时输入。Getting Started 竞赛非常适合初学者，因为它们给你提供了低风险的学习环境，并且还有很多社区创造的教程：https://www.kaggle.com/c/titanic#tutorials
+`入门比赛 Getting Started` 给萌新们一个试水的机会，没有奖金，但有非常多的前辈经验可供学习。很久以前Kaggle这个栏目名称是101的时候，比赛题目还很多，但是现在只保留了4个最经典的入门竞赛：手写数字识别、沉船事故幸存估计、脸部识别、Julia语言入门。
 
 > [**数字识别**](competitions/GettingStarted/DigitRecognizer.md): 使用著名的 MNIST 数据来学习计算机视觉基础原理
 
 
-### [第4部分： 企业招聘 Recruitment](https://www.kaggle.com/competitions?sortBy=deadline&group=all&page=1&pageSize=20&segment=gettingStarted)
+### [第3部分：训练场 Playground](https://www.kaggle.com/competitions?sortBy=deadline&group=all&page=1&pageSize=20&segment=playground)
 
-Recruitment：这些是由想要招聘数据科学家的公司赞助的。目前仍然相对少见。
+`训练场 Playground`里的题目以有趣为主，比如猫狗照片分类的问题。现在这个分类下的题目不算多，但是热度很高。
 
+### [第4部分： 研究项目(少奖金) Research](https://www.kaggle.com/competitions?sortBy=prize&group=active&page=1&pageSize=20&segment=research)
 
-### [第5部分： 研究项目(少奖金) Research](https://www.kaggle.com/competitions?sortBy=deadline&group=all&page=1&pageSize=20&segment=gettingStarted)
+`研究型 Research` 竞赛通常是机器学习前沿技术或者公益性质的题目。竞赛奖励可能是现金，也有一部分以会议邀请、发表论文的形式奖励。
 
-Research：这些是研究方向的竞赛，只有很少或没有奖金。它们也有非传统的提交流程。
+### [第5部分：人才征募 Recruitment](https://www.kaggle.com/competitions?sortBy=prize&group=active&page=1&pageSize=20&segment=recruitment)
 
+`人才征募 Recruitment` 竞赛是赞助企业寻求数据科学家、算法设计人才的渠道。只允许个人参赛，不接受团队报名。
 
-### [第6部分： 大型组织比赛(大奖金) Featured](https://www.kaggle.com/competitions?sortBy=deadline&group=all&page=1&pageSize=20&segment=gettingStarted)
+### [第6部分： 大型组织比赛(大奖金) Featured](https://www.kaggle.com/competitions?sortBy=prize&group=active&page=1&pageSize=20&segment=featured)
 
-Featured：这些通常是由公司、组织甚至政府赞助的，奖金池最大。
+`推荐比赛 Featured` 是瞄准商业问题带有奖金的公开竞赛。如果有幸赢得比赛，不但可以获得奖金，模型也可能会被竞赛赞助商应用到商业实践中呢。
 
+## 其他部分 
 
-## [数据集](https://www.kaggle.com/datasets)
-
-数据集，可直接用于机器学习。
-
-## [核心思想](https://www.kaggle.com/kernels)
-
-在线编程。（猜测，基于 jupyter 实现）
-
-## [论坛](https://www.kaggle.com/discussion)
-
-发帖回帖讨论的平台
-
-## [招聘](https://www.kaggle.com/jobs)
-
-企业招聘数据科学家的位置
+* [数据集](https://www.kaggle.com/datasets): 数据集，可直接用于机器学习。
+* [核心思想](https://www.kaggle.com/kernels): 在线编程。（猜测，基于 jupyter 实现）
+* [论坛](https://www.kaggle.com/discussion): 发帖回帖讨论的平台
+* [招聘](https://www.kaggle.com/jobs): 企业招聘数据科学家的位置
 
 ## 活动时间
 
