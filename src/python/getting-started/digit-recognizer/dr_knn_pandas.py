@@ -18,8 +18,8 @@ from sklearn.neighbors import KNeighborsClassifier
 # 加载数据
 def opencsv():
     # 使用 pandas 打开
-    data = pd.read_csv('datasets/input/GettingStarted/DigitRecognizer/train.csv')
-    data1 = pd.read_csv('datasets/input/GettingStarted/DigitRecognizer/test.csv')
+    data = pd.read_csv('datasets/getting-started/digit-recognizer/input/train.csv')
+    data1 = pd.read_csv('datasets/getting-started/digit-recognizer/input/test.csv')
 
     train_data = data.values[0:, 1:]  # 读入全部训练数据
     train_label = data.values[0:, 0]
@@ -66,7 +66,7 @@ def dRecognition_knn():
     testLabel = knnClf.predict(testData)
 
     # 结果的输出
-    saveResult(testLabel, 'datasets/ouput/GettingStarted/DigitRecognizer/Result_sklearn_knn.csv')
+    saveResult(testLabel, 'datasets/getting-started/digit-recognizer/ouput/Result_sklearn_knn.csv')
     print "finish!"
     stop_time_r = time.time()
     print('classify time used:%f' % (stop_time_r - start_time))

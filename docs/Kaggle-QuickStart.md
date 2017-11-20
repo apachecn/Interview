@@ -27,19 +27,19 @@
 
 > 文档：结尾文件名为项目名.md
 
-* 案例：`competitions/GettingStarted/DigitRecognizer.md`
-* 例如：数字识别，文档是属于 `competitions -> GettingStarted` 下面，所以创建 `competitions/GettingStarted` 存放文档就行
+* 案例：`competitions/getting-started/digit-recognizer.md`
+* 例如：数字识别，文档是属于 `competitions -> GettingStarted` 下面，所以创建 `competitions/getting-started` 存放文档就行
 
 > 图片：结尾文件名可自由定义
 
-* 案例：`static/images/comprtitions/GettingStarted/DigitRecognizer/front_page.png`
-* 例如：数字识别，图片是属于 `competitions -> GettingStarted -> DigitRecognizer` 下面，所以创建 `competitions/GettingStarted/DigitRecognizer` 存放文档的图片就行
+* 案例：`static/images/comprtitions/getting-started/digit-recognizer/front_page.png`
+* 例如：数字识别，图片是属于 `competitions -> GettingStarted -> DigitRecognizer` 下面，所以创建 `competitions/getting-started/digit-recognizer` 存放文档的图片就行
 
 
 > 代码：结尾文件名可自由定义.py
 
-* 案例：`src/python/GettingStarted/DigitRecognizer/dr_knn_pandas.py`
-* 例如：数字识别，代码只有 `竞赛` 有，所以直接创建 `GettingStarted/DigitRecognizer` 存放代码就行
+* 案例：`src/python/getting-started/digit-recognizer/dr_knn_pandas.py`
+* 例如：数字识别，代码只有 `竞赛` 有，所以直接创建 `getting-started/digit-recognizer` 存放代码就行
 * 要求（方法：完全解耦）
     1. 加载数据
     2. 预处理数据(可没)
@@ -67,9 +67,9 @@ Github: https://github.com/apachecn/kaggle
 
 > 数据：结尾文件名可自由定义
 
-* 输入：`datasets/input/GettingStarted/DigitRecognizer/train.csv`
-* 输出：`datasets/ouput/GettingStarted/DigitRecognizer/Result_sklearn_knn.csv`
-* 例如：数字识别，数据只有 `竞赛` 有，所以直接创建 `GettingStarted/DigitRecognizer` 存放数据就行
+* 输入：`datasets/getting-started/digit-recognizer/input/train.csv`
+* 输出：`datasets/getting-started/digit-recognizer/ouput/Result_sklearn_knn.csv`
+* 例如：数字识别，数据只有 `竞赛` 有，所以直接创建 `getting-started/digit-recognizer` 存放数据就行
 
 ## docs目录（可忽略）
 
