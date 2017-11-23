@@ -16,7 +16,7 @@
 
 ### 2.1、运筹帷幄
 
-[片刻](https://github.com/jiangzhonglian) 大佬已经在 github 中写了一个简单的小例子 ---> [数字识别](https://github.com/apachecn/kaggle/blob/master/competitions/GettingStarted/DigitRecognizer.md)，供大家来参考。
+[片刻](https://github.com/jiangzhonglian) 大佬已经在 github 中写了一个简单的小例子 ---> [数字识别](https://github.com/apachecn/kaggle/blob/master/competitions/getting-started/digit-recognizer.md)，供大家来参考。
 
 近期因为涉及到 ApacheCN 的组织架构的调整，还有 sklearn 0.19.X 项目的进行等外在因素，可能片刻大佬没有时间和大家一起，我们对这次活动进行了一个简单的小规划，请看下面~~~
 
