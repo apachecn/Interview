@@ -21,7 +21,7 @@
 近期因为涉及到 ApacheCN 的组织架构的调整，还有 sklearn 0.19.X 项目的进行等外在因素，可能片刻大佬没有时间和大家一起，我们对这次活动进行了一个简单的小规划，请看下面~~~
 
 * 初期规划 1-3 个人一队，当然也可以调整，小队人数方面比较自由（为你们可以在群里尽情的搞基提供保障）
-* 建议先从简单的小比赛入手，比如 [手写数字识别](https://www.kaggle.com/c/digit-recognizer)、[预测房价](https://www.kaggle.com/c/house-prices-advanced-regression-techniques)、[泰坦尼克](https://www.kaggle.com/c/titanic)
+* 建议先从简单的小比赛入手，比如 [手写数字识别](https://www.kaggle.com/c/digit-recognizer) 、 [预测房价](https://www.kaggle.com/c/house-prices-advanced-regression-techniques) 、 [泰坦尼克](https://www.kaggle.com/c/titanic)
 * 初期规划每个小比赛 1-2 周每个小比赛之后有一次 ApacheCN 各参赛小队排名，根据 leaderboard 上面的最高成绩排名
 * 排名前 3 的小队给大家做一下直播，讲解一下获得好成绩的心路历程
 * 提交到 github 上，接受来自大家的膜拜~~~
@@ -32,7 +32,7 @@
 
 * github 地址： https://github.com/apachecn/kaggle
 * 阅读一下 [README.md](https://github.com/apachecn/kaggle) 文档，了解一下套路
-* 阅读一下 docs 目录下的文档（ [github 操作](https://github.com/apachecn/kaggle/blob/master/docs/Github-QuickStart.md) 和 [kaggle 操作](https://github.com/apachecn/kaggle/blob/master/docs/Kaggle-QuickStart.md)），熟悉一下具体的操作
+* 阅读一下 docs 目录下的文档（ [github 操作](https://github.com/apachecn/kaggle/blob/master/docs/github-quickstart.md) 和 [kaggle 操作](https://github.com/apachecn/kaggle/blob/master/docs/kaggle-quickstart.md)），熟悉一下具体的操作
 
 ### 2.3、小有名气
 
