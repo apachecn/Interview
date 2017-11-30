@@ -71,6 +71,14 @@ Github: https://github.com/apachecn/kaggle
 * 输出：`datasets/getting-started/digit-recognizer/ouput/Result_sklearn_knn.csv`
 * 例如：数字识别，数据只有 `竞赛` 有，所以直接创建 `getting-started/digit-recognizer` 存放数据就行
 
+> 结果提交
+
+将数据的输出结果提交到项目的页面中
+
+<a href="https://www.kaggle.com/c/digit-recognizer/submit" target="_blank">
+<img src="../static/images/doc/kaggle-submit.jpg">
+</a>
+
 ## docs目录（可忽略）
 
 `docs 目录存放的是 ApacheCN 整理的操作or说明文档，和 kaggle 网站内容没有关系`
