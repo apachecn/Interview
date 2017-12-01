@@ -66,6 +66,7 @@
 * [@jiangzhonglian](https://github.com/jiangzhonglian)（片刻）
 * [@wangyangting](https://github.com/wangyangting)（那伊抹微笑）
 * [@chenyyx](https://github.com/chenyyx)（瑶妹）
+* [@zehuichen](https://github.com/zehuichen123)(loveSnowBest)
 
 > 加入方式
 
