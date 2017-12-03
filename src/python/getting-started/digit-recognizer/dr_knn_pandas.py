@@ -66,7 +66,7 @@ def dRecognition_knn():
     testLabel = knnClf.predict(testData)
 
     # 结果的输出
-    saveResult(testLabel, 'datasets/getting-started/digit-recognizer/ouput/Result_sklearn_knn.csv')
+    saveResult(testLabel, '../../../../datasets/getting-started/digit-recognizer/ouput/Result_sklearn_knn2.csv')
     print("finish!")
     stop_time_r = time.time()
     print('classify time used:%f' % (stop_time_r - start_time))
