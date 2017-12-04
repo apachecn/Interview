@@ -5,23 +5,23 @@
 1. 首先注册账号
 2. 关联 GitHub 账号
 
-![](../static/images/doc/login.jpg)
+![](../static/images/docs/login.jpg)
 
 ## [竞赛 - competitions](https://www.kaggle.com/competitions)
 
 * [选择 - All 和 Getting Started](https://www.kaggle.com/competitions?sortBy=deadline&group=all&page=1&pageSize=20&segment=gettingStarted)
 
-![](..//static/images/doc/All-GettingStarted.jpg)
+![](..//static/images/docs/All-GettingStarted.jpg)
 
 * [选择 - Digit Recognizer（数字识别器）](https://www.kaggle.com/c/digit-recognizer)
 
-![](../static/images/doc/choose-digit-recognizer.jpg)
+![](../static/images/docs/choose-digit-recognizer.jpg)
 
 * [阅读资料 - Digit Recognizer（数字识别器）](https://www.kaggle.com/c/digit-recognizer)
 
 **选择 版本框架 和 star 最高的 Kernels 编辑就行，然后模仿 [**数字识别**](../competitions/getting-started/digit-recognizer.md) 案例更新**
 
-![](/static/images/doc/read-digit-recognizer.jpg)
+![](/static/images/docs/read-digit-recognizer.jpg)
 
 ## 项目规范(以：DigitRecognizer 为例)
 
@@ -70,6 +70,14 @@ Github: https://github.com/apachecn/kaggle
 * 输入：`datasets/getting-started/digit-recognizer/input/train.csv`
 * 输出：`datasets/getting-started/digit-recognizer/ouput/Result_sklearn_knn.csv`
 * 例如：数字识别，数据只有 `竞赛` 有，所以直接创建 `getting-started/digit-recognizer` 存放数据就行
+
+> 结果提交
+
+将数据的输出结果提交到项目的页面中
+
+<a href="https://www.kaggle.com/c/digit-recognizer/submit" target="_blank">
+<img src="../static/images/docs/kaggle-submit.jpg">
+</a>
 
 ## docs目录（可忽略）
 
