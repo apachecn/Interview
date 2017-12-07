@@ -3,6 +3,8 @@
 
 ---
 
+原文地址: <https://www.kaggle.com/startupsci/titanic-data-science-solutions?scriptVersionId=1145136>
+
 ### 我已经发布了一个新的 Python 包 [Speedml](https://speedml.com), 它将该 notebook 中的使用的技术编译成一个 intuitive（直观的），powerful（功能强大的）且 productive（高效的）API.
 
 ### Speedml 帮助我在 Kaggle 排行榜上从最低的 80% 跳到最高的 20%, 迭代的次数很少.
