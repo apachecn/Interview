@@ -44,16 +44,60 @@
 
 `推荐比赛 Featured` 是瞄准商业问题带有奖金的公开竞赛。如果有幸赢得比赛，不但可以获得奖金，模型也可能会被竞赛赞助商应用到商业实践中呢。
 
-## 其他部分 
+## 其他部分
 
 * [数据集](https://www.kaggle.com/datasets): 数据集，可直接用于机器学习。
 * [核心思想](https://www.kaggle.com/kernels): 在线编程。（猜测，基于 jupyter 实现）
 * [论坛](https://www.kaggle.com/discussion): 发帖回帖讨论的平台
 * [招聘](https://www.kaggle.com/jobs): 企业招聘数据科学家的位置
 
+## 机器学习算法
+
+> 常用算法选择
+
+![](static/images/docs/kaggle-常用算法选择.png)
+
+> 常用工具选择
+
+![](static/images/docs/kaggle-常用工具选择.png)
+
+> 解决问题的流程
+
+1. 链接场景和目标
+2. 链接评估准则
+3. 认识数据
+4. 数据预处理（清洗、调权）
+5. 特征工程
+6. 模型调参
+7. 模型状态分析
+8. 模型融合
+
+> 数据预处理
+
+* 数据清洗
+    * 去掉样本数据中的垃圾
+    * 取出缺失大量数据的特征
+* 数据采样
+    * 下/上采样（假设正负样本比例1:100，把正样本的数量重复100次，这就叫上采样，也就是把比例小的样本放大。下采样同理，把比例大的数据抽取一部分，从而使比例变得接近于1；1）
+    * 保证样本均衡
+* 工具 sql、pandas等
+
+> 特征工程
+
+![](static/images/docs/kaggle-特征工程.png)
+
+> 特征处理
+
+- 数值型：连续型数据离散化或者归一化、数据变化（log、指数、box-cox）
+- 类别型：做编码，eg：one-hot编码，如果类别数据有缺失，把缺失也作为一个类别即可。
+- 时间类：间隔化（距离某个节日多少天）、与其他特征（eg：次数）融合，变成一周登陆几次、离散化（eg：外卖，把时间分为【饭店、非饭店】）
+- 文本类：N-gram、Bag-of-words、TF-IDF
+- 统计型：与业务强关联
+- 组合特征
+
 ## 活动时间
 
-预计 11月15号前后开展活动，有兴趣的可以提前联系相关的负责人。
+时间段：2017-11-15 ～ 2017-11-30
 
 ## 联系方式
 
@@ -61,11 +105,19 @@
 
 * [@jiangzhonglian](https://github.com/jiangzhonglian)（片刻）
 
+> 项目发起人
+
+* [@jiangzhonglian](https://github.com/jiangzhonglian)（片刻）
+* [@wangyangting](https://github.com/wangyangting)（那伊抹微笑）
+* [@chenyyx](https://github.com/chenyyx)（瑶妹）
+
 > 项目贡献者（请手动添加）
 
 * [@jiangzhonglian](https://github.com/jiangzhonglian)（片刻）
 * [@wangyangting](https://github.com/wangyangting)（那伊抹微笑）
 * [@chenyyx](https://github.com/chenyyx)（瑶妹）
+* [@zehuichen](https://github.com/zehuichen123)(loveSnowBest)
+* [@谈笑风生](https://github.com/zhu1040028623)（谈笑风生）
 
 > 加入方式
 
