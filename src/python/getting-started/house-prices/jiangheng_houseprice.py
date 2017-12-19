@@ -1,21 +1,22 @@
-## **房价预测**
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Dec 16 17:12:06 2017
 
+@author: Administrator
+"""
 
-[房价预测](https://www.kaggle.com/c/house-prices-advanced-regression-techniques):Predict sales prices and practice feature engineering
+import pandas as pd
+import numpy as np
+from pandas import DataFrame, Series
+from scipy.stats import boxcox
+from sklearn.linear_model import Ridge
+import warnings
+import os.path
 
-### **内容说明**
+warnings.filterwarnings('ignore')
 
-- Ask a home buyer to describe their dream house, and they probably won't begin with the height of the basement ceiling or the proximity to an east-west railroad. But this playground competition's dataset proves that much more influences price negotiations than the number of bedrooms or a white-picket fence.
+data_dir = '../../../../datasets/getting-started/house-prices'
 
-- With 79 explanatory variables describing (almost) every aspect of residential homes in Ames, Iowa, this competition challenges you to predict the final price of each home.
-
-### **开发流程**
-
->收集数据:[数据集](https://www.kaggle.com/c/house-prices-advanced-regression-techniques/data)
-
-
->准备数据:
-```python
 #这里对数据做一些转换,原因要么是某些类别个数太少而且分布相近,要么是特征内的值之间有较为明显的优先级
 mapper = {'LandSlope': {'Gtl':'Gtl', 'Mod':'unGtl', 'Sev':'unGtl'},
           'LotShape': {'Reg':'Reg', 'IR1':'IR1', 'IR2':'other', 'IR3':'other'},
@@ -131,28 +132,11 @@ processing(all_data);
 #dummy转换
 dummy = pd.get_dummies(all_data,drop_first=True);
 
-```
-
->模型训练：产生训练模型:
-```
 #试了Ridge,Lasso,ElasticNet以及GBM,发现ridge的表现比其他的都好,参数alpha=6是调参结果
 ridge = Ridge(6);
 ridge.fit(dummy.iloc[:prices.shape[0],:],prices);
-```
-
->模型评估:RMSE
-```
-暂时没写
-```
-
->结果预测：
-```python
 result = np.expm1(ridge.predict(dummy.iloc[prices.shape[0]:,:]))
-```
-
->结果导出：
-```python
 pre = DataFrame(result,columns=['SalePrice'])
 prediction = pd.concat([test_ID,pre],axis=1)
 prediction.to_csv(os.path.join(data_dir, "submission.csv"),index=False)
-```
+
