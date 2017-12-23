@@ -63,6 +63,7 @@ def dRecognition_knn():
     knnClf = knnClassify(trainData, trainLabel)
 
     # 结果预测
+    # 进行结果预测
     testLabel = knnClf.predict(testData)
 
     # 结果的输出
