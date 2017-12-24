@@ -52,10 +52,10 @@ def dRecognition_knn():
 
     # 加载数据
     trainData, trainLabel, testData = opencsv()
-    print "trainData==>", type(trainData), shape(trainData)
-    print "trainLabel==>", type(trainLabel), shape(trainLabel)
-    print "testData==>", type(testData), shape(testData)
-    print "load data finish"
+    print ("trainData==>", type(trainData), shape(trainData))
+    print ("trainLabel==>", type(trainLabel), shape(trainLabel))
+    print ("testData==>", type(testData), shape(testData))
+    print ("load data finish")
     stop_time_l = time.time()
     print('load data time used:%f' % (stop_time_l - start_time))
 
