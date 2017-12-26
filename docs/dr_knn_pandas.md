@@ -11,7 +11,7 @@ k 近邻算法实际上利用训练数据集对特征向量空间进行划分，
 	1.动作片  打斗次数更多
 	2.爱情片  亲吻次数更多
 基于电影中的亲吻、打斗出现的次数，使用 k-近邻算法构造程序，就可以自动划分电影的题材类型。
-![  /Users/liudong/kaggle/static/images/KNN-image/knn-1-movie.png][image-1]
+![](static/images/KNN-image/knn-1-movie.png)
 现在根据上面我们得到的样本集中所有电影与未知电影的距离，按照距离递增排序，可以找到 k 个距离最近的电影。
 假定 k=3，则三个最靠近的电影依次是， He's Not Really into Dudes 、 Beautiful Woman 和 California Man。
 knn 算法按照距离最近的三部电影的类型，决定未知电影的类型，而这三部电影全是爱情片，因此我们判定未知电影是爱情片。
