@@ -43,7 +43,7 @@ def saveResult(result, csvName):
 
 def knnClassify(trainData, trainLabel):
     knnClf = KNeighborsClassifier()   # default:k = 5,defined by yourself:KNeighborsClassifier(n_neighbors=10)
-    knnClf.fit(trainData, ravel(trainLabel))
+    knnClf.fit(trainData, ravel(trainLabel))# ravel 
     return knnClf
 
 
