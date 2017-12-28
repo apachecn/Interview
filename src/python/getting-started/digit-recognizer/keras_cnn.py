@@ -1,3 +1,13 @@
+#!/usr/bin/python
+# coding: utf-8
+
+'''
+Created on 2017-12-26
+Update  on 2017-12-26
+Author: xiaomingnio
+Github: https://github.com/apachecn/kaggle
+'''
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
