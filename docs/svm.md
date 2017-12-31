@@ -85,7 +85,7 @@ def opencsv():
 > 分析数据: 
 
         对数据的分析是一个特别重要的过程，不仅会让我们对数据集有一个直观的认识，更重要的是为在后续优化当中提供理论依据。
-        
+
 
 ```python
 
@@ -116,6 +116,8 @@ def analyse_data(dataMat):
 
 ```
         通过对数据的特征分析我们可以知道数据之间存在有很严重的相关性，那么我们可以在分类的过程中考虑提取出重要的特征。
+![数据特征分析](../static/images/svm/数据特征分析.jpg)
+
 ```python
 def dRCsv(x_train, x_test, preData, COMPONENT_NUM):
     '''
@@ -225,6 +227,8 @@ def getOptimalAccuracy(trainData, trainLabel, preData):
     print("特征数量= %s, 存在最优解：>>> \t" % optimalNum, lineLen, int(minSumErr), 1-minErr)
     return optimalSVMClf, pcaPreDataResult
 ```
+![最优特征和roc分析](../static/images/svm/最优特征数目和roc分析.jpg)
+
  > 测试算法：便携一个函数来测试不同的和函数并计算错误率
 
     加载训练好存储的模型，对测试集进行分类并存储结果

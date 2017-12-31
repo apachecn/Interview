@@ -127,14 +127,17 @@ def getOptimalAccuracy(trainData, trainLabel, preData):
             optimalLabel = svmtestLabel
             pcaPreDataResult = pcaPreData
             print("i=%s >>>>> \t" % i, lineLen, int(minSumErr), 1-minErr)
+            
     '''
-    展现 准确率与召回率
+   展现 准确率与召回率
         precision 准确率
         recall 召回率
         f1-score  准确率和召回率的一个综合得分
         support 参与比较的数量
     参考链接：http://scikit-learn.org/stable/modules/generated/sklearn.metrics.classification_report.html#sklearn.metrics.classification_report
     '''
+#
+
     # target_names 以 y的label分类为准
     # target_names = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     target_names = [str(i) for i in list(set(y_test))]
@@ -166,8 +169,8 @@ def trainDRSVM():
     # 模型训练 (数据预处理-降维)
     optimalSVMClf, pcaPreData = getOptimalAccuracy(trainData, trainLabel, preData)
 
-    storeModel(optimalSVMClf, '../../../../datasets/getting-started/digit-recognizer/ouput/Result_sklearn_SVM.model')
-    storeModel(pcaPreData, '../../../../datasets/getting-started/digit-recognizer/ouput/Result_sklearn_SVM.pcaPreData')
+    #storeModel(optimalSVMClf, '../../../../datasets/getting-started/digit-recognizer/ouput/Result_sklearn_SVM.model')
+    #storeModel(pcaPreData, '../../../../datasets/getting-started/digit-recognizer/ouput/Result_sklearn_SVM.pcaPreData')
 
     print("finish!")
     stopTime = time.time()
@@ -192,7 +195,7 @@ def preDRSVM():
 
 if __name__ == '__main__':
     # 训练并保存模型
-    # trainDRSVM()
+    trainDRSVM()
 
     # 加载预测数据集
-    preDRSVM()
+    # preDRSVM()
