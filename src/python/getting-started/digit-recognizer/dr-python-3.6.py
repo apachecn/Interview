@@ -195,7 +195,7 @@ def preDRSVM():
 
 if __name__ == '__main__':
     # 训练并保存模型
-    trainDRSVM()
+    # trainDRSVM()
 
     # 加载预测数据集
-    # preDRSVM()
+    preDRSVM()
