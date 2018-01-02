@@ -22,9 +22,8 @@ from sklearn.model_selection import train_test_split
 def opencsv():
     print('Load Data...')
     # 使用 pandas 打开
-    dataTrain = pd.read_csv('datasets/getting-started/digit-recognizer/input/train.csv')
-    dataTest = pd.read_csv('datasets/getting-started/digit-recognizer/input/test.csv')
-
+    dataTrain = pd.read_csv('../../../../datasets/getting-started/digit-recognizer/input/train.csv')
+    dataTest = pd.read_csv('../../../../datasets/getting-started/digit-recognizer/input/test.csv')
     trainData = dataTrain.values[:, 1:]  # 读入全部训练数据
     trainLabel = dataTrain.values[:, 0]
     testData = dataTest.values[:, :]  # 测试全部测试个数据
@@ -128,14 +127,17 @@ def getOptimalAccuracy(trainData, trainLabel, preData):
             optimalLabel = svmtestLabel
             pcaPreDataResult = pcaPreData
             print("i=%s >>>>> \t" % i, lineLen, int(minSumErr), 1-minErr)
+            
     '''
-    展现 准确率与召回率
+   展现 准确率与召回率
         precision 准确率
         recall 召回率
         f1-score  准确率和召回率的一个综合得分
         support 参与比较的数量
     参考链接：http://scikit-learn.org/stable/modules/generated/sklearn.metrics.classification_report.html#sklearn.metrics.classification_report
     '''
+#
+
     # target_names 以 y的label分类为准
     # target_names = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     target_names = [str(i) for i in list(set(y_test))]
@@ -167,8 +169,8 @@ def trainDRSVM():
     # 模型训练 (数据预处理-降维)
     optimalSVMClf, pcaPreData = getOptimalAccuracy(trainData, trainLabel, preData)
 
-    storeModel(optimalSVMClf, 'datasets/getting-started/digit-recognizer/ouput/Result_sklearn_SVM.model')
-    storeModel(pcaPreData, 'datasets/getting-started/digit-recognizer/ouput/Result_sklearn_SVM.pcaPreData')
+    #storeModel(optimalSVMClf, '../../../../datasets/getting-started/digit-recognizer/ouput/Result_sklearn_SVM.model')
+    #storeModel(pcaPreData, '../../../../datasets/getting-started/digit-recognizer/ouput/Result_sklearn_SVM.pcaPreData')
 
     print("finish!")
     stopTime = time.time()
@@ -177,16 +179,15 @@ def trainDRSVM():
 
 def preDRSVM():
     startTime = time.time()
-
     # 加载模型和数据
-    optimalSVMClf = getModel('datasets/getting-started/digit-recognizer/ouput/Result_sklearn_SVM.model')
-    pcaPreData = getModel('datasets/getting-started/digit-recognizer/ouput/Result_sklearn_SVM.pcaPreData')
-
+    optimalSVMClf = getModel('../../../../datasets/getting-started/digit-recognizer/ouput/Result_sklearn_SVM.model')
+    pcaPreData = getModel('../../../../datasets/getting-started/digit-recognizer/ouput/Result_sklearn_SVM.pcaPreData')
+    
     # 结果预测
     testLabel = optimalSVMClf.predict(pcaPreData)
-
+    #print("testLabel = %f" % testscore)
     # 结果的输出
-    saveResult(testLabel, 'datasets/getting-started/digit-recognizer/ouput/Result_sklearn_SVM.csv')
+    saveResult(testLabel, '../../../../datasets/getting-started/digit-recognizer/ouput/Result_sklearn_SVM.csv')
     print("finish!")
     stopTime = time.time()
     print('PreModel load time used:%f s' % (stopTime - startTime))
