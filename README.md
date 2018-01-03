@@ -2,9 +2,6 @@
 
 ![](static/images/logos/kaggle-logo-gray-bigger.jpeg)
 
-
-
-
 > 欢迎任何人参与和完善：一个人可以走的很快，但是一群人却可以走的更远
 
 * [Kaggle](https://www.kaggle.com) 是一个流行的数据科学竞赛平台。
