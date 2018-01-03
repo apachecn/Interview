@@ -43,7 +43,7 @@ def saveResult(result, csvName):
 
 def knnClassify(trainData, trainLabel):
     knnClf = KNeighborsClassifier()   # default:k = 5,defined by yourself:KNeighborsClassifier(n_neighbors=10)
-    knnClf.fit(trainData, ravel(trainLabel))
+    knnClf.fit(trainData, ravel(trainLabel))# ravel 
     return knnClf
 
 
@@ -52,10 +52,10 @@ def dRecognition_knn():
 
     # 加载数据
     trainData, trainLabel, testData = opencsv()
-    print "trainData==>", type(trainData), shape(trainData)
-    print "trainLabel==>", type(trainLabel), shape(trainLabel)
-    print "testData==>", type(testData), shape(testData)
-    print "load data finish"
+    print ("trainData==>", type(trainData), shape(trainData))
+    print ("trainLabel==>", type(trainLabel), shape(trainLabel))
+    print ("testData==>", type(testData), shape(testData))
+    print ("load data finish")
     stop_time_l = time.time()
     print('load data time used:%f' % (stop_time_l - start_time))
 
@@ -67,7 +67,7 @@ def dRecognition_knn():
 
     # 结果的输出
     saveResult(testLabel, 'datasets/getting-started/digit-recognizer/ouput/Result_sklearn_knn.csv')
-    print "finish!"
+    print ("finish!")
     stop_time_r = time.time()
     print('classify time used:%f' % (stop_time_r - start_time))
 
