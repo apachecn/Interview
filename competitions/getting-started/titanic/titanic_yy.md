@@ -61,7 +61,7 @@ train.head(3)
 
 是下面这样(NaN 不是咱们想要的结果)：
 
-![train前3行](../../static/images/comprtitions/getting-started/titanic/titanic_yy_1.png)
+![train前3行](../../../static/images/competitions/getting-started/titanic/titanic_yy_1.png)
 
 
 ### 2.2、加入一些特征，删除一些特征，映射一些特征
@@ -214,7 +214,7 @@ saveTmpFile(test,'D:/titanic/titanic_dataset/test_later.csv')
 
 我们处理完成之后的 train 数据集为：
 
-![train前3行](../../static/images/comprtitions/getting-started/titanic/titanic_yy_2.png)
+![train前3行](../../../static/images/competitions/getting-started/titanic/titanic_yy_2.png)
 
 让我们生成一些特征的关联图，以查看一个特征与下一个特征之间的相关性。 为此，我们将利用 Seaborn 绘图软件包，使我们能够非常方便地绘制热图，如下所示：
 
@@ -222,7 +222,7 @@ saveTmpFile(test,'D:/titanic/titanic_dataset/test_later.csv')
 <matplotlib.axes._subplots.AxesSubplot at 0x7f714b716048>
 ```
 
-![train前3行](../../static/images/comprtitions/getting-started/titanic/titanic_yy_3.png)
+![train前3行](../../../static/images/competitions/getting-started/titanic/titanic_yy_3.png)
 
 皮尔逊相关图可以告诉我们的一件事是，没有太多的特征与彼此强相关。 从将这些特征提供给您的学习模型的角度来看，这是很好的，因为这意味着我们的训练集中没有太多冗余或多余的数据，我们很高兴每个特征都带有一些独特的信息。 这里有两个最相关的功能是 FamilySize 和 Parch（家长和儿童）。但是这儿没有删除，依然留着。
 
