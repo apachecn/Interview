@@ -4,7 +4,7 @@
 ## 翻译相关
 原文地址: <https://www.kaggle.com/startupsci/titanic-data-science-solutions?scriptVersionId=1145136>  
 开源组织: [ApacheCN ~ apachecn.org](http://www.apachecn.org)   
-贡献者: [@那伊抹微笑](https://github.com/wangyangting), [@李铭哲](https://github.com/limingzhe), [@独孤冥魇](http://www.apachecn.org), [@DL - 小王子](https://github.com/VPrincekin), [@成飘飘](https://github.com/chengpiaopiao)  
+贡献者: [@那伊抹微笑](https://github.com/wangyangting), [@李铭哲](https://github.com/limingzhe), [@刘海飞](https://github.com/WindZQ), [@DL - 小王子](https://github.com/VPrincekin), [@成飘飘](https://github.com/chengpiaopiao)  
 最近更新: 2018-01-03
 
 ---
@@ -1033,7 +1033,7 @@ g.map(plt.hist, 'Age', bins=20)
 
 
 
-![png](../../../../static/images/competitions/getting-started/titanic/titanic_output_24_1.png)
+![png](../../../static/images/competitions/getting-started/titanic/titanic_output_24_1.png)
 
 
 ### 关联数字和顺序的特征
@@ -1061,7 +1061,7 @@ grid.add_legend();
 ```
 
 
-![png](../../../../static/images/competitions/getting-started/titanic/titanic_output_26_0.png)
+![png](../../../static/images/competitions/getting-started/titanic/titanic_output_26_0.png)
 
 
 ### 关联分类特征
@@ -1096,7 +1096,7 @@ grid.add_legend()
 
 
 
-![png](../../../../static/images/competitions/getting-started/titanic/titanic_output_28_1.png)
+![png](../../../static/images/competitions/getting-started/titanic/titanic_output_28_1.png)
 
 
 ### 关联分类和数值的特征
@@ -1132,7 +1132,7 @@ grid.add_legend()
 
 
 
-![png](../../../../static/images/competitions/getting-started/titanic/titanic_output_30_1.png)
+![png](../../../static/images/competitions/getting-started/titanic/titanic_output_30_1.png)
 
 
 ## 整理数据
@@ -1677,7 +1677,7 @@ grid.add_legend()
 
 
 
-![png](../../../../static/images/competitions/getting-started/titanic/titanic_output_44_1.png)
+![png](../../../static/images/competitions/getting-started/titanic/titanic_output_44_1.png)
 
 
 让我们开始准备一个空数组, 以包含基于 Pclass x Gender 组合以猜测 Age 值.
