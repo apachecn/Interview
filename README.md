@@ -25,7 +25,7 @@
 
 `入门比赛 Getting Started` 给萌新们一个试水的机会，没有奖金，但有非常多的前辈经验可供学习。很久以前Kaggle这个栏目名称是101的时候，比赛题目还很多，但是现在只保留了4个最经典的入门竞赛：手写数字识别、沉船事故幸存估计、脸部识别、Julia语言入门。
 
-> [**数字识别**](competitions/getting-started/digit-recognizer.md): 使用著名的 MNIST 数据来学习计算机视觉基础原理
+> [**数字识别**](/competitions/getting-started/digit-recognizer/digit-recognizer.md): 使用著名的 MNIST 数据来学习计算机视觉基础原理
 
 
 ### [第3部分：训练场 Playground](https://www.kaggle.com/competitions?sortBy=deadline&group=all&page=1&pageSize=20&segment=playground)
