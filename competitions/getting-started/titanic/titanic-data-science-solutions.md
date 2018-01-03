@@ -1,9 +1,13 @@
 
 # 《泰坦尼克号》数据科学解决方案
 
----
+## 翻译相关
+原文地址: <https://www.kaggle.com/startupsci/titanic-data-science-solutions?scriptVersionId=1145136>  
+开源组织: [ApacheCN ~ apachecn.org](http://www.apachecn.org)   
+贡献者: [@那伊抹微笑](https://github.com/wangyangting), [@李铭哲](https://github.com/limingzhe), [@独孤冥魇](http://www.apachecn.org), [@DL - 小王子](https://github.com/VPrincekin), [@成飘飘](https://github.com/chengpiaopiao)  
+最近更新: 2018-01-03
 
-原文地址: <https://www.kaggle.com/startupsci/titanic-data-science-solutions?scriptVersionId=1145136>
+---
 
 ### 我已经发布了一个新的 Python 包 [Speedml](https://speedml.com), 它将该 notebook 中的使用的技术编译成一个 intuitive（直观的），powerful（功能强大的）且 productive（高效的）API.
 
@@ -1029,7 +1033,7 @@ g.map(plt.hist, 'Age', bins=20)
 
 
 
-![png](image/titanic_output_24_1.png)
+![png](../../../../static/images/competitions/getting-started/titanic/titanic_output_24_1.png)
 
 
 ### 关联数字和顺序的特征
@@ -1057,7 +1061,7 @@ grid.add_legend();
 ```
 
 
-![png](image/titanic_output_26_0.png)
+![png](../../../../static/images/competitions/getting-started/titanic/titanic_output_26_0.png)
 
 
 ### 关联分类特征
@@ -1092,7 +1096,7 @@ grid.add_legend()
 
 
 
-![png](image/titanic_output_28_1.png)
+![png](../../../../static/images/competitions/getting-started/titanic/titanic_output_28_1.png)
 
 
 ### 关联分类和数值的特征
@@ -1128,7 +1132,7 @@ grid.add_legend()
 
 
 
-![png](image/titanic_output_30_1.png)
+![png](../../../../static/images/competitions/getting-started/titanic/titanic_output_30_1.png)
 
 
 ## 整理数据
@@ -1673,7 +1677,7 @@ grid.add_legend()
 
 
 
-![png](image/titanic_output_44_1.png)
+![png](../../../../static/images/competitions/getting-started/titanic/titanic_output_44_1.png)
 
 
 让我们开始准备一个空数组, 以包含基于 Pclass x Gender 组合以猜测 Age 值.
