@@ -1,8 +1,10 @@
 # Titanic 第一次试水 | 瑶瑶亲卫队
 
-fork from https://www.kaggle.com/arthurtok/introduction-to-ensembling-stacking-in-python
+* fork from https://www.kaggle.com/arthurtok/introduction-to-ensembling-stacking-in-python
+* 开源组织: [ApacheCN ~ apachecn.org](http://www.apachecn.org) 
+* team：瑶瑶亲卫队
 
-我主要根据这个 kernel 写的，当然生成的 submission ，已经提交到 kaggle 上评分出来了。
+我们主要根据这个 [kernel](https://www.kaggle.com/arthurtok/introduction-to-ensembling-stacking-in-python) 写的，当然生成的 submission ，已经提交到 kaggle 上评分出来了。
 
 ## 目录
 
