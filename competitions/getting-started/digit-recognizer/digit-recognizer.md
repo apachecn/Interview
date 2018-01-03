@@ -1,15 +1,24 @@
 # **数字识别**
 
-[**数字识别**](/competitions/GettingStarted/DigitRecognizer.md):使用著名的 MNIST 数据来学习计算机视觉基础原理
+[**数字识别**](/competitions/getting-started/digit-recognizer/digit-recognizer.md):使用著名的 MNIST 数据来学习计算机视觉基础原理
 
 ## 内容说明
 
 * MNIST（"修改后的国家标准与技术研究所"）是计算机视觉的事实上的 "hello world" 数据集。自1999年发布以来，手写图像的经典数据集已成为基准分类算法的基础。随着新机器学习技术的出现，MNIST 仍然是研究人员和学习者的可靠资源。
 * 在本次比赛中，您的目标是正确识别数以万计手写图像的数字。我们策划了一套教程式的内核，涵盖从回归到神经网络的一切。我们鼓励您尝试使用不同的算法来学习第一手什么是有效的，以及技术如何比较。
 
-> 注意：[项目规范](/docs/kaggle-quickstart.md) 和 [项目代码](/src/python/getting-started/digit-recognizer/dr_knn_pandas.py)
+> 注意：[项目规范](/docs/kaggle-quickstart.md)
 
-## 开发流程
+## 成员角色
+
+| 角色 | 用户 | 内容 | 代码 |
+| -- | -- | -- | -- |
+| 队长 | [片刻](https://github.com/jiangzhonglian) | [项目概述](/competitions/getting-started/digit-recognizer/digit-recognizer.md) |
+| 负责人: knn | [诺木人](https://github.com/1mrliu) | [knn项目文档](/competitions/getting-started/digit-recognizer/knn算法描述.md) | [knn项目代码](/src/python/getting-started/digit-recognizer/knn-python3.6.py) |
+| 负责人: svm | [马小穆](https://github.com/maxiaomu) | [svm项目文档](/competitions/getting-started/digit-recognizer/svm算法描述.md) | [svm项目代码](/src/python/getting-started/digit-recognizer/svm-python3.6.py) |
+| 负责人: cnn | [==](https://github.com/xiaomingnio) | [cnn项目文档](/competitions/getting-started/digit-recognizer/cnn算法描述.md) | [cnn项目代码](/src/python/getting-started/digit-recognizer/keras_cnn-python3.6.py) |
+
+## 开发流程（knn项目案例）
 
 > 收集数据: 提供文本文件(目标变量+数据特征)
 
