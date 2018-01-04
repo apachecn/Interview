@@ -6,6 +6,7 @@ Created on 2017-10-26
 Update  on 2017-10-26
 Author: 片刻
 Github: https://github.com/apachecn/kaggle
+PCA主成成分分析
 '''
 
 import csv
@@ -70,14 +71,18 @@ def saveResult(result, csvName):
 
 # 分析数据
 def analyse_data(dataMat):
-    meanVals = np.mean(dataMat, axis=0)
-    meanRemoved = dataMat-meanVals
-    covMat = np.cov(meanRemoved, rowvar=0)
-    eigvals, eigVects = np.linalg.eig(np.mat(covMat))
-    eigValInd = np.argsort(eigvals)
+    meanVals = np.mean(dataMat, axis=0) # np.mean 求平均值
+    meanRemoved = dataMat-meanVals # 每一列特征值减去该列的特征值均值
+    #计算协方差矩阵，除数n-1是为了得到协方差的 无偏估计
+    #cov(X,0) = cov(X) 除数是n-1(n为样本个数)
+    #cov(X,1) 除数是n
+    covMat = np.cov(meanRemoved, rowvar=0) # cov 计算协方差的值
+    eigvals, eigVects = np.linalg.eig(np.mat(covMat)) # linalg.eig 计算的值是矩阵的特征值，保存在对应的矩阵中
+    eigValInd = np.argsort(eigvals) #  argsort 对特征值矩阵进行排序，返回的是数值从小到大的索引值
 
-    topNfeat = 100
-    eigValInd = eigValInd[:-(topNfeat+1):-1]
+    topNfeat = 100 # 需要保留的特征维度，即要压缩成的维度数 
+    eigValInd = eigValInd[:-(topNfeat+1):-1] # 从排序后的矩阵最后一个开始自下而上选取最大的N个特征值，返回其对应的索引
+
     cov_all_score = float(sum(eigvals))
     sum_cov_score = 0
     for i in range(0, len(eigValInd)):
@@ -193,8 +198,11 @@ def preDRSVM():
 
 
 if __name__ == '__main__':
+    trainData, trainLabel, preData = opencsv()
     # 训练并保存模型
-    # trainDRSVM()
+     #trainDRSVM()
 
+    # 分析数据
+    analyse_data(trainData)
     # 加载预测数据集
     preDRSVM()
