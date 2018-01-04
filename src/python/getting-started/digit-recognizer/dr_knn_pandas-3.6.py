@@ -22,28 +22,28 @@ def opencsv():
     data1 = pd.read_csv('datasets/getting-started/digit-recognizer/input/test.csv')
 
     train_data = data.values[0:, 1:]  # 读入全部训练数据,  [行，列]
-    train_label = data.values[0:, 0]
+    train_label = data.values[0:, 0] # 读取列表的第一列
     test_data = data1.values[0:, 0:]  # 测试全部测试个数据
     return train_data, train_label, test_data
 
 
 def saveResult(result, csvName):
-    with open(csvName, 'w') as myFile:
-        myWriter = csv.writer(myFile)
-        myWriter.writerow(["ImageId", "Label"])
+    with open(csvName, 'w') as myFile: # 创建记录输出结果的文件（w 和 wb 使用的时候有问题）
+        myWriter = csv.writer(myFile) # 对文件执行写入
+        myWriter.writerow(["ImageId", "Label"]) # 设置表格的列名
         index = 0
         for i in result:
             tmp = [] # 列表,列表是可以改变长度的
             index = index+1
-            tmp.append(index)
+            tmp.append(index) # ImageId的数值
             # tmp.append(i)
-            tmp.append(int(i))
+            tmp.append(int(i)) # 测试集的标签值
             myWriter.writerow(tmp)
 
 
 def knnClassify(trainData, trainLabel):
     knnClf = KNeighborsClassifier()   # default:k = 5,defined by yourself:KNeighborsClassifier(n_neighbors=10)
-    knnClf.fit(trainData, ravel(trainLabel))# ravel 
+    knnClf.fit(trainData, ravel(trainLabel))# ravel Return a contiguous flattened array.
     return knnClf
 
 
