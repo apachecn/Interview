@@ -21,19 +21,19 @@ def opencsv():
     data = pd.read_csv('datasets/getting-started/digit-recognizer/input/train.csv')
     data1 = pd.read_csv('datasets/getting-started/digit-recognizer/input/test.csv')
 
-    train_data = data.values[0:, 1:]  # 读入全部训练数据
+    train_data = data.values[0:, 1:]  # 读入全部训练数据,  [行，列]
     train_label = data.values[0:, 0]
     test_data = data1.values[0:, 0:]  # 测试全部测试个数据
     return train_data, train_label, test_data
 
 
 def saveResult(result, csvName):
-    with open(csvName, 'wb') as myFile:
+    with open(csvName, 'w') as myFile:
         myWriter = csv.writer(myFile)
         myWriter.writerow(["ImageId", "Label"])
         index = 0
         for i in result:
-            tmp = []
+            tmp = [] # 列表,列表是可以改变长度的
             index = index+1
             tmp.append(index)
             # tmp.append(i)
