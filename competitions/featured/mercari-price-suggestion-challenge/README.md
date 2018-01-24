@@ -6,7 +6,7 @@
 
 可能很难知道有多少东西是真正值得的。小细节可能意味着定价的巨大差异。例如，这些毛衫中的一件成本为335美元，另一件成本为9.99美元。你能猜出哪一个是哪个？
 
-![](/static/images/competitions/getting-started/mercari-price-suggestion-challenge/mercari_comparison.png)
+![](/static/images/competitions/featured/mercari-price-suggestion-challenge/mercari_comparison.png)
 
 考虑到网上销售的产品有多少，产品定价的难度就更大了。服装具有强劲的季节性价格趋势，受品牌影响很大，而电子产品则根据产品规格波动。
 
@@ -31,7 +31,7 @@
 | xx人<br />5.模型评估 | [昵称](ApacheCN Cwiki地址) | xxx-可以选择匿名 | | 负责 |  |
 | xx人<br />6.模型发布 | [昵称](ApacheCN Cwiki地址) | xxx-可以选择匿名 | | 负责 |  |
 
-![](/static/images/competitions/getting-started/mercari-price-suggestion-challenge/project_process.jpg)
+![](/static/images/competitions/featured/mercari-price-suggestion-challenge/project_process.jpg)
 
 ## 1.目标定义
 
