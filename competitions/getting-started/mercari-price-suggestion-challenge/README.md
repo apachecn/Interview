@@ -23,13 +23,13 @@
 | 角色 | 用户 | QQ | GitHub | 负责内容 | 进度 |
 | :--: | :--: | :--: | :--: | :--: | :--: |
 | 发起人 | [片刻](http://cwiki.apachecn.org/display/~jiangzhonglian) | 529815144 |https://github.com/jiangzhonglian | 负责整个项目推进 | 5% |
-| 负责人: 1.目标定义 | [昵称](ApacheCN Cwiki地址) | xxx-可以选择匿名 | | 负责某个业务理解和指标确认 |  |
-| 参与人: 1.目标定义 | [昵称](ApacheCN Cwiki地址) | xxx-可以选择匿名 | | 负责 |  |
-| xx人: 2.数据采集 | [昵称](ApacheCN Cwiki地址) | xxx-可以选择匿名 | | 负责 |  |
-| 3.数据整理 | [昵称](ApacheCN Cwiki地址) | xxx-可以选择匿名 | | 负责 |  |
-| 4.构建模型 | [昵称](ApacheCN Cwiki地址) | xxx-可以选择匿名 | | 负责 |  |
-| 5.模型评估 | [昵称](ApacheCN Cwiki地址) | xxx-可以选择匿名 | | 负责 |  |
-| 6.模型发布 | [昵称](ApacheCN Cwiki地址) | xxx-可以选择匿名 | | 负责 |  |
+| 负责人: 1.目标定义 | [昵称](ApacheCN Cwiki地址) | xxx-可以选择匿名 | | 负责某个业务理解和指标确认 |  |
+| 参与人: 1.目标定义 | [昵称](ApacheCN Cwiki地址) | xxx-可以选择匿名 | | 负责某个业务理解和指标确认 |  |
+| xx人: 2.数据采集 | [昵称](ApacheCN Cwiki地址) | xxx-可以选择匿名 | | 负责 |  |
+| xx人: 3.数据整理 | [昵称](ApacheCN Cwiki地址) | xxx-可以选择匿名 | | 负责 |  |
+| xx人: 4.构建模型 | [昵称](ApacheCN Cwiki地址) | xxx-可以选择匿名 | | 负责 |  |
+| xx人: 5.模型评估 | [昵称](ApacheCN Cwiki地址) | xxx-可以选择匿名 | | 负责 |  |
+| xx人: 6.模型发布 | [昵称](ApacheCN Cwiki地址) | xxx-可以选择匿名 | | 负责 |  |
 
 ![](/static/images/competitions/getting-started/mercari-price-suggestion-challenge/project_process.jpg)
 
