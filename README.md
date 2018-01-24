@@ -50,7 +50,7 @@
 
 `推荐比赛 Featured` 是瞄准商业问题带有奖金的公开竞赛。如果有幸赢得比赛，不但可以获得奖金，模型也可能会被竞赛赞助商应用到商业实践中呢。
 
-* [**Mercari 价格推荐挑战**](/competitions/getting-started/mercari-price-suggestion-challenge)
+* [**Mercari 价格推荐挑战**](/competitions/featured/mercari-price-suggestion-challenge)
 
 ## 其他部分
 
