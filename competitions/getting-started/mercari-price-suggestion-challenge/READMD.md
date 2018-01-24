@@ -1,0 +1,69 @@
+# **Mercari 价格建议挑战赛**
+
+`你能自动建议网上卖家的产品价格？`
+
+## 比赛说明
+
+可能很难知道有多少东西是真正值得的。小细节可能意味着定价的巨大差异。例如，这些毛衫中的一件成本为335美元，另一件成本为9.99美元。你能猜出哪一个是哪个？
+
+![](/static/images/competitions/getting-started/mercari-price-suggestion-challenge/mercari_comparison.png)
+
+考虑到网上销售的产品有多少，产品定价的难度就更大了。服装具有强劲的季节性价格趋势，受品牌影响很大，而电子产品则根据产品规格波动。
+
+日本最大的社区购物应用程序Mercari深知这个问题。他们想为卖家提供定价建议，但是这样做很困难，因为卖家可以在Mercari的市场上投入任何东西或任何东西。
+
+在这场比赛中，Mercari挑战你建立一个算法，自动建议正确的产品价格。您将获得用户输入的产品文本说明，包括产品类别名称，品牌名称和项目条件等详细信息。
+
+请注意，由于这些数据的公共性质，这个竞赛是一个“Kernels Only”竞赛。在挑战的第二阶段，文件只能通过内核获得，并且您将无法修改您的方法来响应新数据。在 [数据选项卡](https://www.kaggle.com/c/mercari-price-suggestion-challenge/data) 和 [内核常见问题页面](https://www.kaggle.com/c/mercari-price-suggestion-challenge#Kernels-FAQ) 阅读更多详细信息。
+
+> 注意：[项目规范](/docs/kaggle-quickstart.md)
+
+## 成员角色
+
+| 角色 | 用户 | QQ | GitHub | 负责内容 | 进度 |
+| :--: | :--: | :--: | :--: | :--: | :--: |
+| 发起人 | [片刻](http://cwiki.apachecn.org/display/~jiangzhonglian) | 529815144 |https://github.com/jiangzhonglian | 负责整个项目推进 | 5% |
+| 负责人: 1.目标定义 | [昵称](ApacheCN Cwiki地址) | xxx-可以选择匿名 | | 负责某个业务理解和指标确认 |  |
+| 参与人: 1.目标定义 | [昵称](ApacheCN Cwiki地址) | xxx-可以选择匿名 | | 负责 |  |
+| xx人: 2.数据采集 | [昵称](ApacheCN Cwiki地址) | xxx-可以选择匿名 | | 负责 |  |
+| 3.数据整理 | [昵称](ApacheCN Cwiki地址) | xxx-可以选择匿名 | | 负责 |  |
+| 4.构建模型 | [昵称](ApacheCN Cwiki地址) | xxx-可以选择匿名 | | 负责 |  |
+| 5.模型评估 | [昵称](ApacheCN Cwiki地址) | xxx-可以选择匿名 | | 负责 |  |
+| 6.模型发布 | [昵称](ApacheCN Cwiki地址) | xxx-可以选择匿名 | | 负责 |  |
+
+![](/static/images/competitions/getting-started/mercari-price-suggestion-challenge/project_process.jpg)
+
+## 1.目标定义
+
+* 任务理解
+* 指标确定
+
+## 2.数据采集
+
+* 建模抽样
+* 质量把控
+
+## 3.数据整理
+
+* 数据探索
+* 数据清洗
+* 数据集成
+* 数据变换
+* 数据规约
+
+## 4.构建模型
+
+* 模式发现
+* 构建模型
+* 验证模型
+
+## 5.模型评估
+
+* 设定评估指标
+* 多模型对比
+* 模型优化
+
+## 6.模型发布
+    
+* 模型部署
+* 模型重构
