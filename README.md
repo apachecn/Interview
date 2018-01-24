@@ -33,7 +33,6 @@
 * [**数字识别**](/competitions/getting-started/digit-recognizer)
 * [**泰坦尼克**](/competitions/getting-started/titanic)
 * [**房价预测**](/competitions/getting-started/house-price)
-* [**Mercari 价格推荐挑战**](/competitions/getting-started/mercari-price-suggestion-challenge)
 
 > [第3部分：训练场 Playground](https://www.kaggle.com/competitions?sortBy=deadline&group=all&page=1&pageSize=20&segment=playground)
 
@@ -50,6 +49,8 @@
 > [第6部分： 大型组织比赛(大奖金) Featured](https://www.kaggle.com/competitions?sortBy=prize&group=active&page=1&pageSize=20&segment=featured)
 
 `推荐比赛 Featured` 是瞄准商业问题带有奖金的公开竞赛。如果有幸赢得比赛，不但可以获得奖金，模型也可能会被竞赛赞助商应用到商业实践中呢。
+
+* [**Mercari 价格推荐挑战**](/competitions/getting-started/mercari-price-suggestion-challenge)
 
 ## 其他部分
 
