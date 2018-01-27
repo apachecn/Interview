@@ -24,12 +24,11 @@ def opencsv():
     print('Load Data...')
     # 使用 pandas 打开
     dataTrain = pd.read_csv('datasets/getting-started/digit-recognizer/input/train.csv')
-    dataTest = pd.read_csv('datasets/getting-started/digit-recognizer/input/test.csv')
-
+    dataPre = pd.read_csv('datasets/getting-started/digit-recognizer/input/test.csv')
     trainData = dataTrain.values[:, 1:]  # 读入全部训练数据
     trainLabel = dataTrain.values[:, 0]
-    testData = dataTest.values[:, :]  # 测试全部测试个数据
-    return trainData, trainLabel, testData
+    preData = dataPre.values[:, :]  # 测试全部测试个数据
+    return trainData, trainLabel, preData
 
 
 # 数据预处理-降维 PCA主成成分分析
@@ -39,12 +38,22 @@ def dRCsv(x_train, x_test, preData, COMPONENT_NUM):
     testData = np.array(x_test)
     preData = np.array(preData)
 
+    '''
+    使用说明：https://www.cnblogs.com/pinard/p/6243025.html
+    n_components>=1
+      n_components=NUM   设置占特征数量比
+    0 < n_components < 1
+      n_components=0.99  设置阈值总方差占比
+    '''
     pca = PCA(n_components=COMPONENT_NUM, whiten=True)
     pca.fit(trainData)  # Fit the model with X
     pcaTrainData = pca.transform(trainData)  # Fit the model with X and 在X上完成降维.
     pcaTestData = pca.transform(testData)  # Fit the model with X and 在X上完成降维.
     pcaPreData = pca.transform(preData)  # Fit the model with X and 在X上完成降维.
 
+    # pca 方差大小、方差占比、特征数量
+    print(pca.explained_variance_, '\n', pca.explained_variance_ratio_, '\n', pca.n_components_)
+    print(sum(pca.explained_variance_ratio_))
     return pcaTrainData,  pcaTestData, pcaPreData
 
 
@@ -138,6 +147,7 @@ def getOptimalAccuracy(trainData, trainLabel, preData):
             optimalLabel = svmtestLabel
             pcaPreDataResult = pcaPreData
             print("i=%s >>>>> \t" % i, lineLen, int(minSumErr), 1-minErr)
+
     '''
     展现 准确率与召回率
         precision 准确率
@@ -146,6 +156,7 @@ def getOptimalAccuracy(trainData, trainLabel, preData):
         support 参与比较的数量
     参考链接：http://scikit-learn.org/stable/modules/generated/sklearn.metrics.classification_report.html#sklearn.metrics.classification_report
     '''
+
     # target_names 以 y的label分类为准
     # target_names = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     target_names = [str(i) for i in list(set(y_test))]
@@ -187,14 +198,13 @@ def trainDRSVM():
 
 def preDRSVM():
     startTime = time.time()
-
     # 加载模型和数据
     optimalSVMClf = getModel('datasets/getting-started/digit-recognizer/ouput/Result_sklearn_SVM.model')
     pcaPreData = getModel('datasets/getting-started/digit-recognizer/ouput/Result_sklearn_SVM.pcaPreData')
 
     # 结果预测
     testLabel = optimalSVMClf.predict(pcaPreData)
-
+    # print("testLabel = %f" % testscore)
     # 结果的输出
     saveResult(testLabel, 'datasets/getting-started/digit-recognizer/ouput/Result_sklearn_SVM.csv')
     print("finish!")
@@ -205,9 +215,13 @@ def preDRSVM():
 if __name__ == '__main__':
     trainData, trainLabel, preData = opencsv()
     # 训练并保存模型
+<<<<<<< HEAD:src/python/getting-started/digit-recognizer/dr-python-3.6.py
      #trainDRSVM()
+=======
+    trainDRSVM()
+>>>>>>> c557666d2213e02de23677bf53692e9ecf20b456:src/python/getting-started/digit-recognizer/svm-python3.6.py
 
     # 分析数据
     analyse_data(trainData)
     # 加载预测数据集
-    preDRSVM()
+    # preDRSVM()

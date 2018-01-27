@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # coding: utf-8
-
 '''
 Created on 2017-10-26
 Update  on 2017-10-26
@@ -11,15 +10,17 @@ Github: https://github.com/apachecn/kaggle
 import csv
 import time
 import pandas as pd
-from numpy import *
+from numpy import shape, ravel
 from sklearn.neighbors import KNeighborsClassifier
 
 
 # 加载数据
 def opencsv():
     # 使用 pandas 打开
-    data = pd.read_csv('datasets/getting-started/digit-recognizer/input/train.csv')
-    data1 = pd.read_csv('datasets/getting-started/digit-recognizer/input/test.csv')
+    data = pd.read_csv(
+        'datasets/getting-started/digit-recognizer/input/train.csv')
+    data1 = pd.read_csv(
+        'datasets/getting-started/digit-recognizer/input/test.csv')
 
     train_data = data.values[0:, 1:]  # 读入全部训练数据,  [行，列]
     train_label = data.values[0:, 0] # 读取列表的第一列
@@ -33,17 +34,29 @@ def saveResult(result, csvName):
         myWriter.writerow(["ImageId", "Label"]) # 设置表格的列名
         index = 0
         for i in result:
+<<<<<<< HEAD:src/python/getting-started/digit-recognizer/dr_knn_pandas-3.6.py
             tmp = [] # 列表,列表是可以改变长度的
             index = index+1
             tmp.append(index) # ImageId的数值
+=======
+            tmp = []
+            index = index + 1
+            tmp.append(index)
+>>>>>>> c557666d2213e02de23677bf53692e9ecf20b456:src/python/getting-started/digit-recognizer/knn-python3.6.py
             # tmp.append(i)
             tmp.append(int(i)) # 测试集的标签值
             myWriter.writerow(tmp)
 
 
 def knnClassify(trainData, trainLabel):
+<<<<<<< HEAD:src/python/getting-started/digit-recognizer/dr_knn_pandas-3.6.py
     knnClf = KNeighborsClassifier()   # default:k = 5,defined by yourself:KNeighborsClassifier(n_neighbors=10)
     knnClf.fit(trainData, ravel(trainLabel))# ravel Return a contiguous flattened array.
+=======
+    knnClf = KNeighborsClassifier(
+    )  # default:k = 5,defined by yourself:KNeighborsClassifier(n_neighbors=10)
+    knnClf.fit(trainData, ravel(trainLabel))  # ravel 
+>>>>>>> c557666d2213e02de23677bf53692e9ecf20b456:src/python/getting-started/digit-recognizer/knn-python3.6.py
     return knnClf
 
 
@@ -52,10 +65,10 @@ def dRecognition_knn():
 
     # 加载数据
     trainData, trainLabel, testData = opencsv()
-    print ("trainData==>", type(trainData), shape(trainData))
-    print ("trainLabel==>", type(trainLabel), shape(trainLabel))
-    print ("testData==>", type(testData), shape(testData))
-    print ("load data finish")
+    # print("trainData==>", type(trainData), shape(trainData))
+    # print("trainLabel==>", type(trainLabel), shape(trainLabel))
+    # print("testData==>", type(testData), shape(testData))
+    print("load data finish")
     stop_time_l = time.time()
     print('load data time used:%f' % (stop_time_l - start_time))
 
@@ -66,8 +79,11 @@ def dRecognition_knn():
     testLabel = knnClf.predict(testData)
 
     # 结果的输出
-    saveResult(testLabel, 'datasets/getting-started/digit-recognizer/ouput/Result_sklearn_knn.csv')
-    print ("finish!")
+    saveResult(
+        testLabel,
+        'datasets/getting-started/digit-recognizer/ouput/Result_sklearn_knn.csv'
+    )
+    print("finish!")
     stop_time_r = time.time()
     print('classify time used:%f' % (stop_time_r - start_time))
 
