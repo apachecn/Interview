@@ -215,11 +215,7 @@ def preDRSVM():
 if __name__ == '__main__':
     trainData, trainLabel, preData = opencsv()
     # 训练并保存模型
-<<<<<<< HEAD:src/python/getting-started/digit-recognizer/dr-python-3.6.py
-     #trainDRSVM()
-=======
     trainDRSVM()
->>>>>>> c557666d2213e02de23677bf53692e9ecf20b456:src/python/getting-started/digit-recognizer/svm-python3.6.py
 
     # 分析数据
     analyse_data(trainData)
