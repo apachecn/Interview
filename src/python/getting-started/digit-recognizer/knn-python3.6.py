@@ -49,14 +49,8 @@ def saveResult(result, csvName):
 
 
 def knnClassify(trainData, trainLabel):
-<<<<<<< HEAD:src/python/getting-started/digit-recognizer/dr_knn_pandas-3.6.py
     knnClf = KNeighborsClassifier()   # default:k = 5,defined by yourself:KNeighborsClassifier(n_neighbors=10)
-    knnClf.fit(trainData, ravel(trainLabel))# ravel Return a contiguous flattened array.
-=======
-    knnClf = KNeighborsClassifier(
-    )  # default:k = 5,defined by yourself:KNeighborsClassifier(n_neighbors=10)
-    knnClf.fit(trainData, ravel(trainLabel))  # ravel 
->>>>>>> c557666d2213e02de23677bf53692e9ecf20b456:src/python/getting-started/digit-recognizer/knn-python3.6.py
+    knnClf.fit(trainData, ravel(trainLabel)) # ravel Return a contiguous flattened array.
     return knnClf
 
 
