@@ -34,15 +34,9 @@ def saveResult(result, csvName):
         myWriter.writerow(["ImageId", "Label"]) # 设置表格的列名
         index = 0
         for i in result:
-<<<<<<< HEAD:src/python/getting-started/digit-recognizer/dr_knn_pandas-3.6.py
-            tmp = [] # 列表,列表是可以改变长度的
-            index = index+1
-            tmp.append(index) # ImageId的数值
-=======
             tmp = []
             index = index + 1
             tmp.append(index)
->>>>>>> c557666d2213e02de23677bf53692e9ecf20b456:src/python/getting-started/digit-recognizer/knn-python3.6.py
             # tmp.append(i)
             tmp.append(int(i)) # 测试集的标签值
             myWriter.writerow(tmp)
