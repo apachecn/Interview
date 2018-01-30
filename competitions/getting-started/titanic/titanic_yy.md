@@ -3,6 +3,7 @@
 * fork from https://www.kaggle.com/arthurtok/introduction-to-ensembling-stacking-in-python
 * 开源组织: [ApacheCN ~ apachecn.org](http://www.apachecn.org) 
 * team：瑶瑶亲卫队
+* 鸣谢：咸鱼大佬，帮忙调试错误，并上传
 
 我们主要根据这个 [kernel](https://www.kaggle.com/arthurtok/introduction-to-ensembling-stacking-in-python) 写的，当然生成的 submission ，已经提交到 kaggle 上评分出来了。
 
