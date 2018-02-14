@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on 2017-12-7 10:38:05 2017
+Created on 2017-12-07
 Update  on 2017-12-24
 Team:   一把梭
 Github: https://github.com/apachecn/kaggle
@@ -17,7 +17,8 @@ from sklearn.svm import SVC
 from sklearn.model_selection import cross_val_score
 
 # 0. 数据读入及预处理
-data_train = pd.read_csv('train.csv')
+root_path = 'datasets/getting-started/titanic/input'
+data_train = pd.read_csv('%s/%s' % (root_path, 'train.csv'))
 # data_train.info()
 # print(data_train.describe())
 
