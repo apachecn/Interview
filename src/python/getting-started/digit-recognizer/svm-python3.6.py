@@ -6,6 +6,7 @@ Created on 2017-10-26
 Update  on 2017-10-26
 Author: 片刻
 Github: https://github.com/apachecn/kaggle
+PCA主成成分分析
 '''
 
 import csv
@@ -30,7 +31,7 @@ def opencsv():
     return trainData, trainLabel, preData
 
 
-# 数据预处理-降维
+# 数据预处理-降维 PCA主成成分分析
 def dRCsv(x_train, x_test, preData, COMPONENT_NUM):
     print('dimensionality reduction...')
     trainData = np.array(x_train)
@@ -73,23 +74,32 @@ def saveResult(result, csvName):
         for r in result:
             index += 1
             myWriter.writerow([index, int(r)])
-
     print('Saved successfully...')  # 保存预测结果
 
 
-# 分析数据
+# 分析数据,看数据是否满足要求（通过这些来检测数据的相关性，考虑在分类的时候提取出重要的特征）
 def analyse_data(dataMat):
-    meanVals = np.mean(dataMat, axis=0)
-    meanRemoved = dataMat-meanVals
-    covMat = np.cov(meanRemoved, rowvar=0)
-    eigvals, eigVects = np.linalg.eig(np.mat(covMat))
-    eigValInd = np.argsort(eigvals)
+    meanVals = np.mean(dataMat, axis=0) # np.mean 求出每列的平均值meanVals
+    meanRemoved = dataMat-meanVals # 每一列特征值减去该列的特征值均值
+    #计算协方差矩阵，除数n-1是为了得到协方差的 无偏估计
+    #cov(X,0) = cov(X) 除数是n-1(n为样本个数)
+    #cov(X,1) 除数是n
+    covMat = np.cov(meanRemoved, rowvar=0) # cov 计算协方差的值,
+    # np.mat 是用来生成一个矩阵的
+    # 保存特征值(eigvals)和对应的特征向量(eigVects)
+    eigvals, eigVects = np.linalg.eig(np.mat(covMat)) # linalg.eig 计算的值是矩阵的特征值，保存在对应的矩阵中
+    eigValInd = np.argsort(eigvals) #  argsort 对特征值进行排序，返回的是数值从小到大的索引值
 
-    topNfeat = 100
-    eigValInd = eigValInd[:-(topNfeat+1):-1]
+    topNfeat = 100 # 需要保留的特征维度，即要压缩成的维度数
+
+    # 从排序后的矩阵最后一个开始自下而上选取最大的N个特征值，返回其对应的索引
+    eigValInd = eigValInd[:-(topNfeat+1):-1] 
+
+    # 计算特征值的总和
     cov_all_score = float(sum(eigvals))
     sum_cov_score = 0
     for i in range(0, len(eigValInd)):
+        # 特征值进行相加
         line_cov_score = float(eigvals[eigValInd[i]])
         sum_cov_score += line_cov_score
         '''
@@ -109,7 +119,7 @@ def getOptimalAccuracy(trainData, trainLabel, preData):
     # 分析数据 100个特征左右
     # analyse_data(trainData)
     x_train, x_test, y_train, y_test = train_test_split(trainData, trainLabel, test_size=0.1)
-    lineLen, featureLen = np.shape(x_test)
+    lineLen, featureLen = np.shape(x_test) # shape 返回矩阵或者数值的长度
     # print(lineLen, type(lineLen), featureLen, type(featureLen))
 
     minErr = 1
@@ -203,8 +213,11 @@ def preDRSVM():
 
 
 if __name__ == '__main__':
+    trainData, trainLabel, preData = opencsv()
     # 训练并保存模型
     trainDRSVM()
 
+    # 分析数据
+    analyse_data(trainData)
     # 加载预测数据集
     # preDRSVM()

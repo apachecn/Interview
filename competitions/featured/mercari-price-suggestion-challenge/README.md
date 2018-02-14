@@ -26,9 +26,12 @@
 | 负责人<br />1.目标定义 | [昵称](ApacheCN Cwiki地址) | xxx-可以选择匿名 | | 负责某个业务理解和指标确认 |  |
 | 参与人<br />1.目标定义 | [昵称](ApacheCN Cwiki地址) | xxx-可以选择匿名 | | 负责某个业务理解和指标确认 |  |
 | xx人<br />2.数据采集 | [昵称](ApacheCN Cwiki地址) | xxx-可以选择匿名 | | 负责 |  |
-| xx人<br />3.数据整理 | [昵称](ApacheCN Cwiki地址) | xxx-可以选择匿名 | | 负责 |  |
+| 参与人<br />3.数据整理 | 佳乐 | 872520333| | 负责（助手） | |
+| 参与人<br />3.数据整理 | 诺木人 |498744838| https://github.com/1mrliu| 负责（助手） | |
 | xx人<br />4.构建模型 | [昵称](ApacheCN Cwiki地址) | xxx-可以选择匿名 | | 负责 |  |
+| 参与人<br />4.构建模型 |/ | 610395649 |https://github.com/lai-bluejay | 负责（助手） |  |
 | xx人<br />5.模型评估 | [昵称](ApacheCN Cwiki地址) | xxx-可以选择匿名 | | 负责 |  |
+| 参与人<br />5.模型评估 | / | 610395649 |https://github.com/lai-bluejay | 负责（助手） |   |
 | xx人<br />6.模型发布 | [昵称](ApacheCN Cwiki地址) | xxx-可以选择匿名 | | 负责 |  |
 
 ![](/static/images/competitions/featured/mercari-price-suggestion-challenge/project_process.jpg)
@@ -59,9 +62,59 @@
 
 ## 5.模型评估
 
-* 设定评估指标
+### 设定评估指标
+
+> 1.绝对误差于相对误差
+
+![](/static/images/competitions/featured/mercari-price-suggestion-challenge/EvaluationCriteria/15160975410546.jpg)
+
+> 2.平均绝对误差
+
+![](/static/images/competitions/featured/mercari-price-suggestion-challenge/EvaluationCriteria/15160975616578.jpg)
+
+> 3.均方误差
+
+![](/static/images/competitions/featured/mercari-price-suggestion-challenge/EvaluationCriteria/15160975799651.jpg)
+
+> 4.均方根误差
+
+![](/static/images/competitions/featured/mercari-price-suggestion-challenge/EvaluationCriteria/15160977834397.jpg)
+
+> 5.平均绝对百分误差
+
+![](/static/images/competitions/featured/mercari-price-suggestion-challenge/EvaluationCriteria/15160979383193.jpg)
+
+> 6.Kappa统计
+
+![](/static/images/competitions/featured/mercari-price-suggestion-challenge/EvaluationCriteria/15160982666965.jpg)
+
+> 7.识别准确度（正确率）
+
+![](/static/images/competitions/featured/mercari-price-suggestion-challenge/EvaluationCriteria/15160988495710.jpg)
+
+> 8.识别精确度（ P值 ）
+
+![](/static/images/competitions/featured/mercari-price-suggestion-challenge/EvaluationCriteria/15160989546724.jpg)
+
+> 9.反馈率（ R值 ）
+
+![](/static/images/competitions/featured/mercari-price-suggestion-challenge/EvaluationCriteria/15160989672539.jpg)
+
+> 10.非均衡问题（ F值 ）
+
+
+> 11.ROC曲线/AUC面积
+
+![](/static/images/competitions/featured/mercari-price-suggestion-challenge/EvaluationCriteria/15160989939052.jpg)
+
+> 12.混淆矩阵
+
+![](/static/images/competitions/featured/mercari-price-suggestion-challenge/EvaluationCriteria/15160990207804.jpg)
+
 * 多模型对比
 * 模型优化
+
+
 
 ## 6.模型发布
     
