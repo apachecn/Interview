@@ -82,7 +82,7 @@ test = pd.read_csv('%s/%s' % (root_path, 'test.csv'))
 train.head(5)
 ```
 
-![](/static/images/competitions/getting-started/titanic/titanic_top_5.jpg)
+![](/static/images/competitions/getting-started/titanic/titanic_top_5.jpg)
 
 ```python
 # 返回每列列名,该列非nan值个数,以及该列类型
@@ -134,7 +134,7 @@ memory usage: 36.0+ KB
 train.describe()
 ```
 
-![](/static/images/competitions/getting-started/titanic/titanic_train_desc.jpg)
+![](/static/images/competitions/getting-started/titanic/titanic_train_desc.jpg)
 
 ### 特征分析（统计学与绘图）
 目的:初步了解数据之间的相关性,为构造特征工程以及模型建立做准备
@@ -160,19 +160,6 @@ train_corr
 ```
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -250,7 +237,7 @@ a = plt.subplots(figsize=(15,9))#调整画布大小
 a = sns.heatmap(train_corr, vmin=-1, vmax=1 , annot=True , square=True)#画热力图
 ```
 
-![png](/static/images/competitions/getting-started/titanic/titanic_corr_analysis.png)
+![png](/static/images/competitions/getting-started/titanic/titanic_corr_analysis.png)
 
 > 2)各个数据与结果的关系
 
@@ -265,19 +252,6 @@ train.groupby(['Pclass'])['Pclass','Survived'].mean()
 ```
 
 <div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -318,7 +292,7 @@ train[['Pclass','Survived']].groupby(['Pclass']).mean().plot.bar()
 <matplotlib.axes._subplots.AxesSubplot at 0xc33fa90>
 ```
 
-![png](/static/images/competitions/getting-started/titanic/titanic_pclass_bar.png)
+![png](/static/images/competitions/getting-started/titanic/titanic_pclass_bar.png)
 
 * ② Sex,性别
 
@@ -329,19 +303,6 @@ train.groupby(['Sex'])['Sex','Survived'].mean()
 ```
 
 <div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -372,7 +333,7 @@ train[['Sex','Survived']].groupby(['Sex']).mean().plot.bar()
 <matplotlib.axes._subplots.AxesSubplot at 0x105c4b630>
 ```
 
-![png](/static/images/competitions/getting-started/titanic/titanic_sex_bar.png)
+![png](/static/images/competitions/getting-started/titanic/titanic_sex_bar.png)
 
 * ③ SibSp and Parch  兄妹配偶数/父母子女数
 
@@ -383,19 +344,6 @@ train[['SibSp','Survived']].groupby(['SibSp']).mean()
 ```
 
 <div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -446,7 +394,7 @@ train[['Parch','Survived']].groupby(['Parch']).mean().plot.bar()
 <matplotlib.axes._subplots.AxesSubplot at 0x1144385c0>
 ```
 
-![png](/static/images/competitions/getting-started/titanic/titanic_parch_bar.png)
+![png](/static/images/competitions/getting-started/titanic/titanic_parch_bar.png)
 
 * ④ Age年龄与生存情况的分析.
 
@@ -461,7 +409,7 @@ g.map(plt.hist, 'Age', bins=40)
 <seaborn.axisgrid.FacetGrid at 0xc5f7cf8>
 ```
 
-![png](/static/images/competitions/getting-started/titanic/titanic_age_map.png)
+![png](/static/images/competitions/getting-started/titanic/titanic_age_map.png)
 
 ```python
 train.groupby(['Age'])['Survived'].mean().plot()
@@ -469,7 +417,7 @@ train.groupby(['Age'])['Survived'].mean().plot()
 <matplotlib.axes._subplots.AxesSubplot at 0xc71ac18>
 ``` 
 
-![png](/static/images/competitions/getting-started/titanic/titanic_age_axes.png)
+![png](/static/images/competitions/getting-started/titanic/titanic_age_axes.png)
 
 * ⑤ Embarked登港港口与生存情况的分析
 
@@ -481,7 +429,7 @@ sns.countplot('Embarked',hue='Survived',data=train)
 <matplotlib.axes._subplots.AxesSubplot at 0xca1e5f8>
 ```
 
-![png](/static/images/competitions/getting-started/titanic/titanic_embarked_count.png)
+![png](/static/images/competitions/getting-started/titanic/titanic_embarked_count.png)
 
 * ⑥ 其他因素
 
@@ -600,19 +548,6 @@ train_test.loc[train_test["Fare"].isnull()]
 ```
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
