@@ -121,10 +121,14 @@ history = model.fit_generator(
 results = model.predict(test)
 
 # select the indix with the maximum probability
-results = np.argmax(results,axis = 1)
+results = np.argmax(results, axis=1)
 
-results = pd.Series(results,name="Label")
+results = pd.Series(results, name="Label")
 
-submission = pd.concat([pd.Series(range(1,28001),name = "ImageId"),results],axis = 1)
+submission = pd.concat(
+    [pd.Series(
+        range(1, 28001), name="ImageId"), results], axis=1)
 
-submission.to_csv("datasets/getting-started/digit-recognizer/ouput/Result_keras_CNN.csv",index=False)
+submission.to_csv(
+    "datasets/getting-started/digit-recognizer/ouput/Result_keras_CNN.csv",
+    index=False)
