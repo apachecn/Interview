@@ -15,7 +15,7 @@
 ## 比赛分析
 
 * 回归问题：价格的问题
-* 常用算法： `回归`、`树回归`、`GBDT`、`xgboost`、`lightGBM`
+* 常用算法： `回归`、`树回归`、`GBDT`、`xgboost`、`lightGBM`
 
 ```
 步骤:
@@ -55,3 +55,4 @@ import matplotlib.pyplot as plt
 ```
 
 ### 特征说明
+
