@@ -19,10 +19,10 @@
   
 ## @huangzijian
 
-1.  已完成
+1.已完成
 
 	1.在kaggle learn刷完了machine learning Leve1 初步了解了决策树、随机森林算法
-	2.接触了panda、sklearn框架，并掌握了一些基础命令
+	2.接触了pandas、sklearn框架 并学习了几个简单函数
 
 2.下一步计划
 	
