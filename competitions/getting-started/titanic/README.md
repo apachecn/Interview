@@ -493,9 +493,7 @@ train_test = pd.get_dummies(train_test,columns=["Embarked"])
 
 ```python
 #从名字中提取出称呼： df['Name].str.extract()是提取函数,配合正则一起使用
-train_test['Name1'] = train_test['Name'].str.extract('.+,(.+)').str.extract( '^(.+?)\.').str.strip()
-
-/python3.6/lib/python3.6/site-packages/ipykernel_launcher.py:2: FutureWarning: currently extract(expand=None) means expand=False (return Index/Series/DataFrame) but in a future version of pandas this will be changed to expand=True (return DataFrame)
+train_test['Name1'] = train_test['Name'].str.extract('.+,(.+)', expand=False).str.extract('^(.+?)\.', expand=False).str.strip()
 ```
 
 ```python
@@ -733,8 +731,8 @@ cabin项缺失太多，只能将有无Cain首字母进行分类,缺失值为一�
 
 ```python
 #cabin项缺失太多，只能将有无Cain首字母进行分类,缺失值为一类,作为特征值进行建模
-train_test['Cabin'] = train_test['Cabin'].apply(lambda x:str(x)[0] if pd.notnull(x) else x)
-train_test = pd.get_dummies(train_test,columns=['Cabin'])
+train_test['Cabin_nan'] = train_test['Cabin'].apply(lambda x:str(x)[0] if pd.notnull(x) else x)
+train_test = pd.get_dummies(train_test,columns=['Cabin_nan'])
 ```
 
 ```python
@@ -807,29 +805,22 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.grid_search import GridSearchCV
 
 lr = LogisticRegression()
-param = {'C':[0.001,0.01,0.1,1,10],"max_iter":[100,250]}
-clf = GridSearchCV(lr,param,cv=5,n_jobs=-1,verbose=1,scoring="roc_auc")
-clf.fit(train_data_X_sd,train_data_Y)
+param = {'C':[0.001,0.01,0.1,1,10], "max_iter":[100,250]}
+clf = GridSearchCV(lr, param,cv=5, n_jobs=-1, verbose=1, scoring="roc_auc")
+clf.fit(train_data_X_sd, train_data_Y)
 
 # 打印参数的得分情况
 clf.grid_scores_
-
 # 打印最佳参数
 clf.best_params_
 
 # 将最佳参数传入训练模型
 lr = LogisticRegression(clf.best_params_)
-lr.fit(train_data_X_sd,train_data_Y)
-
-# 预测结果
-lr.predict(test_data_X_sd)
-
-# 打印结果
-test["Survived"] = lr.predict(test_data_X_sd)
-LS = test[['PassengerId','Survived']].set_index('PassengerId')
+lr.fit(train_data_X_sd, train_data_Y)
 
 # 输出结果
-LS.to_csv('LS5.csv')
+test["Survived"] = lr.predict(test_data_X_sd)
+test[['PassengerId', 'Survived']].set_index('PassengerId').to_csv('LS5.csv')
 ```
 
 > SVM
@@ -902,7 +893,6 @@ gbdt = GradientBoostingClassifier(learning_rate=0.1,min_samples_leaf=2,max_depth
 
 vot = VotingClassifier(estimators=[('lr', lr), ('rf', rf),('gbdt',gbdt),('xgb',xgb_model)], voting='hard')
 vot.fit(train_data_X_sd,train_data_Y)
-vot.predict(test_data_X_sd)
 
 test["Survived"] = vot.predict(test_data_X_sd)
 test[['PassengerId','Survived']].set_index('PassengerId').to_csv('vot5.csv')
