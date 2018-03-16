@@ -1,16 +1,11 @@
 # 2018-03-15
 
-## @hduyyg
+## @sky
 
-1.  已完成
+1. 主要学习了下微框架springboot
+   可以更改端口,不用部署Tomcat,因为次框架含有Tomcat
+   
 
-    1.v2版本的规划
-
-2.  下一步计划
+2.  继续学习springboot,同时看下spark
 
 3.  随笔
-
-
-# 之前的V1版本日报
-
-链接：https://github.com/hduyyg/kaggle-Digit-Recognizer
