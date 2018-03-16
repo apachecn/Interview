@@ -134,6 +134,7 @@ train.columns
           dtype='object')
 
 
+![](/static/images/competitions/getting-started/house-price/房价预测-字段说明.png)
 
 
 ```python
