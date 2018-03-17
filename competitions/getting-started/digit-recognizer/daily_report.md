@@ -1,4 +1,4 @@
-
+test
 # 2018-03-16
 
 
@@ -6,7 +6,7 @@
 
 1.已完成
 
-	1.在kaggle learn上刷完了machine learning Leve1 初步了解了决策树、随机森林算法
+	1.在kaggle learn上刷完了machine learning Leve1 初步了解了决策树、随机算法
 	2.接触了pandas、sklearn框架，并学习了几个简单函数
 
 2.下一步计划
