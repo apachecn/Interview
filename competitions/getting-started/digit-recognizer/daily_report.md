@@ -27,6 +27,22 @@
 2.  下一步计划
 3.  随笔
 
+## @rujinshi
+
+1. 已完成
+	1. 复习《统计学习方法》第三章K近邻法。重新审视[个人CSDN博客](http://blog.csdn.net/rujin_shi/article/details/78766033)中
+	2. 阅读Sklearn中 [Nearest Neighbors官方文档¶](http://scikit-learn.org/stable/modules/neighbors.html#classification)
+	3.  借鉴别人代码，初次直接调包(KNeighborsClassifier、Cross-validation)实现手写数字识别。Score为0.947。
+
+2. 下一步计划
+	1. 研究一下数据集，对特征作进一步优化or抽取。对于方法参数作进一步调整，尝试提高Score值。
+	2. 学习降维知识，尤其是针对图片的？
+
+3. 随笔
+	1. 昨天晚上Git出现了问题，不能PR，提示Time Out。Stackoverflow之找出原因并解决(因为使用了代理服务器)。
+	2. 断断续续自我约束能力还是不行。
+
+
 
 # 2018-03-15
 
