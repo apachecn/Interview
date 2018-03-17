@@ -31,7 +31,7 @@
 
 1.  已完成
     1.  复习《统计学习方法》第三章K近邻法。重新审视[个人CSDN博客](http://blog.csdn.net/rujin_shi/article/details/78766033)以前照着《机器学习实战》实现的代码。
-	2.  阅读Sklearn中 [Nearest Neighbors官方文档¶]。(http://scikit-learn.org/stable/modules/neighbors.html#classification)
+	2.  阅读Sklearn中 [Nearest Neighbors官方文档¶](http://scikit-learn.org/stable/modules/neighbors.html#classification)。
     3.  借鉴别人代码，初次直接调包(KNeighborsClassifier、Cross-validation)实现手写数字识别。Score为0.947。但是运行时间接近1200s？有提高空间吗？
 
 2.  下一步计划
