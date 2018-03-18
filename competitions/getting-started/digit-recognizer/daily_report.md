@@ -1,5 +1,10 @@
 # 2018-03-17
 
+## @huangzijian
+
+1.	已完成
+	1.	完成了[github相关操作](https://github.com/huangzijian888/knowledge/blob/master/doc/git%E6%93%8D%E4%BD%9C%E6%B5%81%E7%A8%8B.md)复习	
+
 # 2018-03-16
 
 
