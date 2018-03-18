@@ -1,4 +1,49 @@
+
 # 2018-03-17
+
+## @hduyyg
+
+1.  已完成
+
+    1.  《机器学习实战》第七章 Adaboost元算法提高分类性能
+
+        [Adaboost算法原理分析和实例+代码（简明易懂）](http://blog.csdn.net/guyuealian/article/details/70995333)
+
+        这个链接里面讲得还不错，数据演示的还行。
+
+    2.  <a href="https://zhuanlan.zhihu.com/p/29513760">聊一聊深度学习中的数据增强与实现</a>
+
+        这篇链接讲了一些图片操作，例如旋转、缩放之类的，对我们现在的图片处理感觉很有用啊。
+
+    3.  <a href="https://zhuanlan.zhihu.com/p/25184830">数据科学入门篇3：数据处理利器Pandas使用手册</a>
+
+        干货整理的太好了，以后要使用pandas分析数据，可以直接先来这里查字典了。
+
+2.  下一步计划
+
+    1.  把《高等代数》、《数学分析》快速的过一遍
+    2.  kaggle数字识别的一些基础操作，写一写
+
+3.  随笔
+
+## @rujinshi
+
+1.  已完成
+
+    1.  初次提交1329/1902
+
+    2.  PCA数学原理 
+
+2.  下一步计划
+
+    1.  阅读sklearn中PCA文档，实现Demo。实现手写数字识别原始数据的降维。
+
+    2.  尝试使用RF模型完成一次<预计结果会好>。
+
+3.  随笔
+
+    1. 其它也不能停呃。数据结构继续看。 
+
 
 ## @huangzijian
 
@@ -37,6 +82,22 @@
 2.  下一步计划
 3.  随笔
 
+## @rujinshi
+
+1.  已完成
+    1.  复习《统计学习方法》第三章K近邻法。重新审视[个人CSDN博客](http://blog.csdn.net/rujin_shi/article/details/78766033)以前照着《机器学习实战》实现的代码。
+    2.  阅读Sklearn中 [Nearest Neighbors官方文档¶](http://scikit-learn.org/stable/modules/neighbors.html#classification)。
+    3.  借鉴别人代码，初次直接调包(KNeighborsClassifier、Cross-validation)实现手写数字识别。Score为0.947。但是运行时间接近1200s？有提高空间吗？
+
+2.  下一步计划
+    1.  研究一下数据集，对特征作进一步优化or抽取。对于方法参数作进一步调整，尝试提高Score值。
+    2.  学习降维知识，尤其是针对图片的？
+
+3.  随笔
+    1.  昨天晚上Git出现了问题，不能PR，提示Time Out。Stackoverflow之找出原因并解决(因为使用了代理服务器)。
+    2.  断断续续自我约束能力还是不行。
+
+
 
 # 2018-03-15
 
@@ -57,7 +118,6 @@
 2.  在数字识别上应用数据降维
 
 3.  随笔
-
 
 # 之前的V1版本日报
 
