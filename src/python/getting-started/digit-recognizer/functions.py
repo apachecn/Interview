@@ -10,3 +10,10 @@ def read_data_from_csv():
     test_data = data2.values[0:, 0:]
     
     return train_data, train_label, test_data
+
+def save_result(data):
+    csv_path, info = 'result.csv', {}
+    info['ImageId'] = [i for i in range(1, len(data) + 1)]
+    info['Label'] = data
+    data_frame = pd.DataFrame(info)
+    data_frame.to_csv(csv_path, index=False, sep=',')
