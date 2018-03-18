@@ -3,7 +3,7 @@
 ## @huangzijian
 
 1.	已完成	
-	1.	完成了[github相关操作](https://github.com/huangzijian888/knowledge/blob/master/doc/git%E6%93%8D%E4%BD%9C%E6%B5%81%E7%A8%8B.md)
+	1.	完成了[github相关操作](https://github.com/huangzijian888/knowledge/blob/master/doc/git%E6%93%8D%E4%BD%9C%E6%B5%81%E7%A8%8B.md)复习
 	2. 看了线性代数  学习了矩阵的运算 逆矩阵相关知识
 	3. 修改了昨天日报的格式 并补充了kaggle-learn上machine learnign的超链接(强烈推荐像我一样的新手阅读)
 2. 下一步计划
