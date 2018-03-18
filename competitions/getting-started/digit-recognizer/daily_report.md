@@ -26,6 +26,26 @@
 
 3.  随笔
 
+## @rujinshi
+
+1.  已完成
+
+    1.  初次提交1329/1902
+
+    2.  PCA数学原理 
+
+2.  下一步计划
+
+    1.  阅读sklearn中PCA文档，实现Demo。实现手写数字识别原始数据的降维。
+
+    2.  尝试使用RF模型完成一次<预计结果会好>。
+
+3.  随笔
+
+    1. 其它也不能停呃。数据结构继续看。 
+
+
+
 
 # 2018-03-16
 
@@ -59,7 +79,7 @@
 
 1.  已完成
     1.  复习《统计学习方法》第三章K近邻法。重新审视[个人CSDN博客](http://blog.csdn.net/rujin_shi/article/details/78766033)以前照着《机器学习实战》实现的代码。
-	2.  阅读Sklearn中 [Nearest Neighbors官方文档¶](http://scikit-learn.org/stable/modules/neighbors.html#classification)。
+    2.  阅读Sklearn中 [Nearest Neighbors官方文档¶](http://scikit-learn.org/stable/modules/neighbors.html#classification)。
     3.  借鉴别人代码，初次直接调包(KNeighborsClassifier、Cross-validation)实现手写数字识别。Score为0.947。但是运行时间接近1200s？有提高空间吗？
 
 2.  下一步计划
