@@ -1,3 +1,22 @@
+# 2018-03-19
+
+## rujinshi
+
+1.  已完成
+
+    1.  [用scikit-learn学习主成分分析(PCA)](http://www.cnblogs.com/pinard/p/6243025.html)。自己在用的时候出现了一些问题，还没有彻底熟悉这个方法。熟悉后，补一下这边遇到的坑。
+
+    2.  [Sklearn-train_test_split随机划分训练集和测试集](http://blog.csdn.net/zahuopuboss/article/details/54948181)，与之匹配的还有cross_val_score的使用。
+
+    3.  做了优化。score:0.97185，Ranking: 1247/1920
+
+2.  下一步计划
+
+    1.  学习他人在Kernel上分享的思路。尤其对于数据预处理。我这边根本没有涉及对缺失值处理，查看分布这些操作。
+
+3.  随笔
+
+
 # 2018-03-18
 ## @lianjizhe
 
