@@ -1,3 +1,22 @@
+# 2018-03-19
+
+## @huangzijian
+
+1.  已完成
+
+	1. 阅读了[kaggle手写数字识别README](https://github.com/huangzijian888/kaggle/blob/dev/competitions/getting-started/digit-recognizer/README.md)
+
+	2. 学习了[README语法](https://github.com/huangzijian888/README)
+2.  下一步计划
+
+	1. 发现一个博客[Gain](https://wmpscc.github.io/)很多干货 后期可以到这里来查阅
+	
+	2. 再多看一点kaggle比赛项目的开发流程 学习经验
+	
+3.  随笔
+
+	1. 越学习越发现自己知识的贫瘠 这也许就是努力的理由吧
+	
 # 2018-03-18
 
 ## @huangzijian
