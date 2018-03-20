@@ -1,26 +1,3 @@
-# 2018-03-18
-
-## @huangzijian
-
-1.	已完成
-
-	1. 群内大佬推荐了一个学习数学的网站 [数学乐](http://www.shuxuele.com/) 在上面看了微积分相关内容
-	
-	2. 看了一下组内小伙伴推荐的 [深度学习的网站](http://zh.gluon.ai/) 教程很详细 非常适合我
-	
-	3. [k-近邻算法](http://blog.csdn.net/xuelabizp/article/details/50931493) 
-	
-	4. [图像分类与KNN](http://blog.csdn.net/han_xiaoyang/article/details/49949535)
-
-2. 下一步计划
-	
-	1. 过一遍 [数据科学入门篇3：数据处理利器Pandas使用手册](https://zhuanlan.zhihu.com/p/25184830)
-	
-	2. 详细阅读[kaggle数字识别V1](https://github.com/huangzijian888/kaggle/blob/dev/competitions/getting-started/digit-recognizer/README.md)流程和代码
-
-3.随笔
-
-
 # 2018-03-20
 
 ## @hduyyg
@@ -164,6 +141,27 @@
 
 
 # 2018-03-18
+
+## @huangzijian
+
+1.  已完成
+
+    1.  群内大佬推荐了一个学习数学的网站 [数学乐](http://www.shuxuele.com/) 在上面看了微积分相关内容
+	
+    2.  看了一下组内小伙伴推荐的 [深度学习的网站](http://zh.gluon.ai/) 教程很详细 非常适合我
+	
+    3.  [k-近邻算法](http://blog.csdn.net/xuelabizp/article/details/50931493) 
+	
+    4.  [图像分类与KNN](http://blog.csdn.net/han_xiaoyang/article/details/49949535)
+
+2.  下一步计划
+	
+    1.  过一遍 [数据科学入门篇3：数据处理利器Pandas使用手册](https://zhuanlan.zhihu.com/p/25184830)
+	
+    2.  详细阅读[kaggle数字识别V1](https://github.com/huangzijian888/kaggle/blob/dev/competitions/getting-started/digit-recognizer/README.md)流程和代码
+
+3.  随笔
+
 ## @lianjizhe
 
 1.已完成
