@@ -6,8 +6,8 @@
 2. 下一步计划
     1.进一步优化
 3. 代码
-    ``` Python
-    #!/usr/bin/env python
+``` Python
+#!/usr/bin/env python
 # _*_coding:utf-8_*_
 from tensorflow.examples.tutorials.mnist import input_data
 import tensorflow as tf
