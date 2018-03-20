@@ -59,6 +59,7 @@
         data, label, test_data = functions.read_data_from_csv()
         x_train, x_test, y_train, y_test = train_test_split(data, label, test_size=0.1, random_state=42)
 
+
         def genearte_knn_model():
             weights = 'distance'
             for n_neighbors in range(1, 7):
@@ -157,6 +158,15 @@
 
 3.  随笔
  
+## @xxxx100
+
+1.  已完成
+
+    1.  在kaggle上看了几篇kernal ,在machine learning in action 中看到相关knn代码。了解优化操作，尽量跟大佬脚步。
+2.  下一步计划
+
+3.  随笔
+
 # 2018-03-18
 
 ## @huangzijian
@@ -198,6 +208,16 @@
 
 
 # 2018-03-17
+
+## @xxxx100
+
+1.  已完成
+
+    1.  终于弄会了GitHub，看了SVM。
+
+2.  下一步计划
+
+3.  随笔
 
 ## @hduyyg
 
