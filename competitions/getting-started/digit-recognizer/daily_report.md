@@ -1,13 +1,13 @@
-# 2018-03-20
 
-## @wmpscc
+# 2018-03-20
+## wmpscc
 1. 已完成
     1.使用CNN，准确率0.9929
 2. 下一步计划
     1.进一步优化
 3. 代码
-    ``` Python
-    #!/usr/bin/env python
+ ``` Python
+#!/usr/bin/env python
 # _*_coding:utf-8_*_
 from tensorflow.examples.tutorials.mnist import input_data
 import tensorflow as tf
@@ -84,7 +84,6 @@ with tf.Session() as sess:
     print("test accuracy %g" % accuracy.eval(feed_dict={x: mnist.test.images, y_: mnist.test.labels, keep_prob: 1.0}))
 
 ```
-
 ## @xxxx100
 
    拜读很多大佬的代码，学习怎样编写掉包的python代码，但是对sk-learn的文档还是不熟悉，下一步打算看看文档，继续看代码。
