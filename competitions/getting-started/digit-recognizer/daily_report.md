@@ -1,3 +1,146 @@
+
+# 2018-03-20
+
+## @hduyyg
+
+1.  已完成
+
+    1.  knn+pca的调参测试： score=0.975
+
+        ~~~python
+        import functions
+        from sklearn.decomposition import PCA
+        from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA
+        from sklearn.model_selection import cross_val_score, train_test_split
+        from sklearn.neighbors import KNeighborsClassifier
+
+        data, label, test_data = functions.read_data_from_csv()
+        x_train, x_test, y_train, y_test = train_test_split(data, label, test_size=0.1, random_state=42)
+        def genearte_knn_model():
+            weights = 'distance'
+            for n_neighbors in range(3, 7):
+                for metric in ['euclidean', 'manhattan']:
+                    model = KNeighborsClassifier(n_neighbors=n_neighbors,
+                                                weights=weights,
+                                                metric=metric)
+                    print('n_neighbors={}\n weights={}\n metric={} \n'.format(n_neighbors, weights, metric))
+                    yield model
+        def generate_pca_model():
+            for n_components in range(30, 33):
+                model = PCA(n_components=n_components)
+                print('n_components={}\n'.format(n_components))
+                yield model
+
+        for knn_model in genearte_knn_model():
+            for pca_model in generate_pca_model():
+                pca_model.fit(x_train)
+                new_x_train = pca_model.transform(x_train)
+                new_x_test = pca_model.transform(x_test)
+                
+                knn_model.fit(new_x_train, y_train)
+                score = knn_model.score(new_x_test, y_test)
+                print('score={}\n'.format(score))
+        ~~~
+
+        结果统计：
+
+        1.  knn的n_neighbors的有效区间在[3, 5]；
+        2.  knn的weights选取distance效果较好
+        3.  pca降维，以30位分界线，30以下（不包括30），分类效果比较差，30以上，比较好，区别不是特别大。
+
+    2.  knn+lda：score=0.80-0.90
+
+        ~~~ python
+        import functions
+        from sklearn.decomposition import PCA
+        from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA
+        from sklearn.model_selection import cross_val_score, train_test_split
+        from sklearn.neighbors import KNeighborsClassifier
+
+        data, label, test_data = functions.read_data_from_csv()
+        x_train, x_test, y_train, y_test = train_test_split(data, label, test_size=0.1, random_state=42)
+
+
+        def genearte_knn_model():
+            weights = 'distance'
+            for n_neighbors in range(1, 7):
+                for metric in ['euclidean', 'manhattan']:
+                    model = KNeighborsClassifier(n_neighbors=n_neighbors,
+                                                weights=weights,
+                                                metric=metric)
+                    print('n_neighbors={}\n weights={}\n metric={} \n'.format(n_neighbors, weights, metric))
+                    yield model
+        def generate_lda_model():
+            for n_components in range(5, 10):
+                model = LDA(n_components=n_components)
+                print('n_components={}\n'.format(n_components))
+                yield model
+
+        for knn_model in genearte_knn_model():
+            for lda_model in generate_lda_model():
+                lda_model.fit(x_train, y_train)
+                new_x_train = lda_model.transform(x_train)
+                new_x_test = lda_model.transform(x_test)
+                
+                knn_model.fit(new_x_train, y_train)
+                score = knn_model.score(new_x_test, y_test)
+                print('score={}\n'.format(score))
+        ~~~
+
+        其效果基本等同于LDA分类的效果。
+
+    3.  LLE，跑不出来
+
+        ~~~ python
+        import functions
+        from sklearn.decomposition import PCA
+        from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA
+        from sklearn.model_selection import cross_val_score, train_test_split
+        from sklearn.neighbors import KNeighborsClassifier
+        from sklearn.manifold import LocallyLinearEmbedding as LLE
+
+        data, label, test_data = functions.read_data_from_csv()
+        x_train, x_test, y_train, y_test = train_test_split(data, label, test_size=0.1, random_state=42)
+
+        def genearte_knn_model():
+            weights = 'distance'
+            for n_neighbors in range(1, 7):
+                for metric in ['euclidean', 'manhattan']:
+                    model = KNeighborsClassifier(n_neighbors=n_neighbors,
+                                                weights=weights,
+                                                metric=metric)
+                    print('n_neighbors={}\n weights={}\n metric={} \n'.format(n_neighbors, weights, metric))
+                    yield model
+        def generate_lle_model():
+            n_neighbors = 5
+            for n_components in range(2, 6):
+                model = LLE(n_neighbors=n_neighbors, n_components=n_components)
+                print('lle:\n n_neighbors={}\n n_components={}\n'.format(n_neighbors, n_components))
+                yield model
+
+        for knn_model in genearte_knn_model():
+            for lle_model in generate_lle_model():
+                lle_model.fit(x_train)
+                new_x_train = lle_model.transform(x_train)
+                new_x_test = lle_model.transform(x_test)
+                
+                knn_model.fit(new_x_train, y_train)
+                score = knn_model.score(new_x_test, y_test)
+                print('score={}\n'.format(score))
+        ~~~
+
+        我看到一篇<a href="http://www.cnblogs.com/pinard/p/6266408.html">博客</a>讲到，LLE算法学习的流形只能是不闭合的，那可能是我用错了，LLE根本不适合数字图片。
+
+    4.  学习了以下LLE降维，大致知道是个什么东西了。
+
+2.  下一步计划
+
+    1.  按照README-V2的规划，完成基于朴素贝叶斯K近邻的快速图像分类算法。
+
+3.  随笔
+
+    1.  看数学原理看的头痛，暂时只要会用就好了。
+    
 # 2018-03-19
 
 ## @huangzijian
@@ -16,31 +159,84 @@
 3.  随笔
 
 	1. 越学习越发现自己知识的贫瘠 这也许就是努力的理由吧
-	
+
+## @rujinshi
+
+1.  已完成
+
+    1.  [用scikit-learn学习主成分分析(PCA)](http://www.cnblogs.com/pinard/p/6243025.html)。自己在用的时候出现了一些问题，还没有彻底熟悉这个方法。熟悉后，补一下这边遇到的坑。
+
+    2.  [Sklearn-train_test_split随机划分训练集和测试集](http://blog.csdn.net/zahuopuboss/article/details/54948181)，与之匹配的还有cross_val_score的使用。
+
+    3.  做了优化。score:0.97185，Ranking: 1247/1920
+
+2.  下一步计划
+
+    1.  学习他人在Kernel上分享的思路。尤其对于数据预处理。我这边根本没有涉及对缺失值处理，查看分布这些操作。
+
+3.  随笔
+ 
+## @xxxx100
+
+1.  已完成
+
+    1.  在kaggle上看了几篇kernal ,在machine learning in action 中看到相关knn代码。了解优化操作，尽量跟大佬脚步。
+2.  下一步计划
+
+3.  随笔
+
+
 # 2018-03-18
 
 ## @huangzijian
 
-1.	已完成
+1.  已完成
 
-	1. 群内大佬推荐了一个学习数学的网站 [数学乐](http://www.shuxuele.com/) 在上面看了微积分相关内容
+    1.  群内大佬推荐了一个学习数学的网站 [数学乐](http://www.shuxuele.com/) 在上面看了微积分相关内容
 	
-	2. 看了一下组内小伙伴推荐的 [深度学习的网站](http://zh.gluon.ai/) 教程很详细 非常适合我
+    2.  看了一下组内小伙伴推荐的 [深度学习的网站](http://zh.gluon.ai/) 教程很详细 非常适合我
 	
-	3. [k-近邻算法](http://blog.csdn.net/xuelabizp/article/details/50931493) 
+    3.  [k-近邻算法](http://blog.csdn.net/xuelabizp/article/details/50931493) 
 	
-	4. [图像分类与KNN](http://blog.csdn.net/han_xiaoyang/article/details/49949535)
+    4.  [图像分类与KNN](http://blog.csdn.net/han_xiaoyang/article/details/49949535)
 
-2. 下一步计划
+2.  下一步计划
 	
-	1. 过一遍 [数据科学入门篇3：数据处理利器Pandas使用手册](https://zhuanlan.zhihu.com/p/25184830)
+    1.  过一遍 [数据科学入门篇3：数据处理利器Pandas使用手册](https://zhuanlan.zhihu.com/p/25184830)
 	
-	2. 详细阅读[kaggle数字识别V1](https://github.com/huangzijian888/kaggle/blob/dev/competitions/getting-started/digit-recognizer/README.md)流程和代码
+    2.  详细阅读[kaggle数字识别V1](https://github.com/huangzijian888/kaggle/blob/dev/competitions/getting-started/digit-recognizer/README.md)流程和代码
 
+3.  随笔
+
+## @lianjizhe
+
+1.已完成
+
+	1.今天在小伙伴的帮助下对整个github流程有了一定的了解,知道该怎么操作了
+	2.上网看了一些关于github的操作博客,会创建仓库,上传代码到自己的仓库了
+
+2.下一步计划
+
+	1.学习git的知识,熟悉命令操作
+	2.上网看关于数字识别的相关博客,好好学习别人的思路
+	
 3.随笔
+
+	1.很喜欢这个组织,一上来什么都不懂,小伙伴直接远程教我操作
+	2.希望接下来自己可以为这个组织贡献一份力
 
 
 # 2018-03-17
+
+## @xxxx100
+
+1.  已完成
+
+    1.  终于弄会了GitHub，看了SVM。
+
+2.  下一步计划
+
+3.  随笔
 
 ## @hduyyg
 
