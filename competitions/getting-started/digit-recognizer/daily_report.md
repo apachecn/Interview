@@ -4,7 +4,8 @@
 ## @huangzijian
 
 1. 已完成
-   1. 
+   
+   1. 学习使用PyCharm编辑
 ## @hduyyg
 
 1.  已完成
