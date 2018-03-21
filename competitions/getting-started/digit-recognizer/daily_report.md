@@ -1,3 +1,83 @@
+# 2018-03-21
+
+## @hduyyg
+
+1.  已完成
+
+    《基于朴素贝叶斯K近邻的快速图像分类算法》这篇文章，将bayes用于图像分类，感觉有点偏门。
+
+    在以下两个链接中，有sklearn中贝叶斯分类器的使用：
+
+    [朴素贝叶斯算法原理小结](http://www.cnblogs.com/pinard/p/6069267.html)
+
+    [scikit-learn 朴素贝叶斯类库使用小结](http://www.cnblogs.com/pinard/p/6074222.html)
+
+    实际使用之后，发现效果确实不咋地，连0.9都达不到。
+
+    ~~~python
+    import functions
+    from sklearn.decomposition import PCA
+    from sklearn.model_selection import cross_val_score, train_test_split
+    from sklearn.naive_bayes import GaussianNB
+
+    data, label, test_data = functions.read_data_from_csv()
+    x_train, x_test, y_train, y_test = train_test_split(data, label, test_size=0.1, random_state=42)
+
+    def genearte_classifier_model():
+        yield GaussianNB()
+
+    def generate_pca_model():
+        for n_components in range(30, 35):
+            model = PCA(n_components=n_components)
+            print('n_components={}\n'.format(n_components))
+            yield model
+
+    for clf in genearte_classifier_model():
+        for pca_model in generate_pca_model():
+            pca_model.fit(x_train)
+            new_x_train = pca_model.transform(x_train)
+            new_x_test = pca_model.transform(x_test)
+            
+            clf.fit(new_x_train, y_train)
+            score = clf.score(new_x_test, y_test)
+            print('score={}\n'.format(score))
+    ~~~
+
+    ~~~python
+    n_components=30
+
+    score=0.8523809523809524
+
+    n_components=31
+
+    score=0.8514285714285714
+
+    n_components=32
+
+    score=0.8552380952380952
+
+    n_components=33
+
+    score=0.8561904761904762
+
+    n_components=34
+
+    score=0.8580952380952381
+    ~~~
+
+    2.  刷51nod基础题目20道，准备笔试
+
+2.  下一步计划
+
+    1.  继续刷51nod，准备笔试
+
+    2.  ```
+        基于图像形状的一种比较漂亮的分类算法
+
+        链接：http://blog.csdn.net/lishuhuakai/article/details/53573241
+        ```
+
+3.  随笔
 
 # 2018-03-20
 ## @wmpscc
@@ -306,7 +386,7 @@ with tf.Session() as sess:
 
 	1.学习git的知识,熟悉命令操作
 	2.上网看关于数字识别的相关博客,好好学习别人的思路
-	
+
 3.随笔
 
 	1.很喜欢这个组织,一上来什么都不懂,小伙伴直接远程教我操作
