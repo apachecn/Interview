@@ -69,7 +69,9 @@
 
 2.  下一步计划
 
-    1.  ```
+    1.  继续刷51nod，准备笔试
+
+    2.  ```
         基于图像形状的一种比较漂亮的分类算法
 
         链接：http://blog.csdn.net/lishuhuakai/article/details/53573241
