@@ -80,6 +80,38 @@
 3.  随笔
 
 # 2018-03-20
+
+## @rujinshi
+
+1.  已完成
+
+    1.  实现PCA+KNN。score:0.97528 <学习kaggle别人的Kernel 以及余洋的过程>
+
+    2.  实现迭代器主成分个数与其方差率（explained_variance_ratio_）的关系并作可视化。训练集上采用交叉验证分离数据(test_size=0.3)，并在KNN上迭代找到一个最佳的主成分数（22），这个数量和最终的测试集上用的还是有出入的。
+
+    3.  接触并使用函数：pandas.drop; pandas.ilot; seaborn.countplot; pandas.Series.value_counts; pandas.describe
+
+    4.  散点图、折线图、热源图使用与接触但是里面的参数不熟练。
+
+2.  下一步计划
+
+    1.  PCA+SVM 
+
+    2.  复习RF与LR知识
+
+    3.  回顾别人的代码思路
+
+3.  随笔
+
+    1.  [Pandas进行数据分析](https://zhuanlan.zhihu.com/p/26100976)。讲了很多分析方法，包括缺失值处理，查看数据的统计特性。另外此文章所在专栏总结的内容也有很多干货。
+
+    2.  seaborn能做出很具有吸引力的图.应该把Seaborn视为matplotlib的补充，而不是替代物。
+
+    3.  [Interactive Intro to Dimensionality Reduction
+](https://www.kaggle.com/arthurtok/interactive-intro-to-dimensionality-reduction/notebook)
+
+    4.  其实现在根本不是缺少资源。缺少的是专一与坚持的心。
+
 ## @wmpscc
 1. 已完成
 	1. 使用CNN，准确率0.9929
