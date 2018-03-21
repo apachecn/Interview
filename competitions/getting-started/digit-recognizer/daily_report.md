@@ -1,3 +1,29 @@
+# 2018-03-21
+
+## @hduyyg
+
+1.  已完成
+
+    1.  看了下：
+
+        [基于图像形状的一种比较漂亮的分类算法](http://blog.csdn.net/lishuhuakai/article/details/53573241)
+
+        这篇文章就只是讲到两种距离计算方式，而且感觉也不怎么用得上。
+
+        这两天安排的内容，beyes分类和这个，感觉其实都没啥用，平白浪费时间了。下一次制定计划时，还是先认真审视一下才行。
+
+    2.  刷了51nod 4道基础题，10道1级题，顺便复习了下排序算法，为笔试做准备。
+
+        好久没有手写过快排代码，还是生疏了点。
+
+2.  下一步计划
+
+    1.  LR解法：http://blog.csdn.net/Dinosoft/article/details/50734539
+    2.  继续刷51nod，准备面试
+
+3.  随笔
+
+    1.  今天怠惰了啊。。。。
 
 # 2018-03-20
 
@@ -225,10 +251,10 @@ with tf.Session() as sess:
     1.  拜读很多大佬的代码，学习怎样编写掉包的python代码，但是对sk-learn的文档还是不熟悉。
     
 2.  下一步计划
-    
+  
     1.  看看文档，继续看代码。
-   
-    
+     
+
 # 2018-03-19
 
 ## @hduyyg
@@ -280,7 +306,7 @@ with tf.Session() as sess:
 
     2.  knn+lda：score=0.80-0.90
 
-        ~~~ python
+        ~~~python
         import functions
         from sklearn.decomposition import PCA
         from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA
@@ -321,7 +347,7 @@ with tf.Session() as sess:
 
     3.  LLE，跑不出来
 
-        ~~~ python
+        ~~~python
         import functions
         from sklearn.decomposition import PCA
         from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA
@@ -359,9 +385,8 @@ with tf.Session() as sess:
                 print('score={}\n'.format(score))
         ~~~
 
-        我看到一篇<a href="http://www.cnblogs.com/pinard/p/6266408.html">博客</a>讲到，LLE算法学习的流形只能是不闭合的，那可能是我用错了，LLE根本不适合数字图片。
+        我看到一篇[博客](http://www.cnblogs.com/pinard/p/6266408.html)讲到，LLE算法学习的流形只能是不闭合的，那可能是我用错了，LLE根本不适合数字图片。
 
-    4.  学习了以下LLE降维，大致知道是个什么东西了。
 
 2.  下一步计划
 
@@ -373,18 +398,18 @@ with tf.Session() as sess:
 
 ## @huangzijian
 
-1.  已完成
+1.  已完成
 
 	1. 阅读了[kaggle手写数字识别README](https://github.com/huangzijian888/kaggle/blob/dev/competitions/getting-started/digit-recognizer/README.md)
 
 	2. 学习了[README语法](https://github.com/huangzijian888/README)
-2.  下一步计划
+2.  下一步计划
 
 	1. 发现一个博客[Gain](https://wmpscc.github.io/)很多干货 后期可以到这里来查阅
 	
 	2. 再多看一点kaggle比赛项目的开发流程 学习经验
 	
-3.  随笔
+3.  随笔
 
 	1. 越学习越发现自己知识的贫瘠 这也许就是努力的理由吧
 
@@ -403,7 +428,7 @@ with tf.Session() as sess:
     1.  学习他人在Kernel上分享的思路。尤其对于数据预处理。我这边根本没有涉及对缺失值处理，查看分布这些操作。
 
 3.  随笔
- 
+
 ## @xxxx100
 
 1.  已完成
@@ -516,7 +541,7 @@ with tf.Session() as sess:
 	
 	1.	完成了[github相关操作](https://github.com/huangzijian888/knowledge/blob/master/doc/git%E6%93%8D%E4%BD%9C%E6%B5%81%E7%A8%8B.md)复习
 	
-	2. 看了线性代数  学习了矩阵的运算 逆矩阵相关知识
+	2. 看了线性代数  学习了矩阵的运算 逆矩阵相关知识
 	
 	3. 修改了昨天日报的格式 并补充了kaggle-learn上machine learnign的超链接(强烈推荐像我一样的新手阅读)
 
@@ -592,10 +617,10 @@ with tf.Session() as sess:
 3.  随笔
 
 ## @wmpscc
-1.  已完成
-    1. 学习数据降维
+1.  已完成
+    1. 学习数据降维
     
-2.  在数字识别上应用数据降维
+2.  在数字识别上应用数据降维
 
 3.  随笔
 
