@@ -1,16 +1,233 @@
+# 2018-03-21
+
+## @hduyyg
+
+1.  已完成
+
+    《基于朴素贝叶斯K近邻的快速图像分类算法》这篇文章，将bayes用于图像分类，感觉有点偏门。
+
+    在以下两个链接中，有sklearn中贝叶斯分类器的使用：
+
+    [朴素贝叶斯算法原理小结](http://www.cnblogs.com/pinard/p/6069267.html)
+
+    [scikit-learn 朴素贝叶斯类库使用小结](http://www.cnblogs.com/pinard/p/6074222.html)
+
+    实际使用之后，发现效果确实不咋地，连0.9都达不到。
+
+    ~~~python
+    import functions
+    from sklearn.decomposition import PCA
+    from sklearn.model_selection import cross_val_score, train_test_split
+    from sklearn.naive_bayes import GaussianNB
+
+    data, label, test_data = functions.read_data_from_csv()
+    x_train, x_test, y_train, y_test = train_test_split(data, label, test_size=0.1, random_state=42)
+
+    def genearte_classifier_model():
+        yield GaussianNB()
+
+    def generate_pca_model():
+        for n_components in range(30, 35):
+            model = PCA(n_components=n_components)
+            print('n_components={}\n'.format(n_components))
+            yield model
+
+    for clf in genearte_classifier_model():
+        for pca_model in generate_pca_model():
+            pca_model.fit(x_train)
+            new_x_train = pca_model.transform(x_train)
+            new_x_test = pca_model.transform(x_test)
+            
+            clf.fit(new_x_train, y_train)
+            score = clf.score(new_x_test, y_test)
+            print('score={}\n'.format(score))
+    ~~~
+
+    ~~~python
+    n_components=30
+
+    score=0.8523809523809524
+
+    n_components=31
+
+    score=0.8514285714285714
+
+    n_components=32
+
+    score=0.8552380952380952
+
+    n_components=33
+
+    score=0.8561904761904762
+
+    n_components=34
+
+    score=0.8580952380952381
+    ~~~
+
+    2.  刷51nod基础题目20道，准备笔试
+
+2.  下一步计划
+
+    1.  继续刷51nod，准备笔试
+
+    2.  ```
+        基于图像形状的一种比较漂亮的分类算法
+
+        链接：http://blog.csdn.net/lishuhuakai/article/details/53573241
+        ```
+
+3.  随笔
 
 # 2018-03-20
 
 ## @huangzijian
 
-1. 已完成
-	1. 看了几个项目的开发流程对特征工程部分存有疑惑
-    2. 向大佬请教了学习方法 在实践中学习 哪里不会就补充哪里的知识
-	3. 学会了如何合pr 
+1.  已完成
+
+    1.  看了几个项目的开发流程对特征工程部分存有疑惑
+    
+    2.  向大佬请教了学习方法 在实践中学习 哪里不会就补充哪里的知识
+    
+    3.  学会了如何合pr 
    
-2. 下一步计划
+2.  下一步计划
 	
-	1. 补充特征工程相关知识
+    1.  补充特征工程相关知识
+    
+3.  随笔
+
+## @rujinshi
+
+1.  已完成
+
+    1.  实现PCA+KNN。score:0.97528 <学习kaggle别人的Kernel 以及余洋的过程>
+
+    2.  实现迭代器主成分个数与其方差率（explained_variance_ratio_）的关系并作可视化。训练集上采用交叉验证分离数据(test_size=0.3)，并在KNN上迭代找到一个最佳的主成分数（22），这个数量和最终的测试集上用的还是有出入的。
+
+    3.  接触并使用函数：pandas.drop; pandas.ilot; seaborn.countplot; pandas.Series.value_counts; pandas.describe
+
+    4.  散点图、折线图、热源图使用与接触但是里面的参数不熟练。
+
+2.  下一步计划
+
+    1.  PCA+SVM 
+
+    2.  复习RF与LR知识
+
+    3.  回顾别人的代码思路
+
+3.  随笔
+
+    1.  [Pandas进行数据分析](https://zhuanlan.zhihu.com/p/26100976)。讲了很多分析方法，包括缺失值处理，查看数据的统计特性。另外此文章所在专栏总结的内容也有很多干货。
+
+    2.  seaborn能做出很具有吸引力的图.应该把Seaborn视为matplotlib的补充，而不是替代物。
+
+    3.  [Interactive Intro to Dimensionality Reduction
+](https://www.kaggle.com/arthurtok/interactive-intro-to-dimensionality-reduction/notebook)
+
+    4.  其实现在根本不是缺少资源。缺少的是专一与坚持的心。
+
+## @wmpscc
+1.  已完成
+	
+    1.  使用CNN，准确率0.9929
+
+2.  下一步计划
+	
+    1.  进一步优化
+
+3.  代码
+
+``` Python
+#!/usr/bin/env python
+# _*_coding:utf-8_*_
+from tensorflow.examples.tutorials.mnist import input_data
+import tensorflow as tf
+import os
+
+MODEL_SAVE_PATH = './CNN_MODEL/'
+MODEL_NAME = 'MODEL.ckpt'
+mnist = input_data.read_data_sets("MNIST_data/", one_hot=True)
+sess = tf.InteractiveSession()
+
+
+def weight_variable(shape):
+    inital = tf.truncated_normal(shape, stddev=0.1)
+    return tf.Variable(inital)
+
+
+def bias_variable(shape):
+    inital = tf.constant(0.1, shape=shape)
+    return tf.Variable(inital)
+
+
+def conv2d(x, W):
+    return tf.nn.conv2d(x, W, strides=[1, 1, 1, 1], padding='SAME')
+
+
+def max_pool_2x2(x):
+    return tf.nn.max_pool(x, ksize=[1, 2, 2, 1], strides=[1, 2, 2, 1], padding='SAME')
+
+
+x = tf.placeholder(tf.float32, [None, 784])  # 特征
+y_ = tf.placeholder(tf.float32, [None, 10])  # 真实的label
+x_image = tf.reshape(x, [-1, 28, 28, 1])
+
+W_conv1 = weight_variable([5, 5, 1, 32])
+b_conv1 = bias_variable([32])
+h_conv1 = tf.nn.relu(conv2d(x_image, W_conv1) + b_conv1)
+h_pool1 = max_pool_2x2(h_conv1)
+
+W_conv2 = weight_variable([3, 3, 32, 64])
+b_conv2 = bias_variable([64])
+h_conv2 = tf.nn.relu(conv2d(h_pool1, W_conv2) + b_conv2)
+h_pool2 = max_pool_2x2(h_conv2)
+
+W_fc1 = weight_variable([7 * 7 * 64, 1024])
+b_fc1 = bias_variable([1024])
+h_pool2_flat = tf.reshape(h_pool2, [-1, 7 * 7 * 64])
+h_fc1 = tf.nn.relu(tf.matmul(h_pool2_flat, W_fc1) + b_fc1)
+
+# Dropout层
+keep_prob = tf.placeholder(tf.float32)
+h_fc1_drop = tf.nn.dropout(h_fc1, keep_prob)
+
+# 连接Softmax层
+W_fc2 = weight_variable([1024, 10])
+b_fc2 = bias_variable([10])
+y_conv = tf.nn.softmax(tf.matmul(h_fc1_drop, W_fc2) + b_fc2)
+
+cross_entropy = tf.reduce_mean(-tf.reduce_sum(y_ * tf.log(y_conv), reduction_indices=[1]))
+train_step = tf.train.AdamOptimizer(1e-4).minimize(cross_entropy)
+correct_prediction = tf.equal(tf.argmax(y_conv, 1), tf.argmax(y_, 1))
+accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
+
+saver = tf.train.Saver()
+with tf.Session() as sess:
+    tf.global_variables_initializer().run()
+    for i in range(20000):
+        batch = mnist.train.next_batch(50)
+        if i % 100 == 0:
+            train_accuracy = accuracy.eval(feed_dict={x: batch[0], y_: batch[1], keep_prob: 1.0})
+            if train_accuracy == 1:
+                saver.save(sess, os.path.join(MODEL_SAVE_PATH, MODEL_NAME), global_step=i)
+            print("step %d, training accuracy %g" % (i, train_accuracy))
+        train_step.run(feed_dict={x: batch[0], y_: batch[1], keep_prob: 0.5})
+    print("test accuracy %g" % accuracy.eval(feed_dict={x: mnist.test.images, y_: mnist.test.labels, keep_prob: 1.0}))
+
+```
+
+## @xxxx100
+
+1.  已完成
+
+    1.  拜读很多大佬的代码，学习怎样编写掉包的python代码，但是对sk-learn的文档还是不熟悉。
+    
+2.  下一步计划
+    
+    1.  看看文档，继续看代码。
+   
 ## @hduyyg
 
 1.  已完成
@@ -229,7 +446,7 @@
 
 	1.学习git的知识,熟悉命令操作
 	2.上网看关于数字识别的相关博客,好好学习别人的思路
-	
+
 3.随笔
 
 	1.很喜欢这个组织,一上来什么都不懂,小伙伴直接远程教我操作
