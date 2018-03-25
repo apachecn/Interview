@@ -424,9 +424,6 @@ with tf.Session() as sess:
 
         data, label, test_data = functions.read_data_from_csv()
         x_train, x_test, y_train, y_test = train_test_split(data, label, test_size=0.1, random_state=42)
-        ~~~
-
-
         def genearte_knn_model():
             weights = 'distance'
             for n_neighbors in range(1, 7):
@@ -436,27 +433,27 @@ with tf.Session() as sess:
                                                 metric=metric)
                     print('n_neighbors={}\n weights={}\n metric={} \n'.format(n_neighbors, weights, metric))
                     yield model
+
         def generate_lda_model():
             for n_components in range(5, 10):
                 model = LDA(n_components=n_components)
                 print('n_components={}\n'.format(n_components))
                 yield model
-    
+
         for knn_model in genearte_knn_model():
             for lda_model in generate_lda_model():
                 lda_model.fit(x_train, y_train)
                 new_x_train = lda_model.transform(x_train)
                 new_x_test = lda_model.transform(x_test)
-                
+
                 knn_model.fit(new_x_train, y_train)
                 score = knn_model.score(new_x_test, y_test)
                 print('score={}\n'.format(score))
         ~~~
-    
         其效果基本等同于LDA分类的效果。
-    
+
     3.  LLE，跑不出来
-    
+
         ~~~python
         import functions
         from sklearn.decomposition import PCA
@@ -464,10 +461,10 @@ with tf.Session() as sess:
         from sklearn.model_selection import cross_val_score, train_test_split
         from sklearn.neighbors import KNeighborsClassifier
         from sklearn.manifold import LocallyLinearEmbedding as LLE
-    
+
         data, label, test_data = functions.read_data_from_csv()
         x_train, x_test, y_train, y_test = train_test_split(data, label, test_size=0.1, random_state=42)
-    
+
         def genearte_knn_model():
             weights = 'distance'
             for n_neighbors in range(1, 7):
@@ -483,19 +480,20 @@ with tf.Session() as sess:
                 model = LLE(n_neighbors=n_neighbors, n_components=n_components)
                 print('lle:\n n_neighbors={}\n n_components={}\n'.format(n_neighbors, n_components))
                 yield model
-    
+
         for knn_model in genearte_knn_model():
             for lle_model in generate_lle_model():
                 lle_model.fit(x_train)
                 new_x_train = lle_model.transform(x_train)
                 new_x_test = lle_model.transform(x_test)
-                
+
                 knn_model.fit(new_x_train, y_train)
                 score = knn_model.score(new_x_test, y_test)
                 print('score={}\n'.format(score))
         ~~~
-    
+
         我看到一篇[博客](http://www.cnblogs.com/pinard/p/6266408.html)讲到，LLE算法学习的流形只能是不闭合的，那可能是我用错了，LLE根本不适合数字图片。
+
 
 
 2.  下一步计划
