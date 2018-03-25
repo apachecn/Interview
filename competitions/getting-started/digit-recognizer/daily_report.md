@@ -1,3 +1,113 @@
+
+# 2018-03-24
+
+## @hduyyg
+
+1.  已完成
+
+    1.  数字识别逻辑回归解法：
+
+        感觉效果并没有多好，跑很长的时间得到一个好结果，我目前知道的最好的也就0.92，代码：
+
+        ~~~ python
+        import functions
+        from sklearn.decomposition import PCA
+        from sklearn.model_selection import cross_val_score, train_test_split
+        from sklearn.linear_model import LogisticRegression
+
+        data, label, test_data = functions.read_data_from_csv()
+        x_train, x_test, y_train, y_test = train_test_split(data, label, test_size=0.1, random_state=42)
+
+        def genearte_classifier_model():
+            for penalty in ['l1', 'l2']:
+                for C in [0.01, 0.1, 1, 10]:
+                    print('penalty={}  C={}'.format(penalty, C))
+                    yield LogisticRegression(penalty=penalty, C=C)
+
+        def generate_pca_model():
+            for n_components in range(30, 40):
+                model = PCA(n_components=n_components)
+                print('n_components={}\n'.format(n_components))
+                yield model
+
+        for clf in genearte_classifier_model():
+            for pca_model in generate_pca_model():
+                pca_model.fit(x_train)
+                new_x_train = pca_model.transform(x_train)
+                new_x_test = pca_model.transform(x_test)
+                
+                clf.fit(new_x_train, y_train)
+                score = clf.score(new_x_test, y_test)
+                print('score={}\n'.format(score))
+        ~~~
+
+        资料看的比较多，顺带把线性回归也给看了：
+
+        1.  [[kaggle实战] Digit Recognizer -- 从KNN,LR,SVM,RF到深度学习](https://blog.csdn.net/Dinosoft/article/details/50734539)
+        2.  [梯度下降（Gradient Descent）小结](http://www.cnblogs.com/pinard/p/5970503.html)
+        3.  [最小二乘法小结](http://www.cnblogs.com/pinard/p/5976811.html)
+        4.  [线性回归原理小结](http://www.cnblogs.com/pinard/p/6004041.html)
+        5.  [用scikit-learn和pandas学习线性回归](http://www.cnblogs.com/pinard/p/6016029.html)
+        6.  [Lasso回归算法： 坐标轴下降法与最小角回归法小结](http://www.cnblogs.com/pinard/p/6018889.html)
+        7.  [用scikit-learn和pandas学习Ridge回归](http://www.cnblogs.com/pinard/p/6023000.html)
+        8.  [scikit-learn 线性回归算法库小结](http://www.cnblogs.com/pinard/p/6026343.html)
+        9.  [逻辑回归原理小结](http://www.cnblogs.com/pinard/p/6029432.html)
+        10.  [scikit-learn 逻辑回归类库使用小结](http://www.cnblogs.com/pinard/p/6035872.html)
+
+    2.  RF随机森林解法
+
+        这个稍微好点，调参之后达到0.95371
+
+        ~~~python
+        import functions
+        from sklearn.decomposition import PCA
+        from sklearn.model_selection import cross_val_score, train_test_split
+        from sklearn.linear_model import LogisticRegression
+        from sklearn.ensemble import RandomForestClassifier
+
+        data, label, test_data = functions.read_data_from_csv()
+        x_train, x_test, y_train, y_test = train_test_split(data, label, test_size=0.1, random_state=42)
+
+        def genearte_classifier_model():
+            oob_score = True
+            random_state = 10
+            criterion = 'gini'
+            for n_estimators in [300, 400, 500, 600]:
+                print('n_estimators={}'.format(n_estimators))
+                yield RandomForestClassifier(criterion=criterion, n_estimators=n_estimators, oob_score=oob_score, random_state=random_state)
+
+        def generate_pca_model():
+            for n_components in [30, 33, 36, 39]:
+                model = PCA(n_components=n_components)
+                print('n_components={}\n'.format(n_components))
+                yield model
+
+        for clf in genearte_classifier_model():
+            for pca_model in generate_pca_model():
+                pca_model.fit(x_train)
+                new_x_train = pca_model.transform(x_train)
+                new_x_test = pca_model.transform(x_test)
+                
+                clf.fit(new_x_train, y_train)
+                score = clf.score(new_x_test, y_test)
+                print('score={}\n'.format(score))
+        ~~~
+
+        参考资料：
+
+        1.  [集成学习原理小结](http://www.cnblogs.com/pinard/p/6131423.html)
+        2.  [Bagging与随机森林算法原理小结](http://www.cnblogs.com/pinard/p/6156009.html)
+        3.  [scikit-learn随机森林调参小结](http://www.cnblogs.com/pinard/p/6160412.html)
+
+2.  下一步计划
+
+    1.  复习svm
+    2.  完善svm解法
+
+3.  随笔
+
+    1.  前几天准备一个面试耽搁了些时间，虽然最后还是凉了。
+
 # 2018-03-22
 
 ## @huangzijian888
@@ -42,6 +152,7 @@
         **标准化(standardization).这是一个更加实用的方法**。很多线性模型（LR,SVM）在对它们进行训练的最初阶段，即权重初始化阶段，可将其值设定0或是趋近于0的随机极小值。通过标准化我们可以将特征列的均值设为0，方差为1，使得特征列的值呈**正态分布**，这更便于权重的更新。此外，标准化方法保持了异常值所蕴含的有用信息，并且使算法受到这些值的影响较小;**另外为了使正则化起作用**，需要确保所有特征的衡量标准保持统一。<sklearn.preprocessing.StandardScaler>
 
         决策树模型与随机森林无需特征缩放。
+
 
 
 # 2018-03-21
@@ -299,7 +410,7 @@ with tf.Session() as sess:
 2.  下一步计划
   
     1.  看看文档，继续看代码。
-     
+    
 
 # 2018-03-19
 
@@ -361,8 +472,6 @@ with tf.Session() as sess:
 
         data, label, test_data = functions.read_data_from_csv()
         x_train, x_test, y_train, y_test = train_test_split(data, label, test_size=0.1, random_state=42)
-
-
         def genearte_knn_model():
             weights = 'distance'
             for n_neighbors in range(1, 7):
@@ -372,6 +481,7 @@ with tf.Session() as sess:
                                                 metric=metric)
                     print('n_neighbors={}\n weights={}\n metric={} \n'.format(n_neighbors, weights, metric))
                     yield model
+
         def generate_lda_model():
             for n_components in range(5, 10):
                 model = LDA(n_components=n_components)
@@ -383,12 +493,11 @@ with tf.Session() as sess:
                 lda_model.fit(x_train, y_train)
                 new_x_train = lda_model.transform(x_train)
                 new_x_test = lda_model.transform(x_test)
-                
+
                 knn_model.fit(new_x_train, y_train)
                 score = knn_model.score(new_x_test, y_test)
                 print('score={}\n'.format(score))
         ~~~
-
         其效果基本等同于LDA分类的效果。
 
     3.  LLE，跑不出来
@@ -425,13 +534,14 @@ with tf.Session() as sess:
                 lle_model.fit(x_train)
                 new_x_train = lle_model.transform(x_train)
                 new_x_test = lle_model.transform(x_test)
-                
+
                 knn_model.fit(new_x_train, y_train)
                 score = knn_model.score(new_x_test, y_test)
                 print('score={}\n'.format(score))
         ~~~
 
         我看到一篇[博客](http://www.cnblogs.com/pinard/p/6266408.html)讲到，LLE算法学习的流形只能是不闭合的，那可能是我用错了，LLE根本不适合数字图片。
+
 
 
 2.  下一步计划
