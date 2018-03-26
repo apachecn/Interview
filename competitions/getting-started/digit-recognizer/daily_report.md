@@ -1,4 +1,31 @@
+# 2018-03-25
 
+## @rujinshi
+
+1.  已完成
+
+    1.  实现一遍《python机器学习》第六章——模型评估与参数调优实战。当中具体涉及方法有：基于流水线的工作流(Pipeline);K折交叉验证(cross_val_score);使用学习曲线判定方差与偏差问题；使用网格搜索调优超参(GridSearchCV)；通过嵌套交叉验证选择算法；不同的性能评价标准<混淆矩阵，ROC曲线>。
+        
+        昨天在实现RF的时候并没有选择使用网格搜索。而且步长选择的也有问题。
+        
+        [scikit-learn随机森林调参小结](https://blog.csdn.net/sun_shengyun/article/details/54618121)
+
+        [Understanding the Bias-Variance Tradeoff](http://scott.fortmann-roe.com/docs/BiasVariance.html)
+        
+        [机器学习中的Bias(偏差)，Error(误差)，和Variance(方差)有什么区别和联系？](https://www.zhihu.com/question/27068705)
+
+2.  下一步计划
+
+    1.  今天把RF的调参过程熟悉，尝试得出一个最优解。
+
+    2. CNN相关东西不是很熟悉。了解，搭环境。
+
+3.  随笔
+
+    1.  Kaggle上的[Kernel](https://www.kaggle.com/tags)分享了很多初学者，特别是EDA、Feature Engineering、Data visualization，挑选适合自己的实现熟悉流程很好。
+
+    2.  pandas.info();pandas.corr();sns.heatmap();pandas.DataFrame.fillna;pandas.series.interpolate(根据不同方法插值);pandas.series.apply;pandas.set_index()设置索引;DataFram.pivot()重塑表格，按照一定格式、
+    
 # 2018-03-24
 
 ## @hduyyg
