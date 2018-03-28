@@ -10,8 +10,6 @@ def get_result():
     new_train_data = functions.shrink_img(train_data, rate=rate)
     new_test_data = functions.shrink_img(test_data, rate=rate)
 
-    print('new_train_data.shape={}'.format(new_train_data.shape))
-
     pca_model = PCA(n_components=35, whiten=True)
     pca_model.fit(new_train_data)
     new_train_data = pca_model.transform(new_train_data)
