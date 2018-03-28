@@ -1,3 +1,78 @@
+# 2018-03-27
+
+## @hduyyg
+
+1.  已完成
+
+    1.  svm参数调优：
+
+        ~~~ python
+        import functions
+        from sklearn.decomposition import PCA
+        from sklearn.model_selection import cross_val_score
+        from sklearn import svm
+        from scipy import misc
+
+        train_data, train_label, test_data = functions.read_data_from_csv()
+        rate = 0.5
+        train_data = functions.shrink_img(train_data, rate)
+
+        def genearte_classifier_model():
+            for C in range(3, 6):
+                svm_model = svm.SVC(C=C)
+                print('C={} gamma=default'.format(C))
+                yield svm_model
+
+        def generate_pca_model():
+            for n_components in range(25, 36, 2):
+                model = PCA(n_components=n_components, whiten=True)
+                print('n_components={}\n'.format(n_components))
+                yield model
+
+        for clf in genearte_classifier_model():
+            for pca_model in generate_pca_model():
+                pca_model.fit(train_data)
+                new_train_data = pca_model.transform(train_data)
+                
+                scores = cross_val_score(clf, new_train_data, train_label, cv=10, verbose=True)
+                score = scores.mean()
+                print('scores={} \nscore={}'.format(scores, score))
+        ~~~
+
+        收获如下：
+
+        1.  一定要使用交叉验证，才能得到一个比较稳定、准确的结果。我之前的调试，都没有交叉验证，这次调试时，就发现参数情况不是特别稳定。
+
+            我现在常使用的就是：cross_val_score
+
+        2.  感觉我算是天降之子吧，svm比起之前没有任何进展，还是之前的策略更优：
+
+            ​	先将图片0.5倍缩放，然后降维到35，在使用svm，只设置C=4
+
+            至于为什么是0.5？我试了下，发现其他的都不是特别好，凭感觉就选了个最好？一切都是玄学吧。。。
+
+    2.  新增函数：
+
+        ~~~python
+        def shrink_img(data, rate=0.5):
+            tmp = [None for _ in data]
+            for i, img in enumerate(data):
+                img = img.reshape((28,28))
+                img = misc.imresize(img, rate)
+                tmp[i] = img.flatten()
+            data = np.array(tmp)
+            return data
+        ~~~
+
+        将图片缩放一定倍率
+
+2.  下一步计划
+
+    1.  完成cnn的复习以及调优
+
+3.  随笔
+
+    1.  这几天忙着工作的事情，总算是有个打底的了。这次找工作给自己的教训真是太深刻了。
 
 # 2018-03-24
 
@@ -127,7 +202,6 @@
 ## @rujinshi
 
 1.  已完成
-    
     1.  PCA+SVM score0.98442 [参考kernel](https://www.kaggle.com/amitkvikram/digit-recognizer-using-pca-logistic-and-svm)
 
     2.  学会构造函数并可视化PCA <总体方差与贡献方差>
