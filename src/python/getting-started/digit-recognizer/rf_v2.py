@@ -1,7 +1,7 @@
-import functions
+import numpy as np
 from sklearn.decomposition import PCA
 from sklearn.ensemble import RandomForestClassifier
-
+import functions
 
 def get_result():
     train_data, train_label, test_data = functions.read_data_from_csv()
@@ -19,4 +19,5 @@ def get_result():
 
 if __name__ == '__main__':
     result = get_result()
-    functions.save_result(result)
+    np.save('result_rf.npy', result)
+    functions.save_result(result, 'result_rf.csv')

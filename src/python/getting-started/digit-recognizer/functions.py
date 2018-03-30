@@ -12,8 +12,8 @@ def read_data_from_csv():
     
     return train_data, train_label, test_data
 
-def save_result(data):
-    csv_path, info = 'result.csv', {}
+def save_result(data, path='result.csv'):
+    csv_path, info = path, {}
     info['ImageId'] = [i for i in range(1, len(data) + 1)]
     info['Label'] = data
     data_frame = pd.DataFrame(info)

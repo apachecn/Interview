@@ -1,6 +1,7 @@
-import functions
+import numpy as np
 from sklearn.decomposition import PCA
 from sklearn.neighbors import KNeighborsClassifier
+import functions
 
 
 def get_result():
@@ -19,4 +20,5 @@ def get_result():
 
 if __name__ == '__main__':
     result = get_result()
-    functions.save_result(result)
+    np.save('result_knn.npy', result)
+    functions.save_result(result, 'result_knn.csv')
