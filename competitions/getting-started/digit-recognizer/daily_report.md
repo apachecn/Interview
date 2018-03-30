@@ -1,3 +1,45 @@
+# 2018-03-30
+
+## @hduyyg
+
+1.  已完成
+
+    1.  cnn的解法：score=0.99557
+
+        最终解法直接参考的<a href="https://github.com/apachecn/kaggle/blob/dev/src/python/getting-started/digit-recognizer/keras_cnn-python3.6.py">片刻先前的做法</a>，也就是第五个参考资料里面的解法。
+
+        参考资料：
+
+        1.  <a href="https://www.shiyanlou.com/courses/744/labs/2488/document">TensorFlow介绍及简单应用</a>
+
+        2.  <a href="https://www.shiyanlou.com/courses/744/labs/2489/document">Keras介绍及手写体数字识别应用</a>
+
+        3.  <a href="https://www.shiyanlou.com/courses/744/labs/2491/document">Keras搭建卷积神经网络CNN模型</a>
+
+        4.  <a href="https://www.shiyanlou.com/courses/744/labs/2490/document">Scikit-Learn机器学习模型&Keras混合应用</a>
+
+        5.  <a href="https://www.kaggle.com/yassineghouzam/introduction-to-cnn-keras-0-997-top-6">Introduction to CNN Keras - Acc 0.997 (top 8%)</a>
+
+            最终的解法基本是参考这个了，我是真的菜，在cnn代码使用方面没啥感觉，这个代码基本就是copy过来，自己完全都不知道该怎么去调参，看来，得抓紧时间把andrew的深度学习课程学习了才行。
+
+    2.  各个解法整合：
+
+        失败了，使用投票法，将各个解法整合起来，最终结果反而更差了。
+
+        集成学习（也有叫特征融合）资料：
+
+        1.  <a href="http://community.apachecn.org/?/article/66">集成方法-模型融合和机器学习元算法</a>
+        2.  <a href="https://blog.csdn.net/sinat_26917383/article/details/54667077">笔记︱集成学习Ensemble Learning与树模型、Bagging 和 Boosting、模型融合</a>
+        3.  <a href="https://zhuanlan.zhihu.com/p/25836678">【机器学习】模型融合方法概述</a>
+
+2.  下一步计划
+
+    1.  项目完结的文档整理，包括：项目流程经验总结、项目基本回顾
+
+3.  随笔
+
+    1.  这一个月真的是经历了好多
+
 # 2018-03-27
 
 ## @hduyyg
