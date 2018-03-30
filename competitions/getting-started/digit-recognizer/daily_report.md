@@ -244,7 +244,6 @@
 ## @rujinshi
 
 1.  已完成
-  
     1.  PCA+SVM score0.98442 [参考kernel](https://www.kaggle.com/amitkvikram/digit-recognizer-using-pca-logistic-and-svm)
 
     2.  学会构造函数并可视化PCA <总体方差与贡献方差>
