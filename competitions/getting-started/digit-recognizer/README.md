@@ -16,6 +16,22 @@
 | 负责人: svm | [马小穆](https://github.com/maxiaomu) | [svm项目文档](/competitions/getting-started/digit-recognizer/svm算法描述.md) | [svm项目代码](/src/python/getting-started/digit-recognizer/svm-python3.6.py) |
 | 负责人: cnn | [==](https://github.com/xiaomingnio) | [cnn项目文档](/competitions/getting-started/digit-recognizer/cnn算法描述.md) | [cnn项目代码](/src/python/getting-started/digit-recognizer/keras_cnn-python3.6.py) |
 
+> 数字识别 第一期(2018-04-18)
+
+|组长|组员|组员|组员|组员|组员|组员|
+| -- | -- | -- | -- | -- | -- | -- |
+|[限定心态](https://github.com/island99)|[strengthen](https://github.com/Yestrengthen)|[VS53MV](https://github.com/La-fe)|[不会修电脑](https://github.com/smallsmallwood)|[远心](https://github.com/SwordFaith)|[小耀哥_0011](https://github.com/yirenrumeng)|[丨](https://github.com/nincro)|
+
+地址：<https://github.com/island99/kaggle-digit-recognizer_0418>
+
+## 学习流程
+
+* 1天：[GitHub入门到放弃指南](https://github.com/apachecn/kaggle/blob/master/docs/github-quickstart.md)
+* 1天：[Kaggle 入门操作指南](https://github.com/apachecn/kaggle/blob/master/docs/kaggle-quickstart.md)
+* 1天：[knn版本-测试提交 数字识别项目](https://github.com/apachecn/kaggle/tree/master/competitions/getting-started/digit-recognizer)
+* 3天：研究其他的算法，然后测试提交
+* 1天：组长总结报告最后的状态
+
 ## 开发流程（knn项目案例）
 
 > 收集数据: 提供文本文件(目标变量+数据特征)
