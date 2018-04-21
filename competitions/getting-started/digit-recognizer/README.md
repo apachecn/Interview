@@ -24,6 +24,15 @@
 
 地址：<https://github.com/island99/kaggle-digit-recognizer_0418>
 
+> 数字识别 第二期(2018-04-21)
+
+|组长|组员|组员|组员|组员|组员|
+| -- | -- | -- | -- | -- | -- | 
+|[凌少skier](https://github.com/skierlin)|[Blue]|[Max]|[考拉]|[Happyorg]|[过客]|
+
+地址：<https://github.com/skierlin/kaggle-digit-recognizer_0421>
+
+
 ## 学习流程
 
 * 1天：[GitHub入门到放弃指南](https://github.com/apachecn/kaggle/blob/master/docs/github-quickstart.md)
