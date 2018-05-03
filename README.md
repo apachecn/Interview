@@ -1,23 +1,7 @@
 # Kaggle
 
-![](static/images/logos/kaggle-logo-gray-bigger.jpeg) 
-
-> **欢迎任何人参与和完善：一个人可以走的很快，但是一群人却可以走的更远**
-* <strong>ApacheCN - Kaggle组队群【686932392】<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=716b584bbd7cdf64e961b499c7fb5891faf1f6c92dad026e3c596a57c834f1ec"><img title="ApacheCN - Kaggle组队群【686932392】" src="http://www.apachecn.org/wp-content/uploads/2017/10/ApacheCN-group.png" alt="ApacheCN - Kaggle组队群【686932392】" /></a></strong></li>
-* [Kaggle](https://www.kaggle.com) 是一个流行的数据科学竞赛平台。
-* [GitHub 入门操作指南](docs/GitHub/README.md) 和 [Kaggle 入门操作指南](docs/kaggle-quickstart.md)，适合于学习过 [MachineLearning(机器学习实战)](https://github.com/apachecn/MachineLearning) 的小盆友
-* Kaggle 已被 Google 收购，请参阅[《谷歌收购 Kaggle 为什么会震动三界（AI、机器学习、数据科学界）》](https://www.leiphone.com/news/201703/ZjpnddCoUDr3Eh8c.html)
-
-> Note:
-
-* 号外号外 [**kaggle组队开始啦**](docs/kaggle-start.md) 
-* [【Kaggle 入门篇】资源整理完毕，跟我们一起来学习吧！](http://www.apachecn.org/kaggle/379.html)
-* [关于 ApacheCN](http://cwiki.apachecn.org/pages/viewpage.action?pageId=2887240): 一边学习和整理，一边录制项目视频，希望能组建一个开源的公益团队对国内机器学习社区做一些贡献，同时也为装逼做准备!!
-
-## [竞赛](https://www.kaggle.com/competitions)
-
-```
-机器学习比赛，奖金很高，业界承认分数。
+hi there
+this is YYF
 现在我们已经准备好尝试 Kaggle 竞赛了，这些竞赛分成以下几个类别。
 ```
 
