@@ -152,3 +152,4 @@ $ git push origin master
 
 ![](/static/images/docs/GitHub/github-step-5-PullRequests.jpg)
 
+### Patrick Wang
