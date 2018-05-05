@@ -29,7 +29,8 @@ def opencsv():
 
 
 def saveResult(result, csvName):
-    with open(csvName, 'wb') as myFile: # 创建记录输出结果的文件（w 和 wb 使用的时候有问题）
+    with open(csvName, 'w',newline='') as myFile: # 创建记录输出结果的文件（w 和 wb 使用的时候有问题）
+    #python3里面对 str和bytes类型做了严格的区分，不像python2里面某些函数里可以混用。所以用python3来写wirterow时，打开文件不要用wb模式，只需要使用w模式，然后带上newline=''
         myWriter = csv.writer(myFile) # 对文件执行写入
         myWriter.writerow(["ImageId", "Label"]) # 设置表格的列名
         index = 0
