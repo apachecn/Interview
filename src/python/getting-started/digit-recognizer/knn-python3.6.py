@@ -70,7 +70,7 @@ def dRecognition_knn():
     # 结果的输出
     saveResult(
         testLabel,
-        'datasets/getting-started/digit-recognizer/ouput/Result_sklearn_knn.csv'
+        'datasets/getting-started/digit-recognizer/output/Result_sklearn_knn.csv'
     )
     print("finish!")
     stop_time_r = time.time()
