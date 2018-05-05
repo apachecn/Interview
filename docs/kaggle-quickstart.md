@@ -19,7 +19,7 @@
 
 * [阅读资料 - Digit Recognizer（数字识别器）](https://www.kaggle.com/c/digit-recognizer)
 
-**选择 版本框架 和 star 最高的 Kernels 编辑就行，然后模仿 [**数字识别**](../competitions/getting-started/digit-recognizer.md) 案例更新**
+**选择 版本框架 和 star 最高的 Kernels 编辑就行，然后模仿 [**数字识别**](/competitions/getting-started/digit-recognizer) 案例更新**
 
 ![](/static/images/docs/read-digit-recognizer.jpg)
 
