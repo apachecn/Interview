@@ -40,14 +40,6 @@
 | -- | -- | 
 |[技术负责人-诺木人](https://github.com/1mrliu)<br/>辅助负责人-平淡的心<br/>辅助负责人-张凯<br/>[活动发起人-片刻](https://github.com/jiangzhonglian)| [ifeng](https://github.com/ifeng2025)<br/>[draw](https://github.com/)<br/>[Faith](https://github.com/77qingliu)<br/>[ggggggggo](https://github.com/)<br/>[嘿！漆漆](https://github.com/77const)<br/>[kickfilper](https://github.com/yongfegnyan)<br/>[Lucien Chen](https://github.com/hubeihubei)<br/>[L~Q~W](https://github.com/)<br/>[琴剑蓝天](https://github.com/xvjie)<br/>[時間ｄāń漠](https://github.com/)<br/>[歲寒✅已认证](https://github.com/)<br/>[給力小青年](https://github.com/XCWDSG)<br/>[星尘](https://github.com/wilderchen)<br/>[瑛瑛wang](https://github.com/)<br/>[有一个人很酷](https://github.com/)<br/>[静水流深](https://github.com/)<br/>[♡稳稳的幸福](https://github.com/patrickwangqy)<br/>[Verestràsz](https://github.com/soarchorale)<br/>[vslyu](https://github.com/)<br/>[:)](https://github.com/)<br/>[菠菜](https://github.com/wpbshine)<br/>[QQ小冰](https://github.com/Luyu-Liam)<br/>[浅紫色](https://github.com/MarkerGo)<br/>[R](https://github.com/rjdCS)<br/>[ ROOT](https://github.com/zch765536121) |
 
-## 学习流程
-
-* 1天：[GitHub 入门操作指南](docs/GitHub/README.md)
-* 1天：[Kaggle 入门操作指南](/docs/kaggle-quickstart.md)
-* 1天：[knn版本-测试提交 数字识别项目](/competitions/getting-started/digit-recognizer)
-* 3天：研究其他的算法，然后测试提交
-* 1天：组长总结报告最后的状态
-
 ## 开发流程（knn项目案例）
 
 > 收集数据: 提供文本文件(目标变量+数据特征)
