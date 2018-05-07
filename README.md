@@ -1,6 +1,5 @@
 # Kaggle
-test1
-test2hhhh
+
 ![](static/images/logos/kaggle-logo-gray-bigger.jpeg) 
 
 > **欢迎任何人参与和完善：一个人可以走的很快，但是一群人却可以走的更远**
@@ -21,7 +20,7 @@ test2hhhh
 机器学习比赛，奖金很高，业界承认分数。
 现在我们已经准备好尝试 Kaggle 竞赛了，这些竞赛分成以下几个类别。
 ```
-test0
+
 > [第1部分：课业比赛 InClass](https://www.kaggle.com/competitions?sortBy=deadline&group=all&page=1&pageSize=20&segment=inClass)
 
 `课业比赛 InClass` 是学校教授机器学习的老师留作业的地方，这里的竞赛有些会向public开放参赛，也有些仅仅是学校内部教学使用。
