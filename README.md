@@ -125,6 +125,7 @@
 * [@chenyyx](https://github.com/chenyyx)（瑶妹）
 * [@zehuichen](https://github.com/zehuichen123)(loveSnowBest)
 * [@谈笑风生](https://github.com/zhu1040028623)（谈笑风生）
+* [@诺木人](https://github.com/1mrliu)（诺木人）
 
 > 加入方式
 
