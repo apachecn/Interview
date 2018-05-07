@@ -148,3 +148,4 @@
 
 ## Test专用签到
 1.Zh哲
+2.大佬说提交命令前要 git pull origin_online dev
