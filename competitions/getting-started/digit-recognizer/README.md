@@ -20,9 +20,9 @@
 
 * http://community.apachecn.org/?/question/136
 
-| 组长 | 组员 | 组员 | 组员 | 组员 | 组员 |
-| -- | -- | -- | -- | -- | -- | -- |
-|[限定心态](https://github.com/island99)|[strengthen](https://github.com/Yestrengthen)|[VS53MV](https://github.com/La-fe)|[不会修电脑](https://github.com/smallsmallwood)|[远心](https://github.com/SwordFaith)<br>[小耀哥_0011](https://github.com/yirenrumeng)|[丨](https://github.com/nincro)|
+| 组长 | 组员 | 组员 | 组员 | 组员 | 组员 | 组员 |
+| -- | -- | -- | -- | -- | -- | -- | -- |
+|[限定心态](https://github.com/island99)|[strengthen](https://github.com/Yestrengthen)|[VS53MV](https://github.com/La-fe)|[不会修电脑](https://github.com/smallsmallwood)|[远心](https://github.com/SwordFaith) | [小耀哥_0011](https://github.com/yirenrumeng)|[丨](https://github.com/nincro)|
 
 > 数字识别 第二期(2018-04-21)
 
@@ -46,9 +46,7 @@
 
 | 负责人 | 组员 | 组员 | 组员 |
 | :--: | :--: | :--: | :--: |
-|[技术负责人-诺木人](https://github.com/1mrliu)<br>[辅助负责人-BrianCai](https://github.com/BrianCai)<br> [辅助负责人-嘿！漆漆](https://github.com/77const)<br>|[兰博归来](https://github.com/lanboguilai)<br/>[柳生](https://github.com/liushengxu)<br/>[ZARD Forever](https://github.com/boonguan)<br/>[你别理我我没网](https://github.com/framelove)<br/>[666](https://github.com/xuanbabybaby)<br/>[黄蛟](https://github.com/jhuang111)<br/>[冬冬](https://github.com/swdmike)<br/>[荼蘼](https://github.com/mile)<br/>[烁今](https://github.com/guessay)|[简雨](https://github.com/pengyuanqiuqiu)<br/>[B0lt1st](https://github.com/B0lt1st)<br/>[nickine](https://github.com/nickninth)<br/>[dying in the sun](https://github.com/jialindeng)<br/>[王琪琪]<br/>[常想一二]<br/>[以朱代墨]<br/>[Mang0](0xMJ)<br/>[TonyZERO]<br/>|<br/>[冰花小子]<br/>[阿铮]<br/>[zh哲]<br/>[小菜鸡]<br/>[电酱prpr]<br/>[琉璃火]<br/>[张假飞]<br/>[HAN Shuai](https://github.com/rudyhan)<br/>[有人@我]<br/>[天儿](https://github.com/smilesboy)<br/>[Jaybo](https://github.com/strivebo)<br/>
-
- 
+|[技术负责人-诺木人](https://github.com/1mrliu)<br>[辅助负责人-BrianCai](https://github.com/BrianCai)<br> [辅助负责人-嘿！漆漆](https://github.com/77const)<br> | [兰博归来](https://github.com/lanboguilai)<br/>[柳生](https://github.com/liushengxu)<br/>[ZARD Forever](https://github.com/boonguan)<br/>[你别理我我没网](https://github.com/framelove)<br/>[666](https://github.com/xuanbabybaby)<br/>[黄蛟](https://github.com/jhuang111)<br/>[冬冬](https://github.com/swdmike)<br/>[荼蘼](https://github.com/mile)<br/>[烁今](https://github.com/guessay) | [简雨](https://github.com/pengyuanqiuqiu)<br/>[B0lt1st](https://github.com/B0lt1st)<br/>[nickine](https://github.com/nickninth)<br/>[dying in the sun](https://github.com/jialindeng)<br/>[王琪琪]<br/>[常想一二]<br/>[以朱代墨]<br/>[Mang0](0xMJ)<br/>[TonyZERO]<br/> | [冰花小子]<br/>[阿铮]<br/>[zh哲]<br/>[小菜鸡]<br/>[电酱prpr]<br/>[琉璃火]<br/>[张假飞]<br/>[HAN Shuai](https://github.com/rudyhan)<br/>[有人@我]<br/>[天儿](https://github.com/smilesboy)<br/>[Jaybo](https://github.com/strivebo)<br/> |
 
 ## 开发流程（knn项目案例）
 
