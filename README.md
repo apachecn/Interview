@@ -1,5 +1,5 @@
 # Kaggle
-test**
+
 ![](static/images/logos/kaggle-logo-gray-bigger.jpeg) 
 
 > **欢迎任何人参与和完善：一个人可以走的很快，但是一群人却可以走的更远**
@@ -145,4 +145,4 @@ test**
 |  | [LightGBM 中文文档](http://lightgbm.apachecn.org/cn/latest) | [Kudu 1.4.0 中文文档](http://cwiki.apachecn.org/pages/viewpage.action?pageId=10813594) |  |
 |  | [XGBoost 中文文档](http://xgboost.apachecn.org/cn/latest)  | [Elasticsearch 5.4 中文文档](http://cwiki.apachecn.org/pages/viewpage.action?pageId=4260364) |
 |  |  | [Beam 中文文档](http://beam.apachecn.org/) |
-`````test
+
