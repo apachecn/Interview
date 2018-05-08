@@ -1,7 +1,7 @@
 # Kaggle
 Mang0的Kaggle之旅
 
-加油！
+加油！！
 
 
 ![](static/images/logos/kaggle-logo-gray-bigger.jpeg) 
