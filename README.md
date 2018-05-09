@@ -1,5 +1,4 @@
 # Kaggle
-
 ![](static/images/logos/kaggle-logo-gray-bigger.jpeg) 
 
 > **欢迎任何人参与和完善：一个人可以走的很快，但是一群人却可以走的更远**
@@ -36,6 +35,8 @@
 > [第3部分：训练场 Playground](https://www.kaggle.com/competitions?sortBy=deadline&group=all&page=1&pageSize=20&segment=playground)
 
 `训练场 Playground`里的题目以有趣为主，比如猫狗照片分类的问题。现在这个分类下的题目不算多，但是热度很高。
+
+* [**猫狗识别**](/competitions/playground/dogs-vs-cats)
 
 > [第4部分： 研究项目(少奖金) Research](https://www.kaggle.com/competitions?sortBy=prize&group=active&page=1&pageSize=20&segment=research)
 
