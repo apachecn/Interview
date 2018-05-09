@@ -21,8 +21,8 @@
 * http://community.apachecn.org/?/question/136
 
 | 组长 | 组员 | 组员 | 组员 | 组员 | 组员 | 组员 |
-| -- | -- | -- | -- | -- | -- | -- | -- |
-|[限定心态](https://github.com/island99)|[strengthen](https://github.com/Yestrengthen)|[VS53MV](https://github.com/La-fe)|[不会修电脑](https://github.com/smallsmallwood)|[远心](https://github.com/SwordFaith) | [小耀哥_0011](https://github.com/yirenrumeng)|[丨](https://github.com/nincro)|
+| -- | -- | -- | -- | -- | -- | -- | 
+| [限定心态](https://github.com/island99) | [strengthen](https://github.com/Yestrengthen) | [VS53MV](https://github.com/La-fe) | [不会修电脑](https://github.com/smallsmallwood) | [远心](https://github.com/SwordFaith) | [小耀哥_0011](https://github.com/yirenrumeng) | [丨](https://github.com/nincro)|
 
 > 数字识别 第二期(2018-04-21)
 
@@ -42,6 +42,7 @@
 
 
 > 数字识别 第四期(2018-05-08)
+
 * http://community.apachecn.org/?/question/158
 
 | 负责人 | 组员 | 组员 | 组员 |
