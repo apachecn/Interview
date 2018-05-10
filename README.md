@@ -146,3 +146,8 @@
 |  | [LightGBM 中文文档](http://lightgbm.apachecn.org/cn/latest) | [Kudu 1.4.0 中文文档](http://cwiki.apachecn.org/pages/viewpage.action?pageId=10813594) |  |
 |  | [XGBoost 中文文档](http://xgboost.apachecn.org/cn/latest)  | [Elasticsearch 5.4 中文文档](http://cwiki.apachecn.org/pages/viewpage.action?pageId=4260364) |
 |  |  | [Beam 中文文档](http://beam.apachecn.org/) |
+
+## Test专用签到
+1.Zh哲
+2.大佬说提交命令前要 git pull origin_online dev
+3.温故而知新
