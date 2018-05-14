@@ -33,6 +33,8 @@
 2.比较各个模型的分数,然后取效果较好的模型作为基础模型.
 
 四. 模型融合
+1. 可以参考泰坦尼克号的简单模型融合方式，通过对模型的对比打分方式选择合适的模型
+2. 模型融合的参考资料
 
 五. 修改特征和模型参数
 1.可以通过添加或者修改特征,提高模型的上限.
@@ -87,9 +89,6 @@ test = pd.read_csv('%s/%s' % (root_path, 'test.csv'))
 ```python
 train.columns
 ```
-
-
-
 
     Index(['Id', 'MSSubClass', 'MSZoning', 'LotFrontage', 'LotArea', 'Street',
            'Alley', 'LotShape', 'LandContour', 'Utilities', 'LotConfig',
