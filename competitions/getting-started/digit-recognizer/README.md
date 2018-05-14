@@ -1,9 +1,11 @@
 # **数字识别**
 
+![](/static/images/competitions/getting-started/digit-recognizer/front_page.png)
+
 ## 比赛说明
 
 * MNIST（"修改后的国家标准与技术研究所"）是计算机视觉的事实上的 "hello world" 数据集。自1999年发布以来，手写图像的经典数据集已成为基准分类算法的基础。随着新机器学习技术的出现，MNIST 仍然是研究人员和学习者的可靠资源。
-* 在本次比赛中，您的目标是正确[识别数以万计手写图像的数字](https://www.kaggle.com/c/digit-recognizer)。我们策划了一套教程式的内核，涵盖从回归到神经网络的一切。我们鼓励您尝试使用不同的算法来学习第一手什么是有效的，以及技术如何比较。
+* 在本次比赛中，您的目标是正确 [识别数以万计手写图像的数字](https://www.kaggle.com/c/digit-recognizer) 。我们策划了一套教程式的内核，涵盖从回归到神经网络的一切。我们鼓励您尝试使用不同的算法来学习第一手什么是有效的，以及技术如何比较。
 
 > 注意：[项目规范](/docs/kaggle-quickstart.md)
 
@@ -11,10 +13,11 @@
 
 | 角色 | 用户 | 内容 | 代码 |
 | -- | -- | -- | -- |
-| 队长 | [片刻](https://github.com/jiangzhonglian) | [项目概述](/competitions/getting-started/digit-recognizer/digit-recognizer.md) |
-| 负责人: knn | [诺木人](https://github.com/1mrliu) | [knn项目文档](/competitions/getting-started/digit-recognizer/knn算法描述.md) | [knn项目代码](/src/python/getting-started/digit-recognizer/knn-python3.6.py) |
-| 负责人: svm | [马小穆](https://github.com/maxiaomu) | [svm项目文档](/competitions/getting-started/digit-recognizer/svm算法描述.md) | [svm项目代码](/src/python/getting-started/digit-recognizer/svm-python3.6.py) |
-| 负责人: cnn | [==](https://github.com/xiaomingnio) | [cnn项目文档](/competitions/getting-started/digit-recognizer/cnn算法描述.md) | [cnn项目代码](/src/python/getting-started/digit-recognizer/keras_cnn-python3.6.py) |
+| 负责: knn | [诺木人](https://github.com/1mrliu) | [knn项目文档](/competitions/getting-started/digit-recognizer/knn算法描述.md) | [knn项目代码](/src/python/getting-started/digit-recognizer/knn-python3.6.py) |
+| 负责: svm | [马小穆](https://github.com/maxiaomu) | [svm项目文档](/competitions/getting-started/digit-recognizer/svm算法描述.md) | [svm项目代码](/src/python/getting-started/digit-recognizer/svm-python3.6.py) |
+| 负责: 随机森林 | [平淡的天](https://github.com/friedhelm739) | [随机森林项目文档](/competitions/getting-started/digit-recognizer/随机森林算法描述.md) | [随机森林项目代码](/src/python/getting-started/digit-recognizer/rf-python3.6.py) |
+| 负责: 神经网络 | [平淡的天](https://github.com/friedhelm739) | [神经网络项目文档](/competitions/getting-started/digit-recognizer/神经网络算法描述.md) | [神经网络项目代码](/src/python/getting-started/digit-recognizer/nn-python3.6.py) |
+| 负责: cnn | [==](https://github.com/xiaomingnio) | [cnn项目文档](/competitions/getting-started/digit-recognizer/cnn算法描述.md) | [cnn项目代码](/src/python/getting-started/digit-recognizer/keras_cnn-python3.6.py) |
 
 > 数字识别 第一期(2018-04-18)
 
