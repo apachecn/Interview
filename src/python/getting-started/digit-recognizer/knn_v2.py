@@ -20,5 +20,5 @@ def get_result():
 
 if __name__ == '__main__':
     result = get_result()
-    np.save('result_knn.npy', result)
-    functions.save_result(result, 'result_knn.csv')
+    np.save('result_knn_v2.npy', result)
+    functions.save_result(result, 'result_knn_v2.csv')
