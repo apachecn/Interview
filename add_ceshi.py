@@ -1,0 +1,1 @@
+print 'is ok?'
