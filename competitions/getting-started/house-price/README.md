@@ -54,22 +54,6 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 %matplotlib inline
-```
-
-### 特征说明
-
-## 一. 数据分析
-
-### 数据下载和加载
-
-
-```python
-# 导入相关数据包
-import numpy as np
-import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
-%matplotlib inline
 
 from scipy import stats
 from scipy.stats import norm
@@ -1308,7 +1292,6 @@ train_corr
 </div>
 
 
-
 > 所有特征相关度分析
 
 
@@ -1346,9 +1329,6 @@ plt.show()
 ![png](/static/images/competitions/getting-started/house-price/output_16_0.png)
 
 
-
-
-
     '\n1. GarageCars 和 GarageAre 相关性很高、就像双胞胎一样，所以我们只需要其中的一个变量，例如：GarageCars。\n2. TotalBsmtSF  和 1stFloor 与上述情况相同，我们选择 TotalBsmtS\n3. GarageAre 和 TotRmsAbvGrd 与上述情况相同，我们选择 GarageAre\n'
 
 
@@ -1365,7 +1345,6 @@ plt.show();
 
 
 ![png](/static/images/competitions/getting-started/house-price/output_18_0.png)
-
 
 
 ```python
@@ -1385,8 +1364,12 @@ train[['SalePrice', 'OverallQual', 'GrLivArea','GarageCars', 'TotalBsmtSF', 'Ful
     dtypes: int64(7)
     memory usage: 79.9 KB
 
-
 ## 二. 特征工程
+
+```
+test['SalePrice'] = None
+train_test = pd.concat((train, test)).reset_index(drop=True)
+```
 
 ### 1. 缺失值分析
 
@@ -1395,10 +1378,12 @@ train[['SalePrice', 'OverallQual', 'GrLivArea','GarageCars', 'TotalBsmtSF', 'Ful
 
 
 ```python
-total= train.isnull().sum().sort_values(ascending=False)
-percent = (train.isnull().sum()/train.isnull().count()).sort_values(ascending=False)
+total= train_test.isnull().sum().sort_values(ascending=False)
+percent = (train_test.isnull().sum()/train_test.isnull().count()).sort_values(ascending=False)
 missing_data = pd.concat([total, percent], axis=1, keys=['Total','Lost Percent'])
-missing_data.head(20)
+
+print(missing_data[missing_data.isnull().values==False].sort_values('Total', axis=0, ascending=False).head(20))
+
 
 '''
 1. 对于缺失率过高的特征，例如 超过15% 我们应该删掉相关变量且假设该变量并不存在
@@ -1408,23 +1393,19 @@ missing_data.head(20)
 ```
 
 
-
-
     '\n1. 对于缺失率过高的特征，例如 超过15% 我们应该删掉相关变量且假设该变量并不存在\n2. GarageX 变量群的缺失数据量和概率都相同，可以选择一个就行，例如：GarageCars\n3. 对于缺失数据在5%左右（缺失率低），可以直接删除/回归预测\n'
 
 
-
-
 ```python
-train= train.drop((missing_data[missing_data['Total'] > 1]).index, axis=1)
-train= train.drop(train.loc[train['Electrical'].isnull()].index)
-train.isnull().sum().max() #justchecking that there's no missing data missing
+train_test = train_test.drop((missing_data[missing_data['Total'] > 1]).index.drop('SalePrice') , axis=1)
+# train_test = train_test.drop(train.loc[train['Electrical'].isnull()].index)
+
+tmp = train_test[train_test['SalePrice'].isnull().values==False]
+print(tmp.isnull().sum().max()) # justchecking that there's no missing data missing
 ```
 
 
-
-
-    0
+    1
 
 
 
@@ -1461,11 +1442,7 @@ print("Kurtosis: %f" % train['SalePrice'].kurt())
 ```
 
 
-
-
     '\n低范围的值都比较相似并且在 0 附近分布。\n高范围的值离 0 很远，并且七点几的值远在正常范围之外。\n'
-
-
 
 
 ![png](/static/images/competitions/getting-started/house-price/output_25_1.png)
@@ -1491,8 +1468,6 @@ data.plot.scatter(x=var, y='SalePrice', ylim=(0,800000));
 ```
 
 
-
-
     '\n从图中可以看出：\n\n1. 有两个离群的 GrLivArea 值很高的数据，我们可以推测出现这种情况的原因。\n    或许他们代表了农业地区，也就解释了低价。 这两个点很明显不能代表典型样例，所以我们将它们定义为异常值并删除。\n2. 图中顶部的两个点是七点几的观测值，他们虽然看起来像特殊情况，但是他们依然符合整体趋势，所以我们将其保留下来。\n'
 
 
@@ -1504,9 +1479,11 @@ data.plot.scatter(x=var, y='SalePrice', ylim=(0,800000));
 
 ```python
 # 删除点
-train.sort_values(by = 'GrLivArea',ascending = False)[:2]
-train = train.drop(train[train['Id'] == 1299].index)
-train = train.drop(train[train['Id'] == 524].index)
+print(train.sort_values(by='GrLivArea', ascending = False)[:2])
+tmp = train_test[train_test['SalePrice'].isnull().values==False]
+
+train_test = train_test.drop(tmp[tmp['Id'] == 1299].index)
+train_test = train_test.drop(tmp[tmp['Id'] == 524].index)
 ```
 
 > 2.TotalBsmtSF 和 SalePrice 双变量分析
@@ -1515,7 +1492,7 @@ train = train.drop(train[train['Id'] == 524].index)
 ```python
 var = 'TotalBsmtSF'
 data = pd.concat([train['SalePrice'],train[var]], axis=1)
-data.plot.scatter(x=var, y='SalePrice',ylim=(0,800000));
+data.plot.scatter(x=var, y='SalePrice',ylim=(0,800000))
 ```
 
 
@@ -1548,7 +1525,7 @@ data.plot.scatter(x=var, y='SalePrice',ylim=(0,800000));
 
 
 ```python
-sns.distplot(train['SalePrice'], fit=norm);
+sns.distplot(train['SalePrice'], fit=norm)
 fig = plt.figure()
 res = stats.probplot(train['SalePrice'], plot=plt)
 
@@ -1559,15 +1536,10 @@ res = stats.probplot(train['SalePrice'], plot=plt)
 ```
 
 
-
-
     '\n可以看出，房价分布不是正态的，显示了峰值，正偏度，但是并不跟随对角线。\n可以用对数变换来解决这个问题\n'
 
 
-
-
 ![png](/static/images/competitions/getting-started/house-price/output_33_1.png)
-
 
 
 ![png](/static/images/competitions/getting-started/house-price/output_33_2.png)
@@ -1576,21 +1548,22 @@ res = stats.probplot(train['SalePrice'], plot=plt)
 
 ```python
 # 进行对数变换：
-train['SalePrice']= np.log(train['SalePrice'])
+# 进行对数变换：
+train_test['SalePrice'] = [i if i is None else np.log1p(i) for i in train_test['SalePrice']]
 ```
 
 
 ```python
 # 绘制变换后的直方图和正态概率图：
+tmp = train_test[train_test['SalePrice'].isnull().values==False]
 
-sns.distplot(train['SalePrice'], fit=norm);
+sns.distplot(tmp[tmp['SalePrice'] !=0]['SalePrice'], fit=norm);
 fig = plt.figure()
-res = stats.probplot(train['SalePrice'], plot=plt)
+res = stats.probplot(tmp['SalePrice'], plot=plt)
 ```
 
 
 ![png](/static/images/competitions/getting-started/house-price/output_35_0.png)
-
 
 
 ![png](/static/images/competitions/getting-started/house-price/output_35_1.png)
@@ -1610,24 +1583,23 @@ res = stats.probplot(train['GrLivArea'], plot=plt)
 ![png](/static/images/competitions/getting-started/house-price/output_37_0.png)
 
 
-
 ![png](/static/images/competitions/getting-started/house-price/output_37_1.png)
 
 
 
 ```python
 # 进行对数变换：
-train['GrLivArea']= np.log(train['GrLivArea'])
+train_test['GrLivArea'] = [i if i is None else np.log1p(i) for i in train_test['GrLivArea']]
 
 # 绘制变换后的直方图和正态概率图：
-sns.distplot(train['GrLivArea'], fit=norm);
+tmp = train_test[train_test['SalePrice'].isnull().values==False]
+sns.distplot(tmp['GrLivArea'], fit=norm)
 fig = plt.figure()
-res = stats.probplot(train['GrLivArea'], plot=plt)
+res = stats.probplot(tmp['GrLivArea'], plot=plt)
 ```
 
 
 ![png](/static/images/competitions/getting-started/house-price/output_38_0.png)
-
 
 
 ![png](/static/images/competitions/getting-started/house-price/output_38_1.png)
@@ -1651,16 +1623,10 @@ res = stats.probplot(train['TotalBsmtSF'],plot=plt)
 '''
 ```
 
-
-
-
     '\n从图中可以看出：\n* 显示出了偏度\n* 大量为 0(Y值) 的观察值（没有地下室的房屋）\n* 含 0(Y值) 的数据无法进行对数变换\n'
 
 
-
-
 ![png](/static/images/competitions/getting-started/house-price/output_40_1.png)
-
 
 
 ![png](/static/images/competitions/getting-started/house-price/output_40_2.png)
@@ -1669,10 +1635,12 @@ res = stats.probplot(train['TotalBsmtSF'],plot=plt)
 
 ```python
 # 去掉为0的分布情况
-tmp = np.array(train.loc[train['TotalBsmtSF']>0, ['TotalBsmtSF']])[:, 0]
-sns.distplot(tmp,fit=norm);
+tmp = train_test[train_test['SalePrice'].isnull().values==False]
+
+tmp = np.array(tmp.loc[tmp['TotalBsmtSF']>0, ['TotalBsmtSF']])[:, 0]
+sns.distplot(tmp, fit=norm)
 fig = plt.figure()
-res = stats.probplot(tmp,plot=plt)
+res = stats.probplot(tmp, plot=plt)
 ```
 
 
@@ -1702,60 +1670,45 @@ print(train.loc[train['TotalBsmtSF']==1, ['TotalBsmtSF']].count())
 
 ```python
 # 进行对数变换：
-print(train['TotalBsmtSF'].head(20))
-train['TotalBsmtSF']= np.log(train['TotalBsmtSF'])
-print(train['TotalBsmtSF'].head(20))
+tmp = train_test[train_test['SalePrice'].isnull().values==False]
+
+print(tmp['TotalBsmtSF'].head(10))
+train_test['TotalBsmtSF']= np.log1p(train_test['TotalBsmtSF'])
+
+tmp = train_test[train_test['SalePrice'].isnull().values==False]
+print(tmp['TotalBsmtSF'].head(10))
 ```
 
-    0      856
-    1     1262
-    2      920
-    3      756
-    4     1145
-    5      796
-    6     1686
-    7     1107
-    8      952
-    9      991
-    10    1040
-    11    1175
-    12     912
-    13    1494
-    14    1253
-    15     832
-    16    1004
-    17       1
-    18    1114
-    19    1029
-    Name: TotalBsmtSF, dtype: int64
-    0     6.752270
-    1     7.140453
-    2     6.824374
-    3     6.628041
-    4     7.043160
-    5     6.679599
-    6     7.430114
-    7     7.009409
-    8     6.858565
-    9     6.898715
-    10    6.946976
-    11    7.069023
-    12    6.815640
-    13    7.309212
-    14    7.133296
-    15    6.723832
-    16    6.911747
-    17    0.000000
-    18    7.015712
-    19    6.936343
+    0     856.0
+    1    1262.0
+    2     920.0
+    3     756.0
+    4    1145.0
+    5     796.0
+    6    1686.0
+    7    1107.0
+    8     952.0
+    9     991.0
+    Name: TotalBsmtSF, dtype: float64
+    0    6.753438
+    1    7.141245
+    2    6.825460
+    3    6.629363
+    4    7.044033
+    5    6.680855
+    6    7.430707
+    7    7.010312
+    8    6.859615
+    9    6.899723
     Name: TotalBsmtSF, dtype: float64
 
 
 
 ```python
 # 绘制变换后的直方图和正态概率图：
+tmp = train_test[train_test['SalePrice'].isnull().values==False]
 
-tmp = np.array(train.loc[train['TotalBsmtSF']>0, ['TotalBsmtSF']])[:, 0]
+tmp = np.array(tmp.loc[tmp['TotalBsmtSF']>0, ['TotalBsmtSF']])[:, 0]
 sns.distplot(tmp, fit=norm)
 fig = plt.figure()
 res = stats.probplot(tmp, plot=plt)
@@ -1780,15 +1733,13 @@ res = stats.probplot(tmp, plot=plt)
 
 
 ```python
-plt.scatter(train['GrLivArea'], train['SalePrice'])
+tmp = train_test[train_test['SalePrice'].isnull().values==False]
+
+plt.scatter(tmp['GrLivArea'], tmp['SalePrice'])
 ```
 
 
-
-
     <matplotlib.collections.PathCollection at 0x11a366f60>
-
-
 
 
 ![png](/static/images/competitions/getting-started/house-price/output_46_1.png)
@@ -1800,12 +1751,12 @@ plt.scatter(train['GrLivArea'], train['SalePrice'])
 
 
 ```python
-plt.scatter(train[train['TotalBsmtSF']>0]['TotalBsmtSF'], train[train['TotalBsmtSF']>0]['SalePrice'])
+tmp = train_test[train_test['SalePrice'].isnull().values==False]
+
+plt.scatter(tmp[tmp['TotalBsmtSF']>0]['TotalBsmtSF'], tmp[tmp['TotalBsmtSF']>0]['SalePrice'])
 
 # 可以看出 SalePrice 在整个 TotalBsmtSF 变量范围内显示出了同等级别的变化。
 ```
-
-
 
 
     <matplotlib.collections.PathCollection at 0x11d7d96d8>
@@ -1822,14 +1773,18 @@ plt.scatter(train[train['TotalBsmtSF']>0]['TotalBsmtSF'], train[train['TotalBsmt
 
 
 ```python
-x_train = train[['OverallQual', 'GrLivArea','GarageCars', 'TotalBsmtSF', 'FullBath', 'YearBuilt']]
-y_train = train[["SalePrice"]].values.ravel()
-x_test = test[['OverallQual', 'GrLivArea','GarageCars', 'TotalBsmtSF', 'FullBath', 'YearBuilt']]
+tmp = train_test[train_test['SalePrice'].isnull().values==False]
+tmp_1 = train_test[train_test['SalePrice'].isnull().values==True]
 
-# from sklearn.preprocessing import RobustScaler
-# N = RobustScaler()
-# rs_train = N.fit_transform(train)
-# rs_test = N.fit_transform(train)
+x_train = tmp[['OverallQual', 'GrLivArea','GarageCars', 'TotalBsmtSF', 'FullBath', 'YearBuilt']]
+y_train = tmp[["SalePrice"]].values.ravel()
+x_test = tmp_1[['OverallQual', 'GrLivArea','GarageCars', 'TotalBsmtSF', 'FullBath', 'YearBuilt']]
+
+# 简单测试，用中位数来替代
+# print(x_test.GarageCars.mean(), x_test.GarageCars.median(), x_test.TotalBsmtSF.mean(), x_test.TotalBsmtSF.median())
+
+x_test["GarageCars"].fillna(x_test.GarageCars.median(), inplace=True)
+x_test["TotalBsmtSF"].fillna(x_test.TotalBsmtSF.median(), inplace=True)
 ```
 
 ### 2.开始建模
@@ -1851,10 +1806,11 @@ from sklearn.linear_model import Ridge
 from sklearn.model_selection import cross_val_score
 from sklearn.ensemble import BaggingRegressor, RandomForestRegressor
 
-ridge = Ridge(alpha = 15)
+ridge = Ridge(alpha=0.1)
+
 # bagging 把很多小的分类器放在一起，每个train随机的一部分数据，然后把它们的最终结果综合起来（多数投票）
 # bagging 算是一种算法框架
-params = [1,10,15,20,25,30,40]
+params = [1, 10, 20, 40, 60]
 test_scores = []
 for param in params:
     clf = BaggingRegressor(base_estimator=ridge, n_estimators=param)
@@ -1863,6 +1819,7 @@ for param in params:
     test_score = np.sqrt(-cross_val_score(clf, x_train, y_train, cv=10, scoring='neg_mean_squared_error'))
     test_scores.append(np.mean(test_score))
 
+print(test_score.mean())
 plt.plot(params, test_scores)
 plt.title('n_estimators vs CV Error')
 plt.show()
@@ -1877,7 +1834,7 @@ plt.show()
 from sklearn.linear_model import Ridge
 from sklearn.model_selection import learning_curve
 
-ridge = Ridge(alpha = 15)
+ridge = Ridge(alpha=0.1)
 
 train_sizes, train_loss, test_loss = learning_curve(ridge, x_train, y_train, cv=10, 
                                                     scoring='neg_mean_squared_error',
@@ -1904,77 +1861,26 @@ plt.show()
 
 
 ```python
-mode_br = BaggingRegressor(base_estimator=ridge, n_estimators=25)
+mode_br = BaggingRegressor(base_estimator=ridge, n_estimators=10)
 mode_br.fit(x_train, y_train)
-# y_test = np.expm1(mode_br.predict(x_test))
-y_test = mode_br.predict(x_test)
+y_test = np.expm1(mode_br.predict(x_test))
 ```
-
-
-    ---------------------------------------------------------------------------
-
-    ValueError                                Traceback (most recent call last)
-
-    <ipython-input-426-1c40a6d7beeb> in <module>()
-          2 mode_br.fit(x_train, y_train)
-          3 # y_test = np.expm1(mode_br.predict(x_test))
-    ----> 4 y_test = mode_br.predict(x_test)
-    
-
-    ~/.virtualenvs/python3.6/lib/python3.6/site-packages/sklearn/ensemble/bagging.py in predict(self, X)
-        946         check_is_fitted(self, "estimators_features_")
-        947         # Check data
-    --> 948         X = check_array(X, accept_sparse=['csr', 'csc'])
-        949 
-        950         # Parallel loop
-
-
-    ~/.virtualenvs/python3.6/lib/python3.6/site-packages/sklearn/utils/validation.py in check_array(array, accept_sparse, dtype, order, copy, force_all_finite, ensure_2d, allow_nd, ensure_min_samples, ensure_min_features, warn_on_dtype, estimator)
-        451                              % (array.ndim, estimator_name))
-        452         if force_all_finite:
-    --> 453             _assert_all_finite(array)
-        454 
-        455     shape_repr = _shape_repr(array.shape)
-
-
-    ~/.virtualenvs/python3.6/lib/python3.6/site-packages/sklearn/utils/validation.py in _assert_all_finite(X)
-         42             and not np.isfinite(X).all()):
-         43         raise ValueError("Input contains NaN, infinity"
-    ---> 44                          " or a value too large for %r." % X.dtype)
-         45 
-         46 
-
-
-    ValueError: Input contains NaN, infinity or a value too large for dtype('float64').
-
-
-
-```python
-
-```
-
 
 ```python
 # 提交结果
-submission_df = pd.DataFrame(data = {'Id':x_test.index,'SalePrice':y_test})
+submission_df = pd.DataFrame(data = {'Id':test['Id'],'SalePrice': y_test})
 print(submission_df.head(10))
 submission_df.to_csv('/Users/jiangzl/Desktop/submission_br.csv',columns = ['Id','SalePrice'],index = False)
 ```
 
-       Id      SalePrice
-    0   0  218022.623974
-    1   1  164144.987442
-    2   2  221398.628262
-    3   3  191061.326748
-    4   4  294855.598373
-    5   5  155670.529343
-    6   6  249098.039164
-    7   7  221706.705606
-    8   8  185981.384326
-    9   9  114422.951956
-
-
-
-```python
-
-```
+        Id      SalePrice
+    0  1461  110469.586157
+    1  1462  148368.953437
+    2  1463  172697.673678
+    3  1464  189844.587562
+    4  1465  207009.716532
+    5  1466  188820.407208
+    6  1467  163107.556014
+    7  1468  180732.346459
+    8  1469  194841.804925
+    9  1470  110570.281362
