@@ -2,8 +2,8 @@
 # coding: utf-8
 '''
 Created on 2017-10-26
-Update  on 2017-10-26
-Author: 片刻
+Update  on 2018-05-16
+Author: 片刻/ccyf00
 Github: https://github.com/apachecn/kaggle
 '''
 
