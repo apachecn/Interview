@@ -43,3 +43,4 @@ predictLabel=knn.predict(X_test_transformed[:,:35])
 Submission = pd.DataFrame({"ImageId":range(1,predictLabel.shape[0]+1),
                            "Label":predictLabel})
 Submission.to_csv("datasets/getting-started/digit-recognizer/ouput/KnnMnistSubmission.csv", index=False)
+#分数：0.97385
