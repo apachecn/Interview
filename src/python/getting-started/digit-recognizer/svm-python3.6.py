@@ -18,13 +18,19 @@ from sklearn.svm import SVC
 from sklearn.metrics import classification_report
 from sklearn.model_selection import train_test_split
 
+import os
+if os.name=='nt':#根据操作系统自动选择路径
+    data_dir = 'G:/data/kaggle/datasets/getting-started/digit-recognizer/'
+else:
+    data_dir = '/media/wsw/B634091A3408DF6D/data/kaggle/datasets/getting-started/digit-recognizer/'
+
 
 # 加载数据
 def opencsv():
     print('Load Data...')
     # 使用 pandas 打开
-    dataTrain = pd.read_csv('datasets/getting-started/digit-recognizer/input/train.csv')
-    dataPre = pd.read_csv('datasets/getting-started/digit-recognizer/input/test.csv')
+    dataTrain = pd.read_csv(data_dir+'input/train.csv')
+    dataPre = pd.read_csv(data_dir+'input/test.csv')
     trainData = dataTrain.values[:, 1:]  # 读入全部训练数据
     trainLabel = dataTrain.values[:, 0]
     preData = dataPre.values[:, :]  # 测试全部测试个数据
@@ -188,8 +194,8 @@ def trainDRSVM():
     # 模型训练 (数据预处理-降维)
     optimalSVMClf, pcaPreData = getOptimalAccuracy(trainData, trainLabel, preData)
 
-    storeModel(optimalSVMClf, 'datasets/getting-started/digit-recognizer/ouput/Result_sklearn_SVM.model')
-    storeModel(pcaPreData, 'datasets/getting-started/digit-recognizer/ouput/Result_sklearn_SVM.pcaPreData')
+    storeModel(optimalSVMClf, data_dir+'ouput/Result_sklearn_SVM.model')
+    storeModel(pcaPreData, data_dir+'ouput/Result_sklearn_SVM.pcaPreData')
 
     print("finish!")
     stopTime = time.time()
@@ -199,14 +205,14 @@ def trainDRSVM():
 def preDRSVM():
     startTime = time.time()
     # 加载模型和数据
-    optimalSVMClf = getModel('datasets/getting-started/digit-recognizer/ouput/Result_sklearn_SVM.model')
-    pcaPreData = getModel('datasets/getting-started/digit-recognizer/ouput/Result_sklearn_SVM.pcaPreData')
+    optimalSVMClf = getModel(data_dir+'ouput/Result_sklearn_SVM.model')
+    pcaPreData = getModel(data_dir+'ouput/Result_sklearn_SVM.pcaPreData')
 
     # 结果预测
     testLabel = optimalSVMClf.predict(pcaPreData)
     # print("testLabel = %f" % testscore)
     # 结果的输出
-    saveResult(testLabel, 'datasets/getting-started/digit-recognizer/ouput/Result_sklearn_SVM.csv')
+    saveResult(testLabel, data_dir+'ouput/Result_sklearn_SVM.csv')
     print("finish!")
     stopTime = time.time()
     print('PreModel load time used:%f s' % (stopTime - startTime))
