@@ -12,15 +12,15 @@ import time
 import pandas as pd
 from numpy import shape, ravel
 from sklearn.neighbors import KNeighborsClassifier
+import sys
 
+cpath = '/Users/wuyanxue/Documents/GitHub/datasets/getting-started/digit-recognizer/'
 
 # 加载数据
 def opencsv():
     # 使用 pandas 打开
-    data = pd.read_csv(
-        'datasets/getting-started/digit-recognizer/input/train.csv')
-    data1 = pd.read_csv(
-        'datasets/getting-started/digit-recognizer/input/test.csv')
+    data = pd.read_csv(cpath + 'input/train.csv')
+    data1 = pd.read_csv(cpath + 'input/test.csv')
 
     train_data = data.values[0:, 1:]  # 读入全部训练数据,  [行，列]
     train_label = data.values[0:, 0] # 读取列表的第一列
@@ -70,7 +70,7 @@ def dRecognition_knn():
     # 结果的输出
     saveResult(
         testLabel,
-        'datasets/getting-started/digit-recognizer/output/Result_sklearn_knn.csv'
+        cpath + 'output/Result_sklearn_knn.csv'
     )
     print("finish!")
     stop_time_r = time.time()
