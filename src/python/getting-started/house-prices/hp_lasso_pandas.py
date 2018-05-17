@@ -1,4 +1,4 @@
-#!/usr/bin/python
+﻿#!/usr/bin/python
 # coding: utf-8
 
 '''
@@ -13,7 +13,7 @@ import numpy as np
 from sklearn.linear_model import Ridge
 import os.path
 
-data_dir = '../../../../datasets/getting-started/house-prices'
+data_dir = 'E:/kaggle-houseprices'
 # 加载数据
 def opencsv():
     # 使用 pandas 打开
