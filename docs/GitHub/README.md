@@ -18,9 +18,9 @@
 
 ## 下载地址
 
-### 1.客户端安装(三种方式都可行)
+### 1.客户端安装(例如：Mac 三种方式都可行)
 
-> (一 客户端操作: https://desktop.github.com/
+> (一 客户端操作: https://desktop.github.com/  【不推荐，程序员建议命令行】
 
 > (二 通过 homebrew 安装 git
 
@@ -108,6 +108,10 @@ jiangzl@jiangzhongliandeMacBook-Pro:~$
 <a href="https://www.bilibili.com/video/av15705305/" target="_blank">此图片链接为 bilibili 视频地址: (视频图片下面为文本操作指南)
 <img src="../../static/images/docs/GitHub/ApacheCN-GitHub入门操作-Fork到PullRequests.png">
 </a>
+
+全局概况图(看不懂就多看几遍)
+
+![](/static/images/docs/GitHub/github_origin_online_remote.jpg)
 
 > 一) fork apachecn/kaggle 项目
 
