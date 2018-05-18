@@ -9,22 +9,26 @@ Github: https://github.com/apachecn/kaggle
 PCA主成成分分析
 '''
 
+import os.path
 import csv
 import time
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 from sklearn.decomposition import PCA
 from sklearn.svm import SVC
 from sklearn.metrics import classification_report
 from sklearn.model_selection import train_test_split
 
+# 数据路径
+data_dir = '/Users/wuyanxue/Documents/GitHub/datasets/getting-started/digit-recognizer/'
 
 # 加载数据
 def opencsv():
     print('Load Data...')
     # 使用 pandas 打开
-    dataTrain = pd.read_csv('datasets/getting-started/digit-recognizer/input/train.csv')
-    dataPre = pd.read_csv('datasets/getting-started/digit-recognizer/input/test.csv')
+    dataTrain = pd.read_csv(os.path.join(data_dir, 'input/train.csv'))
+    dataPre = pd.read_csv(os.path.join(data_dir, 'input/test.csv'))
     trainData = dataTrain.values[:, 1:]  # 读入全部训练数据
     trainLabel = dataTrain.values[:, 0]
     preData = dataPre.values[:, :]  # 测试全部测试个数据
@@ -55,6 +59,7 @@ def dRCsv(x_train, x_test, preData, COMPONENT_NUM):
     print(pca.explained_variance_, '\n', pca.explained_variance_ratio_, '\n', pca.n_components_)
     print(sum(pca.explained_variance_ratio_))
     return pcaTrainData,  pcaTestData, pcaPreData
+
 
 
 # 训练模型
@@ -179,7 +184,6 @@ def getModel(filename):
     fr = open(filename, 'rb')
     return pickle.load(fr)
 
-
 def trainDRSVM():
     startTime = time.time()
 
@@ -188,8 +192,8 @@ def trainDRSVM():
     # 模型训练 (数据预处理-降维)
     optimalSVMClf, pcaPreData = getOptimalAccuracy(trainData, trainLabel, preData)
 
-    storeModel(optimalSVMClf, 'datasets/getting-started/digit-recognizer/ouput/Result_sklearn_SVM.model')
-    storeModel(pcaPreData, 'datasets/getting-started/digit-recognizer/ouput/Result_sklearn_SVM.pcaPreData')
+    storeModel(optimalSVMClf, os.path.join(data_dir, 'output/Result_sklearn_SVM.model'))
+    storeModel(pcaPreData, os.path.join(data_dir, 'output/Result_sklearn_SVM.pcaPreData'))
 
     print("finish!")
     stopTime = time.time()
@@ -199,25 +203,42 @@ def trainDRSVM():
 def preDRSVM():
     startTime = time.time()
     # 加载模型和数据
-    optimalSVMClf = getModel('datasets/getting-started/digit-recognizer/ouput/Result_sklearn_SVM.model')
-    pcaPreData = getModel('datasets/getting-started/digit-recognizer/ouput/Result_sklearn_SVM.pcaPreData')
+    optimalSVMClf = getModel(os.path.join(data_dir, 'output/Result_sklearn_SVM.model'))
+    pcaPreData = getModel(os.path.join(data_dir, 'output/Result_sklearn_SVM.pcaPreData'))
 
     # 结果预测
     testLabel = optimalSVMClf.predict(pcaPreData)
     # print("testLabel = %f" % testscore)
     # 结果的输出
-    saveResult(testLabel, 'datasets/getting-started/digit-recognizer/ouput/Result_sklearn_SVM.csv')
+    saveResult(testLabel, os.path.join(data_dir, 'output/Result_sklearn_SVM.csv'))
     print("finish!")
     stopTime = time.time()
     print('PreModel load time used:%f s' % (stopTime - startTime))
 
+# 数据可视化
+def dataVisulization(data, labels):
+    pca = PCA(n_components=2, whiten=True) # 使用PCA方法降到2维
+    pca.fit(data)
+    pcaData = pca.transform(data)
+    uniqueClasses = set(labels)
+    fig = plt.figure()
+    ax = fig.add_subplot(1, 1, 1)
+    for cClass in uniqueClasses:
+        plt.scatter(pcaData[labels==cClass, 0], pcaData[labels==cClass, 1])
+    plt.xlabel('$x_1$')
+    plt.ylabel('$x_2$')
+    plt.title('MNIST visualization')
+    plt.show()
 
 if __name__ == '__main__':
     trainData, trainLabel, preData = opencsv()
+    dataVisulization(trainData, trainLabel)
+
+
     # 训练并保存模型
-    trainDRSVM()
+    #trainDRSVM()
 
     # 分析数据
-    analyse_data(trainData)
+    #analyse_data(trainData)
     # 加载预测数据集
-    # preDRSVM()
+    #preDRSVM()

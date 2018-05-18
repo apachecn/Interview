@@ -14,15 +14,15 @@ import numpy as np
 import pandas as pd
 from sklearn.decomposition import PCA
 from sklearn.neighbors import KNeighborsClassifier
+import sys
 
-data_dir = '/opt/data/kaggle/getting-started/digit-recognizer/'
-
+data_dir = '/Users/wuyanxue/Documents/GitHub/datasets/getting-started/digit-recognizer/'
 
 # 加载数据
 def opencsv():
     # 使用 pandas 打开
-    data = pd.read_csv(os.path.join(data_dir, 'train.csv'))
-    data1 = pd.read_csv(os.path.join(data_dir, 'test.csv'))
+    data = pd.read_csv(os.path.join(data_dir, 'input/train.csv'))
+    data1 = pd.read_csv(os.path.join(data_dir, 'input/test.csv'))
 
     train_data = data.values[0:, 1:]  # 读入全部训练数据,  [行，列]
     train_label = data.values[0:, 0]  # 读取列表的第一列
@@ -95,9 +95,9 @@ def dRecognition_knn():
 
     # 结果预测
     testLabel = knnClf.predict(testData)
-
+    
     # 结果的输出
-    saveResult(testLabel, os.path.join(data_dir, 'Result_sklearn_knn.csv'))
+    saveResult(testLabel, os.path.join(data_dir, 'output/Result_sklearn_knn.csv'))
     print("finish!")
     stop_time_r = time.time()
     print('classify time used:%f' % (stop_time_r - start_time))
