@@ -1827,7 +1827,7 @@ plt.show()
 
 
 ![png](/static/images/competitions/getting-started/house-price/output_53_0.png)
-
+```python
 # 模型选择
 ## LASSO Regression :
 lasso = make_pipeline(RobustScaler(), Lasso(alpha=0.0005, random_state=1))
@@ -1890,7 +1890,7 @@ score = rmsle_cv(model_xgb)
 print("Xgboost score: {:.4f} ({:.4f})\n".format(score.mean(), score.std()))
 score = rmsle_cv(model_lgb)
 print("LGBM score: {:.4f} ({:.4f})\n".format(score.mean(), score.std()))
-
+```
 
 
 ```python
