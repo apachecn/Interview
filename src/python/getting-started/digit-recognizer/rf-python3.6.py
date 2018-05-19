@@ -6,7 +6,7 @@ Update  on 2018-05-19
 Author: 平淡的天/wang-sw
 Github: https://github.com/apachecn/kaggle
 '''
-
+import os.path
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.decomposition import PCA
