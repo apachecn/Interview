@@ -34,7 +34,7 @@
 
 四. 模型融合
 1. 可以参考泰坦尼克号的简单模型融合方式，通过对模型的对比打分方式选择合适的模型
-2. 模型融合的参考资料
+2. 在房价预测里我们使用模型融合的方法来输出结果，最终的效果很好。
 
 五. 修改特征和模型参数
 1.可以通过添加或者修改特征,提高模型的上限.
@@ -1828,6 +1828,69 @@ plt.show()
 
 ![png](/static/images/competitions/getting-started/house-price/output_53_0.png)
 
+# 模型选择
+## LASSO Regression :
+lasso = make_pipeline(RobustScaler(), Lasso(alpha=0.0005, random_state=1))
+* Elastic Net Regression
+ENet = make_pipeline(
+    RobustScaler(), ElasticNet(
+        alpha=0.0005, l1_ratio=.9, random_state=3))
+Kernel Ridge Regression
+KRR = KernelRidge(alpha=0.6, kernel='polynomial', degree=2, coef0=2.5)
+## Gradient Boosting Regression
+GBoost = GradientBoostingRegressor(
+    n_estimators=3000,
+    learning_rate=0.05,
+    max_depth=4,
+    max_features='sqrt',
+    min_samples_leaf=15,
+    min_samples_split=10,
+    loss='huber',
+    random_state=5)
+## XGboost
+model_xgb = xgb.XGBRegressor(
+    colsample_bytree=0.4603,
+    gamma=0.0468,
+    learning_rate=0.05,
+    max_depth=3,
+    min_child_weight=1.7817,
+    n_estimators=2200,
+    reg_alpha=0.4640,
+    reg_lambda=0.8571,
+    subsample=0.5213,
+    silent=1,
+    random_state=7,
+    nthread=-1)
+## lightGBM
+model_lgb = lgb.LGBMRegressor(
+    objective='regression',
+    num_leaves=5,
+    learning_rate=0.05,
+    n_estimators=720,
+    max_bin=55,
+    bagging_fraction=0.8,
+    bagging_freq=5,
+    feature_fraction=0.2319,
+    feature_fraction_seed=9,
+    bagging_seed=9,
+    min_data_in_leaf=6,
+    min_sum_hessian_in_leaf=11)
+## 对这些基本模型进行打分
+score = rmsle_cv(lasso)
+print("\nLasso score: {:.4f} ({:.4f})\n".format(score.mean(), score.std()))
+score = rmsle_cv(ENet)
+print("ElasticNet score: {:.4f} ({:.4f})\n".format(score.mean(), score.std()))
+score = rmsle_cv(KRR)
+print(
+    "Kernel Ridge score: {:.4f} ({:.4f})\n".format(score.mean(), score.std()))
+score = rmsle_cv(GBoost)
+print("Gradient Boosting score: {:.4f} ({:.4f})\n".format(score.mean(),
+                                                          score.std()))
+score = rmsle_cv(model_xgb)
+print("Xgboost score: {:.4f} ({:.4f})\n".format(score.mean(), score.std()))
+score = rmsle_cv(model_lgb)
+print("LGBM score: {:.4f} ({:.4f})\n".format(score.mean(), score.std()))
+
 
 
 ```python
@@ -1867,10 +1930,64 @@ y_test = np.expm1(mode_br.predict(x_test))
 ```
 
 ```python
-# 提交结果
-submission_df = pd.DataFrame(data = {'Id':test['Id'],'SalePrice': y_test})
-print(submission_df.head(10))
-submission_df.to_csv('/Users/jiangzl/Desktop/submission_br.csv',columns = ['Id','SalePrice'],index = False)
+# 模型融合
+class AveragingModels(BaseEstimator, RegressorMixin, TransformerMixin):
+    def __init__(self, models):
+        self.models = models
+
+    # we define clones of the original models to fit the data in
+    def fit(self, X, y):
+        self.models_ = [clone(x) for x in self.models]
+
+        # Train cloned base models
+        for model in self.models_:
+            model.fit(X, y)
+
+        return self
+
+    # Now we do the predictions for cloned models and average them
+    def predict(self, X):
+        predictions = np.column_stack(
+            [model.predict(X) for model in self.models_])
+        return np.mean(predictions, axis=1)
+
+
+# 评价这四个模型的好坏
+averaged_models = AveragingModels(models=(ENet, GBoost, KRR, lasso))
+score = rmsle_cv(averaged_models)
+print(" Averaged base models score: {:.4f} ({:.4f})\n".format(score.mean(),
+                                                              score.std()))
+
+# 最终对模型的训练和预测
+# StackedRegressor
+stacked_averaged_models.fit(train.values, y_train)
+stacked_train_pred = stacked_averaged_models.predict(train.values)
+stacked_pred = np.expm1(stacked_averaged_models.predict(test.values))
+print(rmsle(y_train, stacked_train_pred))
+
+# XGBoost
+model_xgb.fit(train, y_train)
+xgb_train_pred = model_xgb.predict(train)
+xgb_pred = np.expm1(model_xgb.predict(test))
+print(rmsle(y_train, xgb_train_pred))
+# lightGBM
+model_lgb.fit(train, y_train)
+lgb_train_pred = model_lgb.predict(train)
+lgb_pred = np.expm1(model_lgb.predict(test.values))
+print(rmsle(y_train, lgb_train_pred))
+'''RMSE on the entire Train data when averaging'''
+
+print('RMSLE score on train data:')
+print(rmsle(y_train, stacked_train_pred * 0.70 + xgb_train_pred * 0.15 +
+            lgb_train_pred * 0.15))
+# 模型融合的预测效果
+ensemble = stacked_pred * 0.70 + xgb_pred * 0.15 + lgb_pred * 0.15
+# 保存结果
+result = pd.DataFrame()
+result['Id'] = test_ID
+result['SalePrice'] = ensemble
+# index=False 是用来除去行编号
+result.to_csv('/Users/liudong/Desktop/house_price/result.csv', index=False)
 ```
 
         Id      SalePrice
