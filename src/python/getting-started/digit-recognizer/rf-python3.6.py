@@ -54,7 +54,7 @@ def dRPCA(data, COMPONENT_NUM=100):
 
 
 # 训练模型
-def trainModel(Xtrain, xtest):
+def trainModel(X_train, y_train):
     print('Train RF...')
     clf = RandomForestClassifier(
         n_estimators=140,
@@ -62,13 +62,13 @@ def trainModel(Xtrain, xtest):
         min_samples_split=2,
         min_samples_leaf=1,
         random_state=34)
-    clf.fit(Xtrain, xtest)  # 训练rf
+    clf.fit(X_train, y_train)  # 训练rf
 
     # clf=LGBMClassifier(num_leaves=63, max_depth=7, n_estimators=80, n_jobs=20)
 
     # param_test1 = {'n_estimators':arange(10,150,10),'max_depth':arange(1,21,1)}
     # gsearch1 = GridSearchCV(estimator = clf, param_grid = param_test1, scoring='accuracy',iid=False,cv=5)
-    # gsearch1.fit(Xtrain,xtest)
+    # gsearch1.fit(X_train, y_train)
     # print(gsearch1.grid_scores_, gsearch1.best_params_, gsearch1.best_score_)
     # clf=gsearch1.best_estimator_
 
@@ -76,8 +76,8 @@ def trainModel(Xtrain, xtest):
 
 
 # 计算准确率
-def printAccuracy(ytest ,y_predict):
-    zeroLable = ytest - y_predict
+def printAccuracy(y_test ,y_predict):
+    zeroLable = y_test - y_predict
     rightCount = 0
     for i in range(len(zeroLable)):
         if list(zeroLable)[i] == 0:
@@ -123,18 +123,18 @@ def trainRF():
     # 模型训练 (数据预处理-降维)
     data_pca = dRPCA(data,100)
 
-    Xtrain, Ytrain, xtest, ytest = train_test_split(
+    X_train, X_test, y_train, y_test = train_test_split(
         data_pca[0:len(train_data)], label, test_size=0.1, random_state=34)
 
-    rfClf = trainModel(Xtrain, xtest)
+    rfClf = trainModel(X_train, y_train)
 
     # 保存结果
     storeModel(data_pca[len(train_data):], os.path.join(data_dir, 'output/Result_sklearn_rf.pcaPreData'))
     storeModel(rfClf, os.path.join(data_dir, 'output/Result_sklearn_rf.model'))
 
     # 模型准确率
-    y_predict = rfClf.predict(Ytrain)
-    printAccuracy(ytest, y_predict)
+    y_predict = rfClf.predict(X_test)
+    printAccuracy(y_test, y_predict)
 
     print("finish!")
     stopTime = time.time()
