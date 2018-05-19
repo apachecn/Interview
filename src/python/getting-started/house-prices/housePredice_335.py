@@ -67,17 +67,19 @@ print("\nThe train data size after dropping Id feature is : {} ".format(
 print(
     "The test data size after dropping Id feature is : {} ".format(test.shape))
 
-# Deleting outliers 删除那些异常数据值
-train = train.drop(
-    train[(train['GrLivArea'] > 4000) & (train['SalePrice'] < 300000)].index)
+# 删除那些异常数据值
+train = train.drop(train[(train['GrLivArea']>4000) & (train['SalePrice']<300000)].index)
 
 # We use the numpy fuction log1p which  applies log(1+x) to all elements of the column
+# log(1+x)来处理所有的数值
 train["SalePrice"] = np.log1p(train["SalePrice"])
 
 # 特征工程
-# let's first concatenate the train and test data in the same dataframe
-ntrain = train.shape[0]
+# 把训练集和测试集的数据contact一起放置在DataFrame当中
+# 0 代表行数
+ntrain = train.shape[0] 
 ntest = test.shape[0]
+# SalesPrice的值
 y_train = train.SalePrice.values
 all_data = pd.concat((train, test)).reset_index(drop=True)
 all_data.drop(['SalePrice'], axis=1, inplace=True)
@@ -95,11 +97,14 @@ all_data["MiscFeature"] = all_data["MiscFeature"].fillna("None")
 all_data["Alley"] = all_data["Alley"].fillna("None")
 all_data["Fence"] = all_data["Fence"].fillna("None")
 all_data["FireplaceQu"] = all_data["FireplaceQu"].fillna("None")
-# Group by neighborhood and fill in missing value by the median LotFrontage of all the neighborhood
-all_data["LotFrontage"] = all_data.groupby(
-    "Neighborhood")["LotFrontage"].transform(lambda x: x.fillna(x.median()))
+# 通过neighborhood进行分组，同时使用median来填充缺失数据
+all_data["LotFrontage"] = all_data.groupby("Neighborhood")["LotFrontage"].transform(
+    lambda x: x.fillna(x.median()))
+# 根据数值的类型不同，选择不同的填充值
+# 使用None来填充缺失值 fillna('None') 
 for col in ('GarageType', 'GarageFinish', 'GarageQual', 'GarageCond'):
     all_data[col] = all_data[col].fillna('None')
+# 使用0来填充缺失值 fillna(0)
 for col in ('GarageYrBlt', 'GarageArea', 'GarageCars'):
     all_data[col] = all_data[col].fillna(0)
 for col in ('BsmtFinSF1', 'BsmtFinSF2', 'BsmtUnfSF', 'TotalBsmtSF',
@@ -114,18 +119,14 @@ all_data['MSZoning'] = all_data['MSZoning'].fillna(
     all_data['MSZoning'].mode()[0])
 all_data = all_data.drop(['Utilities'], axis=1)
 all_data["Functional"] = all_data["Functional"].fillna("Typ")
-all_data['Electrical'] = all_data['Electrical'].fillna(
-    all_data['Electrical'].mode()[0])
-all_data['KitchenQual'] = all_data['KitchenQual'].fillna(
-    all_data['KitchenQual'].mode()[0])
-all_data['Exterior1st'] = all_data['Exterior1st'].fillna(
-    all_data['Exterior1st'].mode()[0])
-all_data['Exterior2nd'] = all_data['Exterior2nd'].fillna(
-    all_data['Exterior2nd'].mode()[0])
-all_data['SaleType'] = all_data['SaleType'].fillna(
-    all_data['SaleType'].mode()[0])
+# mode()  [0]对行取众数 [1]是对列取众数(这里没用到）
+all_data['Electrical'] = all_data['Electrical'].fillna(all_data['Electrical'].mode()[0])
+all_data['KitchenQual'] = all_data['KitchenQual'].fillna(all_data['KitchenQual'].mode()[0])
+all_data['Exterior1st'] = all_data['Exterior1st'].fillna(all_data['Exterior1st'].mode()[0])
+all_data['Exterior2nd'] = all_data['Exterior2nd'].fillna(all_data['Exterior2nd'].mode()[0])
+all_data['SaleType'] = all_data['SaleType'].fillna(all_data['SaleType'].mode()[0])
 all_data['MSSubClass'] = all_data['MSSubClass'].fillna("None")
-#Check remaining missing values if any
+#检查数值是否还有缺失
 all_data_na = (all_data.isnull().sum() / len(all_data)) * 100
 all_data_na = all_data_na.drop(
     all_data_na[all_data_na == 0].index).sort_values(ascending=False)
@@ -144,11 +145,11 @@ all_data['YrSold'] = all_data['YrSold'].astype(str)
 all_data['MoSold'] = all_data['MoSold'].astype(str)
 
 cols = ('FireplaceQu', 'BsmtQual', 'BsmtCond', 'GarageQual', 'GarageCond',
-        'ExterQual', 'ExterCond', 'HeatingQC', 'PoolQC', 'KitchenQual',
-        'BsmtFinType1', 'BsmtFinType2', 'Functional', 'Fence', 'BsmtExposure',
-        'GarageFinish', 'LandSlope', 'LotShape', 'PavedDrive', 'Street',
-        'Alley', 'CentralAir', 'MSSubClass', 'OverallCond', 'YrSold', 'MoSold')
-# process columns, apply LabelEncoder to categorical features
+        'ExterQual', 'ExterCond','HeatingQC', 'PoolQC', 'KitchenQual', 'BsmtFinType1',
+        'BsmtFinType2', 'Functional', 'Fence', 'BsmtExposure', 'GarageFinish', 'LandSlope',
+        'LotShape', 'PavedDrive', 'Street', 'Alley', 'CentralAir', 'MSSubClass', 'OverallCond',
+        'YrSold', 'MoSold')
+# 使用 LabelEncoder 转换上述特征
 for c in cols:
     lbl = LabelEncoder()
     lbl.fit(list(all_data[c].values))
