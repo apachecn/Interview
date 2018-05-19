@@ -123,18 +123,18 @@ def trainRF():
     # 模型训练 (数据预处理-降维)
     data_pca = dRPCA(data,100)
 
-    Xtrain, Ytrain, xtest, ytest = train_test_split(
+    X_train, X_test, y_train, y_test = train_test_split(
         data_pca[0:len(train_data)], label, test_size=0.1, random_state=34)
 
-    rfClf = trainModel(Xtrain, xtest)
+    rfClf = trainModel(X_train, y_train)
 
     # 保存结果
     storeModel(data_pca[len(train_data):], os.path.join(data_dir, 'output/Result_sklearn_rf.pcaPreData'))
     storeModel(rfClf, os.path.join(data_dir, 'output/Result_sklearn_rf.model'))
 
     # 模型准确率
-    y_predict = rfClf.predict(Ytrain)
-    printAccuracy(ytest, y_predict)
+    y_predict = rfClf.predict(X_test)
+    printAccuracy(y_test, y_predict)
 
     print("finish!")
     stopTime = time.time()
