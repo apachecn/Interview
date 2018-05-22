@@ -89,7 +89,7 @@ imgs = [os.path.join(root, img) for img in os.listdir(root)]
             if self.test or not train:
                 self.trainsforms = T.Compose([T.Resize(224), T.CenterCrop(224), T.ToTensor(), normalize])
             else:
-                # 如果是测试集的话，使用另外的转换
+                # 如果是训练集的话，使用另外的转换
                 self.transforms = T.Compose([T.Resize(256), T.RandomResizedCrop(224), T.RandomHorizontalFlip(), T.ToTensor(), normalize])
 ```
 
@@ -142,7 +142,7 @@ loader_test = data.DataLoader(test_dataset, batch_size=3, shuffle=True, num_work
 ## 四、构建 CNN 模型
 
 ```python
-# 调用我们现成的 AlexNet() 模型
+# 调用已经写好的 AlexNet() 模型
 cnn = AlexNet()
 # 将模型打印出来观察一下
 print(cnn)
