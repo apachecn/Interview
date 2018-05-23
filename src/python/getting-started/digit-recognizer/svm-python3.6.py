@@ -21,7 +21,7 @@ from sklearn.metrics import classification_report
 from sklearn.model_selection import train_test_split
 
 # 数据路径
-data_dir = '/Users/wuyanxue/Documents/GitHub/datasets/getting-started/digit-recognizer/'
+data_dir = 'G:/data/kaggle/datasets/getting-started/digit-recognizer/'
 
 # 加载数据
 def opencsv():
@@ -45,9 +45,9 @@ def dRCsv(x_train, x_test, preData, COMPONENT_NUM):
     '''
     使用说明：https://www.cnblogs.com/pinard/p/6243025.html
     n_components>=1
-      n_components=NUM   设置占特征数量比
+      n_components=NUM   设置降维到的维度数目
     0 < n_components < 1
-      n_components=0.99  设置阈值总方差占比
+      n_components=0.99  设置阈值(总方差占比)决定降维到的维度数目
     '''
     pca = PCA(n_components=COMPONENT_NUM, whiten=True)
     pca.fit(trainData)  # Fit the model with X
