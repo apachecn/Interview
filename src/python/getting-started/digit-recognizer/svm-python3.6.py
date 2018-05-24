@@ -6,7 +6,6 @@ Created on 2017-10-26
 Update  on 2017-10-26
 Author: 片刻
 Github: https://github.com/apachecn/kaggle
-PCA主成成分分析
 '''
 
 import os.path
