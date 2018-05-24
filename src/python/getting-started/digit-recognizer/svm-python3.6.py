@@ -21,7 +21,8 @@ from sklearn.metrics import classification_report
 from sklearn.model_selection import train_test_split
 
 # 数据路径
-data_dir = '/Users/wuyanxue/Documents/GitHub/datasets/getting-started/digit-recognizer/'
+data_dir = '/opt/data/kaggle/getting-started/digit-recognizer/'
+
 
 # 加载数据
 def opencsv():
@@ -61,7 +62,6 @@ def dRCsv(x_train, x_test, preData, COMPONENT_NUM):
     return pcaTrainData,  pcaTestData, pcaPreData
 
 
-
 # 训练模型
 def trainModel(trainData, trainLabel):
     print('Train SVM...')
@@ -85,20 +85,20 @@ def saveResult(result, csvName):
 # 分析数据,看数据是否满足要求（通过这些来检测数据的相关性，考虑在分类的时候提取出重要的特征）
 def analyse_data(dataMat):
     meanVals = np.mean(dataMat, axis=0)  # np.mean 求出每列的平均值meanVals
-    meanRemoved = dataMat-meanVals # 每一列特征值减去该列的特征值均值
+    meanRemoved = dataMat-meanVals  # 每一列特征值减去该列的特征值均值
     # 计算协方差矩阵，除数n-1是为了得到协方差的 无偏估计
     # cov(X,0) = cov(X) 除数是n-1(n为样本个数)
     # cov(X,1) 除数是n
-    covMat = np.cov(meanRemoved, rowvar=0) # cov 计算协方差的值,
+    covMat = np.cov(meanRemoved, rowvar=0)  # cov 计算协方差的值,
     # np.mat 是用来生成一个矩阵的
     # 保存特征值(eigvals)和对应的特征向量(eigVects)
-    eigvals, eigVects = np.linalg.eig(np.mat(covMat)) # linalg.eig 计算的值是矩阵的特征值，保存在对应的矩阵中
-    eigValInd = np.argsort(eigvals) #  argsort 对特征值进行排序，返回的是数值从小到大的索引值
+    eigvals, eigVects = np.linalg.eig(np.mat(covMat))  # linalg.eig 计算的值是矩阵的特征值，保存在对应的矩阵中
+    eigValInd = np.argsort(eigvals)  # argsort 对特征值进行排序，返回的是数值从小到大的索引值
 
-    topNfeat = 100 # 需要保留的特征维度，即要压缩成的维度数
+    topNfeat = 100  # 需要保留的特征维度，即要压缩成的维度数
 
     # 从排序后的矩阵最后一个开始自下而上选取最大的N个特征值，返回其对应的索引
-    eigValInd = eigValInd[:-(topNfeat+1):-1] 
+    eigValInd = eigValInd[:-(topNfeat+1):-1]
 
     # 计算特征值的总和
     cov_all_score = float(sum(eigvals))
@@ -184,6 +184,7 @@ def getModel(filename):
     fr = open(filename, 'rb')
     return pickle.load(fr)
 
+
 def trainDRSVM():
     startTime = time.time()
 
@@ -215,6 +216,7 @@ def preDRSVM():
     stopTime = time.time()
     print('PreModel load time used:%f s' % (stopTime - startTime))
 
+
 # 数据可视化
 def dataVisulization(data, labels):
     pca = PCA(n_components=2, whiten=True) # 使用PCA方法降到2维
@@ -229,6 +231,7 @@ def dataVisulization(data, labels):
     plt.ylabel('$x_2$')
     plt.title('MNIST visualization')
     plt.show()
+
 
 if __name__ == '__main__':
     trainData, trainLabel, preData = opencsv()

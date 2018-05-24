@@ -14,9 +14,9 @@ import numpy as np
 import pandas as pd
 from sklearn.decomposition import PCA
 from sklearn.neighbors import KNeighborsClassifier
-import sys
 
-data_dir = '/Users/wuyanxue/Documents/GitHub/datasets/getting-started/digit-recognizer/'
+data_dir = '/opt/data/kaggle/getting-started/digit-recognizer/'
+
 
 # 加载数据
 def opencsv():
@@ -31,18 +31,15 @@ def opencsv():
 
 
 def saveResult(result, csvName):
-    with open(csvName, 'w', newline='') as myFile:  # 创建记录输出结果的文件（w 和 wb 使用的时候有问题）
+    with open(csvName, 'w') as myFile:  # 创建记录输出结果的文件（w 和 wb 使用的时候有问题）
         # python3里面对 str和bytes类型做了严格的区分，不像python2里面某些函数里可以混用。所以用python3来写wirterow时，打开文件不要用wb模式，只需要使用w模式，然后带上newline=''
-        myWriter = csv.writer(myFile)  # 对文件执行写入
-        myWriter.writerow(["ImageId", "Label"])  # 设置表格的列名
+        myWriter = csv.writer(myFile)
+        myWriter.writerow(["ImageId", "Label"])
         index = 0
-        for i in result:
-            tmp = []
-            index = index + 1
-            tmp.append(index)
-            # tmp.append(i)
-            tmp.append(int(i))  # 测试集的标签值
-            myWriter.writerow(tmp)
+        for r in result:
+            index += 1
+            myWriter.writerow([index, int(r)])
+    print('Saved successfully...')  # 保存预测结果
 
 
 def knnClassify(trainData, trainLabel):
@@ -95,7 +92,7 @@ def dRecognition_knn():
 
     # 结果预测
     testLabel = knnClf.predict(testData)
-    
+
     # 结果的输出
     saveResult(testLabel, os.path.join(data_dir, 'output/Result_sklearn_knn.csv'))
     print("finish!")
