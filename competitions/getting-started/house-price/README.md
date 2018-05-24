@@ -1929,6 +1929,10 @@ mode_br.fit(x_train, y_train)
 y_test = np.expm1(mode_br.predict(x_test))
 ```
 
+## 四 建立模型
+
+> 模型融合 voting
+
 ```python
 # 模型融合
 class AveragingModels(BaseEstimator, RegressorMixin, TransformerMixin):
@@ -1989,15 +1993,3 @@ result['SalePrice'] = ensemble
 # index=False 是用来除去行编号
 result.to_csv('/Users/liudong/Desktop/house_price/result.csv', index=False)
 ```
-
-        Id      SalePrice
-    0  1461  110469.586157
-    1  1462  148368.953437
-    2  1463  172697.673678
-    3  1464  189844.587562
-    4  1465  207009.716532
-    5  1466  188820.407208
-    6  1467  163107.556014
-    7  1468  180732.346459
-    8  1469  194841.804925
-    9  1470  110570.281362
