@@ -60,7 +60,7 @@ def dRPCA(x_train, x_test, COMPONENT_NUM):
     0 < n_components < 1
       n_components=0.99  设置阈值总方差占比
     '''
-    pca = PCA(n_components=COMPONENT_NUM, whiten=True)
+    pca = PCA(n_components=COMPONENT_NUM, whiten=False)
     pca.fit(trainData)  # Fit the model with X
     pcaTrainData = pca.transform(trainData)  # Fit the model with X and 在X上完成降维.
     pcaTestData = pca.transform(testData)  # Fit the model with X and 在X上完成降维.
@@ -85,7 +85,7 @@ def dRecognition_knn():
     print('load data time used:%f' % (stop_time_l - start_time))
 
     # 降维处理
-    trainData, testData = dRPCA(trainData, testData, 35)
+    trainData, testData = dRPCA(trainData, testData, 0.8)
 
     # 模型训练
     knnClf = knnClassify(trainData, trainLabel)
