@@ -1,0 +1,21 @@
+初始化目录步骤如下：
+首先安装git软件，注册github账号
+在打开git bash,输入git看看有没有反应
+若有则输入以下命令，其中--global代表为所有账户设置的，否则只是当前的账户的名字和邮箱
+$ git config --global user.name "Your Name"
+$ git config --global user.email "email@example.com"
+
+下面用ssh绑定git和github
+ssh-keygen -t rsa -C "邮箱地址"
+然后连续敲击三次
+得到两个key，打开其中的pub后缀文件复制其中的文件然后到github网页中setting处进行设置第一个是title随便写，第二个处将之前的粘贴的内容粘贴到这里
+最后点击添加
+
+设置后在合适的地方建立文件夹，命名为kaggle
+并且进入git bash 后用cd和ls，pwd命令进入到之前设置的kaggle文件夹
+
+然后登陆github账户然后fork房价预测项目并且复制网址
+git clone https://github.com/jiangzhonglian/kaggle.git
+
+
+
