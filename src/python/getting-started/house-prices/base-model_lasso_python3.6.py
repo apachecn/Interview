@@ -11,7 +11,7 @@ import pandas as pd
 from sklearn.linear_model import Ridge
 import os.path
 
-data_dir = '/opt/data/kaggle/getting-started/house-prices'
+data_dir = '/kaggle/getting-started/house-prices'
 
 
 # 加载数据
