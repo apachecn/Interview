@@ -15,6 +15,8 @@
 
 ## [竞赛](https://www.kaggle.com/competitions)
 
+* 【推荐】特征工程全过程: https://www.cnblogs.com/jasonfreak/p/5448385.html
+
 ```
 机器学习比赛，奖金很高，业界承认分数。
 现在我们已经准备好尝试 Kaggle 竞赛了，这些竞赛分成以下几个类别。

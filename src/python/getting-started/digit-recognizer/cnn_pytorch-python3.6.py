@@ -20,7 +20,7 @@ from torch.utils.data import Dataset, DataLoader
 import os.path
 
 # 数据路径
-data_dir = '/media/wsw/B634091A3408DF6D/data/kaggle/datasets/getting-started/digit-recognizer/'
+data_dir = '/opt/data/kaggle/getting-started/digit-recognizer/'
 
 class CustomedDataSet(Dataset):
     def __init__(self, train=True):
