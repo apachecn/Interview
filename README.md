@@ -38,7 +38,7 @@
 
 > [第2部分：入门比赛 Getting Started](https://www.kaggle.com/competitions?sortBy=deadline&group=all&page=1&pageSize=20&segment=gettingStarted)
 
-`入门比赛 Getting Started` 给萌新们一个试水的机会，没有奖金，但有非常多的前辈经验可供学习。很久以前Kaggle这个栏目名称是101的时候，比赛题目还很多，但是现在只保留了4个最经典的入门竞赛：手写数字识别、沉船事故幸存估计、脸部识别、Julia语言入门。
+`入门比赛 Getting Started` 给萌新们一个试水的机会，没有奖金，但有非常多的前辈经验可供学习。很久以前Kaggle这个栏目名称是101的时候，比赛题目还很多，但是现在只保留了9个最经典的入门竞赛：手写数字识别、沉船事故幸存估计、脸部识别、Julia语言入门。
 
 * [**数字识别**](/competitions/getting-started/digit-recognizer)
 * [**泰坦尼克**](/competitions/getting-started/titanic)
