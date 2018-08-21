@@ -1,7 +1,7 @@
 # Kaggle
-![](static/images/logos/kaggle-logo-gray-bigger.jpeg) 
+![](static/images/logos/kaggle-logo-gray-bigger.jpeg)
 
-* [ApacheCN 开源组织](https://github.com/apachecn/organization): https://github.com/apachecn/organization
+* [ApacheCN 组织资源](https://github.com/apachecn/home): https://github.com/apachecn/home
 
 > **欢迎任何人参与和完善：一个人可以走的很快，但是一群人却可以走的更远**
 * <strong>ApacheCN - Kaggle组队群【686932392】<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=716b584bbd7cdf64e961b499c7fb5891faf1f6c92dad026e3c596a57c834f1ec"><img title="ApacheCN - Kaggle组队群【686932392】" src="http://www.apachecn.org/wp-content/uploads/2017/10/ApacheCN-group.png" alt="ApacheCN - Kaggle组队群【686932392】" /></a></strong></li>
@@ -27,7 +27,7 @@
 * train loss 趋于不变，test loss趋于不变，说明学习遇到瓶颈，需要减小学习率或批量数目;
 * train loss 不断上升，test loss不断上升，说明网络结构设计不当，训练超参数设置不当，数据集经过清洗等问题。
 
-```
+```python
 机器学习比赛，奖金很高，业界承认分数。
 现在我们已经准备好尝试 Kaggle 竞赛了，这些竞赛分成以下几个类别。
 ```
