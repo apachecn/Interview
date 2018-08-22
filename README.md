@@ -1,7 +1,7 @@
 # Kaggle
-![](static/images/logos/kaggle-logo-gray-bigger.jpeg) 
+![](static/images/logos/kaggle-logo-gray-bigger.jpeg)
 
-* [ApacheCN 开源组织](https://github.com/apachecn/organization): https://github.com/apachecn/organization
+* [ApacheCN 组织资源](https://github.com/apachecn/home): https://github.com/apachecn/home
 
 > **欢迎任何人参与和完善：一个人可以走的很快，但是一群人却可以走的更远**
 * <strong>ApacheCN - Kaggle组队群【686932392】<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=716b584bbd7cdf64e961b499c7fb5891faf1f6c92dad026e3c596a57c834f1ec"><img title="ApacheCN - Kaggle组队群【686932392】" src="http://www.apachecn.org/wp-content/uploads/2017/10/ApacheCN-group.png" alt="ApacheCN - Kaggle组队群【686932392】" /></a></strong></li>
@@ -27,43 +27,50 @@
 * train loss 趋于不变，test loss趋于不变，说明学习遇到瓶颈，需要减小学习率或批量数目;
 * train loss 不断上升，test loss不断上升，说明网络结构设计不当，训练超参数设置不当，数据集经过清洗等问题。
 
-```
+```python
 机器学习比赛，奖金很高，业界承认分数。
 现在我们已经准备好尝试 Kaggle 竞赛了，这些竞赛分成以下几个类别。
 ```
 
-> [第1部分：课业比赛 InClass](https://www.kaggle.com/competitions?sortBy=deadline&group=all&page=1&pageSize=20&segment=inClass)
+### [第1部分：课业比赛 InClass](https://www.kaggle.com/competitions?sortBy=deadline&group=all&page=1&pageSize=20&segment=inClass)
 
 `课业比赛 InClass` 是学校教授机器学习的老师留作业的地方，这里的竞赛有些会向public开放参赛，也有些仅仅是学校内部教学使用。
 
-> [第2部分：入门比赛 Getting Started](https://www.kaggle.com/competitions?sortBy=deadline&group=all&page=1&pageSize=20&segment=gettingStarted)
+### [第2部分：入门比赛 Getting Started](https://www.kaggle.com/competitions?sortBy=deadline&group=all&page=1&pageSize=20&segment=gettingStarted)
 
-`入门比赛 Getting Started` 给萌新们一个试水的机会，没有奖金，但有非常多的前辈经验可供学习。很久以前Kaggle这个栏目名称是101的时候，比赛题目还很多，但是现在只保留了4个最经典的入门竞赛：手写数字识别、沉船事故幸存估计、脸部识别、Julia语言入门。
+`入门比赛 Getting Started` 给萌新们一个试水的机会，没有奖金，但有非常多的前辈经验可供学习。很久以前Kaggle这个栏目名称是101的时候，比赛题目还很多，但是现在只保留了9个最经典的入门竞赛：手写数字识别、沉船事故幸存估计、脸部识别、Julia语言入门。
 
 * [**数字识别**](/competitions/getting-started/digit-recognizer)
 * [**泰坦尼克**](/competitions/getting-started/titanic)
 * [**房价预测**](/competitions/getting-started/house-price)
 * [**nlp-情感分析**](/competitions/getting-started/word2vec-nlp-tutorial)
 
-> [第3部分：训练场 Playground](https://www.kaggle.com/competitions?sortBy=deadline&group=all&page=1&pageSize=20&segment=playground)
+### [第3部分：训练场 Playground](https://www.kaggle.com/competitions?sortBy=deadline&group=all&page=1&pageSize=20&segment=playground)
 
 `训练场 Playground`里的题目以有趣为主，比如猫狗照片分类的问题。现在这个分类下的题目不算多，但是热度很高。
 
 * [**猫狗识别**](/competitions/playground/dogs-vs-cats)
 
-> [第4部分： 研究项目(少奖金) Research](https://www.kaggle.com/competitions?sortBy=prize&group=active&page=1&pageSize=20&segment=research)
+### [第4部分： 研究项目(少奖金) Research](https://www.kaggle.com/competitions?sortBy=prize&group=active&page=1&pageSize=20&segment=research)
 
 `研究型 Research` 竞赛通常是机器学习前沿技术或者公益性质的题目。竞赛奖励可能是现金，也有一部分以会议邀请、发表论文的形式奖励。
 
-> [第5部分：人才征募 Recruitment](https://www.kaggle.com/competitions?sortBy=prize&group=active&page=1&pageSize=20&segment=recruitment)
+### [第5部分：人才征募 Recruitment](https://www.kaggle.com/competitions?sortBy=prize&group=active&page=1&pageSize=20&segment=recruitment)
 
 `人才征募 Recruitment` 竞赛是赞助企业寻求数据科学家、算法设计人才的渠道。只允许个人参赛，不接受团队报名。
 
-> [第6部分： 大型组织比赛(大奖金) Featured](https://www.kaggle.com/competitions?sortBy=prize&group=active&page=1&pageSize=20&segment=featured)
+### [第6部分： 大型组织比赛(大奖金) Featured](https://www.kaggle.com/competitions?sortBy=prize&group=active&page=1&pageSize=20&segment=featured)
 
 `推荐比赛 Featured` 是瞄准商业问题带有奖金的公开竞赛。如果有幸赢得比赛，不但可以获得奖金，模型也可能会被竞赛赞助商应用到商业实践中呢。
 
+> Kaggle
+
 * [**Mercari 价格推荐挑战**](/competitions/featured/mercari-price-suggestion-challenge)
+
+> 天池
+
+* [**天池入门教程: O2O优惠券-使用新人赛**](https://tianchi.aliyun.com/notebook/detail.html?spm=5176.11409386.4851167.7.65c91d07FiVHVN&id=4796)
+* [**天池第一名: O2O优惠券-预测用户领取优惠劵后是否核销**](https://github.com/wepe/O2O-Coupon-Usage-Forecast)
 
 ## 其他部分
 
@@ -147,3 +154,5 @@
 * 企鹅: 529815144(片刻) 1042658081(那伊抹微笑) 190442212(瑶妹)
 * **ApacheCN - 学习机器学习群【629470233】<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=30e5f1123a79867570f665aa3a483ca404b1c3f77737bc01ec520ed5f078ddef"><img border="0" src="static/images/logos/ApacheCN-group.png" alt="ApacheCN - 学习机器学习群【629470233】" title="ApacheCN - 学习机器学习群【629470233】"></a>**
 * **Kaggle (数据科学竞赛平台) | [ApacheCN(apache中文网)](http://www.apachecn.org/)**
+
+![](https://apachecn.github.io/home/img/about/donate.jpg)
