@@ -44,6 +44,7 @@
 * [**泰坦尼克**](/competitions/getting-started/titanic)
 * [**房价预测**](/competitions/getting-started/house-price)
 * [**nlp-情感分析**](/competitions/getting-started/word2vec-nlp-tutorial)
+* [**天池: 预测用户领取优惠劵后是否核销**](https://github.com/wepe/O2O-Coupon-Usage-Forecast)
 
 > [第3部分：训练场 Playground](https://www.kaggle.com/competitions?sortBy=deadline&group=all&page=1&pageSize=20&segment=playground)
 
@@ -147,3 +148,5 @@
 * 企鹅: 529815144(片刻) 1042658081(那伊抹微笑) 190442212(瑶妹)
 * **ApacheCN - 学习机器学习群【629470233】<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=30e5f1123a79867570f665aa3a483ca404b1c3f77737bc01ec520ed5f078ddef"><img border="0" src="static/images/logos/ApacheCN-group.png" alt="ApacheCN - 学习机器学习群【629470233】" title="ApacheCN - 学习机器学习群【629470233】"></a>**
 * **Kaggle (数据科学竞赛平台) | [ApacheCN(apache中文网)](http://www.apachecn.org/)**
+
+![](https://apachecn.github.io/home/img/about/donate.jpg)
