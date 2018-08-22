@@ -72,7 +72,6 @@
 * [**天池入门教程: O2O优惠券-使用新人赛**](https://tianchi.aliyun.com/notebook/detail.html?spm=5176.11409386.4851167.7.65c91d07FiVHVN&id=4796)
 * [**天池第一名: O2O优惠券-预测用户领取优惠劵后是否核销**](https://github.com/wepe/O2O-Coupon-Usage-Forecast)
 
-
 ## 其他部分
 
 * [数据集](https://www.kaggle.com/datasets): 数据集，可直接用于机器学习。
