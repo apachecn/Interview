@@ -66,6 +66,7 @@
 > Kaggle
 
 * [**Mercari 价格推荐挑战**](/competitions/featured/mercari-price-suggestion-challenge)
+* [**Home Credit Default Risk**](/competitions/featured/home-credit-default-risk)
 
 > 天池
 
