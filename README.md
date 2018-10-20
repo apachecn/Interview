@@ -154,6 +154,7 @@ WriteUp 需要带有预处理过程，从你能下载到的原始数据开始，
 * [@zehuichen](https://github.com/zehuichen123)(loveSnowBest)
 * [@谈笑风生](https://github.com/zhu1040028623)（谈笑风生）
 * [@诺木人](https://github.com/1mrliu)（诺木人）
+* [@飞龙](https://github.com/wizardforcel)
 
 > 加入方式
 
