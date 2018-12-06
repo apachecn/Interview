@@ -145,9 +145,72 @@
 
 ## CV
 
-1.  Kaggle-TGS
+1. Kaggle-TGS
 
-    Rank56 https://github.com/Gary-Deeplearning/TGS-Salt
+   Rank1: http://t.cn/EzkDlOC   
+   Rank9: http://t.cn/EznzvYv  
+   Rank11:https://github.com/iasawseen/Kaggle-TGS-salt-solution
+   Rank14:https://github.com/lRomul/argus-tgs-salt
+   Rank15:https://github.com/adam9500370/Kaggle-TGS
+   Rank22: http://t.cn/EzYkR6i  
+   Rank56 https://github.com/Gary-Deeplearning/TGS-Salt
+
+2. Kaggle Google地标检索 
+
+   Rank1: http://t.cn/R1i7Xiy  
+   Rank14： http://t.cn/R1nQriY
+
+3. Lyft感知挑战赛   
+
+      赛题： http://t.cn/RBtrJcE  
+      Rank4： http://t.cn/RBtrMdw  
+      ​      http://t.cn/RBJnlug
+
+4. (Kaggle)CVPR 2018 WAD视频分割  
+
+   Rank2: http://t.cn/Ehp4Ggm
+
+5. Kaggle Google AI Open Images  
+
+    Rank15: http://t.cn/RF1jnis
+
+6. Quick, Draw! Kaggle Competition Starter Pack    
+   http://t.cn/EZAoZDM
+
+7. Kaggle植物幼苗图像分类挑战赛   
+
+   Rank1: http://t.cn/RBssjf6
+
+8. Kaggle Airbus Ship Detection Challenge (Kaggle卫星图像船舶检测比赛)   
+
+   Rank8: https://github.com/SeuTao/Kaggle_Airbus2018_8th_code
+   Rank21:https://github.com/pascal1129/kaggle_airbus_ship_detection
+
+
+9. kaggle RSNA Pneumonia Detection
+
+   Rank1:https://github.com/i-pan/kaggle-rsna18
+   Rank2:https://github.com/SeuTao/Kaggle_TGS2018_4th_solution
+   Rank3:https://github.com/pmcheng/rsna-pneumonia
+   Rank6:https://github.com/pfnet-research/pfneumonia
+   Rank10:https://github.com/alessonscap/rsna-challenge-2018
+   
+10. kaggle Carvana Image Masking Challenge
+
+   Rank1:https://github.com/asanakoy/kaggle_carvana_segmentation
+   Rank3:https://github.com/lyakaap/Kaggle-Carvana-3rd-place-solution
+	
+11. kaggle Statoil/C-CORE Iceberg Classifier Challenge
+
+   Rank4: https://github.com/asydorchuk/kaggle/blob/master/statoil/README.md
+	
+12. kaggle 2018 Data Science Bowl
+	
+   Rank1: https://github.com/selimsef/dsb2018_topcoders
+   Rank2: https://github.com/jacobkie/2018DSB
+   Rank3: https://github.com/Lopezurrutia/DSB_2018
+   Rank4: https://github.com/pdima/kaggle_2018_data_science_bowl_solution
+   Rank5: https://github.com/mirzaevinom/data_science_bowl_2018
     
     
 ## 经验文章
