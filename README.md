@@ -2,9 +2,7 @@
 
 ![](static/images/logos/kaggle-logo-gray-bigger.jpeg)
 
-> **欢迎任何人参与和完善：一个人可以走的很快，但是一群人却可以走的更远**
-> 
-> 不知道你们为啥收集一大堆面试题都不收集比赛解答，不知道 To C 公司很看中实战经验嘛？？！
+> **你已经抓住了石头，现在是挥舞它的时候了！**
 
 * [ApacheCN 组织资源](https://github.com/apachecn/home): https://github.com/apachecn/home
 * <strong>ApacheCN - Kaggle组队群【686932392】<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=716b584bbd7cdf64e961b499c7fb5891faf1f6c92dad026e3c596a57c834f1ec"><img title="ApacheCN - Kaggle组队群【686932392】" src="http://www.apachecn.org/wp-content/uploads/2017/10/ApacheCN-group.png" alt="ApacheCN - Kaggle组队群【686932392】" /></a></strong></li>
@@ -132,6 +130,8 @@
 - 组合特征
 
 ## 贡献指南
+
+> **欢迎任何人参与和完善：一个人可以走的很快，但是一群人却可以走的更远**
 
 本项目接受大家提交 WriteUp（题解）。
 
