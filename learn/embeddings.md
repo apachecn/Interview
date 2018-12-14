@@ -63,10 +63,10 @@ MovieLens 数据集由用户给电影的评分组成。这是一个示例：
 
 ```py
 model = keras.Sequential([
-    # 2 input values: user id and movie id
+    # 2 个输入值：用户 ID 和电影 ID
     keras.layers.Dense(256, input_dim=2, activation='relu'),
     keras.layers.Dense(32, activation='relu'),
-    # A single output node, containing the predicted rating
+    # 单个输出节点，包含预测的评分
     keras.layers.Dense(1)
 ])
 ```
@@ -85,9 +85,9 @@ print("Input size = {:,} ({:,} movies + {:,} users)".format(
     input_size, n_movies, n_users,
 ))
 model = keras.Sequential([
-    # One hidden layer with 128 units
+    # 一个带有 128 个单元的隐藏层
     keras.layers.Dense(128, input_dim=input_size, activation='relu'),
-    # A single output node, containing the predicted rating
+    # 单个输出节点，包含预测的评分
     keras.layers.Dense(1)
 ])
 model.summary()
@@ -146,22 +146,22 @@ hidden_units = (32,4)
 movie_embedding_size = 8
 user_embedding_size = 8
 
-# Each instance will consist of two inputs: a single user id, and a single movie id
+# 每个实例将包含两个输入：单个用户 ID 和单个电影 ID
 user_id_input = keras.Input(shape=(1,), name='user_id')
 movie_id_input = keras.Input(shape=(1,), name='movie_id')
 user_embedded = keras.layers.Embedding(df.userId.max()+1, user_embedding_size, 
                                        input_length=1, name='user_embedding')(user_id_input)
 movie_embedded = keras.layers.Embedding(df.movieId.max()+1, movie_embedding_size, 
                                         input_length=1, name='movie_embedding')(movie_id_input)
-# Concatenate the embeddings (and remove the useless extra dimension)
+# 连接嵌入（并删除无用的额外维度）
 concatenated = keras.layers.Concatenate()([user_embedded, movie_embedded])
 out = keras.layers.Flatten()(concatenated)
 
-# Add one or more hidden layers
+# 添加一个或多个隐层
 for n_hidden in hidden_units:
     out = keras.layers.Dense(n_hidden, activation='relu')(out)
 
-# A single output: our predicted rating
+# 单一输出：我们的预测评分
 out = keras.layers.Dense(1, activation='linear', name='prediction')(out)
 
 model = keras.Model(
@@ -207,11 +207,12 @@ ________________________________________________________________________________
 
 ```py
 model.compile(
-    # Technical note: when using embedding layers, I highly recommend using one of the optimizers
-    # found  in tf.train: https://www.tensorflow.org/api_guides/python/train#Optimizers
-    # Passing in a string like 'adam' or 'SGD' will load one of keras's optimizers (found under 
-    # tf.keras.optimizers). They seem to be much slower on problems like this, because they
-    # don't efficiently handle sparse gradient updates.
+    # 技术说明：使用嵌入层时，我强烈建议使用
+    # tf.train 中发现的优化器之一：
+    # https://www.tensorflow.org/api_guides/python/train#Optimizers
+    # 传入像 'adam' 或 'SGD' 这样的字符串，会加载一个 keras 优化器 
+    # （在 tf.keras.optimizers 下寻找）。 对于像这样的问题，它们似乎要慢得多，
+    # 因为它们无法有效处理稀疏梯度更新。
     tf.train.AdamOptimizer(0.005),
     loss='MSE',
     metrics=['MAE'],
@@ -290,17 +291,17 @@ candidate_movies = movies[
 ].copy()
 
 preds = model.predict([
-    [uid] * len(candidate_movies), # User ids 
-    candidate_movies.index, # Movie ids
+    [uid] * len(candidate_movies), # 用户 ID
+    candidate_movies.index, # 电影 ID
 ])
-# NB: Remember we trained on 'y', which was a version of the rating column centered on 0. To translate
-# our model's output values to the original [0.5, 5] star rating scale, we need to 'uncenter' the
-# values, by adding the mean back
-row = df.iloc[0] # The difference between rating and y will be the same for all rows, so we can just use the first
+# 注意：记住我们在 'y' 上训练，这是评分列的中心为 0 的版本。
+# 要将我们模型的输出值转换为 [0.5, 5] 原始的星级评分范围， 
+# 我们需要通过添加均值来对值“去中心化”
+row = df.iloc[0] # rating 和 y 之间的差对于所有行都是相同的，所以我们可以使用第一行
 y_delta = row.rating - row.y
 candidate_movies['predicted_rating'] = preds + y_delta
-# Add a column with the difference between our predicted rating (for this user) and the movie's
-# overall average rating across all users in the dataset.
+# 添加一列，带有我们的预测评分（对于此用户）
+# 和电影对于数据集中所有用户的总体平均评分之间的差 
 candidate_movies['delta'] = candidate_movies['predicted_rating'] - candidate_movies['mean_rating']
 candidate_movies.sort_values(by='delta', ascending=False)
 ```
@@ -405,7 +406,7 @@ predicted_rating(Stanley,Titanic)
 ```py
 movie_embedding_size = user_embedding_size = 8
 
-# Each instance consists of two inputs: a single user id, and a single movie id
+# 每个实例由两个输入组成：单个用户 ID 和单个电影 ID
 user_id_input = keras.Input(shape=(1,), name='user_id')
 movie_id_input = keras.Input(shape=(1,), name='movie_id')
 user_embedded = keras.layers.Embedding(df.userId.max()+1, user_embedding_size, 
@@ -646,7 +647,7 @@ print(
 ```py
 from gensim.models.keyedvectors import WordEmbeddingsKeyedVectors
 
-# Limit to movies with at least this many ratings in the dataset
+# 将数据集中的电影限制为至少具有这么多评分
 threshold = 100
 mainstream_movies = movies_df[movies_df.n_ratings >= threshold].reset_index(drop=True)
 
@@ -848,7 +849,7 @@ print("Went from {} to {} movies after applying threshold".format(
 w_full = w
 w = w[mainstream_movies.movieId]
 df = mainstream_movies
-# Went from 26744 to 8546 movies after applying threshold
+# 在应用阈值后，电影从 26744 变为 8546 部
 ```
 
 我们将使用 scikit-learn 的 t-SNE 实现。
@@ -858,12 +859,13 @@ df = mainstream_movies
 ```py
 from sklearn.manifold import TSNE
 
-# The default of 1,000 iterations gives fine results, but I'm training for longer just to eke
-# out some marginal improvements. NB: This takes almost an hour!
+# 1,000 次迭代的默认值可以得到很好的结果，
+# 但是我的训练时间更长，只是为了一些微小的改进。 
+# 注意：这需要近一个小时！
 tsne = TSNE(random_state=1, n_iter=15000, metric="cosine")
 
 embs = tsne.fit_transform(w)
-# Add to dataframe for convenience
+# 为方便起见，添加到数据帧
 df['x'] = embs[:, 0]
 df['y'] = embs[:, 1]
 ```
@@ -886,7 +888,7 @@ array([[ -93.78184  ,   74.296936 ],
 ```py
 FS = (10, 8)
 fig, ax = plt.subplots(figsize=FS)
-# Make points translucent so we can visually identify regions with a high density of overlapping points
+# 使点变得半透明，以便我们可以直观地识别具有高密度重叠点的区域
 ax.scatter(df.x, df.y, alpha=.1);
 ```
 
@@ -899,8 +901,8 @@ ax.scatter(df.x, df.y, alpha=.1);
 例如，所有的哈利波特电影都应该互相接近，对吧？
 
 ```py
-# This and several other helper functions are defined in a code cell above. Hit the "code"
-# button above if you're curious about how they're implemented.
+# 这个和其他几个辅助函数在上面的代码单元中定义。
+# 如果你对它们的实现方式感到好奇，请点击上面的“代码”按钮。
 plot_by_title_pattern('Harry Potter', figsize=(15, 9), bg_alpha=.05, text=False);
 ```
 
