@@ -170,4 +170,4 @@ WriteUp 需要带有预处理过程，从你能下载到的原始数据开始，
 * **ApacheCN - 学习机器学习群【629470233】<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=30e5f1123a79867570f665aa3a483ca404b1c3f77737bc01ec520ed5f078ddef"><img border="0" src="static/images/logos/ApacheCN-group.png" alt="ApacheCN - 学习机器学习群【629470233】" title="ApacheCN - 学习机器学习群【629470233】"></a>**
 * **Kaggle (数据科学竞赛平台) | [ApacheCN(apache中文网)](http://www.apachecn.org/)**
 
-![](https://apachecn.github.io/home/img/about/donate.jpg)
+<img src="http://data.apachecn.org/img/about/donate.jpg" alt="微信&支付宝" />
