@@ -8,7 +8,7 @@
 
 In [1]:
 
-```
+```py
 import cv2
 import pandas as pd
 import numpy as np
@@ -30,7 +30,7 @@ Using TensorFlow backend.
 
 In [2]:
 
-```
+```py
 train_dir = "../input/train/train/"
 test_dir = "../input/test/test/"
 train_df = pd.read_csv('../input/train.csv')
@@ -55,7 +55,7 @@ Out[2]:
 
 In [3]:
 
-```
+```py
 im = cv2.imread("../input/train/train/01e30c0ba6e91343a12d2126fcafc0dd.jpg")
 plt.imshow(im)
 
@@ -69,7 +69,7 @@ Out[3]:
 
 ![](keras-transfer-vgg16_files/__results___2_1.png)In [4]:
 
-```
+```py
 vgg16_net = VGG16(weights='imagenet', 
                   include_top=False, 
                   input_shape=(32, 32, 3))
@@ -84,7 +84,7 @@ Downloading data from https://github.com/fchollet/deep-learning-models/releases/
 
 In [5]:
 
-```
+```py
 vgg16_net.trainable = False
 vgg16_net.summary()
 
@@ -141,7 +141,7 @@ _________________________________________________________________
 
 In [6]:
 
-```
+```py
 model = Sequential()
 model.add(vgg16_net)
 model.add(Flatten())
@@ -155,7 +155,7 @@ model.add(Activation('sigmoid'))
 
 In [7]:
 
-```
+```py
 model.compile(loss='binary_crossentropy',
               optimizer=Adam(lr=1e-5), 
               metrics=['accuracy'])
@@ -164,7 +164,7 @@ model.compile(loss='binary_crossentropy',
 
 In [8]:
 
-```
+```py
 X_tr = []
 Y_tr = []
 imges = train_df['id'].values
@@ -180,7 +180,7 @@ Y_tr = np.asarray(Y_tr)
 
 In [9]:
 
-```
+```py
 batch_size = 32
 nb_epoch = 1000
 
@@ -188,7 +188,7 @@ nb_epoch = 1000
 
 In [10]:
 
-```
+```py
 %%time
 # Train model
 history = model.fit(X_tr, Y_tr,
@@ -2209,7 +2209,7 @@ Wall time: 1h 10min 44s
 
 In [11]:
 
-```
+```py
 with open('history.json', 'w') as f:
     json.dump(history.history, f)
 
@@ -2227,7 +2227,7 @@ Out[11]:
 
 ![](keras-transfer-vgg16_files/__results___10_1.png)![](keras-transfer-vgg16_files/__results___10_2.png)In [12]:
 
-```
+```py
 %%time
 X_tst = []
 Test_imgs = []
@@ -2248,7 +2248,7 @@ Wall time: 5.92 s
 
 In [13]:
 
-```
+```py
 # Prediction
 test_predictions = model.predict(X_tst)
 
@@ -2256,7 +2256,7 @@ test_predictions = model.predict(X_tst)
 
 In [14]:
 
-```
+```py
 sub_df = pd.DataFrame(test_predictions, columns=['has_cactus'])
 sub_df['has_cactus'] = sub_df['has_cactus'].apply(lambda x: 1 if x > 0.75 else 0)
 
@@ -2264,7 +2264,7 @@ sub_df['has_cactus'] = sub_df['has_cactus'].apply(lambda x: 1 if x > 0.75 else 0
 
 In [15]:
 
-```
+```py
 sub_df['id'] = ''
 cols = sub_df.columns.tolist()
 cols = cols[-1:] + cols[:-1]
@@ -2274,7 +2274,7 @@ sub_df=sub_df[cols]
 
 In [16]:
 
-```
+```py
 for i, img in enumerate(Test_imgs):
     sub_df.set_value(i,'id',img)
 
@@ -2287,7 +2287,7 @@ for i, img in enumerate(Test_imgs):
 
 In [17]:
 
-```
+```py
 sub_df.head()
 
 ```
@@ -2309,7 +2309,7 @@ Out[17]:
 
 In [18]:
 
-```
+```py
 sub_df.to_csv('submission.csv',index=False)
 
 ```

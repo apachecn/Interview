@@ -18,7 +18,7 @@ Most of the code is taken from my other kernel: [https://www.kaggle.com/artgor/c
 
 CodeIn [1]:
 
-```
+```py
 # libraries
 import numpy as np
 import pandas as pd
@@ -51,7 +51,7 @@ Some of good libraries for DL aren't available in Docker with GPU by default, so
 
 In [2]:
 
-```
+```py
 !pip install albumentations > /dev/null 2>&1
 !pip install pretrainedmodels > /dev/null 2>&1
 !pip install kekas > /dev/null 2>&1
@@ -61,7 +61,7 @@ In [2]:
 
 CodeIn [3]:
 
-```
+```py
 # more imports
 import albumentations
 from albumentations import torch as AT
@@ -87,7 +87,7 @@ from kekas.utils import DotDict
 
 In [4]:
 
-```
+```py
 labels = pd.read_csv('../input/train.csv')
 fig = plt.figure(figsize=(25, 8))
 train_imgs = os.listdir("../input/train/train")
@@ -108,7 +108,7 @@ Kekas accepts pandas DataFrame as an input and iterates over it to get image nam
 
 In [5]:
 
-```
+```py
 test_img = os.listdir('../input/test/test')
 test_df = pd.DataFrame(test_img, columns=['id'])
 test_df['has_cactus'] = -1
@@ -138,7 +138,7 @@ Out[5]:
 
 In [6]:
 
-```
+```py
 labels.loc[labels['data_type'] == 'train', 'has_cactus'].value_counts()
 
 ```
@@ -155,7 +155,7 @@ We have some disbalance in the data, but it isn't too big.
 
 In [7]:
 
-```
+```py
 # splitting data into train and validation
 train, valid = train_test_split(labels, stratify=labels.has_cactus, test_size=0.2)
 
@@ -167,7 +167,7 @@ At first it is necessary to create a reader function, which will open images. It
 
 In [8]:
 
-```
+```py
 def reader_fn(i, row):
     image = cv2.imread(f"../input/{row['data_type']}/{row['data_type']}/{row['id']}")[:,:,::-1] # BGR -> RGB
     label = torch.Tensor([row["has_cactus"]])
@@ -183,7 +183,7 @@ At first we define augmentations. We create a function with a list of augmentati
 
 In [9]:
 
-```
+```py
 def augs(p=0.5):
     return albumentations.Compose([
         albumentations.HorizontalFlip(),
@@ -202,7 +202,7 @@ Now we create a transforming function. It heavily uses Transformer from kekas.
 
 In [10]:
 
-```
+```py
 def get_transforms(dataset_key, size, p):
 
     PRE_TFMS = Transformer(dataset_key, lambda x: cv2.resize(x, (size, size)))
@@ -223,7 +223,7 @@ def get_transforms(dataset_key, size, p):
 
 In [11]:
 
-```
+```py
 train_tfms, val_tfms = get_transforms("image", 32, 0.5)
 
 ```
@@ -232,7 +232,7 @@ Now we can create a DataKek, which is similar to creating dataset in Pytorch. We
 
 In [12]:
 
-```
+```py
 train_dk = DataKek(df=train, reader_fn=reader_fn, transforms=train_tfms)
 val_dk = DataKek(df=valid, reader_fn=reader_fn, transforms=val_tfms)
 
@@ -246,7 +246,7 @@ val_dl = DataLoader(val_dk, batch_size=batch_size, num_workers=workers, shuffle=
 
 In [13]:
 
-```
+```py
 test_dk = DataKek(df=test_df, reader_fn=reader_fn, transforms=val_tfms)
 test_dl = DataLoader(test_dk, batch_size=batch_size, num_workers=workers, shuffle=False)
 
@@ -261,7 +261,7 @@ Here we define the architecture of the neural net.
 
 In [14]:
 
-```
+```py
 class Net(nn.Module):
     def __init__(
             self,
@@ -305,7 +305,7 @@ The data for training needs to be transformed one more time - we define DataOwne
 
 In [15]:
 
-```
+```py
 dataowner = DataOwner(train_dl, val_dl, None)
 model = Net(num_classes=1)
 criterion = nn.BCEWithLogitsLoss()
@@ -322,7 +322,7 @@ And now we define what will the model do with the data. For example we could sli
 
 In [16]:
 
-```
+```py
 def step_fn(model: torch.nn.Module,
             batch: torch.Tensor) -> torch.Tensor:
     """Determine what your model will do with your data.
@@ -344,7 +344,7 @@ Defining custom metrics
 
 In [17]:
 
-```
+```py
 def bce_accuracy(target: torch.Tensor,
                  preds: torch.Tensor,
                  thresh: bool = 0.5) -> float:
@@ -376,7 +376,7 @@ Here we define everything which is necessary for training:
 
 In [18]:
 
-```
+```py
 keker = Keker(model=model,
               dataowner=dataowner,
               criterion=criterion,
@@ -390,7 +390,7 @@ keker = Keker(model=model,
 
 In [19]:
 
-```
+```py
 keker.unfreeze(model_attr="net")
 
 layer_num = -1
@@ -400,7 +400,7 @@ keker.freeze_to(layer_num, model_attr="net")
 
 In [20]:
 
-```
+```py
 keker.kek_one_cycle(max_lr=1e-2,                  # the maximum learning rate
                     cycle_len=5,                  # number of epochs, actually, but not exactly
                     momentum_range=(0.95, 0.85),  # range of momentum changes
@@ -422,7 +422,7 @@ Epoch 5/5: 100% 218/218 [00:41<00:00,  6.24it/s, loss=0.0107, val_loss=0.0092, a
 
 <svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="693.4" height="525" style="background: rgb(255, 255, 255) none repeat scroll 0% 0%;"><g class="cartesianlayer"><g class="subplot xy"><g class="xaxislayer-above"><g class="xtick"><text text-anchor="middle" x="0" y="458" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;" data-unformatted="0" data-math="N" transform="translate(80,0)">0</text></g><g class="xtick"><text text-anchor="middle" x="0" y="458" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;" data-unformatted="500" data-math="N" transform="translate(245.32,0)">500</text></g><g class="xtick"><text text-anchor="middle" x="0" y="458" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;" data-unformatted="1000" data-math="N" transform="translate(410.65,0)">1000</text></g></g><g class="yaxislayer-above"><g class="ytick"><text text-anchor="end" x="79" y="4.199999999999999" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;" data-unformatted="0" data-math="N" transform="translate(0,427.87)">0</text></g><g class="ytick"><text text-anchor="end" x="79" y="4.199999999999999" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;" data-unformatted="0.1" data-math="N" transform="translate(0,383.54)">0.1</text></g><g class="ytick"><text text-anchor="end" x="79" y="4.199999999999999" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;" data-unformatted="0.2" data-math="N" transform="translate(0,339.2)">0.2</text></g><g class="ytick"><text text-anchor="end" x="79" y="4.199999999999999" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;" data-unformatted="0.3" data-math="N" transform="translate(0,294.86)">0.3</text></g><g class="ytick"><text text-anchor="end" x="79" y="4.199999999999999" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;" data-unformatted="0.4" data-math="N" transform="translate(0,250.53)">0.4</text></g><g class="ytick"><text text-anchor="end" x="79" y="4.199999999999999" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;" data-unformatted="0.5" data-math="N" transform="translate(0,206.19)">0.5</text></g><g class="ytick"><text text-anchor="end" x="79" y="4.199999999999999" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;" data-unformatted="0.6" data-math="N" transform="translate(0,161.85)">0.6</text></g><g class="ytick"><text text-anchor="end" x="79" y="4.199999999999999" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;" data-unformatted="0.7" data-math="N" transform="translate(0,117.51)">0.7</text></g></g></g></g></svg><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="693.4" height="525"><g class="infolayer"><g class="legend" pointer-events="all" transform="translate(540.02, 100)"><g class="scrollbox" transform="translate(0, 0)" clip-path="url(#legend105b76)"><g class="groups"><g class="traces" style="opacity: 1;" transform="translate(0, 14.5)"><text class="legendtext user-select-none" text-anchor="start" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;" x="40" y="4.680000000000001" data-unformatted="train/batch/loss" data-math="N">train/batch/loss</text></g><g class="traces" style="opacity: 1;" transform="translate(0, 33.5)"><text class="legendtext user-select-none" text-anchor="start" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;" x="40" y="4.680000000000001" data-unformatted="val/batch/loss" data-math="N">val/batch/loss</text></g></g></g></g><g class="g-gtitle"><text class="gtitle" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 17px; fill: rgb(68, 68, 68); opacity: 1; font-weight: normal; white-space: pre;" x="346.7" y="50" text-anchor="middle" dy="0em" data-unformatted="batch/loss" data-math="N">batch/loss</text></g></g></svg>[<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 132 132" height="1em" width="1em"><title>plotly-logomark</title></svg>](https://plot.ly/)<svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="693.4" height="525" style="background: rgb(255, 255, 255) none repeat scroll 0% 0%;"><g class="cartesianlayer"><g class="subplot xy"><g class="xaxislayer-above"><g class="xtick"><text text-anchor="middle" x="0" y="458" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;" data-unformatted="0" data-math="N" transform="translate(80,0)">0</text></g><g class="xtick"><text text-anchor="middle" x="0" y="458" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;" data-unformatted="500" data-math="N" transform="translate(246.42,0)">500</text></g><g class="xtick"><text text-anchor="middle" x="0" y="458" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;" data-unformatted="1000" data-math="N" transform="translate(412.84,0)">1000</text></g></g><g class="yaxislayer-above"><g class="ytick"><text text-anchor="end" x="79" y="4.199999999999999" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;" data-unformatted="0.6" data-math="N" transform="translate(0,382.21)">0.6</text></g><g class="ytick"><text text-anchor="end" x="79" y="4.199999999999999" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;" data-unformatted="0.7" data-math="N" transform="translate(0,315.97)">0.7</text></g><g class="ytick"><text text-anchor="end" x="79" y="4.199999999999999" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;" data-unformatted="0.8" data-math="N" transform="translate(0,249.73)">0.8</text></g><g class="ytick"><text text-anchor="end" x="79" y="4.199999999999999" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;" data-unformatted="0.9" data-math="N" transform="translate(0,183.49)">0.9</text></g><g class="ytick"><text text-anchor="end" x="79" y="4.199999999999999" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;" data-unformatted="1" data-math="N" transform="translate(0,117.25)">1</text></g></g></g></g></svg><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="693.4" height="525"><g class="infolayer"><g class="legend" pointer-events="all" transform="translate(543.0799999999999, 100)"><g class="scrollbox" transform="translate(0, 0)" clip-path="url(#legende39934)"><g class="groups"><g class="traces" style="opacity: 1;" transform="translate(0, 14.5)"><text class="legendtext user-select-none" text-anchor="start" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;" x="40" y="4.680000000000001" data-unformatted="train/batch/acc" data-math="N">train/batch/acc</text></g><g class="traces" style="opacity: 1;" transform="translate(0, 33.5)"><text class="legendtext user-select-none" text-anchor="start" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;" x="40" y="4.680000000000001" data-unformatted="val/batch/acc" data-math="N">val/batch/acc</text></g></g></g></g><g class="g-gtitle"><text class="gtitle" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 17px; fill: rgb(68, 68, 68); opacity: 1; font-weight: normal; white-space: pre;" x="346.7" y="50" text-anchor="middle" dy="0em" data-unformatted="batch/acc" data-math="N">batch/acc</text></g></g></svg>[<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 132 132" height="1em" width="1em"><title>plotly-logomark</title></svg>](https://plot.ly/)<svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="693.4" height="525" style="background: rgb(255, 255, 255) none repeat scroll 0% 0%;"><g class="cartesianlayer"><g class="subplot xy"><g class="xaxislayer-above"><g class="xtick"><text text-anchor="middle" x="0" y="458" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;" data-unformatted="0" data-math="N" transform="translate(80,0)">0</text></g><g class="xtick"><text text-anchor="middle" x="0" y="458" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;" data-unformatted="500" data-math="N" transform="translate(246.06,0)">500</text></g><g class="xtick"><text text-anchor="middle" x="0" y="458" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;" data-unformatted="1000" data-math="N" transform="translate(412.11,0)">1000</text></g></g><g class="yaxislayer-above"><g class="ytick"><text text-anchor="end" x="79" y="4.199999999999999" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;" data-unformatted="0.5" data-math="N" transform="translate(0,433.09)">0.5</text></g><g class="ytick"><text text-anchor="end" x="79" y="4.199999999999999" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;" data-unformatted="0.6" data-math="N" transform="translate(0,369.92)">0.6</text></g><g class="ytick"><text text-anchor="end" x="79" y="4.199999999999999" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;" data-unformatted="0.7" data-math="N" transform="translate(0,306.75)">0.7</text></g><g class="ytick"><text text-anchor="end" x="79" y="4.199999999999999" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;" data-unformatted="0.8" data-math="N" transform="translate(0,243.59)">0.8</text></g><g class="ytick"><text text-anchor="end" x="79" y="4.199999999999999" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;" data-unformatted="0.9" data-math="N" transform="translate(0,180.42000000000002)">0.9</text></g><g class="ytick"><text text-anchor="end" x="79" y="4.199999999999999" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;" data-unformatted="1" data-math="N" transform="translate(0,117.25)">1</text></g></g></g></g></svg><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="693.4" height="525"><g class="infolayer"><g class="legend" pointer-events="all" transform="translate(542.06, 100)"><g class="scrollbox" transform="translate(0, 0)" clip-path="url(#legend3f014a)"><g class="groups"><g class="traces" style="opacity: 1;" transform="translate(0, 14.5)"><text class="legendtext user-select-none" text-anchor="start" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;" x="40" y="4.680000000000001" data-unformatted="train/batch/auc" data-math="N">train/batch/auc</text></g><g class="traces" style="opacity: 1;" transform="translate(0, 33.5)"><text class="legendtext user-select-none" text-anchor="start" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;" x="40" y="4.680000000000001" data-unformatted="val/batch/auc" data-math="N">val/batch/auc</text></g></g></g></g><g class="g-gtitle"><text class="gtitle" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 17px; fill: rgb(68, 68, 68); opacity: 1; font-weight: normal; white-space: pre;" x="346.7" y="50" text-anchor="middle" dy="0em" data-unformatted="batch/auc" data-math="N">batch/auc</text></g></g></svg>[<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 132 132" height="1em" width="1em"><title>plotly-logomark</title></svg>](https://plot.ly/)<svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="693.4" height="525" style="background: rgb(255, 255, 255) none repeat scroll 0% 0%;"><g class="cartesianlayer"><g class="subplot xy"><g class="xaxislayer-above"><g class="xtick"><text text-anchor="middle" x="0" y="458" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;" data-unformatted="0" data-math="N" transform="translate(80,0)">0</text></g><g class="xtick"><text text-anchor="middle" x="0" y="458" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;" data-unformatted="200" data-math="N" transform="translate(177.89,0)">200</text></g><g class="xtick"><text text-anchor="middle" x="0" y="458" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;" data-unformatted="400" data-math="N" transform="translate(275.78,0)">400</text></g><g class="xtick"><text text-anchor="middle" x="0" y="458" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;" data-unformatted="600" data-math="N" transform="translate(373.66,0)">600</text></g><g class="xtick"><text text-anchor="middle" x="0" y="458" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;" data-unformatted="800" data-math="N" transform="translate(471.55,0)">800</text></g><g class="xtick"><text text-anchor="middle" x="0" y="458" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;" data-unformatted="1000" data-math="N" transform="translate(569.44,0)">1000</text></g></g><g class="yaxislayer-above"><g class="ytick"><text text-anchor="end" x="79" y="4.199999999999999" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;" data-unformatted="0" data-math="N" transform="translate(0,440.69)">0</text></g><g class="ytick"><text text-anchor="end" x="79" y="4.199999999999999" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;" data-unformatted="0.002" data-math="N" transform="translate(0,376)">0.002</text></g><g class="ytick"><text text-anchor="end" x="79" y="4.199999999999999" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;" data-unformatted="0.004" data-math="N" transform="translate(0,311.31)">0.004</text></g><g class="ytick"><text text-anchor="end" x="79" y="4.199999999999999" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;" data-unformatted="0.006" data-math="N" transform="translate(0,246.62)">0.006</text></g><g class="ytick"><text text-anchor="end" x="79" y="4.199999999999999" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;" data-unformatted="0.008" data-math="N" transform="translate(0,181.94)">0.008</text></g><g class="ytick"><text text-anchor="end" x="79" y="4.199999999999999" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;" data-unformatted="0.01" data-math="N" transform="translate(0,117.25)">0.01</text></g></g></g></g></svg><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="693.4" height="525"><g class="infolayer"><g class="g-gtitle"><text class="gtitle" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 17px; fill: rgb(68, 68, 68); opacity: 1; font-weight: normal; white-space: pre;" x="346.7" y="50" text-anchor="middle" dy="0em" data-unformatted="batch/lr" data-math="N">batch/lr</text></g></g></svg>[<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 132 132" height="1em" width="1em"><title>plotly-logomark</title></svg>](https://plot.ly/)In [21]:
 
-```
+```py
 keker.kek_one_cycle(max_lr=1e-3,                  # the maximum learning rate
                     cycle_len=5,                  # number of epochs, actually, but not exactly
                     momentum_range=(0.95, 0.85),  # range of momentum changes
@@ -455,7 +455,7 @@ Simply predicting on test data is okay, but it is better to use TTA - test time 
 
 In [22]:
 
-```
+```py
 preds = keker.predict_loader(loader=test_dl)
 
 ```
@@ -467,7 +467,7 @@ Predict: 100% 63/63 [00:11<00:00,  6.02it/s]
 
 In [23]:
 
-```
+```py
 # flip_ = albumentations.HorizontalFlip(always_apply=True)
 # transpose_ = albumentations.Transpose(always_apply=True)
 
@@ -499,7 +499,7 @@ In [23]:
 
 In [24]:
 
-```
+```py
 # prediction = np.zeros((test_df.shape[0], 1))
 # for i in os.listdir('tta_preds1'):
 #     pr = np.load('tta_preds1/' + i)
@@ -510,7 +510,7 @@ In [24]:
 
 In [25]:
 
-```
+```py
 test_preds = pd.DataFrame({'imgs': test_df.id.values, 'preds': preds.reshape(-1,)})
 test_preds.columns = ['id', 'has_cactus']
 test_preds.to_csv('sub.csv', index=False)

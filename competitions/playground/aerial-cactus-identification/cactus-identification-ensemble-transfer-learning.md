@@ -10,7 +10,7 @@
 
 In [1]:
 
-```
+```py
 # This Python 3 environment comes with many helpful analytics libraries installed
 # It is defined by the kaggle/python docker image: https://github.com/kaggle/docker-python
 # For example, here's several helpful packages to load in 
@@ -41,7 +41,7 @@ print(os.listdir("../input"))
 
 In [2]:
 
-```
+```py
 #read in all our files
 train_df = pd.read_csv('../input/train.csv')
 train_images = '../input/train/*'
@@ -51,7 +51,7 @@ test_images = '../input/test/*'
 
 In [3]:
 
-```
+```py
 train_df.head()
 
 ```
@@ -73,7 +73,7 @@ Out[3]:
 
 In [4]:
 
-```
+```py
 sns.set(style = 'darkgrid')
 plt.figure(figsize = (12,10))
 sns.countplot(train_df['has_cactus'])
@@ -88,7 +88,7 @@ Out[4]:
 
 ![](cactus-identification-ensemble-transfer-learning_files/__results___3_1.png)In [5]:
 
-```
+```py
 #let's visualize some cactus images
 IMAGES = os.path.join(train_images, "*")
 all_images = glob.glob(IMAGES)
@@ -97,7 +97,7 @@ all_images = glob.glob(IMAGES)
 
 In [6]:
 
-```
+```py
 #visualize some images
 
 plt.figure(figsize = (12,10))
@@ -126,7 +126,7 @@ Out[6]:
 
 ![](cactus-identification-ensemble-transfer-learning_files/__results___5_1.png)In [7]:
 
-```
+```py
 train_path = '../input/train/train/'
 test_path = '../input/test/test/'
 
@@ -134,7 +134,7 @@ test_path = '../input/test/test/'
 
 In [8]:
 
-```
+```py
 #let's get our image data and image labels toegether
 #read in all the images
 images_id = train_df['id'].values
@@ -147,7 +147,7 @@ for id_ in images_id:
 
 In [9]:
 
-```
+```py
 #now let's get our labels
 label_list = [] #will contain all our labels
 for img_id in images_id:
@@ -157,7 +157,7 @@ for img_id in images_id:
 
 In [10]:
 
-```
+```py
 #now we can convert our images list and the labels list into numpy array
 X = np.array(X)
 y = np.array(label_list)
@@ -166,7 +166,7 @@ y = np.array(label_list)
 
 In [11]:
 
-```
+```py
 print(f"THE SIZE OF OUR TRAINING DATA : {X.shape}")
 print(f"THE SIZE OF OUR TRAINING LABELS : {y.shape}")
 
@@ -180,7 +180,7 @@ THE SIZE OF OUR TRAINING LABELS : (17500,)
 
 In [12]:
 
-```
+```py
 #let's do some preprocessing such as normalizing our data
 X = X.astype('float32') / 255
 
@@ -188,7 +188,7 @@ X = X.astype('float32') / 255
 
 In [13]:
 
-```
+```py
 #loading in and preprocessing the test data
 X_test = []
 test_images = []
@@ -204,7 +204,7 @@ X_test = X_test.astype('float32') / 255
 
 In [14]:
 
-```
+```py
 #import the required libraries
 import keras
 from keras.layers import Conv2D
@@ -228,7 +228,7 @@ Using TensorFlow backend.
 
 In [15]:
 
-```
+```py
 class CNN:
     def build(height, width, classes, channels):
         model = Sequential()
@@ -285,7 +285,7 @@ class CNN:
 
 OutputIn [16]:
 
-```
+```py
 input_dim = X.shape[1:]
 activation = 'relu'
 classes = 1
@@ -415,14 +415,14 @@ Epoch 46/200
 
 In [17]:
 
-```
+```py
 from keras.applications.vgg16 import VGG16
 
 ```
 
 In [18]:
 
-```
+```py
 vgg16 = VGG16(weights = 'imagenet', input_shape = (32, 32, 3), include_top = False)
 vgg16.summary()
 
@@ -481,7 +481,7 @@ _________________________________________________________________
 
 In [19]:
 
-```
+```py
 for layer in vgg16.layers:
     layer.trainable = False
 
@@ -489,7 +489,7 @@ for layer in vgg16.layers:
 
 In [20]:
 
-```
+```py
 vgg_model = Sequential()
 vgg_model.add(vgg16)
 vgg_model.add(Flatten())
@@ -536,7 +536,7 @@ _________________________________________________________________
 
 In [21]:
 
-```
+```py
 #compile the model
 vgg_model.compile(loss = 'binary_crossentropy', optimizer = optim, metrics = ['accuracy'])
 
@@ -544,7 +544,7 @@ vgg_model.compile(loss = 'binary_crossentropy', optimizer = optim, metrics = ['a
 
 In [22]:
 
-```
+```py
 #fit the model on our data
 vgg_history = vgg_model.fit(X, y,
                             batch_size = 64,
@@ -918,7 +918,7 @@ Epoch 180/500
 
 In [23]:
 
-```
+```py
 #making predictions on test dat
 predictions_vgg = vgg_model.predict(X_test)
 
@@ -926,7 +926,7 @@ predictions_vgg = vgg_model.predict(X_test)
 
 In [24]:
 
-```
+```py
 predictions_vgg.shape
 
 ```
@@ -941,14 +941,14 @@ Out[24]:
 
 In [25]:
 
-```
+```py
 from keras.applications.resnet50 import ResNet50
 
 ```
 
 OutputIn [26]:
 
-```
+```py
 resnet = ResNet50(weights = 'imagenet', input_shape = (32, 32, 3), include_top = False)
 resnet.summary()
 
@@ -1341,7 +1341,7 @@ ________________________________________________________________________________
 
 In [27]:
 
-```
+```py
 for layer in resnet.layers:
     layer.trainable = False
 
@@ -1349,7 +1349,7 @@ for layer in resnet.layers:
 
 In [28]:
 
-```
+```py
 resnet_model = Sequential()
 resnet_model.add(resnet)
 resnet_model.add(Flatten())
@@ -1396,7 +1396,7 @@ _________________________________________________________________
 
 In [29]:
 
-```
+```py
 #compile the model
 resnet_model.compile(loss = 'binary_crossentropy', optimizer = optim, metrics = ['accuracy'])
 
@@ -1404,7 +1404,7 @@ resnet_model.compile(loss = 'binary_crossentropy', optimizer = optim, metrics = 
 
 OutputIn [30]:
 
-```
+```py
 #fit the model on our data
 resnet_history = resnet_model.fit(X, y,
                                   batch_size = 64, 
@@ -1690,7 +1690,7 @@ Epoch 136/500
 
 In [31]:
 
-```
+```py
 resnet_predictions = resnet_model.predict(X_test)
 
 ```
@@ -1701,7 +1701,7 @@ resnet_predictions = resnet_model.predict(X_test)
 
 In [32]:
 
-```
+```py
 #making predictions
 prediction = np.hstack([p.reshape(-1,1) for p in prediction_scores.values()]) #taking the scores of all the trained models
 predictions_ensemble = np.mean(prediction, axis = 1)
@@ -1716,7 +1716,7 @@ print(predictions_ensemble.shape)
 
 In [33]:
 
-```
+```py
 df_ensemble = pd.DataFrame(predictions_ensemble, columns = ['has_cactus'])
 df_ensemble['has_cactus'] = df_ensemble['has_cactus'].apply(lambda x: 1 if x > 0.75 else 0)
 
@@ -1724,7 +1724,7 @@ df_ensemble['has_cactus'] = df_ensemble['has_cactus'].apply(lambda x: 1 if x > 0
 
 In [34]:
 
-```
+```py
 df_ensemble['id'] = ''
 cols = df_ensemble.columns.tolist()
 cols = cols[-1:] + cols[:-1]
@@ -1748,7 +1748,7 @@ df_ensemble.to_csv('ensemble_submission.csv',index = False)
 
 In [35]:
 
-```
+```py
 df_vgg = pd.DataFrame(predictions_vgg, columns = ['has_cactus'])
 df_vgg['has_cactus'] = df_vgg['has_cactus'].apply(lambda x: 1 if x > 0.75 else 0)
 
@@ -1756,7 +1756,7 @@ df_vgg['has_cactus'] = df_vgg['has_cactus'].apply(lambda x: 1 if x > 0.75 else 0
 
 In [36]:
 
-```
+```py
 df_vgg['id'] = ''
 cols = df_vgg.columns.tolist()
 cols = cols[-1:] + cols[:-1]
@@ -1778,7 +1778,7 @@ df_vgg.to_csv('vgg_submission.csv',index = False)
 
 In [37]:
 
-```
+```py
 df_vgg.head()
 
 ```
@@ -1802,7 +1802,7 @@ Out[37]:
 
 In [38]:
 
-```
+```py
 df_resnet = pd.DataFrame(resnet_predictions, columns = ['has_cactus'])
 df_resnet['has_cactus'] = df_resnet['has_cactus'].apply(lambda x: 1 if x > 0.75 else 0)
 
@@ -1810,7 +1810,7 @@ df_resnet['has_cactus'] = df_resnet['has_cactus'].apply(lambda x: 1 if x > 0.75 
 
 In [39]:
 
-```
+```py
 df_resnet['id'] = ''
 cols = df_resnet.columns.tolist()
 cols = cols[-1:] + cols[:-1]
@@ -1834,7 +1834,7 @@ df_resnet.to_csv('resnet_submission.csv',index = False)
 
 In [40]:
 
-```
+```py
 df_vgg1 = pd.DataFrame(predictions_vgg, columns = ['has_cactus'])
 df_ensemble1 = pd.DataFrame(predictions_ensemble, columns = ['has_cactus'])
 
@@ -1864,7 +1864,7 @@ df_t.to_csv('vgg_ensemble_submission.csv',index = False)
 
 In [41]:
 
-```
+```py
 df_vgg2 = pd.DataFrame(predictions_vgg, columns = ['has_cactus'])
 df_ensemble2 = pd.DataFrame(predictions_ensemble, columns = ['has_cactus'])
 df_resnet2 = pd.DataFrame(resnet_predictions, columns = ['has_cactus'])

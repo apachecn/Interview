@@ -12,7 +12,7 @@
 
 In [1]:
 
-```
+```py
 import fastai
 from fastai.vision import *
 from sklearn.model_selection import KFold
@@ -21,7 +21,7 @@ from sklearn.model_selection import KFold
 
 In [2]:
 
-```
+```py
 # Copy pretrained model weights to the default path
 !mkdir '/tmp/.torch'
 !mkdir '/tmp/.torch/models/'
@@ -33,7 +33,7 @@ In [2]:
 
 In [3]:
 
-```
+```py
 fastai.__version__
 
 ```
@@ -46,7 +46,7 @@ Out[3]:
 
 In [4]:
 
-```
+```py
 data_path = Path('../input/aerial-cactus-identification')
 df = pd.read_csv(data_path/'train.csv')
 df.head()
@@ -70,7 +70,7 @@ Out[4]:
 
 In [5]:
 
-```
+```py
 sub_csv = pd.read_csv(data_path/'sample_submission.csv')
 sub_csv.head()
 
@@ -93,7 +93,7 @@ Out[5]:
 
 In [6]:
 
-```
+```py
 def create_databunch(valid_idx):
     test = ImageList.from_df(sub_csv, path=data_path/'test', folder='test')
     data = (ImageList.from_df(df, path=data_path/'train', folder='train')
@@ -112,7 +112,7 @@ def create_databunch(valid_idx):
 
 In [7]:
 
-```
+```py
 kf = KFold(n_splits=5, random_state=379)
 epochs = 6
 lr = 1e-2
@@ -150,7 +150,7 @@ Total time: 06:07
 
  91.28% [199/218 00:58<00:05 0.0037]In [8]:
 
-```
+```py
 ens = torch.cat([preds[i][0][:,1].view(-1, 1) for i in range(5)], dim=1)
 ens  = (ens.mean(1)>0.5).long(); ens[:10]
 
@@ -164,14 +164,14 @@ tensor([1, 1, 0, 0, 1, 1, 1, 1, 1, 0])
 
 In [9]:
 
-```
+```py
 sub_csv['has_cactus'] = ens
 
 ```
 
 In [10]:
 
-```
+```py
 sub_csv.to_csv('submission.csv', index=False)
 
 ```

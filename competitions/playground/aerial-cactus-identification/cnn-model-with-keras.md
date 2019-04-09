@@ -10,7 +10,7 @@
 
 In [1]:
 
-```
+```py
 # This Python 3 environment comes with many helpful analytics libraries installed
 # It is defined by the kaggle/python docker image: https://github.com/kaggle/docker-python
 # For example, here's several helpful packages to load in 
@@ -35,7 +35,7 @@ print(os.listdir("../input"))
 
 In [2]:
 
-```
+```py
 import os
 import cv2
 import numpy as np
@@ -57,7 +57,7 @@ Using TensorFlow backend.
 
 In [3]:
 
-```
+```py
 class DataLoader:
     def __init__(self, npy_file: str = "npy_data"):
         self.npy_file = npy_file
@@ -192,7 +192,7 @@ class DataLoader:
 
 In [4]:
 
-```
+```py
 class TrainWithKeras:
     def __init__(self, x_data, y_data, lr: float = 0.001, epochs: int = 10, batch_size: int = 32,
                  loss: str = "categorical_crossentropy", model_path: str = "model.h5"):
@@ -252,7 +252,7 @@ class TrainWithKeras:
 
 In [5]:
 
-```
+```py
 class MakeSubmission:
     def __init__(self, x_test: np.array, model_path: str, csv_path: str):
         self.x_test = x_test
@@ -279,7 +279,7 @@ class MakeSubmission:
 
 In [6]:
 
-```
+```py
 os.makedirs("models", exist_ok=True)
 
 dl = DataLoader()
@@ -303,7 +303,7 @@ NPY files not found!
 
 In [7]:
 
-```
+```py
 trainer = TrainWithKeras(X_data, Y_data, model_path="models/model.h5", epochs=50, batch_size=1024, lr=0.0002)
 model = trainer.make_model()
 model = trainer.compile(model)
@@ -453,7 +453,7 @@ Epoch 50/50
 
 In [8]:
 
-```
+```py
 X_data_test, Y_data_test = dl.read_test_data(True, (32, 32), False, True, False)
 ms = MakeSubmission(X_data_test, "models/model.h5", "../input/sample_submission.csv")
 

@@ -10,7 +10,7 @@
 
 In [1]:
 
-```
+```py
 # This Python 3 environment comes with many helpful analytics libraries installed
 # It is defined by the kaggle/python docker image: https://github.com/kaggle/docker-python
 # For example, here's several helpful packages to load in 
@@ -35,7 +35,7 @@ print(os.listdir("../input"))
 
 In [2]:
 
-```
+```py
 from keras.layers import *
 from keras.models import Model, Sequential, load_model
 from keras import applications
@@ -54,7 +54,7 @@ Using TensorFlow backend.
 
 In [3]:
 
-```
+```py
 train = pd.read_csv('../input/train.csv')
 train.head()
 
@@ -77,7 +77,7 @@ Out[3]:
 
 In [4]:
 
-```
+```py
 train['has_cactus'].value_counts()
 
 ```
@@ -92,7 +92,7 @@ Name: has_cactus, dtype: int64
 
 In [5]:
 
-```
+```py
 import matplotlib.pyplot as plt
 import tqdm
 
@@ -109,7 +109,7 @@ Out[5]:
 
 In [6]:
 
-```
+```py
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix, roc_auc_score
 
@@ -119,7 +119,7 @@ x_train, x_test, y_train, y_test = train_test_split(train['id'], train['has_cact
 
 In [7]:
 
-```
+```py
 x_train_arr = []
 for images in tqdm.tqdm(x_train):
     img = plt.imread('../input/train/train/' + images)
@@ -142,7 +142,7 @@ print(x_train_arr.shape)
 
 In [8]:
 
-```
+```py
 x_test_arr = []
 for images in tqdm.tqdm(x_test):
     img = plt.imread('../input/train/train/' + images)
@@ -164,7 +164,7 @@ print(x_test_arr.shape)
 
 In [9]:
 
-```
+```py
 x_train_arr = x_train_arr.astype('float32')
 x_test_arr = x_test_arr.astype('float32')
 x_train_arr = x_train_arr/255
@@ -174,7 +174,7 @@ x_test_arr = x_test_arr/255
 
 In [10]:
 
-```
+```py
 from keras.applications.densenet import DenseNet201
 from keras.layers import *
 
@@ -234,7 +234,7 @@ ________________________________________________________________________________
 
 In [11]:
 
-```
+```py
 base_model.Trainable=True
 
 set_trainable=False
@@ -245,14 +245,14 @@ for layer in base_model.layers:
 
 In [12]:
 
-```
+```py
 model.compile('rmsprop', loss = "binary_crossentropy", metrics=["accuracy"])
 
 ```
 
 In [13]:
 
-```
+```py
 from keras.preprocessing.image import ImageDataGenerator
 from keras.callbacks import ModelCheckpoint
 
@@ -448,7 +448,7 @@ Epoch 00036: val_acc did not improve from 0.99829
 
 In [14]:
 
-```
+```py
 train_pred = model.predict(x_train_arr, verbose= 1)
 valid_pred = model.predict(x_test_arr, verbose= 1)
 
@@ -465,7 +465,7 @@ valid_acc = roc_auc_score(np.round(valid_pred), y_test)
 
 In [15]:
 
-```
+```py
 confusion_matrix(np.round(valid_pred), y_test)
 
 ```
@@ -479,14 +479,14 @@ array([[ 442,    0],
 
 In [16]:
 
-```
+```py
 sample = pd.read_csv('../input/sample_submission.csv')
 
 ```
 
 In [17]:
 
-```
+```py
 test = []
 for images in tqdm.tqdm(sample['id']):
     img = plt.imread('../input/test/test/' + images)
@@ -503,7 +503,7 @@ test = np.array(test)
 
 In [18]:
 
-```
+```py
 test = test/255
 test_pred = model.predict(test, verbose= 1)
 
@@ -516,7 +516,7 @@ test_pred = model.predict(test, verbose= 1)
 
 In [19]:
 
-```
+```py
 sample['has_cactus'] = test_pred
 sample.head()
 
@@ -539,7 +539,7 @@ Out[19]:
 
 In [20]:
 
-```
+```py
 sample.to_csv('sub.csv', index= False)
 
 ```

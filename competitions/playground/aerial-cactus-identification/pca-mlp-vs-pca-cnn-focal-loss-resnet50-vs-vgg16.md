@@ -8,7 +8,7 @@
 
 In [1]:
 
-```
+```py
 # This Python 3 environment comes with many helpful analytics libraries installed
 # It is defined by the kaggle/python docker image: https://github.com/kaggle/docker-python
 # For example, here's several helpful packages to load in 
@@ -41,14 +41,14 @@ Thanks to other authors for publishing their notebooks, I reused some parts of t
 
 In [2]:
 
-```
+```py
 train_df=pd.read_csv("../input/train.csv")
 
 ```
 
 In [3]:
 
-```
+```py
 train_df.shape
 
 ```
@@ -61,7 +61,7 @@ Out[3]:
 
 In [4]:
 
-```
+```py
 train_df.head()
 
 ```
@@ -83,7 +83,7 @@ Out[4]:
 
 In [5]:
 
-```
+```py
 import seaborn as sns 
 import matplotlib.pyplot as plt
 
@@ -91,7 +91,7 @@ import matplotlib.pyplot as plt
 
 In [6]:
 
-```
+```py
 sns.countplot(train_df["has_cactus"])
 
 ```
@@ -108,7 +108,7 @@ Out[6]:
 
 In [7]:
 
-```
+```py
 import cv2
 import pandas as pd
 import numpy as np
@@ -130,7 +130,7 @@ Using TensorFlow backend.
 
 In [8]:
 
-```
+```py
 train_dir = "../input/train/train/"
 test_dir = "../input/test/test/"
 
@@ -138,7 +138,7 @@ test_dir = "../input/test/test/"
 
 In [9]:
 
-```
+```py
 X_tr = []
 Y_tr = []
 imges = train_df['id'].values
@@ -154,14 +154,14 @@ Y_tr = np.asarray(Y_tr)
 
 In [10]:
 
-```
+```py
 X_tr=X_tr.reshape(-1,32,32,1)
 
 ```
 
 In [11]:
 
-```
+```py
 Y_tr.shape
 
 ```
@@ -180,7 +180,7 @@ Before I use PCA to reduce dimensionality of the data I will standardize it usin
 
 In [12]:
 
-```
+```py
 X_tr.shape
 
 ```
@@ -195,21 +195,21 @@ Out[12]:
 
 In [13]:
 
-```
+```py
 target=train_df["has_cactus"]
 
 ```
 
 In [14]:
 
-```
+```py
 train_df=train_df.drop("has_cactus",axis=1)
 
 ```
 
 In [15]:
 
-```
+```py
 import os,array
 import pandas as pd
 import time
@@ -10983,14 +10983,14 @@ pixelconv(train_df.id,32,32,1024) # pass pandas dataframe in which path of image
 
 In [16]:
 
-```
+```py
 new_data=pd.read_csv("../working/train_converted_new.csv")
 
 ```
 
 In [17]:
 
-```
+```py
 new_data.head()
 
 ```
@@ -11014,7 +11014,7 @@ Out[17]:
 
 In [18]:
 
-```
+```py
 import numpy as np
 import pandas as pd
 
@@ -11034,7 +11034,7 @@ import seaborn as sns
 
 In [19]:
 
-```
+```py
 pca = PCA(n_components=500)
 pca.fit(new_data)
 
@@ -11058,7 +11058,7 @@ In plot above we can see that cumulative explained variance is very high near 50
 
 In [20]:
 
-```
+```py
 NCOMPONENTS = 625
 
 pca = PCA(n_components=NCOMPONENTS)
@@ -11075,7 +11075,7 @@ print(X_pca_train.shape)
 
 In [21]:
 
-```
+```py
 inv_pca = pca.inverse_transform(X_pca_train)
 #inv_sc = scaler.inverse_transform(inv_pca)
 
@@ -11083,14 +11083,14 @@ inv_pca = pca.inverse_transform(X_pca_train)
 
 In [22]:
 
-```
+```py
 X_pca_train_new=X_pca_train.reshape(X_pca_train.shape[0],25,25,1)
 
 ```
 
 In [23]:
 
-```
+```py
 X_pca_train_new.shape
 
 ```
@@ -11105,7 +11105,7 @@ Out[23]:
 
 In [24]:
 
-```
+```py
 X_pca_train.shape ### this shape will be used in MLP
 
 ```
@@ -11126,7 +11126,7 @@ During compilation parameters of loss function, optimizer and metrics need to be
 
 In [25]:
 
-```
+```py
 import keras
 model = Sequential()
 layers = 1
@@ -11186,7 +11186,7 @@ Epoch 10/10
 
 In [26]:
 
-```
+```py
 import matplotlib.pyplot as plt
 %matplotlib inline
 accuracy = history.history['acc']
@@ -11213,7 +11213,7 @@ plt.show()
 
 In [27]:
 
-```
+```py
 import keras
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Flatten
@@ -11248,7 +11248,7 @@ model.compile(loss=keras.losses.binary_crossentropy,
 
 In [28]:
 
-```
+```py
 history1 = model.fit(X_pca_train_new,target,
           batch_size=batch_size,
           epochs=200,
@@ -11664,7 +11664,7 @@ Epoch 200/200
 
 In [29]:
 
-```
+```py
 import matplotlib.pyplot as plt
 %matplotlib inline
 accuracy = history1.history['acc']
@@ -11691,7 +11691,7 @@ plt.show()
 
 In [30]:
 
-```
+```py
 %%time
 X_tst = []
 Test_imgs = []
@@ -11714,7 +11714,7 @@ Wall time: 8.4 s
 
 In [31]:
 
-```
+```py
 X_tst.shape
 
 ```
@@ -11727,14 +11727,14 @@ Out[31]:
 
 In [32]:
 
-```
+```py
 X_tst=X_tst.reshape(-1,32,32,1)
 
 ```
 
 In [33]:
 
-```
+```py
 test_path=[]
 for i in os.listdir(test_dir):
     test_path.append(i)
@@ -11743,14 +11743,14 @@ for i in os.listdir(test_dir):
 
 In [34]:
 
-```
+```py
 test_dataframe=pd.DataFrame(data=test_path,columns=["id"])
 
 ```
 
 In [35]:
 
-```
+```py
 test_dataframe.head()
 
 ```
@@ -11772,7 +11772,7 @@ Out[35]:
 
 In [36]:
 
-```
+```py
 import os,array
 import pandas as pd
 import time
@@ -15890,21 +15890,21 @@ Done data frame conversion
 
 In [37]:
 
-```
+```py
 new_test=pd.read_csv("../working/test_converted_new.csv")
 
 ```
 
 In [38]:
 
-```
+```py
 X_tst=pca.transform(new_test)
 
 ```
 
 In [39]:
 
-```
+```py
 X_tst.shape
 
 ```
@@ -15917,14 +15917,14 @@ Out[39]:
 
 In [40]:
 
-```
+```py
 X_tst=X_tst.reshape(-1,25,25,1)
 
 ```
 
 In [41]:
 
-```
+```py
 X_tst.shape
 
 ```
@@ -15951,14 +15951,14 @@ The focal loss is designed to address class imbalance by down-weighting inliers 
 
 In [42]:
 
-```
+```py
 train_df["image_location"]=train_dir+train_df["id"]
 
 ```
 
 In [43]:
 
-```
+```py
 import tensorflow as tf
 from keras import backend as K
 
@@ -15966,7 +15966,7 @@ from keras import backend as K
 
 In [44]:
 
-```
+```py
 def binary_focal_loss(gamma=2., alpha=.25):
     """
  Binary form of focal loss.
@@ -16004,7 +16004,7 @@ def binary_focal_loss(gamma=2., alpha=.25):
 
 In [45]:
 
-```
+```py
 train_df.head()
 
 ```
@@ -16026,7 +16026,7 @@ Out[45]:
 
 In [46]:
 
-```
+```py
 #from console_progressbar import ProgressBar
 import shutil
 import tqdm
@@ -16136,7 +16136,7 @@ KeyError: 'has_cactus'
 
 In [47]:
 
-```
+```py
 import keras
 from keras_preprocessing.image import ImageDataGenerator
 from keras.applications.vgg16 import preprocess_input
@@ -16198,7 +16198,7 @@ FileNotFoundError: [Errno 2] No such file or directory: '../working/trainset/'
 
 In [48]:
 
-```
+```py
 import cv2
 import pandas as pd
 import numpy as np
@@ -16215,7 +16215,7 @@ from keras.optimizers import Adam
 
 In [49]:
 
-```
+```py
 vgg16_net = VGG16(weights='imagenet', 
                   include_top=False, 
                   input_shape=(32, 32, 3))
@@ -16230,7 +16230,7 @@ Downloading data from https://github.com/fchollet/deep-learning-models/releases/
 
 In [50]:
 
-```
+```py
 vgg16_net.trainable = False
 vgg16_net.summary()
 
@@ -16287,7 +16287,7 @@ _________________________________________________________________
 
 In [51]:
 
-```
+```py
 model = Sequential()
 model.add(vgg16_net)
 model.add(Flatten())
@@ -16301,14 +16301,14 @@ model.add(Activation('sigmoid'))
 
 In [52]:
 
-```
+```py
 model.compile(loss=[binary_focal_loss(alpha=.25, gamma=2)], metrics=["accuracy"], optimizer=Adam(lr=1e-5))
 
 ```
 
 In [53]:
 
-```
+```py
 history=model.fit_generator(train_generator,
                     steps_per_epoch = 14001//32,
                     epochs=200,
@@ -16329,7 +16329,7 @@ NameError: name 'train_generator' is not defined
 
 In [54]:
 
-```
+```py
 import matplotlib.pyplot as plt
 import numpy as np
 #plot of model epochs what has been happened within 100 epochs baseline with vgg16 training 135 million params
@@ -16365,7 +16365,7 @@ plt.show()
 
 ![](pca-mlp-vs-pca-cnn-focal-loss-resnet50-vs-vgg16_files/__results___74_0.png)![](pca-mlp-vs-pca-cnn-focal-loss-resnet50-vs-vgg16_files/__results___74_1.png)In [55]:
 
-```
+```py
 %%time
 X_tst = []
 Test_imgs = []
@@ -16386,7 +16386,7 @@ Wall time: 3.5 s
 
 In [56]:
 
-```
+```py
 # Prediction
 test_predictions = model.predict(X_tst)
 
@@ -16394,7 +16394,7 @@ test_predictions = model.predict(X_tst)
 
 In [57]:
 
-```
+```py
 sub_df = pd.DataFrame(test_predictions, columns=['has_cactus'])
 sub_df['has_cactus'] = sub_df['has_cactus'].apply(lambda x: 1 if x > 0.5 else 0)
 
@@ -16402,7 +16402,7 @@ sub_df['has_cactus'] = sub_df['has_cactus'].apply(lambda x: 1 if x > 0.5 else 0)
 
 In [58]:
 
-```
+```py
 sub_df['id'] = ''
 cols = sub_df.columns.tolist()
 cols = cols[-1:] + cols[:-1]
@@ -16412,7 +16412,7 @@ sub_df=sub_df[cols]
 
 In [59]:
 
-```
+```py
 for i, img in enumerate(Test_imgs):
     sub_df.set_value(i,'id',img)
 
@@ -16425,7 +16425,7 @@ for i, img in enumerate(Test_imgs):
 
 In [60]:
 
-```
+```py
 sub_df.head()
 
 ```
@@ -16447,7 +16447,7 @@ Out[60]:
 
 In [61]:
 
-```
+```py
 sub_df.to_csv('submission.csv',index=False)
 
 ```
@@ -16456,7 +16456,7 @@ sub_df.to_csv('submission.csv',index=False)
 
 In [62]:
 
-```
+```py
 from tensorflow.python.keras.applications import ResNet50
 from tensorflow.python.keras.models import Sequential
 from tensorflow.python.keras.layers import Dense, Flatten, GlobalAveragePooling2D, BatchNormalization
@@ -16468,7 +16468,7 @@ from tensorflow.python.keras.preprocessing.image import load_img, img_to_array
 
 In [63]:
 
-```
+```py
 model = Sequential()
 
 model.add(ResNet50(include_top=False, pooling='avg', weights='imagenet'))
@@ -16492,14 +16492,14 @@ Downloading data from https://github.com/fchollet/deep-learning-models/releases/
 
 In [64]:
 
-```
+```py
 model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
 ```
 
 In [65]:
 
-```
+```py
 history1=model.fit_generator(train_generator,
                     steps_per_epoch = 14001//32,
                     epochs=200,

@@ -8,7 +8,7 @@
 
 In [1]:
 
-```
+```py
 import numpy as np # linear algebra
 import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
 from sklearn.model_selection import train_test_split
@@ -44,7 +44,7 @@ First, I am going to import our data sources and take a look at what we are work
 
 In [2]:
 
-```
+```py
 df = pd.read_csv('../input/train.csv')
 df.head()
 
@@ -67,7 +67,7 @@ Out[2]:
 
 In [3]:
 
-```
+```py
 df['has_cactus'].value_counts(normalize=True)
 
 ```
@@ -82,14 +82,14 @@ Name: has_cactus, dtype: float64
 
 In [4]:
 
-```
+```py
 train_df, val_df = train_test_split(df, stratify = df.has_cactus, test_size=.2)
 
 ```
 
 In [5]:
 
-```
+```py
 #Checking that validation set has same proportions as original training data
 val_df['has_cactus'].value_counts(normalize=True)
 
@@ -105,7 +105,7 @@ Name: has_cactus, dtype: float64
 
 In [6]:
 
-```
+```py
 #Build a class for our data to put our images and target variables into our pytorch dataloader
 # https://stanford.edu/~shervine/blog/pytorch-how-to-generate-data-parallel
 
@@ -132,7 +132,7 @@ class DataSet(torch.utils.data.Dataset):
 
 In [7]:
 
-```
+```py
 batch_size = 32
 
 # Transform training data with random flips and normalize it to prepare it for dataloader
@@ -155,7 +155,7 @@ val_data_loader = torch.utils.data.DataLoader(train_data, batch_size = batch_siz
 
 In [8]:
 
-```
+```py
 #Checking what our cactus look like
 fig,ax = plt.subplots(1,3,figsize=(15,5))
 
@@ -167,7 +167,7 @@ for i, idx in enumerate(train_df[train_df['has_cactus']==1]['id'][0:3]):
 
 ![](cactus-identification-with-pytorch_files/__results___8_0.png)In [9]:
 
-```
+```py
 #Building a CNN from scratch
 
 class Net(nn.Module):
@@ -208,7 +208,7 @@ class Net(nn.Module):
 
 In [10]:
 
-```
+```py
 model = Net()
 if train_on_gpu:
     model = model.cuda()
@@ -223,7 +223,7 @@ optimizer = torch.optim.Adamax(model.parameters(), lr=learning_rate)
 
 In [11]:
 
-```
+```py
 #Training and validation for model
 
 best_loss = np.Inf
@@ -341,7 +341,7 @@ Improved Model Score - Updating Best Model Parameters...
 
 In [12]:
 
-```
+```py
 #Check model accuracy
 best_model.eval()
 with torch.no_grad():

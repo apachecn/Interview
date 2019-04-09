@@ -10,7 +10,7 @@
 
 In [1]:
 
-```
+```py
 import numpy as np # linear algebra
 import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
 
@@ -18,7 +18,7 @@ import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
 
 In [2]:
 
-```
+```py
 from pathlib import Path
 from fastai import *
 from fastai.vision import *
@@ -28,7 +28,7 @@ import torch
 
 In [3]:
 
-```
+```py
 data_folder = Path("../input")
 #data_folder.ls()
 
@@ -36,7 +36,7 @@ data_folder = Path("../input")
 
 In [4]:
 
-```
+```py
 train_df = pd.read_csv("../input/train.csv")
 test_df = pd.read_csv("../input/sample_submission.csv")
 
@@ -44,7 +44,7 @@ test_df = pd.read_csv("../input/sample_submission.csv")
 
 In [5]:
 
-```
+```py
 test_img = ImageList.from_df(test_df, path=data_folder/'test', folder='test')
 trfm = get_transforms(do_flip=True, flip_vert=True, max_rotate=10.0, max_zoom=1.1, max_lighting=0.2, max_warp=0.2, p_affine=0.75, p_lighting=0.75)
 train_img = (ImageList.from_df(train_df, path=data_folder/'train', folder='train')
@@ -60,14 +60,14 @@ train_img = (ImageList.from_df(train_df, path=data_folder/'train', folder='train
 
 In [6]:
 
-```
+```py
 #train_img.show_batch(rows=3, figsize=(7,6))
 
 ```
 
 In [7]:
 
-```
+```py
 learn = cnn_learner(train_img, models.densenet161, metrics=[error_rate, accuracy])
 
 ```
@@ -80,7 +80,7 @@ Downloading: "https://download.pytorch.org/models/densenet161-8d451a50.pth" to /
 
 In [8]:
 
-```
+```py
 #learn.lr_find()
 #learn.recorder.plot()
 
@@ -88,7 +88,7 @@ In [8]:
 
 In [9]:
 
-```
+```py
 lr = 3e-02
 learn.fit_one_cycle(5, slice(lr))
 
@@ -106,7 +106,7 @@ Total time: 06:22
 
 In [10]:
 
-```
+```py
 #learn.unfreeze()
 #learn.lr_find()
 #learn.recorder.plot()
@@ -115,14 +115,14 @@ In [10]:
 
 In [11]:
 
-```
+```py
 #learn.fit_one_cycle(1, slice(1e-06))
 
 ```
 
 In [12]:
 
-```
+```py
 #interp = ClassificationInterpretation.from_learner(learn)
 #interp.plot_top_losses(9, figsize=(7,6))
 
@@ -130,21 +130,21 @@ In [12]:
 
 In [13]:
 
-```
+```py
 preds,_ = learn.get_preds(ds_type=DatasetType.Test)
 
 ```
 
 In [14]:
 
-```
+```py
 test_df.has_cactus = preds.numpy()[:, 0]
 
 ```
 
 In [15]:
 
-```
+```py
 test_df.to_csv('submission.csv', index=False)
 
 ```

@@ -10,7 +10,7 @@
 
 In [1]:
 
-```
+```py
 # This Python 3 environment comes with many helpful analytics libraries installed
 # It is defined by the kaggle/python docker image: https://github.com/kaggle/docker-python
 # For example, here's several helpful packages to load in 
@@ -35,7 +35,7 @@ print(os.listdir("../input"))
 
 In [2]:
 
-```
+```py
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -55,7 +55,7 @@ Using TensorFlow backend.
 
 In [3]:
 
-```
+```py
 import random
 
 ```
@@ -64,14 +64,14 @@ import random
 
 In [4]:
 
-```
+```py
 train_data = pd.read_csv('../input/train.csv')
 
 ```
 
 In [5]:
 
-```
+```py
 train_data.shape
 
 ```
@@ -84,7 +84,7 @@ Out[5]:
 
 In [6]:
 
-```
+```py
 train_data.head()
 
 ```
@@ -106,7 +106,7 @@ Out[6]:
 
 In [7]:
 
-```
+```py
 train_data.has_cactus.unique()
 
 ```
@@ -119,7 +119,7 @@ array([1, 0])
 
 In [8]:
 
-```
+```py
 train_data.has_cactus.hist()
 
 ```
@@ -132,7 +132,7 @@ Out[8]:
 
 ![](simple-cnn_files/__results___8_1.png)In [9]:
 
-```
+```py
 train_data.has_cactus.value_counts()
 
 ```
@@ -147,7 +147,7 @@ Name: has_cactus, dtype: int64
 
 In [10]:
 
-```
+```py
 train_data.has_cactus.plot()
 
 ```
@@ -164,7 +164,7 @@ Out[10]:
 
 In [11]:
 
-```
+```py
 def image_generator2(batch_size = 16, all_data=True, shuffle=True, train=True, indexes=None):
     while True:
         if indexes is None:
@@ -226,7 +226,7 @@ def image_generator2(batch_size = 16, all_data=True, shuffle=True, train=True, i
 
 In [12]:
 
-```
+```py
 positive_examples = train_data[train_data.has_cactus==1]
 negative_examples = train_data[train_data.has_cactus==0]
 
@@ -234,7 +234,7 @@ negative_examples = train_data[train_data.has_cactus==0]
 
 In [13]:
 
-```
+```py
 def augment_img(img):
     batch_input = []
     batch_input += [img]
@@ -270,7 +270,7 @@ def augment_img(img):
 
 In [14]:
 
-```
+```py
 def image_generator(batch_size = 8, all_data=True, shuffle=True, train=True, indexes=None):
     while True:
         if indexes is None:
@@ -326,7 +326,7 @@ def image_generator(batch_size = 8, all_data=True, shuffle=True, train=True, ind
 
 In [15]:
 
-```
+```py
 model = keras.models.Sequential()
 model.add(keras.layers.Conv2D(64, (5, 5), input_shape=(32, 32, 3)))
 model.add(keras.layers.BatchNormalization())
@@ -375,7 +375,7 @@ Colocations handled automatically by placer.
 
 In [16]:
 
-```
+```py
 model.summary()
 
 ```
@@ -445,7 +445,7 @@ _________________________________________________________________
 
 In [17]:
 
-```
+```py
 opt = keras.optimizers.SGD(lr=0.0001, momentum=0.9, nesterov=True)
 model.compile(optimizer=opt, loss='binary_crossentropy', metrics=['accuracy'])
 
@@ -453,7 +453,7 @@ model.compile(optimizer=opt, loss='binary_crossentropy', metrics=['accuracy'])
 
 In [18]:
 
-```
+```py
 def step_decay_schedule(initial_lr=1e-3, decay_factor=0.75, step_size=10):
     '''
  Wrapper function to create a LearningRateScheduler with step decay schedule.
@@ -490,7 +490,7 @@ Epoch 6/30
 
 In [19]:
 
-```
+```py
 # def step_decay_schedule(initial_lr=1e-3, decay_factor=0.75, step_size=10):
 #     '''
 #     Wrapper function to create a LearningRateScheduler with step decay schedule.
@@ -508,7 +508,7 @@ In [19]:
 
 In [20]:
 
-```
+```py
 model.evaluate_generator(image_generator2(), steps=train_data.shape[0]//16)
 
 ```
@@ -521,28 +521,28 @@ Out[20]:
 
 In [21]:
 
-```
+```py
 # model.evaluate_generator(image_generator(), steps=train_data.shape[0]//8)
 
 ```
 
 In [22]:
 
-```
+```py
 # keras.backend.eval(model.optimizer.lr.assign(0.00001))
 
 ```
 
 In [23]:
 
-```
+```py
 # model.fit_generator(image_generator(), steps_per_epoch= train_data.shape[0] / 16, epochs=15)
 
 ```
 
 In [24]:
 
-```
+```py
 indexes = np.arange(train_data.shape[0])
 N = int(len(indexes) / 64)   
 batch_size = 64
@@ -569,7 +569,7 @@ for i in range(N):
 
 In [25]:
 
-```
+```py
 len(wrong_ind)
 
 ```
@@ -582,7 +582,7 @@ Out[25]:
 
 In [26]:
 
-```
+```py
 indexes = np.arange(train_data.shape[0])
 N = int(len(indexes) / 64)   
 batch_size = 64
@@ -608,7 +608,7 @@ for i in range(N):
 
 In [27]:
 
-```
+```py
 len(wrong_ind)
 
 ```
@@ -621,7 +621,7 @@ Out[27]:
 
 In [28]:
 
-```
+```py
 indexes = np.arange(train_data.shape[0])
 N = int(len(indexes) / 64)   
 batch_size = 64
@@ -647,7 +647,7 @@ for i in range(N):
 
 In [29]:
 
-```
+```py
 len(wrong_ind)
 
 ```
@@ -660,7 +660,7 @@ Out[29]:
 
 In [30]:
 
-```
+```py
 !ls ../input/test/test/* | wc -l
 
 ```
@@ -672,14 +672,14 @@ In [30]:
 
 In [31]:
 
-```
+```py
 test_files = os.listdir('../input/test/test/')
 
 ```
 
 In [32]:
 
-```
+```py
 len(test_files)
 
 ```
@@ -692,7 +692,7 @@ Out[32]:
 
 In [33]:
 
-```
+```py
 batch = 40
 all_out = []
 for i in range(int(4000/batch)):
@@ -707,14 +707,14 @@ for i in range(int(4000/batch)):
 
 In [34]:
 
-```
+```py
 all_out = np.array(all_out).reshape((-1, 1))
 
 ```
 
 In [35]:
 
-```
+```py
 all_out.shape
 
 ```
@@ -727,14 +727,14 @@ Out[35]:
 
 In [36]:
 
-```
+```py
 sub_file = pd.DataFrame(data = {'id': test_files, 'has_cactus': all_out.reshape(-1).tolist()})
 
 ```
 
 In [37]:
 
-```
+```py
 sub_file.to_csv('sample_submission.csv', index=False)
 
 ```

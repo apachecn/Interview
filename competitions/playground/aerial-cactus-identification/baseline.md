@@ -8,7 +8,7 @@
 
 In [1]:
 
-```
+```py
 # This Python 3 environment comes with many helpful analytics libraries installed
 # It is defined by the kaggle/python docker image: https://github.com/kaggle/docker-python
 # For example, here's several helpful packages to load in 
@@ -32,7 +32,7 @@ print(os.listdir("../input"))
 
 In [2]:
 
-```
+```py
 from PIL import Image
 from tqdm import tqdm
 
@@ -60,7 +60,7 @@ Using TensorFlow backend.
 
 In [3]:
 
-```
+```py
 from keras.layers import Conv2D, MaxPool2D, Dense, BatchNormalization, Activation, GlobalAveragePooling2D
 from keras.models import Sequential, Model
 from keras.regularizers import l2
@@ -110,7 +110,7 @@ def baseline_model():
 
 In [4]:
 
-```
+```py
 from keras.optimizers import Adam, SGD
 from keras.callbacks import CSVLogger, ModelCheckpoint, ReduceLROnPlateau
 
@@ -143,7 +143,7 @@ def predict_baseline(model):
 
 In [5]:
 
-```
+```py
 model = train_baseline()
 predict_baseline(model)
 

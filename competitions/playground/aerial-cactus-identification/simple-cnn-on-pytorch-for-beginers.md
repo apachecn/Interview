@@ -16,7 +16,7 @@ The purpose of EDA is:
 
 In [1]:
 
-```
+```py
 # Libreries
 
 import numpy as np
@@ -31,7 +31,7 @@ import matplotlib.pyplot as plt
 
 In [2]:
 
-```
+```py
 # Data path
 labels = pd.read_csv('../input/train.csv')
 sub = pd.read_csv('../input/sample_submission.csv')
@@ -42,7 +42,7 @@ test_path = '../input/test/test/'
 
 In [3]:
 
-```
+```py
 print('Num train samples:{0}'.format(len(os.listdir(train_path))))
 print('Num test samples:{0}'.format(len(os.listdir(test_path))))
 
@@ -56,7 +56,7 @@ Num test samples:4000
 
 In [4]:
 
-```
+```py
 labels.head()
 
 ```
@@ -78,7 +78,7 @@ Out[4]:
 
 In [5]:
 
-```
+```py
 labels['has_cactus'].value_counts()
 
 ```
@@ -93,7 +93,7 @@ Name: has_cactus, dtype: int64
 
 In [6]:
 
-```
+```py
 lab = 'Has cactus','Hasn\'t cactus'
 colors=['green','brown']
 
@@ -111,7 +111,7 @@ plt.show()
 
 In [7]:
 
-```
+```py
 fig,ax = plt.subplots(1,5,figsize=(15,3))
 
 for i, idx in enumerate(labels[labels['has_cactus']==1]['id'][-5:]):
@@ -126,7 +126,7 @@ for i, idx in enumerate(labels[labels['has_cactus']==1]['id'][-5:]):
 
 In [8]:
 
-```
+```py
 fig,ax = plt.subplots(1,5,figsize=(15,3))
 
 for i, idx in enumerate(labels[labels['has_cactus']==0]['id'][-5:]):
@@ -141,7 +141,7 @@ for i, idx in enumerate(labels[labels['has_cactus']==0]['id'][-5:]):
 
 In [9]:
 
-```
+```py
 # Libreries
 
 import torch
@@ -157,7 +157,7 @@ from sklearn.model_selection import train_test_split
 
 In [10]:
 
-```
+```py
 ## Parameters for model
 
 # Hyper parameters
@@ -173,7 +173,7 @@ device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
 In [11]:
 
-```
+```py
 # data splitting
 train, val = train_test_split(labels, stratify=labels.has_cactus, test_size=0.1)
 train.shape, val.shape
@@ -190,7 +190,7 @@ Checking label distribution(must be 1:3)
 
 In [12]:
 
-```
+```py
 train['has_cactus'].value_counts()
 
 ```
@@ -205,7 +205,7 @@ Name: has_cactus, dtype: int64
 
 In [13]:
 
-```
+```py
 val['has_cactus'].value_counts()
 
 ```
@@ -222,7 +222,7 @@ Name: has_cactus, dtype: int64
 
 In [14]:
 
-```
+```py
 # NOTE: class is inherited from Dataset
 class MyDataset(Dataset):
     def __init__(self, df_data, data_dir = './', transform=None):
@@ -246,7 +246,7 @@ class MyDataset(Dataset):
 
 In [15]:
 
-```
+```py
 # Image preprocessing
 trans_train = transforms.Compose([transforms.ToPILImage(),
                                   transforms.Pad(32, padding_mode='reflect'),
@@ -271,7 +271,7 @@ loader_valid = DataLoader(dataset = dataset_valid, batch_size=batch_size//2, shu
 
 In [16]:
 
-```
+```py
 # NOTE: class is inherited from nn.Module
 class SimpleCNN(nn.Module):
     def __init__(self):
@@ -310,14 +310,14 @@ class SimpleCNN(nn.Module):
 
 In [17]:
 
-```
+```py
 model = SimpleCNN().to(device)
 
 ```
 
 In [18]:
 
-```
+```py
 # Loss and optimizer
 criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adamax(model.parameters(), lr=learning_rate)
@@ -326,7 +326,7 @@ optimizer = torch.optim.Adamax(model.parameters(), lr=learning_rate)
 
 In [19]:
 
-```
+```py
 # Train the model
 total_step = len(loader_train)
 for epoch in range(num_epochs):
@@ -382,7 +382,7 @@ Epoch [25/25], Step [100/124], Loss: 0.0010
 
 In [20]:
 
-```
+```py
 # Test the model
 model.eval()  # eval mode (batchnorm uses moving mean/variance instead of mini-batch mean/variance)
 with torch.no_grad():
@@ -412,7 +412,7 @@ Test Accuracy of the model on the 1750 validation images: 99.25714285714285 %
 
 In [21]:
 
-```
+```py
 # generator for test data 
 dataset_valid = MyDataset(df_data=sub, data_dir=test_path, transform=trans_valid)
 loader_test = DataLoader(dataset = dataset_valid, batch_size=32, shuffle=False, num_workers=0)
@@ -421,7 +421,7 @@ loader_test = DataLoader(dataset = dataset_valid, batch_size=32, shuffle=False, 
 
 In [22]:
 
-```
+```py
 model.eval()
 
 preds = []

@@ -12,7 +12,7 @@
 
 In [1]:
 
-```
+```py
 import cv2
 from sklearn.model_selection import train_test_split
 import numpy as np
@@ -49,7 +49,7 @@ Using TensorFlow backend.
 
 In [2]:
 
-```
+```py
 train_dir = "../input/aerial-cactus-identification/train/train/"
 test_dir = "../input/aerial-cactus-identification/test/test/"
 train_df = pd.read_csv('../input/aerial-cactus-identification/train.csv')
@@ -76,7 +76,7 @@ Out[2]:
 
 In [3]:
 
-```
+```py
 im = cv2.imread("../input/aerial-cactus-identification/train/train/01e30c0ba6e91343a12d2126fcafc0dd.jpg")
 plt.imshow(im)
 
@@ -94,7 +94,7 @@ Out[3]:
 
 In [4]:
 
-```
+```py
 X_tr = []
 Y_tr = []
 imges = train_df['id'].values
@@ -123,7 +123,7 @@ Y_tr = np.asarray(Y_tr)
 
 In [5]:
 
-```
+```py
 X_tr_2 = X_tr
 Y_tr_2 = Y_tr
 
@@ -131,7 +131,7 @@ Y_tr_2 = Y_tr
 
 In [6]:
 
-```
+```py
 X_tr = X_tr_2
 Y_tr = Y_tr_2
 
@@ -139,7 +139,7 @@ Y_tr = Y_tr_2
 
 In [7]:
 
-```
+```py
 X_tr.shape,Y_tr.shape
 
 ```
@@ -154,7 +154,7 @@ Out[7]:
 
 In [8]:
 
-```
+```py
 test_image_names = []
 for filename in os.listdir(test_dir):
     test_image_names.append(filename)
@@ -171,7 +171,7 @@ X_ts /= 255
 
 In [9]:
 
-```
+```py
 x_train,x_test,y_train,y_test = train_test_split(X_tr, Y_tr, test_size = 0.2 , stratify = Y_tr )
 
 ```
@@ -180,7 +180,7 @@ x_train,x_test,y_train,y_test = train_test_split(X_tr, Y_tr, test_size = 0.2 , s
 
 In [10]:
 
-```
+```py
 base=keras.applications.vgg16.VGG16(include_top=False, weights='../input/weights/vgg16_weights_tf_dim_ordering_tf_kernels_notop.h5',input_shape=(32,32,3))
 
 ```
@@ -189,7 +189,7 @@ base=keras.applications.vgg16.VGG16(include_top=False, weights='../input/weights
 
 In [11]:
 
-```
+```py
 print("Current train size:",X_tr.shape)
 model = Sequential()
 model.add(base)
@@ -298,7 +298,7 @@ Epoch 24/80
 
 In [12]:
 
-```
+```py
 clf=model
 y_pred_proba = clf.predict_proba(X_tr_2)
 
@@ -336,7 +336,7 @@ weighted avg       1.00      1.00      1.00     70000
 
 In [13]:
 
-```
+```py
 test_df = pd.read_csv('../input/aerial-cactus-identification/sample_submission.csv')
 X_test = []
 imges = test_df['id'].values

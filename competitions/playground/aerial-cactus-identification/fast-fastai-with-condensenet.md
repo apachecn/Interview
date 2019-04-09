@@ -12,7 +12,7 @@ forked from [https://www.kaggle.com/kenseitrg/simple-fastai-exercise](https://ww
 
 In [1]:
 
-```
+```py
 !pip install pytorchcv
 
 ```
@@ -34,7 +34,7 @@ Successfully installed pytorchcv-0.0.42
 
 In [2]:
 
-```
+```py
 !pip install fastai==1.0.47
 
 ```
@@ -96,7 +96,7 @@ Successfully installed fastai-1.0.47
 
 In [3]:
 
-```
+```py
 import time
 start = time.time()
 
@@ -104,7 +104,7 @@ start = time.time()
 
 In [4]:
 
-```
+```py
 import numpy as np 
 import pandas as pd 
 from pytorchcv.model_provider import get_model as ptcv_get_model
@@ -113,7 +113,7 @@ from pytorchcv.model_provider import get_model as ptcv_get_model
 
 In [5]:
 
-```
+```py
 from pathlib import Path
 from fastai import *
 from fastai.vision import *
@@ -123,7 +123,7 @@ import torch
 
 In [6]:
 
-```
+```py
 data_folder = Path("../input")
 #data_folder.ls()
 
@@ -131,7 +131,7 @@ data_folder = Path("../input")
 
 In [7]:
 
-```
+```py
 train_df = pd.read_csv("../input/train.csv")
 test_df = pd.read_csv("../input/sample_submission.csv")
 
@@ -139,7 +139,7 @@ test_df = pd.read_csv("../input/sample_submission.csv")
 
 In [8]:
 
-```
+```py
 test_img = ImageList.from_df(test_df, path=data_folder/'test', folder='test')
 trfm = get_transforms(do_flip=True, flip_vert=True, max_rotate=10.0, max_zoom=1.1, max_lighting=0.2, max_warp=0.2, p_affine=0.75, p_lighting=0.75)
 train_img = (ImageList.from_df(train_df, path=data_folder/'train', folder='train')
@@ -155,7 +155,7 @@ train_img = (ImageList.from_df(train_df, path=data_folder/'train', folder='train
 
 In [9]:
 
-```
+```py
 def md(f=None):
     mdl = ptcv_get_model('condensenet74_c4_g4', pretrained=True)
     mdl.features.final_pool = nn.AvgPool2d(kernel_size=7, stride=1, padding=3)
@@ -165,7 +165,7 @@ def md(f=None):
 
 In [10]:
 
-```
+```py
 learn = cnn_learner(train_img, md, metrics=[error_rate, accuracy])
 
 ```
@@ -177,7 +177,7 @@ Downloading /tmp/.torch/models/condensenet74_c4_g4-0828-5ba55049.pth.zip from ht
 
 In [11]:
 
-```
+```py
 #learn.lr_find()
 #learn.recorder.plot()
 
@@ -185,7 +185,7 @@ In [11]:
 
 In [12]:
 
-```
+```py
 lr = 3.5e-02
 learn.fit_one_cycle(5, slice(lr))
 
@@ -203,28 +203,28 @@ Total time: 04:54
 
 In [13]:
 
-```
+```py
 preds,_ = learn.get_preds(ds_type=DatasetType.Test)
 
 ```
 
 In [14]:
 
-```
+```py
 test_df.has_cactus = preds.numpy()[:, 0]
 
 ```
 
 In [15]:
 
-```
+```py
 test_df.to_csv('submission.csv', index=False)
 
 ```
 
 In [16]:
 
-```
+```py
 end = time.time() 
 print(end - start)
 
