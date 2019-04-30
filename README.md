@@ -188,7 +188,7 @@ WriteUp 需要带有预处理过程，从你能下载到的原始数据开始，
 
 有任何建议反馈, 或想参与文档翻译, 麻烦联系下面的企鹅
 * 企鹅: 529815144(片刻) 1042658081(那伊抹微笑) 190442212(瑶妹)
-* **ApacheCN - 学习机器学习群【629470233】<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=30e5f1123a79867570f665aa3a483ca404b1c3f77737bc01ec520ed5f078ddef"><img border="0" src="static/images/logos/ApacheCN-group.png" alt="ApacheCN - 学习机器学习群【629470233】" title="ApacheCN - 学习机器学习群【629470233】"></a>**
+* **ApacheCN - 比赛学习群【724187166】<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=9bcf2fb3985835c9c2f15783ec9c85822e23be1191a6581eaf22f574b5192b19"><img border="0" src="static/images/logos/ApacheCN-group.png" alt="ApacheCN - 比赛学习群[724187166]" title="ApacheCN - 比赛学习群[724187166]"></a>**
 * **Kaggle (数据科学竞赛平台) | [ApacheCN(apache中文网)](http://www.apachecn.org/)**
 
 <img src="http://data.apachecn.org/img/about/donate.jpg" alt="微信&支付宝" />
