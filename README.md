@@ -1,10 +1,24 @@
 # Kaggle
+
 ![](static/images/logos/kaggle-logo-gray-bigger.jpeg)
 
-* [ApacheCN 组织资源](https://github.com/apachecn/home): https://github.com/apachecn/home
+> Special Sponsors
 
-> **欢迎任何人参与和完善：一个人可以走的很快，但是一群人却可以走的更远**
-* <strong>ApacheCN - Kaggle组队群【686932392】<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=716b584bbd7cdf64e961b499c7fb5891faf1f6c92dad026e3c596a57c834f1ec"><img title="ApacheCN - Kaggle组队群【686932392】" src="http://www.apachecn.org/wp-content/uploads/2017/10/ApacheCN-group.png" alt="ApacheCN - Kaggle组队群【686932392】" /></a></strong></li>
+<table>
+      <tbody>
+        <tr>
+          <td align="center" valign="middle">
+            <a href="https://coding.net/?utm_source=ApacheCN&utm_medium=banner&utm_campaign=march2019" target="_blank">
+              <img width="1080" src="http://data.apachecn.org/img/SpecialSponsors/CodingNet.png">
+            </a>
+          </td>
+      </tbody>
+</table>
+
+> **你已经抓住了石头，现在是挥舞它的时候了！**
+
+* [ApacheCN 组织资源](https://github.com/apachecn/home): https://github.com/apachecn/home
+* **ApacheCN - 比赛学习群【724187166】<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=9bcf2fb3985835c9c2f15783ec9c85822e23be1191a6581eaf22f574b5192b19"><img border="0" src="static/images/logos/ApacheCN-group.png" alt="ApacheCN - 比赛学习群[724187166]" title="ApacheCN - 比赛学习群[724187166]"></a>**
 * [Kaggle](https://www.kaggle.com) 是一个流行的数据科学竞赛平台。
 * [GitHub 入门操作指南](docs/GitHub/README.md) 和 [Kaggle 入门操作指南](docs/kaggle-quickstart.md)，适合于学习过 [MachineLearning(机器学习实战)](https://github.com/apachecn/MachineLearning) 的小盆友
 * Kaggle 已被 Google 收购，请参阅[《谷歌收购 Kaggle 为什么会震动三界（AI、机器学习、数据科学界）》](https://www.leiphone.com/news/201703/ZjpnddCoUDr3Eh8c.html)
@@ -32,7 +46,15 @@
 现在我们已经准备好尝试 Kaggle 竞赛了，这些竞赛分成以下几个类别。
 ```
 
-### [第1部分：课业比赛 InClass](https://www.kaggle.com/competitions?sortBy=deadline&group=all&page=1&pageSize=20&segment=inClass)
+### [第1部分：课业比赛 InClass](https://www.kaggle.com/competitions?sortBy=dead
+
+
+
+
+
+
+
+ne&group=all&page=1&pageSize=20&segment=inClass)
 
 `课业比赛 InClass` 是学校教授机器学习的老师留作业的地方，这里的竞赛有些会向public开放参赛，也有些仅仅是学校内部教学使用。
 
@@ -63,12 +85,10 @@
 
 `推荐比赛 Featured` 是瞄准商业问题带有奖金的公开竞赛。如果有幸赢得比赛，不但可以获得奖金，模型也可能会被竞赛赞助商应用到商业实践中呢。
 
-> Kaggle
-
 * [**Mercari 价格推荐挑战**](/competitions/featured/mercari-price-suggestion-challenge)
 * [**Home Credit Default Risk**](/competitions/featured/home-credit-default-risk)
 
-> 天池
+### 天池
 
 * [**天池入门教程: O2O优惠券-使用新人赛**](https://tianchi.aliyun.com/notebook/detail.html?spm=5176.11409386.4851167.7.65c91d07FiVHVN&id=4796)
 * [**天池第一名: O2O优惠券-预测用户领取优惠劵后是否核销**](https://github.com/wepe/O2O-Coupon-Usage-Forecast)
@@ -79,6 +99,12 @@
 * [核心思想](https://www.kaggle.com/kernels): 在线编程。（猜测，基于 jupyter 实现）
 * [论坛](https://www.kaggle.com/discussion): 发帖回帖讨论的平台
 * [招聘](https://www.kaggle.com/jobs): 企业招聘数据科学家的位置
+
+## 解决方案列表
+
+* [解决方案列表](docs/writeup-list.md)
+
+如果解决方案太大，可以先放在这个列表中。以后再逐步整合到这个仓库。
 
 ## 机器学习算法
 
@@ -124,9 +150,17 @@
 - 统计型：与业务强关联
 - 组合特征
 
-## 活动时间
+## 贡献指南
 
-时间段：2017-11-15 ～ 2017-11-30
+> **欢迎任何人参与和完善：一个人可以走的很快，但是一群人却可以走的更远**
+
+本项目接受大家提交 WriteUp（题解）。
+
+WriteUp 需要带有预处理过程，从你能下载到的原始数据开始，并且带有验证过程和评价指标。
+
+请放在`/competitions/{分类}/{名称}`目录下。
+
+其中分类一共有六个，请见上面，名称是 URL 中`/c/`后面的部分。
 
 ## 联系方式
 
@@ -148,12 +182,13 @@
 * [@zehuichen](https://github.com/zehuichen123)(loveSnowBest)
 * [@谈笑风生](https://github.com/zhu1040028623)（谈笑风生）
 * [@诺木人](https://github.com/1mrliu)（诺木人）
+* [@飞龙](https://github.com/wizardforcel)
 
 > 加入方式
 
 有任何建议反馈, 或想参与文档翻译, 麻烦联系下面的企鹅
 * 企鹅: 529815144(片刻) 1042658081(那伊抹微笑) 190442212(瑶妹)
-* **ApacheCN - 学习机器学习群【629470233】<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=30e5f1123a79867570f665aa3a483ca404b1c3f77737bc01ec520ed5f078ddef"><img border="0" src="static/images/logos/ApacheCN-group.png" alt="ApacheCN - 学习机器学习群【629470233】" title="ApacheCN - 学习机器学习群【629470233】"></a>**
+* **ApacheCN - 比赛学习群【724187166】<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=9bcf2fb3985835c9c2f15783ec9c85822e23be1191a6581eaf22f574b5192b19"><img border="0" src="static/images/logos/ApacheCN-group.png" alt="ApacheCN - 比赛学习群[724187166]" title="ApacheCN - 比赛学习群[724187166]"></a>**
 * **Kaggle (数据科学竞赛平台) | [ApacheCN(apache中文网)](http://www.apachecn.org/)**
 
-![](https://apachecn.github.io/home/img/about/donate.jpg)
+<img src="http://data.apachecn.org/img/about/donate.jpg" alt="微信&支付宝" />
