@@ -25,7 +25,7 @@
 
 > Note:
 
-* 号外号外 [**kaggle组队开始啦**](docs/kaggle-start.md) 
+* 号外号外 [**kaggle组队开始啦**](docs/kaggle-start.md)
 * [【Kaggle 入门篇】资源整理完毕，跟我们一起来学习吧！](http://www.apachecn.org/kaggle/379.html)
 * [关于 ApacheCN](http://cwiki.apachecn.org/pages/viewpage.action?pageId=2887240): 一边学习和整理，一边录制项目视频，希望能组建一个开源的公益团队对国内机器学习社区做一些贡献，同时也为装逼做准备!!
 
@@ -46,15 +46,7 @@
 现在我们已经准备好尝试 Kaggle 竞赛了，这些竞赛分成以下几个类别。
 ```
 
-### [第1部分：课业比赛 InClass](https://www.kaggle.com/competitions?sortBy=dead
-
-
-
-
-
-
-
-ne&group=all&page=1&pageSize=20&segment=inClass)
+### [第1部分：课业比赛 InClass](https://www.kaggle.com/competitions?sortBy=deadne&group=all&page=1&pageSize=20&segment=inClass)
 
 `课业比赛 InClass` 是学校教授机器学习的老师留作业的地方，这里的竞赛有些会向public开放参赛，也有些仅仅是学校内部教学使用。
 

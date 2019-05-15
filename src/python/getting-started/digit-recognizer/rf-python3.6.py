@@ -6,20 +6,21 @@ Update  on 2018-05-19
 Author: 平淡的天/wang-sw
 Github: https://github.com/apachecn/kaggle
 '''
-import os.path
+import os
+import time
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.decomposition import PCA
 import pandas as pd
 import numpy as np
-# from sklearn.model_selection import GridSearchCV
 # from numpy import arange
 # from lightgbm import LGBMClassifier
-import os.path
-import time
+# from sklearn.model_selection import GridSearchCV
+
 
 # 数据路径
 data_dir = '/Users/wuyanxue/Documents/GitHub/datasets/getting-started/digit-recognizer/'
+
 
 # 加载数据
 def opencsv():
@@ -29,7 +30,8 @@ def opencsv():
     data = pd.concat([train_data, test_data], axis=0).reset_index(drop=True)
     data.drop(['label'], axis=1, inplace=True)
     label = train_data.label
-    return train_data,test_data,data, label
+    return train_data, test_data, data, label
+
 
 # 数据预处理-降维 PCA主成成分分析
 def dRPCA(data, COMPONENT_NUM=100):
@@ -71,12 +73,11 @@ def trainModel(X_train, y_train):
     # gsearch1.fit(X_train, y_train)
     # print(gsearch1.grid_scores_, gsearch1.best_params_, gsearch1.best_score_)
     # clf=gsearch1.best_estimator_
-
     return clf
 
 
 # 计算准确率
-def printAccuracy(y_test ,y_predict):
+def printAccuracy(y_test, y_predict):
     zeroLable = y_test - y_predict
     rightCount = 0
     for i in range(len(zeroLable)):
@@ -84,17 +85,20 @@ def printAccuracy(y_test ,y_predict):
             rightCount += 1
     print('the right rate is:', float(rightCount) / len(zeroLable))
 
+
 # 存储模型
 def storeModel(model, filename):
     import pickle
     with open(filename, 'wb') as fw:
         pickle.dump(model, fw)
 
+
 # 加载模型
 def getModel(filename):
     import pickle
     fr = open(filename, 'rb')
     return pickle.load(fr)
+
 
 # 结果输出保存
 def saveResult(result, csvName):
@@ -123,14 +127,14 @@ def trainRF():
     X_train, X_test, y_train, y_test = train_test_split(
         data_pca[0:len(train_data)], label, test_size=0.1, random_state=34)
 
-    rfClf = trainModel(X_train, y_train)
+    clf = trainModel(X_train, y_train)
 
     # 保存结果
     storeModel(data_pca[len(train_data):], os.path.join(data_dir, 'output/Result_sklearn_rf.pcaPreData'))
-    storeModel(rfClf, os.path.join(data_dir, 'output/Result_sklearn_rf.model'))
+    storeModel(clf, os.path.join(data_dir, 'output/Result_sklearn_rf.model'))
 
     # 模型准确率
-    y_predict = rfClf.predict(X_test)
+    y_predict = clf.predict(X_test)
     printAccuracy(y_test, y_predict)
 
     print("finish!")
@@ -141,7 +145,7 @@ def trainRF():
 def preRF():
     startTime = time.time()
     # 加载模型和数据
-    clf=getModel(os.path.join(data_dir, 'output/Result_sklearn_rf.model'))
+    clf = getModel(os.path.join(data_dir, 'output/Result_sklearn_rf.model'))
     pcaPreData = getModel(os.path.join(data_dir, 'output/Result_sklearn_rf.pcaPreData'))
 
     # 结果预测
