@@ -64,12 +64,15 @@
 2.比较各个模型的分数,然后取效果较好的模型作为基础模型.
 
 四. 模型融合
-1. 可以参考泰坦尼克号的简单模型融合方式，通过对模型的对比打分方式选择合适的模型
-2. 在房价预测里我们使用模型融合的方法来输出结果，最终的效果很好。
+跳过，这个项目的重点是让大家都了解这个kaggle比赛怎么和算法更好的融合在一起。
 
 五. 修改特征和模型参数
-1.可以通过添加或者修改特征,提高模型的上限.
-2.通过修改模型的参数,是模型逼近上限
+此处不做过多分析，主要是优化各个算法的参数。
+
+* [KNN](https://github.com/apachecn/AiLearning/blob/master/docs/ml/2.k-近邻算法.md) => k值
+* [SVM](https://github.com/apachecn/AiLearning/blob/master/docs/ml/6.支持向量机.md) => 惩罚系数，内核
+* [RF](https://github.com/apachecn/AiLearning/blob/master/docs/ml/7.集成方法-随机森林和AdaBoost.md) => 数的个数，数的深度，最少的叶子数
+* [PCA](https://github.com/apachecn/AiLearning/blob/master/docs/ml/13.利用PCA来简化数据.md) => 特征数 or 信息熵
 ```
 
 ## 一. 数据分析
