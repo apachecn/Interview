@@ -45,8 +45,8 @@
 
 ## 开发流程
 
-分类问题：0～9 数字
-常用算法：knn、决策树、朴素贝叶斯、Logistic回归、SVM、集成方法（随机森林和 AdaBoost）
+* 分类问题：0～9 数字
+* 常用算法：knn、决策树、朴素贝叶斯、Logistic回归、SVM、集成方法（随机森林和 AdaBoost）
 
 ```
 步骤:
@@ -70,8 +70,8 @@
 此处不做过多分析，主要是优化各个算法的参数。
 
 * KNN => k值
-* SVM => 惩罚系数，内核
-* RF => 树的个数，树的深度，最少的叶子数
+* SVM => 惩罚系数，核函数
+* RF => 树个数，树深度，叶子数
 * PCA => 特征数 or 信息熵
 ```
 
@@ -247,6 +247,6 @@ saveResult(testLabel, '/opt/data/kaggle/getting-started/digit-recognizer/output/
 此处不做过多分析，主要是优化各个算法的参数。
 
 * [KNN](https://github.com/apachecn/AiLearning/blob/master/docs/ml/2.k-近邻算法.md) => k值
-* [SVM](https://github.com/apachecn/AiLearning/blob/master/docs/ml/6.支持向量机.md) => 惩罚系数，内核
-* [RF](https://github.com/apachecn/AiLearning/blob/master/docs/ml/7.集成方法-随机森林和AdaBoost.md) => 数的个数，数的深度，最少的叶子数
+* [SVM](https://github.com/apachecn/AiLearning/blob/master/docs/ml/6.支持向量机.md) => 惩罚系数，核函数
+* [RF](https://github.com/apachecn/AiLearning/blob/master/docs/ml/7.集成方法-随机森林和AdaBoost.md) => 树个数，树深度，叶子数
 * [PCA](https://github.com/apachecn/AiLearning/blob/master/docs/ml/13.利用PCA来简化数据.md) => 特征数 or 信息熵
