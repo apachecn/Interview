@@ -69,10 +69,10 @@
 五. 修改特征和模型参数
 此处不做过多分析，主要是优化各个算法的参数。
 
-* [KNN](https://github.com/apachecn/AiLearning/blob/master/docs/ml/2.k-近邻算法.md) => k值
-* [SVM](https://github.com/apachecn/AiLearning/blob/master/docs/ml/6.支持向量机.md) => 惩罚系数，内核
-* [RF](https://github.com/apachecn/AiLearning/blob/master/docs/ml/7.集成方法-随机森林和AdaBoost.md) => 数的个数，数的深度，最少的叶子数
-* [PCA](https://github.com/apachecn/AiLearning/blob/master/docs/ml/13.利用PCA来简化数据.md) => 特征数 or 信息熵
+* KNN => k值
+* SVM => 惩罚系数，内核
+* RF => 树的个数，树的深度，最少的叶子数
+* PCA => 特征数 or 信息熵
 ```
 
 ## 一. 数据分析
