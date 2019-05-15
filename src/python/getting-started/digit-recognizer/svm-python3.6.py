@@ -8,7 +8,7 @@ Author: 片刻
 Github: https://github.com/apachecn/kaggle
 '''
 
-import os.path
+import os
 import csv
 import time
 import numpy as np
@@ -64,9 +64,9 @@ def dRCsv(x_train, x_test, preData, COMPONENT_NUM):
 # 训练模型
 def trainModel(trainData, trainLabel):
     print('Train SVM...')
-    svmClf = SVC(C=4, kernel='rbf')
-    svmClf.fit(trainData, trainLabel)  # 训练SVM
-    return svmClf
+    clf = SVC(C=4, kernel='rbf')
+    clf.fit(trainData, trainLabel)  # 训练SVM
+    return clf
 
 
 # 结果输出保存
@@ -135,11 +135,11 @@ def getOptimalAccuracy(trainData, trainLabel, preData):
     for i in range(30, 45, 1):
         # 评估训练结果
         pcaTrainData,  pcaTestData, pcaPreData = dRCsv(x_train, x_test, preData, i)
-        svmClf = trainModel(pcaTrainData, y_train)
-        svmtestLabel = svmClf.predict(pcaTestData)
+        clf = trainModel(pcaTrainData, y_train)
+        testLabel = clf.predict(pcaTestData)
 
         errArr = np.mat(np.ones((lineLen, 1)))
-        sumErrArr = errArr[svmtestLabel != y_test].sum()
+        sumErrArr = errArr[testLabel != y_test].sum()
         sumErr = sumErrArr/lineLen
 
         print('i=%s' % i, lineLen, sumErrArr, sumErr)
@@ -147,8 +147,8 @@ def getOptimalAccuracy(trainData, trainLabel, preData):
             minErr = sumErr
             minSumErr = sumErrArr
             optimalNum = i
-            optimalSVMClf = svmClf
-            optimalLabel = svmtestLabel
+            optimalSVMClf = clf
+            optimalLabel = testLabel
             pcaPreDataResult = pcaPreData
             print("i=%s >>>>> \t" % i, lineLen, int(minSumErr), 1-minErr)
 
@@ -160,7 +160,6 @@ def getOptimalAccuracy(trainData, trainLabel, preData):
         support 参与比较的数量
     参考链接：http://scikit-learn.org/stable/modules/generated/sklearn.metrics.classification_report.html#sklearn.metrics.classification_report
     '''
-
     # target_names 以 y的label分类为准
     # target_names = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     target_names = [str(i) for i in list(set(y_test))]
@@ -236,11 +235,10 @@ if __name__ == '__main__':
     trainData, trainLabel, preData = opencsv()
     dataVisulization(trainData, trainLabel)
 
-
     # 训练并保存模型
-    #trainDRSVM()
+    # trainDRSVM()
 
     # 分析数据
-    #analyse_data(trainData)
+    # analyse_data(trainData)
     # 加载预测数据集
-    #preDRSVM()
+    # preDRSVM()

@@ -7,7 +7,7 @@ Author: 片刻/ccyf00
 Github: https://github.com/apachecn/kaggle
 '''
 
-import os.path
+import os
 import csv
 import time
 import numpy as np
@@ -42,10 +42,10 @@ def saveResult(result, csvName):
     print('Saved successfully...')  # 保存预测结果
 
 
-def knnClassify(trainData, trainLabel):
-    knnClf = KNeighborsClassifier()  # default:k = 5,defined by yourself:KNeighborsClassifier(n_neighbors=10)
-    knnClf.fit(trainData, np.ravel(trainLabel))  # ravel Return a contiguous flattened array.
-    return knnClf
+def trainModel(trainData, trainLabel):
+    clf = KNeighborsClassifier()  # default:k = 5,defined by yourself:KNeighborsClassifier(n_neighbors=10)
+    clf.fit(trainData, np.ravel(trainLabel))  # ravel Return a contiguous flattened array.
+    return clf
 
 
 # 数据预处理-降维 PCA主成成分分析
@@ -85,13 +85,13 @@ def dRecognition_knn():
     print('load data time used:%f' % (stop_time_l - start_time))
 
     # 降维处理
-    trainData, testData = dRPCA(trainData, testData, 0.8)
+    trainDataPCA, testDataPCA = dRPCA(trainData, testData, 0.8)
 
     # 模型训练
-    knnClf = knnClassify(trainData, trainLabel)
+    clf = trainModel(trainDataPCA, trainLabel)
 
     # 结果预测
-    testLabel = knnClf.predict(testData)
+    testLabel = clf.predict(testDataPCA)
 
     # 结果的输出
     saveResult(testLabel, os.path.join(data_dir, 'output/Result_sklearn_knn.csv'))
