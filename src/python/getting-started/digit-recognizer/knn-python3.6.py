@@ -6,14 +6,14 @@ Update  on 2018-05-16
 Author: 片刻/ccyf00
 Github: https://github.com/apachecn/kaggle
 '''
-
 import os
 import csv
-import time
+import datetime
 import numpy as np
 import pandas as pd
 from sklearn.decomposition import PCA
 from sklearn.neighbors import KNeighborsClassifier
+
 
 data_dir = '/opt/data/kaggle/getting-started/digit-recognizer/'
 
@@ -48,9 +48,9 @@ def dRPCA(x_train, x_test, COMPONENT_NUM):
     pcaTestData = pca.transform(testData)  # Fit the model with X and 在X上完成降维.
 
     # pca 方差大小、方差占比、特征数量
-    print(pca.explained_variance_, '\n', pca.explained_variance_ratio_, '\n',
-          pca.n_components_)
-    print(sum(pca.explained_variance_ratio_))
+    # print("方差大小:\n", pca.explained_variance_, "方差占比:\n", pca.explained_variance_ratio_)
+    print("特征数量: %s" % pca.n_components_)
+    print("总方差占比: %s" % sum(pca.explained_variance_ratio_))
     return pcaTrainData, pcaTestData
 
 
@@ -73,7 +73,8 @@ def saveResult(result, csvName):
 
 
 def dRecognition_knn():
-    start_time = time.time()
+    # 开始时间
+    sta_time = datetime.datetime.now()
 
     # 加载数据
     trainData, trainLabel, testData = opencsv()
@@ -81,8 +82,8 @@ def dRecognition_knn():
     # print("trainLabel==>", type(trainLabel), shape(trainLabel))
     # print("testData==>", type(testData), shape(testData))
     print("load data finish")
-    stop_time_l = time.time()
-    print('load data time used:%f' % (stop_time_l - start_time))
+    end_time_1 = datetime.datetime.now()
+    print('load data time used: %s' % end_time_1)
 
     # 降维处理
     trainDataPCA, testDataPCA = dRPCA(trainData, testData, 0.8)
@@ -95,8 +96,11 @@ def dRecognition_knn():
     # 结果的输出
     saveResult(testLabel, os.path.join(data_dir, 'output/Result_knn.csv'))
     print("finish!")
-    stop_time_r = time.time()
-    print('classify time used:%f' % (stop_time_r - start_time))
+
+    # 结束时间
+    end_time = datetime.datetime.now()
+    times = (end_time - sta_time).seconds
+    print("\n运行时间: %ss == %sm == %sh\n\n" % (times, times/60, times/60/60))
 
 
 if __name__ == '__main__':

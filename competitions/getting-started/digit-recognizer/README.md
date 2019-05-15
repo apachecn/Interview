@@ -81,11 +81,12 @@
 ```python
 import os
 import csv
-import time
+import datetime
 import numpy as np
 import pandas as pd
 from sklearn.decomposition import PCA
 from sklearn.neighbors import KNeighborsClassifier
+
 
 data_dir = '/opt/data/kaggle/getting-started/digit-recognizer/'
 
@@ -145,9 +146,9 @@ def dRPCA(x_train, x_test, COMPONENT_NUM):
     pcaTestData = pca.transform(testData)  # Fit the model with X and 在X上完成降维.
 
     # pca 方差大小、方差占比、特征数量
-    print(pca.explained_variance_, '\n', pca.explained_variance_ratio_, '\n',
-          pca.n_components_)
-    print(sum(pca.explained_variance_ratio_))
+    # print("方差大小:\n", pca.explained_variance_, "方差占比:\n", pca.explained_variance_ratio_)
+    print("特征数量: %s" % pca.n_components_)
+    print("总方差占比: %s" % sum(pca.explained_variance_ratio_))
     return pcaTrainData, pcaTestData
 
 
