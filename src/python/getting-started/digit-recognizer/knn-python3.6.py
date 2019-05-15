@@ -30,24 +30,6 @@ def opencsv():
     return train_data, train_label, test_data
 
 
-def saveResult(result, csvName):
-    with open(csvName, 'w') as myFile:  # 创建记录输出结果的文件（w 和 wb 使用的时候有问题）
-        # python3里面对 str和bytes类型做了严格的区分，不像python2里面某些函数里可以混用。所以用python3来写wirterow时，打开文件不要用wb模式，只需要使用w模式，然后带上newline=''
-        myWriter = csv.writer(myFile)
-        myWriter.writerow(["ImageId", "Label"])
-        index = 0
-        for r in result:
-            index += 1
-            myWriter.writerow([index, int(r)])
-    print('Saved successfully...')  # 保存预测结果
-
-
-def trainModel(trainData, trainLabel):
-    clf = KNeighborsClassifier()  # default:k = 5,defined by yourself:KNeighborsClassifier(n_neighbors=10)
-    clf.fit(trainData, np.ravel(trainLabel))  # ravel Return a contiguous flattened array.
-    return clf
-
-
 # 数据预处理-降维 PCA主成成分分析
 def dRPCA(x_train, x_test, COMPONENT_NUM):
     print('dimensionality reduction...')
@@ -72,6 +54,24 @@ def dRPCA(x_train, x_test, COMPONENT_NUM):
     return pcaTrainData, pcaTestData
 
 
+def trainModel(trainData, trainLabel):
+    clf = KNeighborsClassifier()  # default:k = 5,defined by yourself:KNeighborsClassifier(n_neighbors=10)
+    clf.fit(trainData, np.ravel(trainLabel))  # ravel Return a contiguous flattened array.
+    return clf
+
+
+def saveResult(result, csvName):
+    with open(csvName, 'w') as myFile:  # 创建记录输出结果的文件（w 和 wb 使用的时候有问题）
+        # python3里面对 str和bytes类型做了严格的区分，不像python2里面某些函数里可以混用。所以用python3来写wirterow时，打开文件不要用wb模式，只需要使用w模式，然后带上newline=''
+        myWriter = csv.writer(myFile)
+        myWriter.writerow(["ImageId", "Label"])
+        index = 0
+        for r in result:
+            index += 1
+            myWriter.writerow([index, int(r)])
+    print('Saved successfully...')  # 保存预测结果
+
+
 def dRecognition_knn():
     start_time = time.time()
 
@@ -89,12 +89,11 @@ def dRecognition_knn():
 
     # 模型训练
     clf = trainModel(trainDataPCA, trainLabel)
-
     # 结果预测
     testLabel = clf.predict(testDataPCA)
 
     # 结果的输出
-    saveResult(testLabel, os.path.join(data_dir, 'output/Result_sklearn_knn.csv'))
+    saveResult(testLabel, os.path.join(data_dir, 'output/Result_knn.csv'))
     print("finish!")
     stop_time_r = time.time()
     print('classify time used:%f' % (stop_time_r - start_time))
