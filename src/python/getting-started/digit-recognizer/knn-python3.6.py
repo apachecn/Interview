@@ -24,9 +24,9 @@ def opencsv():
     data = pd.read_csv(os.path.join(data_dir, 'input/train.csv'))
     data1 = pd.read_csv(os.path.join(data_dir, 'input/test.csv'))
 
-    train_data = data.values[0:, 1:]  # 读入全部训练数据,  [行，列]
-    train_label = data.values[0:, 0]  # 读取列表的第一列
-    test_data = data1.values[0:, 0:]  # 测试全部测试个数据
+    train_data = data.values[:, 1:]  # 读入全部训练数据,  [行，列]
+    train_label = data.values[:, 0]  # 读取列表的第一列
+    test_data = data1.values[:, :]  # 测试全部测试个数据
     return train_data, train_label, test_data
 
 
