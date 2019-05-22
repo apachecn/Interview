@@ -32,7 +32,7 @@
 
 * github 地址： https://github.com/apachecn/kaggle
 * 阅读一下 [README.md](https://github.com/apachecn/kaggle) 文档，了解一下套路
-* 阅读一下 docs 目录下的文档（ [github 操作](https://github.com/apachecn/kaggle/blob/master/docs/github-quickstart.md) 和 [kaggle 操作](https://github.com/apachecn/kaggle/blob/master/docs/kaggle-quickstart.md)），熟悉一下具体的操作
+* 阅读一下 docs 目录下的文档（ [github 操作](https://github.com/apachecn/kaggle/blob/master/docs/GitHub/README.md) 和 [kaggle 操作](https://github.com/apachecn/kaggle/blob/master/docs/kaggle-quickstart.md)），熟悉一下具体的操作
 
 ### 2.3、小有名气
 
