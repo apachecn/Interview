@@ -80,6 +80,14 @@
 * [**Mercari 价格推荐挑战**](/competitions/featured/mercari-price-suggestion-challenge)
 * [**Home Credit Default Risk**](/competitions/featured/home-credit-default-risk)
 
+### [第7部分： 限量邀请赛 Masters（新）](https://www.kaggle.com/competitions?sortBy=grouped&group=general&page=1&pageSize=20&category=masters)
+
+`Masters（新）`  限量参与比赛（受邀）
+
+### [第8部分： 多评估标准赛 Analytics（新）](https://www.kaggle.com/competitions?sortBy=grouped&group=general&page=1&pageSize=20&category=analytics)
+
+`Analytics（新）` 选择最优评估标准来排名的比赛
+
 ### 天池
 
 * [**天池入门教程: O2O优惠券-使用新人赛**](https://tianchi.aliyun.com/notebook/detail.html?spm=5176.11409386.4851167.7.65c91d07FiVHVN&id=4796)
@@ -90,6 +98,7 @@
 * [数据集](https://www.kaggle.com/datasets): 数据集，可直接用于机器学习。
 * [核心思想](https://www.kaggle.com/kernels): 在线编程。（猜测，基于 jupyter 实现）
 * [论坛](https://www.kaggle.com/discussion): 发帖回帖讨论的平台
+* [**学习 - 新**](https://www.kaggle.com/learn/overview): 最新发布的学习教程
 * [招聘](https://www.kaggle.com/jobs): 企业招聘数据科学家的位置
 
 ## 解决方案列表
