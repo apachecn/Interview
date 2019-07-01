@@ -2,22 +2,9 @@
 
 ![](static/images/logos/kaggle-logo-gray-bigger.jpeg)
 
-> Special Sponsors
-
-<table>
-      <tbody>
-        <tr>
-          <td align="center" valign="middle">
-            <a href="https://coding.net/?utm_source=ApacheCN&utm_medium=banner&utm_campaign=march2019" target="_blank">
-              <img width="1080" src="http://data.apachecn.org/img/SpecialSponsors/CodingNet.png">
-            </a>
-          </td>
-      </tbody>
-</table>
-
 > **你已经抓住了石头，现在是挥舞它的时候了！**
 
-* [ApacheCN 组织资源](https://github.com/apachecn/home): https://github.com/apachecn/home
+* [ApacheCN 组织资源](https://www.ibooker.org.cn/docs): <https://www.ibooker.org.cn/docs>
 * **ApacheCN - 比赛学习群【724187166】<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=9bcf2fb3985835c9c2f15783ec9c85822e23be1191a6581eaf22f574b5192b19"><img border="0" src="static/images/logos/ApacheCN-group.png" alt="ApacheCN - 比赛学习群[724187166]" title="ApacheCN - 比赛学习群[724187166]"></a>**
 * [Kaggle](https://www.kaggle.com) 是一个流行的数据科学竞赛平台。
 * [GitHub 入门操作指南](docs/GitHub/README.md) 和 [Kaggle 入门操作指南](docs/kaggle-quickstart.md)，适合于学习过 [MachineLearning(机器学习实战)](https://github.com/apachecn/MachineLearning) 的小盆友
@@ -26,8 +13,23 @@
 > Note:
 
 * 号外号外 [**kaggle组队开始啦**](docs/kaggle-start.md)
-* [【Kaggle 入门篇】B站视频讲解，跟我们一起来学习吧！](https://www.bilibili.com/video/av53119200)
+* 比赛收集平台: <https://github.com/iphysresearch/DataSciComp>
 * [关于 ApacheCN](http://cwiki.apachecn.org/pages/viewpage.action?pageId=2887240): 一边学习和整理，一边录制项目视频，希望能组建一个开源的公益团队对国内机器学习社区做一些贡献，同时也为装逼做准备!!
+
+## 直播系列
+
+* https://space.bilibili.com/97678687/channel/detail?cid=76173
+
+> kaggle入门系列
+
+* [【Kaggle 入门篇】B站视频讲解，跟我们一起来学习吧！](https://www.bilibili.com/video/av53119200)
+
+> 比赛直播系列
+
+* [视频: 2019ICME 抖音视频理解 top2 solution 分享及 数据比赛入门讲解](https://www.bilibili.com/video/av57385532)
+* [文档: icme2019-top2.pptx](docs/B站直播资料/icme2019-top2.pptx)
+* [昊神GitHub地址: https://github.com/Smilexuhc](https://github.com/Smilexuhc)
+* [昊神整理比赛系列: https://github.com/Smilexuhc/Data-Competition-TopSolution](https://github.com/Smilexuhc/Data-Competition-TopSolution)
 
 ## [竞赛](https://www.kaggle.com/competitions)
 
@@ -193,3 +195,18 @@ WriteUp 需要带有预处理过程，从你能下载到的原始数据开始，
 * **Kaggle (数据科学竞赛平台) | [ApacheCN(apache中文网)](http://www.apachecn.org/)**
 
 <img src="http://data.apachecn.org/img/about/donate.jpg" alt="微信&支付宝" />
+
+---
+
+> 特别赞助商(欢迎“私聊”赞助)
+
+<table>
+      <tbody>
+        <tr>
+          <td align="center" valign="middle">
+            <a href="https://coding.net/?utm_source=ApacheCN&utm_medium=banner&utm_campaign=march2019" target="_blank">
+              <img width="1080" src="http://data.apachecn.org/img/SpecialSponsors/CodingNet.png">
+            </a>
+          </td>
+      </tbody>
+</table>
