@@ -36,7 +36,7 @@
 
 *  [【大数据面经】](https://github.com/WadeStack/BigDataIE)
 
-## [算法刷题](https://github.com/apachecn/Interview/tree/master/docs/Algorithm/README.md)
+## [算法刷题](https://github.com/apachecn/Interview/tree/master/docs/Algorithm)
 
 1. [Leetcode](https://github.com/apachecn/Interview/tree/master/docs/Algorithm/Leetcode)
     - [Python](https://github.com/apachecn/Interview/tree/master/docs/Algorithm/Leetcode/Python)
@@ -59,12 +59,12 @@
 
 * [【2019年 阿里，腾讯，百度，美团，头条等技术面试题目，以及答案，专家出题人分析汇总。】](https://github.com/0voice/interview_internal_reference)
 
-## [Kaggle](https://github.com/apachecn/Interview/tree/master/docs/Kaggle/README.md)
+## Kaggle
 
 ### Kaggle直播系列
 
-* 比赛专栏: https://space.bilibili.com/97678687/channel/detail?cid=76173
-* 入门视频: https://www.bilibili.com/video/av53119200)
+* 比赛专栏: <https://space.bilibili.com/97678687/channel/detail?cid=76173>
+* 入门视频: <https://www.bilibili.com/video/av53119200>
 
 > 比赛直播系列
 
@@ -73,7 +73,7 @@
 * [昊神GitHub地址: https://github.com/Smilexuhc](https://github.com/Smilexuhc)
 * [昊神整理比赛系列: https://github.com/Smilexuhc/Data-Competition-TopSolution](https://github.com/Smilexuhc/Data-Competition-TopSolution)
 
-## [Kaggle教程文档](https://github.com/apachecn/Interview/tree/master/docs/Kaggle/README.md)
+## Kaggle教程文档
 
 > 入门须知
 
@@ -83,7 +83,7 @@
 
 > 项目实战:
 
-* [【Kaggle项目文档和项目代码: 点击查看全部】](https://github.com/apachecn/Interview/tree/master/docs/Kaggle/README.md)
+* [【Kaggle项目文档和项目代码: 点击查看全部】](https://github.com/apachecn/Interview/tree/master/docs/Kaggle)
 
 ## 资料来源:
 
