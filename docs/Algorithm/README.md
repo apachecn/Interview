@@ -64,19 +64,16 @@
 - [编程之法：面试和算法心得](https://legacy.gitbook.com/book/wizardforcel/the-art-of-programming-by-july/details)
 - [算法/NLP/深度学习/机器学习面试笔记](https://github.com/imhuay/Interview_Notes-Chinese)
 
-## 项目贡献者
+## 项目负责人
 
-> 项目基石
+格式: GitHub + QQ
+
+> 第一期 (2016-01-01)
 
 * [KrisYu的Github](https://github.com/KrisYu/LeetCode-CLRS-Python)
-* 授权信息: <https://github.com/apachecn/Interview/tree/master/docs/Algorithm/ProjectCornerstone/ApproveLetter.md>
+* 授权信息: <https://github.com/apachecn/Interview/tree/master/docs/Algorithm/ProjectCornerstone/ApproveLetter.md
 
-> 项目发起人
-
-* [@Lisanaaa](https://github.com/Lisanaaa) -- 由于个人商业化原因，退出
-* [@片刻](https://github.com/jiangzhonglian)
-
-> 贡献者（欢迎大家来追加）
+> 第二期 (2018-06-01)
 
 * [@Lisanaaa](https://github.com/Lisanaaa) -- 由于个人商业化原因，退出
 * [@片刻](https://github.com/jiangzhonglian)
@@ -95,7 +92,18 @@
 * [MarsXue](https://github.com/MarsXue)
 * [nature1995](https://github.com/nature1995)
 
-**欢迎贡献者不断的追加**
+> 第三期 (2019-07-17)
+
+* [yudaer](https://github.com/yudaer)
+* 空缺量很大，欢迎
+
+-- 负责人要求: (欢迎一起为 求职面试 中文版本 做贡献)
+
+* 热爱开源，喜欢装逼
+* 擅长：刷题、面试、或职场套路
+* 能够有时间及时优化页面bug和用户issues
+* 试用期: 2个月
+* 欢迎联系: 片刻 529815144
 
 ## 免责声明 - 【只供学习参考】
 

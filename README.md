@@ -81,17 +81,7 @@
 
 ## 联系方式
 
-> 项目负责人
-
-* [@片刻](https://github.com/jiangzhonglian)
-
-> 项目发起人
-
-* [@片刻](https://github.com/jiangzhonglian)
-* [@那伊抹微笑](https://github.com/wangyangting)
-* [@瑶妹](https://github.com/chenyyx)
-
-> 项目贡献者（请手动添加）
+> 第一期 (2018-01-01)
 
 * [@片刻](https://github.com/jiangzhonglian)
 * [@那伊抹微笑](https://github.com/wangyangting)
@@ -101,7 +91,21 @@
 * [@诺木人](https://github.com/1mrliu)
 * [@飞龙](https://github.com/wizardforcel)
 
-**欢迎贡献者不断的追加**
+> 第二期 (2019-07-17)
+
+* [@片刻](https://github.com/jiangzhonglian)
+* [@飞龙](https://github.com/wizardforcel)
+* [yudaer](https://github.com/yudaer)
+* 空缺量很大，欢迎
+
+-- 负责人要求: (欢迎一起为 求职面试 中文版本 做贡献)
+
+* 热爱开源，喜欢装逼
+* 擅长：刷题、面试、或职场套路
+* 能够有时间及时优化页面bug和用户issues
+* 试用期: 2个月
+* 欢迎联系: 片刻 529815144
+
 
 ## 免责声明 - 【只供学习参考】
 
