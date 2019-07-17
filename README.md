@@ -67,9 +67,9 @@
 
 > 入门须知
 
-* 1. [GitHub 入门操作指南](docs/GitHub/README.md) 
-* 2. [Kaggle 入门操作指南](docs/kaggle-quickstart.md)
-* 3. [AiLearning 机器学习 + 深度学习 + NLP](https://github.com/apachecn/AiLearning)
+* [GitHub 入门操作指南](docs/GitHub/README.md) 
+* [Kaggle 入门操作指南](docs/kaggle-quickstart.md)
+* [AiLearning 机器学习 + 深度学习 + NLP](https://github.com/apachecn/AiLearning)
 
 > 项目实战:
 
@@ -77,7 +77,7 @@
 
 ## 资料来源:
 
-* 【比赛收集平台】: https://github.com/iphysresearch/DataSciComp
+* 【比赛收集平台】: <https://github.com/iphysresearch/DataSciComp>
 
 ## 联系方式
 
