@@ -63,8 +63,8 @@
 
 ### Kaggle直播系列
 
-* 比赛专栏: https://space.bilibili.com/97678687/channel/detail?cid=76173
-* 入门视频: https://www.bilibili.com/video/av53119200)
+* 比赛专栏: <https://space.bilibili.com/97678687/channel/detail?cid=76173>
+* 入门视频: <https://www.bilibili.com/video/av53119200>
 
 > 比赛直播系列
 
