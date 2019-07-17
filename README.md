@@ -30,6 +30,12 @@
 * 专栏: https://space.bilibili.com/97678687/channel/detail?cid=76174
 * 视频: https://www.bilibili.com/video/av53122083
 
+## 面试经验
+
+> 非组织链接推荐：
+
+*  [【大数据面经】](https://github.com/WadeStack/BigDataIE)
+
 ## [算法刷题](https://github.com/apachecn/Interview/tree/master/docs/Algorithm/README.md)
 
 1. [Leetcode](https://github.com/apachecn/Interview/tree/master/docs/Algorithm/Leetcode)
@@ -48,6 +54,10 @@
     - [Java](https://github.com/apachecn/Interview/tree/master/docs/DataStructure/Java)
     - [JavaScript](https://github.com/apachecn/Interview/tree/master/docs/Algorithm/DataStructure/JavaScript)
     - [C++](https://github.com/apachecn/Interview/tree/master/docs/Algorithm/DataStructure/C++)
+
+> 非组织链接推荐：
+
+* [【2019年 阿里，腾讯，百度，美团，头条等技术面试题目，以及答案，专家出题人分析汇总。】](https://github.com/0voice/interview_internal_reference)
 
 ## [Kaggle](https://github.com/apachecn/Interview/tree/master/docs/Kaggle/README.md)
 
