@@ -7,14 +7,14 @@
 * [ApacheCN 组织资源](https://www.ibooker.org.cn/docs): <https://www.ibooker.org.cn/docs>
 * **ApacheCN - 比赛学习群【724187166】<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=9bcf2fb3985835c9c2f15783ec9c85822e23be1191a6581eaf22f574b5192b19"><img border="0" src="http://data.apachecn.org/img/logo/ApacheCN-group.png" alt="ApacheCN - 比赛学习群[724187166]" title="ApacheCN - 比赛学习群[724187166]"></a>**
 * [Kaggle](https://www.kaggle.com) 是一个流行的数据科学竞赛平台。
-* [GitHub 入门操作指南](docs/GitHub/README.md) 和 [Kaggle 入门操作指南](docs/kaggle-quickstart.md)，适合于学习过 [MachineLearning(机器学习实战)](https://github.com/apachecn/MachineLearning) 的小盆友
+* [GitHub 入门操作指南](/docs/GitHub/README.md) 和 [Kaggle 入门操作指南](/docs/kaggle-quickstart.md)，适合于学习过 [MachineLearning(机器学习实战)](https://github.com/apachecn/MachineLearning) 的小盆友
 * Kaggle 已被 Google 收购，请参阅[《谷歌收购 Kaggle 为什么会震动三界（AI、机器学习、数据科学界）》](https://www.leiphone.com/news/201703/ZjpnddCoUDr3Eh8c.html)
 
 > Note:
 
-* 号外号外 [**kaggle组队开始啦**](docs/kaggle-start.md)
+* 号外号外 [**kaggle组队开始啦**](/docs/kaggle-start.md)
 * 比赛收集平台: <https://github.com/iphysresearch/DataSciComp>
-* [关于 ApacheCN](http://cwiki.apachecn.org/pages/viewpage.action?pageId=2887240): 一边学习和整理，一边录制项目视频，希望能组建一个开源的公益团队对国内机器学习社区做一些贡献，同时也为装逼做准备!!
+* [关于 ApacheCN](https://home.apachecn.org/about/): 一边学习和整理，一边录制项目视频，希望能组建一个开源的公益团队对国内机器学习社区做一些贡献，同时也为装逼做准备!!
 
 ## 直播系列
 
@@ -27,7 +27,7 @@
 > 比赛直播系列
 
 * [视频: 2019ICME 抖音视频理解 top2 solution 分享及 数据比赛入门讲解](https://www.bilibili.com/video/av57385532)
-* [文档: icme2019-top2.pptx](docs/简历指南/icme2019-top2.pptx)
+* [文档: icme2019-top2.pptx](/docs/简历指南/icme2019-top2.pptx)
 * [昊神GitHub地址: https://github.com/Smilexuhc](https://github.com/Smilexuhc)
 * [昊神整理比赛系列: https://github.com/Smilexuhc/Data-Competition-TopSolution](https://github.com/Smilexuhc/Data-Competition-TopSolution)
 
@@ -56,16 +56,16 @@
 
 `入门比赛 Getting Started` 给萌新们一个试水的机会，没有奖金，但有非常多的前辈经验可供学习。很久以前Kaggle这个栏目名称是101的时候，比赛题目还很多，但是现在只保留了9个最经典的入门竞赛：手写数字识别、沉船事故幸存估计、脸部识别、Julia语言入门。
 
-* [**数字识别**](/competitions/getting-started/digit-recognizer)
-* [**泰坦尼克**](/competitions/getting-started/titanic)
-* [**房价预测**](/competitions/getting-started/house-price)
-* [**nlp-情感分析**](/competitions/getting-started/word2vec-nlp-tutorial)
+* [**数字识别**](competitions/getting-started/digit-recognizer)
+* [**泰坦尼克**](competitions/getting-started/titanic)
+* [**房价预测**](competitions/getting-started/house-price)
+* [**nlp-情感分析**](competitions/getting-started/word2vec-nlp-tutorial)
 
 ### [第3部分：训练场 Playground](https://www.kaggle.com/competitions?sortBy=deadline&group=all&page=1&pageSize=20&segment=playground)
 
 `训练场 Playground`里的题目以有趣为主，比如猫狗照片分类的问题。现在这个分类下的题目不算多，但是热度很高。
 
-* [**猫狗识别**](/competitions/playground/dogs-vs-cats)
+* [**猫狗识别**](competitions/playground/dogs-vs-cats)
 
 ### [第4部分： 研究项目(少奖金) Research](https://www.kaggle.com/competitions?sortBy=prize&group=active&page=1&pageSize=20&segment=research)
 
@@ -79,8 +79,8 @@
 
 `推荐比赛 Featured` 是瞄准商业问题带有奖金的公开竞赛。如果有幸赢得比赛，不但可以获得奖金，模型也可能会被竞赛赞助商应用到商业实践中呢。
 
-* [**Mercari 价格推荐挑战**](/competitions/featured/mercari-price-suggestion-challenge)
-* [**Home Credit Default Risk**](/competitions/featured/home-credit-default-risk)
+* [**Mercari 价格推荐挑战**](competitions/featured/mercari-price-suggestion-challenge)
+* [**Home Credit Default Risk**](competitions/featured/home-credit-default-risk)
 
 ### [第7部分： 限量邀请赛 Masters（新）](https://www.kaggle.com/competitions?sortBy=grouped&group=general&page=1&pageSize=20&category=masters)
 
@@ -105,7 +105,7 @@
 
 ## 解决方案列表
 
-* [解决方案列表](docs/writeup-list.md)
+* [解决方案列表](/docs/writeup-list.md)
 
 如果解决方案太大，可以先放在这个列表中。以后再逐步整合到这个仓库。
 
