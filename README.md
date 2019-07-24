@@ -46,6 +46,7 @@
     - [ipynb](https://github.com/apachecn/Interview/tree/master/docs/Algorithm/Leetcode/ipynb)
 2. [剑指 Offer](https://github.com/apachecn/Interview/tree/master/docs/Algorithm/剑指offer)
     - [Python](https://github.com/apachecn/Interview/tree/master/docs/Algorithm/剑指offer/Python)
+    - [Scala](https://github.com/apachecn/Interview/tree/master/docs/Algorithm/剑指offer/Scala)
     - [Java](https://github.com/apachecn/Interview/tree/master/docs/Algorithm/剑指offer/Java)
     - [JavaScript](https://github.com/apachecn/Interview/tree/master/docs/Algorithm/剑指offer/JavaScript)
     - [C++](https://github.com/apachecn/Interview/tree/master/docs/Algorithm/剑指offer/C++)
@@ -105,7 +106,8 @@
 
 * [@片刻](https://github.com/jiangzhonglian)
 * [@飞龙](https://github.com/wizardforcel)
-* [yudaer](https://github.com/yudaer)
+* [@yudaer](https://github.com/yudaer)
+* [@xixici](https://github.com/xixici)
 * 空缺量很大，欢迎
 
 -- 负责人要求: (欢迎一起为 求职面试 中文版本 做贡献)
@@ -116,10 +118,9 @@
 * 试用期: 2个月
 * 欢迎联系: 片刻 529815144
 
-
 ## 免责声明 - 【只供学习参考】
 
-* ApacheCN 纯粹出于学习目的与个人兴趣翻译本书
+* ApacheCN 纯粹出于学习目的与个人兴趣整理
 * ApacheCN 保留对此版本译文的署名权及其它相关权利
 
 ## **协议**
