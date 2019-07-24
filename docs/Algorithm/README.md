@@ -97,6 +97,7 @@
 
 * [@yudaer](https://github.com/yudaer)
 * [@xixici](https://github.com/xixici)
+* 空缺量很大，欢迎
 
 -- 负责人要求: (欢迎一起为 求职面试 中文版本 做贡献)
 
