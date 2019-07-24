@@ -72,7 +72,7 @@
 > 第一期 (2016-01-01)
 
 * [KrisYu的Github](https://github.com/KrisYu/LeetCode-CLRS-Python)
-* 授权信息: <https://github.com/apachecn/Interview/tree/master/docs/Algorithm/ProjectCornerstone/ApproveLetter.md
+* 授权信息: <https://github.com/apachecn/Interview/tree/master/docs/Algorithm/ProjectCornerstone/ApproveLetter.md>
 
 > 第二期 (2018-06-01)
 
