@@ -341,7 +341,7 @@ def main():
 
     # 模型训练（分类问题： lr、rf、adboost、xgboost、lightgbm）
     model = trainModel(pca_tr_data, train_label)
-    # model.fit(pca_tr_data, train_label)
+    model.fit(pca_tr_data, train_label)
     labels = model.predict(pca_te_data)
 
     print(type(pids), type(labels.tolist()))
@@ -351,12 +351,10 @@ def main():
     })
     result.to_csv('Result_titanic.csv', index=False)
 
-
     # 结束时间
     end_time = datetime.datetime.now()
     times = (end_time - sta_time).seconds
     print("\n运行时间: %ss == %sm == %sh\n\n" % (times, times/60, times/60/60))
-
 
 
 if __name__ == "__main__":
