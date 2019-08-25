@@ -86,9 +86,10 @@ train.head(5)
 
 ![](../../../img/competitions/getting-started/titanic/titanic_top_5.jpg)
 
-```python
-# 返回每列列名,该列非nan值个数,以及该列类型
-train.info()
+```py
+>>> # 返回每列列名,该列非nan值个数,以及该列类型
+>>> train.info()
+>>> # test.info()
 
 <class 'pandas.core.frame.DataFrame'>
 RangeIndex: 891 entries, 0 to 890
@@ -109,38 +110,26 @@ dtypes: float64(2), int64(5), object(5)
 memory usage: 83.6+ KB
 ```
 
-```python
-test.info()
-
-<class 'pandas.core.frame.DataFrame'>
-RangeIndex: 418 entries, 0 to 417
-Data columns (total 11 columns):
-PassengerId    418 non-null int64
-Pclass         418 non-null int64
-Name           418 non-null object
-Sex            418 non-null object
-Age            332 non-null float64
-SibSp          418 non-null int64
-Parch          418 non-null int64
-Ticket         418 non-null object
-Fare           417 non-null float64
-Cabin          91 non-null object
-Embarked       418 non-null object
-dtypes: float64(2), int64(4), object(5)
-memory usage: 36.0+ KB
+```py
+>>> # 返回数值型变量的统计量
+>>> # train.describe(percentiles=[0.00, 0.25, 0.5, 0.75, 1.00])
+>>> print(titanic.describe())
+        PassengerId    Survived      Pclass         Age       SibSp       Parch        Fare
+count   891.000000  891.000000  891.000000  714.000000  891.000000  891.000000  891.000000
+mean    446.000000    0.383838    2.308642   29.699118    0.523008    0.381594   32.204208
+std     257.353842    0.486592    0.836071   14.526497    1.102743    0.806057   49.693429
+min       1.000000    0.000000    1.000000    0.420000    0.000000    0.000000    0.000000
+25%     223.500000    0.000000    2.000000   20.125000    0.000000    0.000000    7.910400
+50%     446.000000    0.000000    3.000000   28.000000    0.000000    0.000000   14.454200
+75%     668.500000    1.000000    3.000000   38.000000    1.000000    0.000000   31.000000
+max     891.000000    1.000000    3.000000   80.000000    8.000000    6.000000  512.329200
 ```
 
-```python
-# 返回数值型变量的统计量
-# train.describe(percentiles=[0.00, 0.25, 0.5, 0.75, 1.00])
-train.describe()
-```
+## 二. 特征工程
 
-![](../../../img/competitions/getting-started/titanic/titanic_train_desc.jpg)
+### 特征处理
 
-### 特征分析（统计学与绘图）
 目的:初步了解数据之间的相关性,为构造特征工程以及模型建立做准备
-
 
 ```python
 # 存活人数
@@ -149,89 +138,92 @@ train['Survived'].value_counts()
 0    549
 1    342
 Name: Survived, dtype: int64
+
+
+# 对缺失值处理（Age 中位数不错）
+titanic["Age"] = titanic["Age"].fillna(titanic["Age"].median())
+titanic["Fare"] = titanic["Fare"].fillna(titanic["Fare"].median())
+
+
+# 对文本特征进行处理（性别， 登船港口）
+print(titanic["Sex"].unique())
+titanic.loc[titanic["Sex"]=="male", "Sex"] = 0
+titanic.loc[titanic["Sex"]=="female", "Sex"] = 1
+
+# 组合特征(特征组合相关性变差了)
+# titanic["FamilySize"] = titanic["SibSp"] + titanic["Parch"]
+
+# S的概率最大，当然我们也可以按照概率随机算，都可以
+print(titanic["Embarked"].unique())
+"""
+titanic[["Embarked"]].groupby("Embarked").agg({"Embarked": "count"})
+            Embarked
+Embarked          
+C              168
+Q               77
+S              644
+"""
+titanic["Embarked"] = titanic["Embarked"].fillna('S')
+titanic.loc[titanic["Embarked"] == "S", "Embarked"] = 0
+titanic.loc[titanic["Embarked"] == "C", "Embarked"] = 1
+titanic.loc[titanic["Embarked"] == "Q", "Embarked"] = 2
+
+
+def get_title(name):
+    # 名字的尊称
+    title_search = re.search(' ([A-Za-z]+)\.', name)
+    if title_search:
+        return title_search.group(1)
+    return ""
+titles = titanic["Name"].apply(get_title)
+# print(pandas.value_counts(titles))
+# 对尊称建立mapping字典
+# 在数据的Name项中包含了对该乘客的称呼，如Mr、Miss等，这些信息包含了乘客的年龄、性别、也有可能包含社会地位，如Dr、Lady、Major、Master等称呼。这一项不方便用图表展示，但是在特征工程中，我们会将其提取出来,然后放到模型中。
+# 剩余因素还有船票价格、船舱号和船票号，这三个因素都可能会影响乘客在船中的位置从而影响逃生顺序，但是因为这三个因素与生存之间看不出明显规律，所以在后期模型融合时，将这些因素交给模型来决定其重要性。
+title_mapping = {"Mr": 1, "Miss": 2, "Mrs": 3, "Master": 4, "Dr": 5, "Rev": 6, "Major": 7, "Col": 7, "Mlle": 8, "Mme": 8, "Don": 9, "Dona": 9, "Lady": 10, "Countess": 10, "Jonkheer": 10, "Sir": 9, "Capt": 7, "Ms": 2}
+for k, v in title_mapping.items():
+    titles[titles == k] = v
+# print(pd.value_counts(titles))
+
+
+# 添加一个新特征表示拥护尊称
+titanic["Title"] = [int(i) for i in titles.values.tolist()]
+# 添加一个新特征表示名字长度
+titanic["NameLength"] = titanic["Name"].apply(lambda x: len(x))
+
+
+# 相关性太差，删除
+# titanic.drop(['PassengerId'], axis=1,inplace=True)
+titanic.drop(['Cabin'], axis=1,inplace=True)
+titanic.drop(['SibSp'], axis=1,inplace=True)
+# titanic.drop(['Parch'],axis=1,inplace=True)
+titanic.drop(['Ticket'], axis=1,inplace=True)
+titanic.drop(['Name'],   axis=1,inplace=True)
 ```
 
-> 1)数值型数据协方差,corr()函数
+### 特征相关性
+
+> 1)数值型数据协方差 corr()函数
 
 来个总览,快速了解个数据的相关性
 
 ```python
 # 相关性协方差表,corr()函数,返回结果接近0说明无相关性,大于0说明是正相关,小于0是负相关.
-train_corr = train.drop('PassengerId',axis=1).corr()
+train_corr = train.corr()
 train_corr
 ```
 
-<div>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Survived</th>
-      <th>Pclass</th>
-      <th>Age</th>
-      <th>SibSp</th>
-      <th>Parch</th>
-      <th>Fare</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Survived</th>
-      <td>1.000000</td>
-      <td>-0.338481</td>
-      <td>-0.077221</td>
-      <td>-0.035322</td>
-      <td>0.081629</td>
-      <td>0.257307</td>
-    </tr>
-    <tr>
-      <th>Pclass</th>
-      <td>-0.338481</td>
-      <td>1.000000</td>
-      <td>-0.369226</td>
-      <td>0.083081</td>
-      <td>0.018443</td>
-      <td>-0.549500</td>
-    </tr>
-    <tr>
-      <th>Age</th>
-      <td>-0.077221</td>
-      <td>-0.369226</td>
-      <td>1.000000</td>
-      <td>-0.308247</td>
-      <td>-0.189119</td>
-      <td>0.096067</td>
-    </tr>
-    <tr>
-      <th>SibSp</th>
-      <td>-0.035322</td>
-      <td>0.083081</td>
-      <td>-0.308247</td>
-      <td>1.000000</td>
-      <td>0.414838</td>
-      <td>0.159651</td>
-    </tr>
-    <tr>
-      <th>Parch</th>
-      <td>0.081629</td>
-      <td>0.018443</td>
-      <td>-0.189119</td>
-      <td>0.414838</td>
-      <td>1.000000</td>
-      <td>0.216225</td>
-    </tr>
-    <tr>
-      <th>Fare</th>
-      <td>0.257307</td>
-      <td>-0.549500</td>
-      <td>0.096067</td>
-      <td>0.159651</td>
-      <td>0.216225</td>
-      <td>1.000000</td>
-    </tr>
-  </tbody>
-</table>
-</div>
+|    相关性   |  Survived  |    Pclass  |       Sex |       Age |     Parch  |      Fare |  Embarked |     Title | NameLength | 
+|   ------   |   ------   |   ------   |   ------  |   ------  |   ------   |   ------  |   ------  |   ------  |  ------    |
+| Survived   |  1.000000  | -0.338481  |  0.543351 | -0.064910 |  0.081629  |  0.257307 |  0.106811 |  0.354072 |   0.332350 |
+| Pclass     | -0.338481  |  1.000000  | -0.131900 | -0.339898 |  0.018443  | -0.549500 |  0.045702 | -0.211552 |  -0.220001 |
+| Sex        |  0.543351  | -0.131900  |  1.000000 | -0.081163 |  0.245489  |  0.182333 |  0.116569 |  0.419760 |   0.448759 |
+| Age        | -0.064910  | -0.339898  | -0.081163 |  1.000000 | -0.172482  |  0.096688 | -0.009165 | -0.037174 |   0.039702 |
+| Parch      |  0.081629  |  0.018443  |  0.245489 | -0.172482 |  1.000000  |  0.216225 | -0.078665 |  0.235164 |   0.252282 |
+| Fare       |  0.257307  | -0.549500  |  0.182333 |  0.096688 |  0.216225  |  1.000000 |  0.062142 |  0.122872 |   0.155832 |
+| Embarked   |  0.106811  |  0.045702  |  0.116569 | -0.009165 | -0.078665  |  0.062142 |  1.000000 |  0.055788 |  -0.107749 |
+| Title      |  0.354072  | -0.211552  |  0.419760 | -0.037174 |  0.235164  |  0.122872 |  0.055788 |  1.000000 |   0.436099 |
+| NameLength |  0.332350  | -0.220001  |  0.448759 |  0.039702 |  0.252282  |  0.155832 | -0.107749 |  0.436099 |   1.000000 |
 
 ```python
 # 画出相关性热力图
@@ -241,531 +233,39 @@ a = sns.heatmap(train_corr, vmin=-1, vmax=1 , annot=True , square=True)#画热�
 
 ![png](../../../img/competitions/getting-started/titanic/titanic_corr_analysis.png)
 
-> 2)各个数据与结果的关系
 
-进一步探索分析各个数据与结果的关系
+### 特征标准化和降维
 
-* ① Pclass,乘客等级,1是最高级
+* 数据标准化
 
-结果分析:可以看出Survived和Pclass在Pclass=1的时候有较强的相关性（>0.5），所以最终模型中包含该特征。
-
-```python
-train.groupby(['Pclass'])['Pclass','Survived'].mean()
-```
-
-<div>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Pclass</th>
-      <th>Survived</th>
-    </tr>
-    <tr>
-      <th>Pclass</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>1</th>
-      <td>1.0</td>
-      <td>0.629630</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2.0</td>
-      <td>0.472826</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>3.0</td>
-      <td>0.242363</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-```python
-train[['Pclass','Survived']].groupby(['Pclass']).mean().plot.bar()
-
-<matplotlib.axes._subplots.AxesSubplot at 0xc33fa90>
-```
-
-![png](../../../img/competitions/getting-started/titanic/titanic_pclass_bar.png)
-
-* ② Sex,性别
-
-结果分析:女性有更高的活下来的概率（74%）,保留该特征
-
-```python
-train.groupby(['Sex'])['Sex','Survived'].mean()
-```
-
-<div>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Survived</th>
-    </tr>
-    <tr>
-      <th>Sex</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>female</th>
-      <td>0.742038</td>
-    </tr>
-    <tr>
-      <th>male</th>
-      <td>0.188908</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-```python
-train[['Sex','Survived']].groupby(['Sex']).mean().plot.bar()
-
-<matplotlib.axes._subplots.AxesSubplot at 0x105c4b630>
-```
-
-![png](../../../img/competitions/getting-started/titanic/titanic_sex_bar.png)
-
-* ③ SibSp and Parch  兄妹配偶数/父母子女数
-
-结果分析:这些特征与特定的值没有相关性不明显，最好是由这些独立的特征派生出一个新特征或者一组新特征
-
-```python
-train[['SibSp','Survived']].groupby(['SibSp']).mean()
-```
-
-<div>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Survived</th>
-    </tr>
-    <tr>
-      <th>SibSp</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0.345395</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>0.535885</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>0.464286</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>0.250000</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>0.166667</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>0.000000</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-```python
-train[['Parch','Survived']].groupby(['Parch']).mean().plot.bar()
-
-<matplotlib.axes._subplots.AxesSubplot at 0x1144385c0>
-```
-
-![png](../../../img/competitions/getting-started/titanic/titanic_parch_bar.png)
-
-* ④ Age年龄与生存情况的分析.
-
-结果分析:由图,可以看到年龄是影响生存情况的. 
-
-但是年龄是有大部分缺失值的,缺失值需要进行处理,可以使用填充或者模型预测.
-
-```python
-g = sns.FacetGrid(train, col='Survived',size=5)
-g.map(plt.hist, 'Age', bins=40)
-
-<seaborn.axisgrid.FacetGrid at 0xc5f7cf8>
-```
-
-![png](../../../img/competitions/getting-started/titanic/titanic_age_map.png)
-
-```python
-train.groupby(['Age'])['Survived'].mean().plot()
-
-<matplotlib.axes._subplots.AxesSubplot at 0xc71ac18>
-``` 
-
-![png](../../../img/competitions/getting-started/titanic/titanic_age_axes.png)
-
-* ⑤ Embarked登港港口与生存情况的分析
-
-结果分析:C地的生存率更高,这个也应该保留为模型特征.
-
-```python
-sns.countplot('Embarked',hue='Survived',data=train)
-
-<matplotlib.axes._subplots.AxesSubplot at 0xca1e5f8>
-```
-
-![png](../../../img/competitions/getting-started/titanic/titanic_embarked_count.png)
-
-* ⑥ 其他因素
-
-在数据的Name项中包含了对该乘客的称呼，如Mr、Miss等，这些信息包含了乘客的年龄、性别、也有可能包含社会地位，如Dr、Lady、Major、Master等称呼。这一项不方便用图表展示，但是在特征工程中，我们会将其提取出来,然后放到模型中。
-
-剩余因素还有船票价格、船舱号和船票号，这三个因素都可能会影响乘客在船中的位置从而影响逃生顺序，但是因为这三个因素与生存之间看不出明显规律，所以在后期模型融合时，将这些因素交给模型来决定其重要性。
-
-## 二. 特征工程
-
-```python
-#先将数据集合并,一起做特征工程(注意,标准化的时候需要分开处理)
-#先将test补齐,然后通过pd.apped()合并
-test['Survived'] = 0
-train_test = train.append(test)
-```
-
-### 特征处理
-
-* ① Pclass,乘客等级,1是最高级
-
-两种方式:一是该特征不做处理,可以直接保留.二是再处理:也进行分列处理(比较那种方式模型效果更好,就选那种)
-
-```python
-train_test = pd.get_dummies(train_test,columns=['Pclass'])
-```
-
-* ② Sex,性别¶
-无缺失值,直接分列
-
-```python
-train_test = pd.get_dummies(train_test,columns=["Sex"])
-```
-
-* ③ SibSp and Parch  兄妹配偶数/父母子女数
-
-第一次直接保留:这两个都影响生存率,且都是数值型,先直接保存.
-
-第二次进行两项求和,并进行分列处理.(兄妹配偶数和父母子女数都是认识人的数量,所以总数可能也会更好)(模型结果提高到了)
-
-```python
-#这是剑豪模型后回来添加的新特征,模型的分数最终有所提高了.
-train_test['SibSp_Parch'] = train_test['SibSp'] + train_test['Parch']
-```
-
-```python
-train_test = pd.get_dummies(train_test,columns = ['SibSp','Parch','SibSp_Parch']) 
-```
-
-* ④ Embarked 
-数据有极少量(3个)缺失值,但是在分列的时候,缺失值的所有列可以均为0,所以可以考虑不填充.
-
-另外,也可以考虑用测试集众数来填充.先找出众数,再采用df.fillna()方法
-
-```python
-train_test = pd.get_dummies(train_test,columns=["Embarked"])
-```
-
-* ⑤ Name
-
-1.在数据的Name项中包含了对该乘客的称呼,将这些关键词提取出来,然后做分列处理.(参考别人的)
-
-```python
-#从名字中提取出称呼： df['Name].str.extract()是提取函数,配合正则一起使用
-train_test['Name1'] = train_test['Name'].str.extract('.+,(.+)', expand=False).str.extract('^(.+?)\.', expand=False).str.strip()
-```
-
-```python
-#将姓名分类处理()
-train_test['Name1'].replace(['Capt', 'Col', 'Major', 'Dr', 'Rev'], 'Officer' , inplace = True)
-train_test['Name1'].replace(['Jonkheer', 'Don', 'Sir', 'the Countess', 'Dona', 'Lady'], 'Royalty' , inplace = True)
-train_test['Name1'].replace(['Mme', 'Ms', 'Mrs'], 'Mrs')
-train_test['Name1'].replace(['Mlle', 'Miss'], 'Miss')
-train_test['Name1'].replace(['Mr'], 'Mr' , inplace = True)
-train_test['Name1'].replace(['Master'], 'Master' , inplace = True)
-```
-
-```python
-#分列处理
-train_test = pd.get_dummies(train_test,columns=['Name1'])
-```
-
-2. 从姓名中提取出姓做特征
-
-```python
-#从姓名中提取出姓
-train_test['Name2'] = train_test['Name'].apply(lambda x: x.split('.')[1])
-
-#计算数量,然后合并数据集
-Name2_sum = train_test['Name2'].value_counts().reset_index()
-Name2_sum.columns=['Name2','Name2_sum']
-train_test = pd.merge(train_test,Name2_sum,how='left',on='Name2')
-
-#由于出现一次时该特征时无效特征,用one来代替出现一次的姓
-train_test.loc[train_test['Name2_sum'] == 1 , 'Name2_new'] = 'one'
-train_test.loc[train_test['Name2_sum'] > 1 , 'Name2_new'] = train_test['Name2']
-del train_test['Name2']
-
-#分列处理
-train_test = pd.get_dummies(train_test,columns=['Name2_new'])
-```
-
-```python
-#删掉姓名这个特征
-del train_test['Name']
-```
-
-* ⑥ Fare
-
-该特征有缺失值,先找出缺失值的那调数据,然后用平均数填充
-
-```python
-#从上面的分析,发现该特征train集无miss值,test有一个缺失值,先查看
-train_test.loc[train_test["Fare"].isnull()]
-```
-
-<div>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Age</th>
-      <th>Cabin</th>
-      <th>Fare</th>
-      <th>PassengerId</th>
-      <th>Survived</th>
-      <th>Ticket</th>
-      <th>Pclass_1</th>
-      <th>Pclass_2</th>
-      <th>Pclass_3</th>
-      <th>Sex_female</th>
-      <th>...</th>
-      <th>Name2_new_ Thomas Henry</th>
-      <th>Name2_new_ Victor</th>
-      <th>Name2_new_ Washington</th>
-      <th>Name2_new_ William</th>
-      <th>Name2_new_ William Edward</th>
-      <th>Name2_new_ William Henry</th>
-      <th>Name2_new_ William James</th>
-      <th>Name2_new_ William John</th>
-      <th>Name2_new_ William Thomas</th>
-      <th>Name2_new_one</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>1043</th>
-      <td>60.5</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>1044</td>
-      <td>0</td>
-      <td>3701</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-  </tbody>
-</table>
-<p>1 rows × 137 columns</p>
-</div>
-
-```python
-#票价与pclass和Embarked有关,所以用train分组后的平均数填充
-train.groupby(by=["Pclass","Embarked"]).Fare.mean()
-
-Pclass  Embarked
-1       C           104.718529
-        Q            90.000000
-        S            70.364862
-2       C            25.358335
-        Q            12.350000
-        S            20.327439
-3       C            11.214083
-        Q            11.183393
-        S            14.644083
-Name: Fare, dtype: float64
-```
-
-```python
-#用pclass=3和Embarked=S的平均数14.644083来填充
-train_test["Fare"].fillna(14.435422,inplace=True)
-```
-
-* ⑦ Ticket
-
-该列和名字做类似的处理,先提取,然后分列
-
-```python
-#将Ticket提取字符列
-#str.isnumeric()  如果S中只有数字字符，则返回True，否则返回False
-train_test['Ticket_Letter'] = train_test['Ticket'].str.split().str[0]
-train_test['Ticket_Letter'] = train_test['Ticket_Letter'].apply(lambda x:np.nan if x.isnumeric() else x)
-train_test.drop('Ticket',inplace=True,axis=1)
-```
-
-```python
-#分列,此时nan值可以不做处理
-train_test = pd.get_dummies(train_test,columns=['Ticket_Letter'],drop_first=True)
-```
-
-* ⑧ Age
-
-1. 该列有大量缺失值,考虑用一个回归模型进行填充.
-2. 在模型修改的时候,考虑到年龄缺失值可能影响死亡情况,用年龄是否缺失值来构造新特征
-
-```python
-"""这是模型就好后回来增加的新特征
-考虑年龄缺失值可能影响死亡情况,数据表明,年龄缺失的死亡率为0.19."""
-train_test.loc[train_test["Age"].isnull()]['Survived'].mean()
-
-0.19771863117870722
-```
-
-```python
-# 所以用年龄是否缺失值来构造新特征
-train_test.loc[train_test["Age"].isnull() ,"age_nan"] = 1
-train_test.loc[train_test["Age"].notnull() ,"age_nan"] = 0
-train_test = pd.get_dummies(train_test,columns=['age_nan'])
-```
-
-利用其他组特征量，采用机器学习算法来预测Age
-
-```python
-train_test.info()
-
-<class 'pandas.core.frame.DataFrame'>
-Int64Index: 1309 entries, 0 to 1308
-Columns: 187 entries, Age to age_nan_1.0
-dtypes: float64(2), int64(3), object(1), uint8(181)
-memory usage: 343.0+ KB
-```
-
-```python
-#创建没有['Age','Survived']的数据集
-missing_age = train_test.drop(['Survived','Cabin'],axis=1)
-#将Age完整的项作为训练集、将Age缺失的项作为测试集。
-missing_age_train = missing_age[missing_age['Age'].notnull()]
-missing_age_test = missing_age[missing_age['Age'].isnull()]
-```
-
-```python
-#构建训练集合预测集的X和Y值
-missing_age_X_train = missing_age_train.drop(['Age'], axis=1)
-missing_age_Y_train = missing_age_train['Age']
-missing_age_X_test = missing_age_test.drop(['Age'], axis=1)
-```
-
-```python
-# 先将数据标准化
-from sklearn.preprocessing import StandardScaler
-ss = StandardScaler()
-#用测试集训练并标准化
-ss.fit(missing_age_X_train)
-missing_age_X_train = ss.transform(missing_age_X_train)
-missing_age_X_test = ss.transform(missing_age_X_test)
-```
-
-```python
-#使用贝叶斯预测年龄
-from sklearn import linear_model
-lin = linear_model.BayesianRidge()
-```
-
-```python
-lin.fit(missing_age_X_train,missing_age_Y_train)
-
-BayesianRidge(alpha_1=1e-06, alpha_2=1e-06, compute_score=False, copy_X=True,
-        fit_intercept=True, lambda_1=1e-06, lambda_2=1e-06, n_iter=300,
-        normalize=False, tol=0.001, verbose=False)
-```
-
-```python
-#利用loc将预测值填入数据集
-train_test.loc[(train_test['Age'].isnull()), 'Age'] = lin.predict(missing_age_X_test)
-```
-
-```python
-#将年龄划分是个阶段10以下,10-18,18-30,30-50,50以上
-train_test['Age'] = pd.cut(train_test['Age'], bins=[0,10,18,30,50,100],labels=[1,2,3,4,5])
-
-train_test = pd.get_dummies(train_test,columns=['Age'])
-```
-
-* ⑨ Cabin
-
-cabin项缺失太多，只能将有无Cain首字母进行分类,缺失值为一类,作为特征值进行建模,也可以考虑直接舍去该特征
-
-```python
-#cabin项缺失太多，只能将有无Cain首字母进行分类,缺失值为一类,作为特征值进行建模
-train_test['Cabin_nan'] = train_test['Cabin'].apply(lambda x:str(x)[0] if pd.notnull(x) else x)
-train_test = pd.get_dummies(train_test,columns=['Cabin_nan'])
-```
-
-```python
-#cabin项缺失太多，只能将有无Cain首字母进行分类,
-train_test.loc[train_test["Cabin"].isnull() ,"Cabin_nan"] = 1
-train_test.loc[train_test["Cabin"].notnull() ,"Cabin_nan"] = 0
-train_test = pd.get_dummies(train_test,columns=['Cabin_nan'])
-train_test.drop('Cabin',axis=1,inplace=True)
-```
-
-* ⑩ 特征工程处理完了,划分数据集
-
-```python
-train_data = train_test[:891]
-test_data = train_test[891:]
-train_data_X = train_data.drop(['Survived'],axis=1)
-train_data_Y = train_data['Survived']
-test_data_X = test_data.drop(['Survived'],axis=1)
-```
-
-### 数据规约
-
-1. 线性模型需要用标准化的数据建模,而树类模型不需要标准化的数据
+1. 线性模型需要用标准化的数据建模, 而树类模型不需要标准化的数据
 2. 处理标准化的时候,注意将测试集的数据transform到test集上
 
-```python
-from sklearn.preprocessing import StandardScaler
-ss2 = StandardScaler()
-ss2.fit(train_data_X)
-train_data_X_sd = ss2.transform(train_data_X)
-test_data_X_sd = ss2.transform(test_data_X)
+```py
+def do_FeatureEngineering(data, COMPONENT_NUM=0.9):
+    # scale values  对一化
+    scaler = preprocessing.StandardScaler()
+    s_data = scaler.fit_transform(data)
+    return s_data
+
+    # # 降维(不降维，准确率还上升了)
+    # '''
+    # 使用说明：https://www.cnblogs.com/pinard/p/6243025.html
+    # n_components>=1
+    #   n_components=NUM   设置占特征数量比
+    # 0 < n_components < 1
+    #   n_components=0.99  设置阈值总方差占比
+    # '''
+    # pca = PCA(n_components=COMPONENT_NUM, whiten=False)
+    # pca.fit(s_data)  # Fit the model with X
+    # pca_data = pca.transform(s_data)  # Fit the model with X and 在X上完成降维.
+
+    # # pca 方差大小、方差占比、特征数量
+    # # print("方差大小:\n", pca.explained_variance_, "方差占比:\n", pca.explained_variance_ratio_)
+    # print("特征数量: %s" % pca.n_components_)
+    # print("总方差占比: %s" % sum(pca.explained_variance_ratio_))
+
+    # return pca_data
 ```
 
 
@@ -773,185 +273,156 @@ test_data_X_sd = ss2.transform(test_data_X)
 
 ### 模型发现
 
-1. 可选单个模型模型有随机森林,逻辑回归,svm,xgboost,gbdt等.
+1. 可选单个模型模型有逻辑回归, 随机森林, svm, xgboost, gbdt等.
 2. 也可以将多个模型组合起来,进行模型融合,比如voting,stacking等方法
 3. 好的特征决定模型上限,好的模型和参数可以无线逼近上限.
 4. 我测试了多种模型,模型结果最高的随机森林,最高有0.8.
 
 ### 构建模型
 
-> 随机森林
+```py
+# 0.8069524400247253 [0.79329609 0.81564246 0.8258427  0.80337079 0.79661017]
+model = LogisticRegression(random_state=1)
 
-```python
-from sklearn.ensemble import RandomForestClassifier
+# 0.8272091118939124 [0.82122905 0.80446927 0.84831461 0.82022472 0.84180791]
+model = RandomForestClassifier(random_state=1, n_estimators=100, min_samples_split=4, min_samples_leaf=2)
 
-rf = RandomForestClassifier(n_estimators=150,min_samples_leaf=3,max_depth=6,oob_score=True)
-rf.fit(train_data_X,train_data_Y)
+# 0.822670577600365  [0.82681564 0.82122905 0.83146067 0.80898876 0.82485876]
+model = RandomForestClassifier(random_state=1, n_estimators=50, min_samples_split=8, min_samples_leaf=4)
 
-test["Survived"] = rf.predict(test_data_X)
-RF = test[['PassengerId','Survived']].set_index('PassengerId')
-RF.to_csv('RF.csv')
+# 0.8294499549079417   [0.82122905 0.80446927 0.86516854 0.82022472 0.83615819]
+model = XGBClassifier(n_estimators=196, max_depth=4, learning_rate=0.03)
 ```
 
-```python
-# 随机森林是随机选取特征进行建模的,所以每次的结果可能都有点小差异
-# 如果分数足够好,可以将该模型保存起来,下次直接调出来使用0.81339 'rf10.pkl'
-from sklearn.externals import joblib
-joblib.dump(rf, 'rf10.pkl')
-```
+## 四. 模型融合
 
-> LogisticRegression
+```py
+print("模型融合")
+"""
+Bagging:   同一模型的投票选举
+Boosting:  同一模型的再学习
+Voting:    不同模型的投票选举
+Stacking:  分层预测 – K-1份数据预测1份模型拼接，对结果在进行预测
+Blending:  分层预测 – 将数据分成2部分，A部分训练B部分得到预测结果，得到 预测结果*算法数 => 从而预测最终结果
+"""
+# 1. Bagging 算法实现
+# 0.8691726623564537  [0.86179183 0.82700922 0.8855615  0.87700535 0.89449541]
+model = RandomForestClassifier(random_state=1, n_estimators=100, min_samples_split=4, min_samples_leaf=2)
 
-```python
-from sklearn.linear_model import LogisticRegression
-from sklearn.grid_search import GridSearchCV
+# 2. Boosting 算法实现
+# 0.8488710896477386  [0.8198946  0.82285903 0.87780749 0.84906417 0.87473017]
+model = AdaBoostClassifier(random_state=1, n_estimators=100, learning_rate=1)
 
-lr = LogisticRegression()
-param = {'C':[0.001,0.01,0.1,1,10], "max_iter":[100,250]}
-clf = GridSearchCV(lr, param,cv=5, n_jobs=-1, verbose=1, scoring="roc_auc")
-clf.fit(train_data_X_sd, train_data_Y)
+# # 3. Voting
+# # 0.8695399796790022  [0.87259552 0.8370224  0.87433155 0.86885027 0.89490016]
+model = VotingClassifier(
+    estimators=[
+        ('log_clf', LogisticRegression()),
+        ('ab_clf', AdaBoostClassifier()),
+        ('svm_clf', SVC(probability=True)),
+        ('rf_clf', RandomForestClassifier()),
+        ('gbdt_clf', GradientBoostingClassifier()),
+        ('rb_clf', AdaBoostClassifier())
+    ], voting='soft') # , voting='hard')
+scores = cross_val_score(model, trainData, trainLabel, cv=5, scoring='roc_auc')
+print(scores.mean(), "\n", scores)
 
-# 打印参数的得分情况
-clf.grid_scores_
-# 打印最佳参数
-clf.best_params_
+# # 4. Stacking
+# # 0.8713813265814722  [0.87747036 0.83886693 0.86590909 0.87085561 0.90380464]
+clfs = [
+    AdaBoostClassifier(),
+    SVC(probability=True),
+    AdaBoostClassifier(),
+    LogisticRegression(C=0.1,max_iter=100),
+    XGBClassifier(max_depth=6,n_estimators=100,num_round = 5),
+    RandomForestClassifier(n_estimators=100,max_depth=6,oob_score=True),
+    GradientBoostingClassifier(learning_rate=0.3,max_depth=6,n_estimators=100)
+]
 
-# 将最佳参数传入训练模型
-lr = LogisticRegression(clf.best_params_)
-lr.fit(train_data_X_sd, train_data_Y)
-
-# 输出结果
-test["Survived"] = lr.predict(test_data_X_sd)
-test[['PassengerId', 'Survived']].set_index('PassengerId').to_csv('LS5.csv')
-```
-
-> SVM
-
-```python
-from sklearn import svm
-svc = svm.SVC()
-
-clf = GridSearchCV(svc,param,cv=5,n_jobs=-1,verbose=1,scoring="roc_auc")
-clf.fit(train_data_X_sd,train_data_Y)
-
-clf.best_params_
-
-svc = svm.SVC(C=1,max_iter=250)
-
-# 训练模型并预测结果
-svc.fit(train_data_X_sd,train_data_Y)
-svc.predict(test_data_X_sd)
-
-# 打印结果
-test["Survived"] = svc.predict(test_data_X_sd)
-SVM = test[['PassengerId','Survived']].set_index('PassengerId')
-SVM.to_csv('svm1.csv')
-```
-
-> GBDT
-
-```python
-from sklearn.ensemble import GradientBoostingClassifier
-
-gbdt = GradientBoostingClassifier(learning_rate=0.7,max_depth=6,n_estimators=100,min_samples_leaf=2)
-
-gbdt.fit(train_data_X,train_data_Y)
-
-test["Survived"] = gbdt.predict(test_data_X)
-test[['PassengerId','Survived']].set_index('PassengerId').to_csv('gbdt3.csv')
-```
-
-> xgboost
-
-```python
-import xgboost as xgb
-
-xgb_model = xgb.XGBClassifier(n_estimators=150,min_samples_leaf=3,max_depth=6)
-xgb_model.fit(train_data_X,train_data_Y)
-
-test["Survived"] = xgb_model.predict(test_data_X)
-XGB = test[['PassengerId','Survived']].set_index('PassengerId')
-XGB.to_csv('XGB5.csv')
-```
-
-## 四 建立模型
-
-> 模型融合 voting
-
-```python
-from sklearn.ensemble import VotingClassifier
-
-from sklearn.linear_model import LogisticRegression
-lr = LogisticRegression(C=0.1,max_iter=100)
-
-import xgboost as xgb
-xgb_model = xgb.XGBClassifier(max_depth=6,min_samples_leaf=2,n_estimators=100,num_round = 5)
-
-from sklearn.ensemble import RandomForestClassifier
-rf = RandomForestClassifier(n_estimators=200,min_samples_leaf=2,max_depth=6,oob_score=True)
-
-from sklearn.ensemble import GradientBoostingClassifier
-gbdt = GradientBoostingClassifier(learning_rate=0.1,min_samples_leaf=2,max_depth=6,n_estimators=100)
-
-vot = VotingClassifier(estimators=[('lr', lr), ('rf', rf),('gbdt',gbdt),('xgb',xgb_model)], voting='hard')
-vot.fit(train_data_X_sd,train_data_Y)
-
-test["Survived"] = vot.predict(test_data_X_sd)
-test[['PassengerId','Survived']].set_index('PassengerId').to_csv('vot5.csv')
-```
-
-> 模型融合 stacking
-
-
-```python
-# 划分train数据集,调用代码,把数据集名字转成和代码一样
-X = train_data_X_sd
-X_predict = test_data_X_sd
-y = train_data_Y
-
-'''模型融合中使用到的各个单模型'''
-from sklearn.linear_model import LogisticRegression
-from sklearn import svm
-import xgboost as xgb
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.ensemble import GradientBoostingClassifier
-
-clfs = [LogisticRegression(C=0.1,max_iter=100),
-        xgb.XGBClassifier(max_depth=6,n_estimators=100,num_round = 5),
-        RandomForestClassifier(n_estimators=100,max_depth=6,oob_score=True),
-        GradientBoostingClassifier(learning_rate=0.3,max_depth=6,n_estimators=100)]
-
-# 创建n_folds
-from sklearn.cross_validation import StratifiedKFold
-n_folds = 5
-skf = list(StratifiedKFold(y, n_folds))
+# from sklearn.cross_validation import StratifiedKFold
+# n_folds = 5
+# skf = list(StratifiedKFold(trainLabel, n_folds))
+kf = KFold(n_splits=5, shuffle=True, random_state=1)
 
 # 创建零矩阵
-dataset_blend_train = np.zeros((X.shape[0], len(clfs)))
-dataset_blend_test = np.zeros((X_predict.shape[0], len(clfs)))
+dataset_stacking_train = np.zeros((trainData.shape[0], len(clfs)))
+# dataset_stacking_label  = np.zeros((trainLabel.shape[0], len(clfs)))
 
-# 建立模型
 for j, clf in enumerate(clfs):
     '''依次训练各个单模型'''
-    # print(j, clf)
-    dataset_blend_test_j = np.zeros((X_predict.shape[0], len(skf)))
-    for i, (train, test) in enumerate(skf):
+    for i,(train, test) in enumerate(kf.split(trainLabel)):
         '''使用第i个部分作为预测，剩余的部分来训练模型，获得其预测的输出作为第i部分的新特征。'''
         # print("Fold", i)
-        X_train, y_train, X_test, y_test = X[train], y[train], X[test], y[test]
+        X_train, y_train, X_test, y_test = trainData[train], trainLabel[train], trainData[test], trainLabel[test]
         clf.fit(X_train, y_train)
         y_submission = clf.predict_proba(X_test)[:, 1]
-        dataset_blend_train[test, j] = y_submission
-        dataset_blend_test_j[:, i] = clf.predict_proba(X_predict)[:, 1]
-    '''对于测试集，直接用这k个模型的预测值均值作为新的特征。'''
-    dataset_blend_test[:, j] = dataset_blend_test_j.mean(1)
+
+        # j 表示每一次的算法，而 test是交叉验证得到的每一行（也就是每一个算法把测试机和都预测了一遍）
+        dataset_stacking_train[test, j] = y_submission
+    
+# 用建立第二层模型
+model = LogisticRegression(C=0.1, max_iter=100)
+model.fit(dataset_stacking_train, trainLabel)
+
+scores = cross_val_score(model, dataset_stacking_train, trainLabel, cv=5, scoring='roc_auc')
+print(scores.mean(), "\n", scores)
+
+# 5. Blending
+# 0.8838950287185581 [0.87584416 0.91064935 0.89714286 0.85294118 0.8828976 ]
+clfs = [
+    AdaBoostClassifier(),
+    SVC(probability=True),
+    AdaBoostClassifier(),
+    LogisticRegression(C=0.1,max_iter=100),
+    XGBClassifier(max_depth=6,n_estimators=100,num_round = 5),
+    RandomForestClassifier(n_estimators=100,max_depth=6,oob_score=True),
+    GradientBoostingClassifier(learning_rate=0.3,max_depth=6,n_estimators=100)
+]
+X_d1, X_d2, y_d1, y_d2 = train_test_split(trainData, trainLabel, test_size=0.5, random_state=2017)
+dataset_d1 = np.zeros((X_d2.shape[0], len(clfs)))
+dataset_d2 = np.zeros((trainLabel.shape[0], len(clfs)))
+
+for j, clf in enumerate(clfs):
+    #依次训练各个单模型
+    # 对于测试集，直接用这k个模型的预测值作为新的特征。
+    clf.fit(X_d1, y_d1)
+    dataset_d1[:, j] = clf.predict_proba(X_d2)[:, 1]
 
 # 用建立第二层模型
-clf2 = LogisticRegression(C=0.1,max_iter=100)
-clf2.fit(dataset_blend_train, y)
-y_submission = clf2.predict_proba(dataset_blend_test)[:, 1]
+model = LogisticRegression(C=0.1, max_iter=100)
+model.fit(dataset_d1, y_d2)
 
-test = pd.read_csv("test.csv")
-test["Survived"] = clf2.predict(dataset_blend_test)
-test[['PassengerId','Survived']].set_index('PassengerId').to_csv('stack3.csv')
+scores = cross_val_score(model, dataset_d1, y_d2, cv=5, scoring='roc_auc')
+print(scores.mean(), "\n", scores)
+```
+
+## 五. 修改特征和模型参数
+
+```py
+# 交叉验证部分 #####
+from sklearn.model_selection import GridSearchCV
+param_test = {
+    # 'n_estimators': np.arange(190, 240, 2), 
+    # 'max_depth': np.arange(4, 7, 1), 
+    # 'learning_rate': np.array([0.01, 0.03, 0.05, 0.08, 0.1, 0.15, 0.2]), 
+
+    'n_estimators': np.array([196]), 
+    'max_depth': np.array([4]),     
+    'learning_rate': np.array([0.01, 0.02, 0.03, 0.04, 0.05]), 
+    # 'min_child_weight': np.arange(1, 6, 2), 
+    # 'C': (1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9)
+}
+
+# 0.8294499549079417   [0.82122905 0.80446927 0.86516854 0.82022472 0.83615819]
+model = XGBClassifier()
+grid_search = GridSearchCV(estimator=model, param_grid=param_test, scoring='roc_auc', cv=5)
+grid_search.fit(trainData, trainLabel)
+print("最优得分 >>>", grid_search.best_score_)
+print("最优参数 >>>", grid_search.best_params_)
+
+# 0.8685305085155506  [0.85770751 0.82002635 0.89632353 0.87018717 0.89840799]
+model = XGBClassifier(n_estimators=196, max_depth=4, learning_rate=0.03)
+
+scores = cross_val_score(model, trainData, trainLabel, cv=5, scoring='roc_auc')
+print(scores.mean(), "\n", scores)
 ```
