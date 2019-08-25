@@ -313,8 +313,8 @@ model = RandomForestClassifier(random_state=1, n_estimators=100, min_samples_spl
 # 0.8488710896477386  [0.8198946  0.82285903 0.87780749 0.84906417 0.87473017]
 model = AdaBoostClassifier(random_state=1, n_estimators=100, learning_rate=1)
 
-# # 3. Voting
-# # 0.8695399796790022  [0.87259552 0.8370224  0.87433155 0.86885027 0.89490016]
+# 3. Voting
+# 0.8695399796790022  [0.87259552 0.8370224  0.87433155 0.86885027 0.89490016]
 model = VotingClassifier(
     estimators=[
         ('log_clf', LogisticRegression()),
@@ -327,8 +327,8 @@ model = VotingClassifier(
 scores = cross_val_score(model, trainData, trainLabel, cv=5, scoring='roc_auc')
 print(scores.mean(), "\n", scores)
 
-# # 4. Stacking
-# # 0.8713813265814722  [0.87747036 0.83886693 0.86590909 0.87085561 0.90380464]
+# 4. Stacking
+# 0.8713813265814722  [0.87747036 0.83886693 0.86590909 0.87085561 0.90380464]
 clfs = [
     AdaBoostClassifier(),
     SVC(probability=True),
@@ -339,9 +339,6 @@ clfs = [
     GradientBoostingClassifier(learning_rate=0.3,max_depth=6,n_estimators=100)
 ]
 
-# from sklearn.cross_validation import StratifiedKFold
-# n_folds = 5
-# skf = list(StratifiedKFold(trainLabel, n_folds))
 kf = KFold(n_splits=5, shuffle=True, random_state=1)
 
 # 创建零矩阵
