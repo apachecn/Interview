@@ -33,35 +33,24 @@
 2.比较各个模型的分数,然后取效果较好的模型作为基础模型.
 
 四. 模型融合
+1. Bagging:   同一模型的投票选举
+2. Boosting:  同一模型的再学习
+3. Voting:    不同模型的投票选举
+4. Stacking:  分层预测 – K-1份数据预测1份模型拼接，得到 预测结果*算法数（作为特征） => 从而预测最终结果
+5. Blending:  分层预测 – 将数据分成2部分（A部分训练B部分得到预测结果），得到 预测结果*算法数（作为特征） => 从而预测最终结果
 
-五. 修改特征和模型参数
+五. 参数优化
 1.可以通过添加或者修改特征,提高模型的上限.
 2.通过修改模型的参数,是模型逼近上限
 ```
 
 ## 一. 数据分析
 
-### 数据下载和加载
+### 数据下载和观察
 
 * 数据集下载地址：<https://www.kaggle.com/c/titanic/data>
 
-```python
-# 导入相关数据包
-import numpy as np
-import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
-%matplotlib inline
-```
-
-```python
-root_path = '/opt/data/datasets/getting-started/titanic/input'
-
-train = pd.read_csv('%s/%s' % (root_path, 'train.csv'))
-test = pd.read_csv('%s/%s' % (root_path, 'test.csv'))
-```
-
-### 特征说明
+> 特征说明
 
 | 特征 | 描述 | 值|
 | - | - | - |
@@ -79,6 +68,22 @@ test = pd.read_csv('%s/%s' % (root_path, 'test.csv'))
 | Embarked | 登船港口       | C=Cherbourg, Q=Queenstown, S=Southampton |  
 
 ### 特征详情
+
+```python
+# 导入相关数据包
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+%matplotlib inline
+```
+
+```python
+root_path = '/opt/data/datasets/getting-started/titanic/input'
+
+train = pd.read_csv('%s/%s' % (root_path, 'train.csv'))
+test = pd.read_csv('%s/%s' % (root_path, 'test.csv'))
+```
 
 ```python
 train.head(5)
@@ -302,8 +307,8 @@ print("模型融合")
 Bagging:   同一模型的投票选举
 Boosting:  同一模型的再学习
 Voting:    不同模型的投票选举
-Stacking:  分层预测 – K-1份数据预测1份模型拼接，对结果在进行预测
-Blending:  分层预测 – 将数据分成2部分，A部分训练B部分得到预测结果，得到 预测结果*算法数 => 从而预测最终结果
+Stacking:  分层预测 – K-1份数据预测1份模型拼接，得到 预测结果*算法数（作为特征） => 从而预测最终结果
+Blending:  分层预测 – 将数据分成2部分（A部分训练B部分得到预测结果），得到 预测结果*算法数（作为特征） => 从而预测最终结果
 """
 # 1. Bagging 算法实现
 # 0.8691726623564537  [0.86179183 0.82700922 0.8855615  0.87700535 0.89449541]
@@ -393,10 +398,9 @@ scores = cross_val_score(model, dataset_d1, y_d2, cv=5, scoring='roc_auc')
 print(scores.mean(), "\n", scores)
 ```
 
-## 五. 修改特征和模型参数
+## 五. 参数优化
 
 ```py
-# 交叉验证部分 #####
 from sklearn.model_selection import GridSearchCV
 param_test = {
     # 'n_estimators': np.arange(190, 240, 2), 
