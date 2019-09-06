@@ -2,7 +2,7 @@
 # coding: utf-8
 '''
 Created on 2019-08-14
-Update  on 2019-08-14
+Update  on 2019-08-31
 Author: 片刻
 Github: https://github.com/apachecn/Interview
 '''
@@ -32,19 +32,19 @@ def opencsv():
         
     # print(tr_data.head(5))
     # print(tr_data.info())
-    # 返回数值型变量的统计量
+    # # 返回数值型变量的统计量
     # print(tr_data.describe())
 
     # 数据预处理（清洗、缺失值）
     do_DataPreprocessing(tr_data)
-    print(tr_data.head(5))
-    print(tr_data.dtypes)
-    print(te_data.describe())
+    # print(tr_data.head(5))
+    # print(tr_data.dtypes)
+    # print(te_data.describe())
 
     do_DataPreprocessing(te_data)
-    print(te_data.head(5))
-    print(te_data.dtypes)
-    print(te_data.describe())
+    # print(te_data.head(5))
+    # print(te_data.dtypes)
+    # print(te_data.describe())
 
     # # 相关性分析
     # # 相关性协方差表, corr()函数,返回结果接近0说明无相关性,大于0说明是正相关,小于0是负相关.
@@ -114,12 +114,12 @@ def do_DataPreprocessing(titanic):
     titanic["Fare"] = titanic["Fare"].fillna(titanic["Fare"].median())
 
     # 对文本特征进行处理（性别， 登船港口）
-    print(titanic["Sex"].unique())
+    # print(titanic["Sex"].unique())
     titanic.loc[titanic["Sex"]=="male", "Sex"] = 0
     titanic.loc[titanic["Sex"]=="female", "Sex"] = 1
 
     # S的概率最大，当然我们也可以按照概率随机算，都可以
-    print(titanic["Embarked"].unique())
+    # print(titanic["Embarked"].unique())
     """
     titanic[["Embarked"]].groupby("Embarked").agg({"Embarked": "count"})
               Embarked
@@ -140,7 +140,7 @@ def do_DataPreprocessing(titanic):
             return title_search.group(1)
         return ""
     titles = titanic["Name"].apply(get_title)
-    # print(pandas.value_counts(titles))
+    # print(pd.value_counts(titles))
     # 对尊称建立mapping字典
     title_mapping = {"Mr": 1, "Miss": 2, "Mrs": 3, "Master": 4, "Dr": 5, "Rev": 6, "Major": 7, "Col": 7, "Mlle": 8, "Mme": 8, "Don": 9, "Dona": 9, "Lady": 10, "Countess": 10, "Jonkheer": 10, "Sir": 9, "Capt": 7, "Ms": 2}
     for k, v in title_mapping.items():
@@ -162,7 +162,7 @@ def do_DataPreprocessing(titanic):
 
 
 def do_FeatureEngineering(data, COMPONENT_NUM=0.9):
-    # scale values  对一化
+    # scale values  归一化
     scaler = preprocessing.StandardScaler()
     s_data = scaler.fit_transform(data)
     return s_data
@@ -176,7 +176,9 @@ def do_FeatureEngineering(data, COMPONENT_NUM=0.9):
     #   n_components=0.99  设置阈值总方差占比
     # '''
     # pca = PCA(n_components=COMPONENT_NUM, whiten=False)
+    # # 只训练 训练集数据
     # pca.fit(s_data)  # Fit the model with X
+    # # 训练集 和 测试集 保持一直，进行 transform
     # pca_data = pca.transform(s_data)  # Fit the model with X and 在X上完成降维.
 
     # # pca 方差大小、方差占比、特征数量
@@ -190,61 +192,62 @@ def do_FeatureEngineering(data, COMPONENT_NUM=0.9):
 def trainModel(trainData, trainLabel):
 
     # 模拟测试
-    # # 0.8069524400247253 [0.79329609 0.81564246 0.8258427  0.80337079 0.79661017]
-    # # model = LogisticRegression(random_state=1)
-    # # 0.8272091118939124 [0.82122905 0.80446927 0.84831461 0.82022472 0.84180791]
+    # 0.881994680700563 [0.87480519 0.91168831 0.89090909 0.85294118 0.87962963]
+    # model = LogisticRegression(random_state=1)
+    # 0.8819594261947202 [0.87532468 0.91272727 0.89298701 0.84912854 0.87962963]
     # model = RandomForestClassifier(random_state=1, n_estimators=100, min_samples_split=4, min_samples_leaf=2)
-    # # 0.822670577600365  [0.82681564 0.82122905 0.83146067 0.80898876 0.82485876]
-    # # model = RandomForestClassifier(random_state=1, n_estimators=50, min_samples_split=8, min_samples_leaf=4)
+    # 0.8812371898254252 [0.87428571 0.90857143 0.89402597 0.84803922 0.88126362]
+    # model = RandomForestClassifier(random_state=1, n_estimators=50, min_samples_split=8, min_samples_leaf=4)
 
-   #  # 交叉验证部分 #####
-   #  from sklearn.model_selection import GridSearchCV
-   #  param_test = {
-   #      # 'n_estimators': np.arange(190, 240, 2), 
-   #      # 'max_depth': np.arange(4, 7, 1), 
-   #      # 'learning_rate': np.array([0.01, 0.03, 0.05, 0.08, 0.1, 0.15, 0.2]), 
+    # # 网格搜索 #####
+    # from sklearn.model_selection import GridSearchCV
+    # param_test = {
+    #     # 'n_estimators': np.arange(190, 240, 2), 
+    #     'max_depth': np.arange(4, 7, 1), 
+    #     'learning_rate': np.array([0.01, 0.03, 0.05, 0.08, 0.1, 0.15, 0.2]), 
 
-   #      'n_estimators': np.array([196]), 
-   #      'max_depth': np.array([4]),     
-   #      'learning_rate': np.array([0.01, 0.02, 0.03, 0.04, 0.05]), 
-   #      # 'min_child_weight': np.arange(1, 6, 2), 
-   #      # 'C': (1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9)
-   #  }
+    #     'n_estimators': np.array([222]), 
+    #     # 'max_depth': np.array([4]),     
+    #     # 'learning_rate': np.array([0.01, 0.02, 0.03, 0.04, 0.05]), 
+    #     # 'min_child_weight': np.arange(1, 6, 2), 
+    #     # 'C': (1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9)
+    # }
 
-   # # 0.8294499549079417   [0.82122905 0.80446927 0.86516854 0.82022472 0.83615819]
-   #  model = XGBClassifier()
-   #  grid_search = GridSearchCV(estimator=model, param_grid=param_test, scoring='roc_auc', cv=5)
-   #  grid_search.fit(trainData, trainLabel)
-   #  print("最优得分 >>>", grid_search.best_score_)
-   #  print("最优参数 >>>", grid_search.best_params_)
+    # 0.8294499549079417   [0.82122905 0.80446927 0.86516854 0.82022472 0.83615819]
+    # model = XGBClassifier()
+    # grid_search = GridSearchCV(estimator=model, param_grid=param_test, scoring='roc_auc', cv=5)
+    # grid_search.fit(trainData, trainLabel)
+    # print("最优得分 >>>", grid_search.best_score_)
+    # print("最优参数 >>>", grid_search.best_params_)
 
-    # 0.8685305085155506  [0.85770751 0.82002635 0.89632353 0.87018717 0.89840799]
-    model = XGBClassifier(learning_rate = 0.1,  n_estimators= 202, max_depth= 4,
-                min_child_weight= 5, gamma=0, subsample=0.8, colsample_bytree=0.8, 
-                objective= 'binary:logistic', scale_pos_weight=1
-    )
-    model = XGBClassifier(n_estimators=196, max_depth=4, learning_rate=0.03)
-    scores = cross_val_score(model, trainData, trainLabel, cv=5, scoring='roc_auc')
-    print(scores.mean(), "\n", scores)
+    # model = XGBClassifier(learning_rate = 0.1,  n_estimators= 202, max_depth= 4,
+    #             min_child_weight= 5, gamma=0, subsample=0.8, colsample_bytree=0.8, 
+    #             objective= 'binary:logistic', scale_pos_weight=1
+    # )
+    # 0.8825292702939761 [0.87272727 0.91376623 0.89194805 0.84912854 0.88507625]
+    # 0.8812472625413802 [0.87480519 0.91012987 0.89090909 0.85239651 0.87799564]
+    # model = XGBClassifier(n_estimators=222, max_depth=4, learning_rate=0.03)
 
+    # scores = cross_val_score(model, trainData, trainLabel, cv=5, scoring='roc_auc')
+    # print(scores.mean(), "\n", scores)
     print("模型融合")
     """
     Bagging:   同一模型的投票选举
     Boosting:  同一模型的再学习
     Voting:    不同模型的投票选举
-    Stacking:  分层预测 – K-1份数据预测1份模型拼接，对结果在进行预测
-    Blending:  分层预测 – 将数据分成2部分，A部分训练B部分得到预测结果，得到 预测结果*算法数 => 从而预测最终结果
+    Stacking:  分层预测 – K-1份数据预测1份模型拼接，得到 预测结果*算法数（作为特征） => 从而预测最终结果
+    Blending:  分层预测 – 将数据分成2部分（A部分训练B部分得到预测结果），得到 预测结果*算法数（作为特征） => 从而预测最终结果
     """
     # 1. Bagging 算法实现
-    # 0.8691726623564537  [0.86179183 0.82700922 0.8855615  0.87700535 0.89449541]
+    # 0.8818756755227344 [0.87324675 0.91428571 0.89090909 0.85076253 0.88017429]
     # model = RandomForestClassifier(random_state=1, n_estimators=100, min_samples_split=4, min_samples_leaf=2)
 
     # 2. Boosting 算法实现
     # 0.8488710896477386  [0.8198946  0.82285903 0.87780749 0.84906417 0.87473017]
     # model = AdaBoostClassifier(random_state=1, n_estimators=100, learning_rate=1)
 
-    # # 3. Voting
-    # # 0.8695399796790022  [0.87259552 0.8370224  0.87433155 0.86885027 0.89490016]
+    # 3. Voting
+    # 0.8815388054211584 [0.87480519 0.91272727 0.89194805 0.84912854 0.87908497]
     # model = VotingClassifier(
     #     estimators=[
     #         ('log_clf', LogisticRegression()),
@@ -258,7 +261,7 @@ def trainModel(trainData, trainLabel):
     # print(scores.mean(), "\n", scores)
     
     # # 4. Stacking
-    # # 0.8713813265814722  [0.87747036 0.83886693 0.86590909 0.87085561 0.90380464]
+    # # 0.8813662677192088 [0.87532468 0.90805195 0.89142857 0.85348584 0.87854031]
     # clfs = [
     #     AdaBoostClassifier(),
     #     SVC(probability=True),
@@ -268,10 +271,6 @@ def trainModel(trainData, trainLabel):
     #     RandomForestClassifier(n_estimators=100,max_depth=6,oob_score=True),
     #     GradientBoostingClassifier(learning_rate=0.3,max_depth=6,n_estimators=100)
     # ]
-
-    # # from sklearn.cross_validation import StratifiedKFold
-    # # n_folds = 5
-    # # skf = list(StratifiedKFold(trainLabel, n_folds))
     # kf = KFold(n_splits=5, shuffle=True, random_state=1)
 
     # # 创建零矩阵
@@ -289,11 +288,10 @@ def trainModel(trainData, trainLabel):
 
     #         # j 表示每一次的算法，而 test是交叉验证得到的每一行（也就是每一个算法把测试机和都预测了一遍）
     #         dataset_stacking_train[test, j] = y_submission
-     
+
     # # 用建立第二层模型
     # model = LogisticRegression(C=0.1, max_iter=100)
     # model.fit(dataset_stacking_train, trainLabel)
-
     # scores = cross_val_score(model, dataset_stacking_train, trainLabel, cv=5, scoring='roc_auc')
     # print(scores.mean(), "\n", scores)
     
@@ -317,14 +315,12 @@ def trainModel(trainData, trainLabel):
         # 对于测试集，直接用这k个模型的预测值作为新的特征。
         clf.fit(X_d1, y_d1)
         dataset_d1[:, j] = clf.predict_proba(X_d2)[:, 1]
-
     # 用建立第二层模型
     model = LogisticRegression(C=0.1, max_iter=100)
     model.fit(dataset_d1, y_d2)
 
     scores = cross_val_score(model, dataset_d1, y_d2, cv=5, scoring='roc_auc')
     print(scores.mean(), "\n", scores)
-    
     return model
 
 
@@ -335,19 +331,20 @@ def main():
     # 1.加载数据和预处理
     train_data, train_label, test_data, pids = opencsv()
 
-    # 特征工程
+    # 2. 特征工程
     pca_tr_data = do_FeatureEngineering(train_data)
     pca_te_data = do_FeatureEngineering(test_data)
 
-    # 模型训练（分类问题： lr、rf、adboost、xgboost、lightgbm）
+    # 3. 模型训练/模型融合（分类问题： lr、rf、adboost、xgboost、lightgbm）
     model = trainModel(pca_tr_data, train_label)
     model.fit(pca_tr_data, train_label)
     labels = model.predict(pca_te_data)
 
+    # 4. 数据导出
     print(type(pids), type(labels.tolist()))
     result = pd.DataFrame({
         'PassengerId': pids, 
-        'Survived': labels
+        'Survived': [int(i) for i in labels.tolist()]
     })
     result.to_csv('Result_titanic.csv', index=False)
 
