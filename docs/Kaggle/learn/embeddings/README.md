@@ -133,7 +133,7 @@ _________________________________________________________________
 
 我希望我的模型是这样：
 
-![](img/emb-1.png)
+![](/img/learn/embeddings/emb-1.png)
 
 需要注意的一个关键点是，这个网络不仅仅是从输入到输出的一堆层级。 我们将用户和电影视为单独的输入，只有在每个输入经过自己的嵌入层之后才会聚集在一起。
 
@@ -243,7 +243,7 @@ history = model.fit(
 
 这是我们的嵌入模型的绝对误差随时间的绘图。 为了进行比较，我们的最佳基线（预测每部电影的平均评分）用虚线标出：
 
-![](img/emb-2.png)
+![](/img/learn/embeddings/emb-2.png)
 
 与基线相比，我们能够将平均误差降低超过 0.1 星（或约 15%）。不错！
 
@@ -325,7 +325,7 @@ candidate_movies.sort_values(by='delta', ascending=False)
 
 在上一课中，我们训练了一个模型来预测在 MovieLens 数据集中，用户给电影的评分。 提醒一下，模型看起来像这样：
 
-![](img/emb-1.png)
+![](/img/learn/embeddings/emb-1.png)
 
 我们为电影和用户查找嵌入向量，将它们连接在一起。 然后我们添加一些隐层。 最后，这些在一个输出节点汇集在一起来预测评分。
 
@@ -333,7 +333,7 @@ candidate_movies.sort_values(by='delta', ascending=False)
 
 这是我们的矩阵分解模型的样子：
 
-![](img/emb-3.png)
+![](/img/learn/embeddings/emb-3.png)
 
 ### 点积
 
@@ -341,7 +341,7 @@ candidate_movies.sort_values(by='delta', ascending=False)
 
 两个长度为`n`的向量`a`和`b`的点积定义为：
 
-![](img/emb-4.png)
+![](/img/learn/embeddings/emb-4.png)
 
 结果是单个标量（不是向量）。
 
@@ -466,7 +466,7 @@ history = model.fit(
 
 让我们将这个模型随时间的误差，与我们在上一课中训练的深度神经网络进行比较：
 
-![](img/emb-5.png)
+![](/img/learn/embeddings/emb-5.png)
 
 我们新的，更简单的模型（蓝色）看起来非常好。
 
@@ -688,7 +688,7 @@ kv.most_similar('Toy Story')
   if np.issubdtype(vec.dtype, np.int):
 ```
 
-![](img/emb-6.png)
+![](/img/learn/embeddings/emb-6.png)
 
 小众的性爱剧，风骚的半吊子喜剧，老派音乐剧，超级英雄电影......我们的嵌入能够支持各种各样的电影类型！
 
@@ -892,7 +892,7 @@ fig, ax = plt.subplots(figsize=FS)
 ax.scatter(df.x, df.y, alpha=.1);
 ```
 
-![](img/emb-7.png)
+![](/img/learn/embeddings/emb-7.png)
 
 ### 它有效嘛
 
@@ -906,7 +906,7 @@ ax.scatter(df.x, df.y, alpha=.1);
 plot_by_title_pattern('Harry Potter', figsize=(15, 9), bg_alpha=.05, text=False);
 ```
 
-![](img/emb-8.png)
+![](/img/learn/embeddings/emb-8.png)
 
 上面的绘图中，8 个哈利波特电影中的每一个都有一个绿点 - 但它们是如此接近，它们无法在这个刻度上区分。 是个好的标志！
 
@@ -916,7 +916,7 @@ plot_by_title_pattern('Harry Potter', figsize=(15, 9), bg_alpha=.05, text=False)
 plot_region_around('Harry Potter and the Order of the Phoenix', 4);
 ```
 
-![](img/emb-9.png)
+![](/img/learn/embeddings/emb-9.png)
 
 哈利波特的电影不仅紧密聚集在一起，而且大致按发布顺序排列！
 
@@ -933,7 +933,7 @@ docs = df[ (df.genres == 'Documentary') ]
 plot_with_annotations(docs.index, text=False, alpha=.4, figsize=(15, 8));
 ```
 
-![](img/emb-10.png)
+![](/img/learn/embeddings/emb-10.png)
 
 太好了！ 它不是一个紧密的簇，但这里肯定有较强的规律。
 
@@ -941,7 +941,7 @@ plot_with_annotations(docs.index, text=False, alpha=.4, figsize=(15, 8));
 
 这是另一个稍微复杂的类型实验：可视化所有电影，其类型是`{喜剧，戏剧，浪漫}`的一部分（即喜剧，戏剧，浪漫，戏剧，浪漫剧，romcoms 和......我猜是“dromcoms”？）
 
-![](img/emb-11.png)
+![](/img/learn/embeddings/emb-11.png)
 
 这是最大规模的结构的一个很棒的例子。 戏剧主要在上半部分，而喜剧主要在另一半（浪漫片的分布更加分散）。
 

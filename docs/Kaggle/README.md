@@ -22,7 +22,8 @@
 
 > kaggle入门系列
 
-* [【Kaggle 入门篇】B站视频讲解，跟我们一起来学习吧！](https://www.bilibili.com/video/av53119200)
+* [Kaggle系列-数字识别](https://www.bilibili.com/video/av53119200)
+* [Kaggle系列-泰坦尼克号](https://www.bilibili.com/video/av65679428)
 
 > 比赛直播系列
 
@@ -30,6 +31,18 @@
 * [文档: icme2019-top2.pptx](/docs/简历指南/icme2019-top2.pptx)
 * [昊神GitHub地址: https://github.com/Smilexuhc](https://github.com/Smilexuhc)
 * [昊神整理比赛系列: https://github.com/Smilexuhc/Data-Competition-TopSolution](https://github.com/Smilexuhc/Data-Competition-TopSolution)
+
+## Kaggle 官方教程
+
+> 机器学习入门
+
+* [**1. 模型是怎样工作的**](learn/intro-to-machine-learning/1.md)
+* [**2. 数据探索**](learn/intro-to-machine-learning/2.md)
+
+> 补充
+
+* [**Embedding**](learn/embeddings)
+
 
 ## [竞赛](https://www.kaggle.com/competitions)
 
