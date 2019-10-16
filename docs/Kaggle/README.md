@@ -38,6 +38,11 @@
 
 * [**1. 模型是怎样工作的**](learn/intro-to-machine-learning/1.md)
 * [**2. 数据探索**](learn/intro-to-machine-learning/2.md)
+* [**3. 你的第一个机器学习模型**](learn/intro-to-machine-learning/3.md)
+* [**4. 模型验证**](learn/intro-to-machine-learning/4.md)
+* [**5. 欠拟合与过拟合**](learn/intro-to-machine-learning/5.md)
+* [**6. 随机森林**](learn/intro-to-machine-learning/6.md)
+* [**7. 继续你的征程**](learn/intro-to-machine-learning/7.md)
 
 > 补充
 
