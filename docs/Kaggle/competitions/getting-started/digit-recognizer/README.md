@@ -13,11 +13,11 @@
 
 | 角色 | 用户 | 内容 | 代码 |
 | -- | -- | -- | -- |
-| 负责: knn | [诺木人](https://github.com/1mrliu) | [knn项目文档](/competitions/getting-started/digit-recognizer/knn算法描述.md) | [knn项目代码](/src/python/getting-started/digit-recognizer/knn-python3.6.py) |
-| 负责: svm | [马小穆](https://github.com/maxiaomu) | [svm项目文档](/competitions/getting-started/digit-recognizer/svm算法描述.md) | [svm项目代码](/src/python/getting-started/digit-recognizer/svm-python3.6.py) |
-| 负责: 随机森林 | [平淡的天](https://github.com/friedhelm739) | [随机森林项目文档](/competitions/getting-started/digit-recognizer/随机森林算法描述.md) | [随机森林项目代码](/src/python/getting-started/digit-recognizer/rf-python3.6.py) |
-| 负责: 神经网络 | [平淡的天](https://github.com/friedhelm739) | [神经网络项目文档](/competitions/getting-started/digit-recognizer/神经网络算法描述.md) | [神经网络项目代码](/src/python/getting-started/digit-recognizer/nn-python3.6.py) |
-| 负责: cnn | [==](https://github.com/xiaomingnio) | [cnn项目文档](/competitions/getting-started/digit-recognizer/cnn算法描述.md) | [cnn项目代码](/src/python/getting-started/digit-recognizer/keras_cnn-python3.6.py) |
+| 负责: knn | [诺木人](https://github.com/1mrliu) | [knn项目文档](/competitions/getting-started/digit-recognizer/knn算法描述.md) | [knn项目代码](/src/py3.x/kaggle/getting-started/digit-recognizer/knn-python3.6.py) |
+| 负责: svm | [马小穆](https://github.com/maxiaomu) | [svm项目文档](/competitions/getting-started/digit-recognizer/svm算法描述.md) | [svm项目代码](/src/py3.x/kaggle/getting-started/digit-recognizer/svm-python3.6.py) |
+| 负责: 随机森林 | [平淡的天](https://github.com/friedhelm739) | [随机森林项目文档](/competitions/getting-started/digit-recognizer/随机森林算法描述.md) | [随机森林项目代码](/src/py3.x/kaggle/getting-started/digit-recognizer/rf-python3.6.py) |
+| 负责: 神经网络 | [平淡的天](https://github.com/friedhelm739) | [神经网络项目文档](/competitions/getting-started/digit-recognizer/神经网络算法描述.md) | [神经网络项目代码](/src/py3.x/kaggle/getting-started/digit-recognizer/nn-python3.6.py) |
+| 负责: cnn | [==](https://github.com/xiaomingnio) | [cnn项目文档](/competitions/getting-started/digit-recognizer/cnn算法描述.md) | [cnn项目代码](/src/py3.x/kaggle/getting-started/digit-recognizer/keras_cnn-python3.6.py) |
 
 > 数字识别 第一期(2018-04-18)
 
