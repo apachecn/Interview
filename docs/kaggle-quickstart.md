@@ -38,7 +38,7 @@
 
 > 代码：结尾文件名可自由定义.py
 
-* 案例：`src/python/getting-started/digit-recognizer/dr_knn_pandas.py`
+* 案例：`src/py3.x/kaggle/getting-started/digit-recognizer/dr_knn_pandas.py`
 * 例如：数字识别，代码只有 `竞赛` 有，所以直接创建 `getting-started/digit-recognizer` 存放代码就行
 * 要求（方法：完全解耦）
     1. 加载数据

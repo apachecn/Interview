@@ -21,13 +21,13 @@ Create an algorithm to distinguish dogs from cats.
 
  - 训练数据
 
-![trainDataset](../../../img/competitions/playground/train.png)
+![trainDataset](/img/competitions/playground/train.png)
 
  - 训练数据集 - 说明：训练数据集中的数据，是经过人工标记的数据，类别和数字之间使用的 "." （点）做的分隔。
 
  - 测试数据
 
-![testDataset](../../../img/competitions/playground/test.png)
+![testDataset](/img/competitions/playground/test.png)
 
  - 测试数据集 - 说明：测试数据集中的数据，是没有经过人工标记的数据，没有对应的类别，只有一些相应的数字号码。
 
