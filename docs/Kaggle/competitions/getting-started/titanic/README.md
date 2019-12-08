@@ -89,7 +89,7 @@ test = pd.read_csv('%s/%s' % (root_path, 'test.csv'))
 train.head(5)
 ```
 
-![](../../../img/competitions/getting-started/titanic/titanic_top_5.jpg)
+![](/img/competitions/getting-started/titanic/titanic_top_5.jpg)
 
 ```py
 >>> # 返回每列列名,该列非nan值个数,以及该列类型
@@ -236,7 +236,7 @@ a = plt.subplots(figsize=(15,9))#调整画布大小
 a = sns.heatmap(train_corr, vmin=-1, vmax=1 , annot=True , square=True)#画热力图
 ```
 
-![png](../../../img/competitions/getting-started/titanic/titanic_corr_analysis.png)
+![png](/img/competitions/getting-started/titanic/titanic_corr_analysis.png)
 
 
 ### 特征标准化和降维
