@@ -24,7 +24,6 @@
     - [C++](https://github.com/apachecn/Interview/tree/master/docs/Algorithm/剑指offer/C++)
 3. [数据结构](https://github.com/apachecn/Interview/tree/master/docs/Algorithm/DataStructure)
     - [Python](https://github.com/apachecn/Interview/tree/master/docs/Algorithm/DataStructure/Python)
-        - [八大排序算法 集合](DataStructure/Python/Sort)
     - [Java](https://github.com/apachecn/Interview/tree/master/docs/DataStructure/Java)
     - [JavaScript](https://github.com/apachecn/Interview/tree/master/docs/Algorithm/DataStructure/JavaScript)
     - [C++](https://github.com/apachecn/Interview/tree/master/docs/Algorithm/DataStructure/C++)
@@ -41,7 +40,7 @@
 
 > **案例模版**
 
-[模版：001. Two Sum 两数之和](https://github.com/apachecn/Interview/blob/master/docs/Algorithm/Leetcode/Python/001._two_sum.md)
+[模版：001. Two Sum 两数之和](PULL_REQUEST_TEMPLATE.md)
 
 ## 推荐 LeetCode 网站
 
