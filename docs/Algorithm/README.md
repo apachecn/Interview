@@ -9,25 +9,20 @@
 
 ## [算法刷题](https://github.com/apachecn/Interview/tree/master/docs/Algorithm/README.md)
 
-1. [Leetcode](https://github.com/apachecn/Interview/tree/master/docs/Algorithm/Leetcode)
-    - [Python](https://github.com/apachecn/Interview/tree/master/docs/Algorithm/Leetcode/Python)
-    - [Java](https://github.com/apachecn/Interview/tree/master/docs/Algorithm/Leetcode/Java)
-    - [JavaScript](https://github.com/apachecn/Interview/tree/master/docs/Algorithm/Leetcode/JavaScript)
-    - [C++](https://github.com/apachecn/Interview/tree/master/docs/Algorithm/Leetcode/C++)
-    - [ipynb](https://github.com/apachecn/Interview/tree/master/docs/Algorithm/Leetcode/ipynb)
+1. [Leetcode](/docs/Algorithm/Leetcode)
+    - [Python](/docs/Algorithm/Leetcode/Python)
+    - [Java](/docs/Algorithm/Leetcode/Java)
+    - [JavaScript](/docs/Algorithm/Leetcode/JavaScript)
+    - [C++](/docs/Algorithm/Leetcode/C++)
+    - [ipynb](/docs/Algorithm/Leetcode/ipynb)
     - [GO](https://github.com/aQuaYi/LeetCode-in-Go)
-2. [剑指 Offer](https://github.com/apachecn/Interview/tree/master/docs/Algorithm/剑指offer)
-    - [Python](https://github.com/apachecn/Interview/tree/master/docs/Algorithm/剑指offer/Python)
-    - [Scala](https://github.com/apachecn/Interview/tree/master/docs/Algorithm/剑指offer/Scala)
-    - [Java](https://github.com/apachecn/Interview/tree/master/docs/Algorithm/剑指offer/Java)
-    - [JavaScript](https://github.com/apachecn/Interview/tree/master/docs/Algorithm/剑指offer/JavaScript)
-    - [C++](https://github.com/apachecn/Interview/tree/master/docs/Algorithm/剑指offer/C++)
-3. [数据结构](https://github.com/apachecn/Interview/tree/master/docs/Algorithm/DataStructure)
-    - [Python](https://github.com/apachecn/Interview/tree/master/docs/Algorithm/DataStructure/Python)
-        - [八大排序算法 集合](DataStructure/Python/Sort)
-    - [Java](https://github.com/apachecn/Interview/tree/master/docs/DataStructure/Java)
-    - [JavaScript](https://github.com/apachecn/Interview/tree/master/docs/Algorithm/DataStructure/JavaScript)
-    - [C++](https://github.com/apachecn/Interview/tree/master/docs/Algorithm/DataStructure/C++)
+2. [剑指 Offer](/docs/Algorithm/剑指offer)
+    - [Python](/docs/Algorithm/剑指offer/Python)
+    - [Scala](/docs/Algorithm/剑指offer/Scala)
+    - [Java](/docs/Algorithm/剑指offer/Java)
+    - [JavaScript](/docs/Algorithm/剑指offer/JavaScript)
+    - [C++](/docs/Algorithm/剑指offer/C++)
+3. [数据结构](/docs/Algorithm/DataStructure)
     - [Wikipedia: List of Algorithms](https://en.wikipedia.org/wiki/List_of_algorithms)
 
 ## 参与方式
@@ -41,7 +36,7 @@
 
 > **案例模版**
 
-[模版：001. Two Sum 两数之和](https://github.com/apachecn/Interview/blob/master/docs/Algorithm/Leetcode/Python/001._two_sum.md)
+[模版：001. Two Sum 两数之和](PULL_REQUEST_TEMPLATE.md)
 
 ## 推荐 LeetCode 网站
 
