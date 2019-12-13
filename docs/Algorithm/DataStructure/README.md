@@ -1,5 +1,8 @@
-# 八大排序算法
+## 二分查找
 
+* 二分查找: [BinaryChop.py](/src/py3.x/DataStructure/BinaryChop.py)
+
+## 八大排序算法
 
 > Python 模版
 
