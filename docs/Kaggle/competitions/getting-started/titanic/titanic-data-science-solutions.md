@@ -1033,7 +1033,7 @@ g.map(plt.hist, 'Age', bins=20)
 
 
 
-![png](../../../img/competitions/getting-started/titanic/titanic_output_24_1.png)
+![png](/img/competitions/getting-started/titanic/titanic_output_24_1.png)
 
 
 ### 关联数字和顺序的特征
@@ -1061,7 +1061,7 @@ grid.add_legend();
 ```
 
 
-![png](../../../img/competitions/getting-started/titanic/titanic_output_26_0.png)
+![png](/img/competitions/getting-started/titanic/titanic_output_26_0.png)
 
 
 ### 关联分类特征
@@ -1096,7 +1096,7 @@ grid.add_legend()
 
 
 
-![png](../../../img/competitions/getting-started/titanic/titanic_output_28_1.png)
+![png](/img/competitions/getting-started/titanic/titanic_output_28_1.png)
 
 
 ### 关联分类和数值的特征
@@ -1132,7 +1132,7 @@ grid.add_legend()
 
 
 
-![png](../../../img/competitions/getting-started/titanic/titanic_output_30_1.png)
+![png](/img/competitions/getting-started/titanic/titanic_output_30_1.png)
 
 
 ## 整理数据
@@ -1677,7 +1677,7 @@ grid.add_legend()
 
 
 
-![png](../../../img/competitions/getting-started/titanic/titanic_output_44_1.png)
+![png](/img/competitions/getting-started/titanic/titanic_output_44_1.png)
 
 
 让我们开始准备一个空数组, 以包含基于 Pclass x Gender 组合以猜测 Age 值.
