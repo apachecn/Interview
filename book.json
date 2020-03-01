@@ -12,7 +12,7 @@
         "back-to-top-button",
         "code",
         "copy-code-button",
-        "mathjax",
+        "mathjax@1.1.2",
         "pageview-count",
         "edit-link",
         "emphasize",
