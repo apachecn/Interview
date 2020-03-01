@@ -4,6 +4,8 @@ __pycache__/
 *$py.class
 .vscode
 .DS_Store
+Middleware
+docs/Algorithm/Leetcode/*/book.json
 
 # C extensions
 *.so
