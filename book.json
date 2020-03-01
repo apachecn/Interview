@@ -1,7 +1,7 @@
 {
-    "title" : "Pytorch 中文文档",
+    "title" : "Interview 求职指南",
     "author" : "ApacheCN",
-    "description" : "Pytorch 中文文档: 教程和文档",
+    "description" : "Interview 求职指南",
     "language" : "zh-hans",
     "plugins": [
         "github",
@@ -165,7 +165,7 @@
               "token": "UA-127082511-1"
           },
           "baidu": {
-              "token": "75439e2cbd22bdd813226000e9dcc12f"
+              "token": "84fca651656bc67b4b2d56605b6d0852"
           },
         "pagefooter-apachecn": {
             "copyright":"Copyright &copy ibooker.org.cn 2019",
