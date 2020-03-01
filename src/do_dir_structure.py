@@ -6,7 +6,7 @@ import sys
 sys.path.append(os.getcwd())
 from Middleware.tool import get_dir_files
 
-catalog = "docs/Algorithm/Leetcode/Python"
+catalog = "docs/Algorithm/Leetcode/JavaScript"
 files_path = get_dir_files(catalog, [], status=-1, str1=".DS_Store")
 # print(files_path)
 
@@ -14,6 +14,6 @@ for line in files_path:
     if "ipynb" not in line:
         l_file = line.split("/")[-2:]
         filename = "%s %s" % (l_file[-1].split(".")[0], l_file[-1].split(".")[1].replace("_", " ").strip())
-        filepath = "    * [%s](%s)" % (filename, "/".join(l_file))
+        filepath = "    * [%s](%s)" % (filename, "/".join(l_file[-1:]))
         # print(">>> ", filepath)
         print(filepath)
