@@ -32,7 +32,7 @@
 * [031 next permutation](031._next_permutation.md)
 * [032 longest valid parentheses](032._longest_valid_parentheses.md)
 * [033 search in rotated sorted array](033._search_in_rotated_sorted_array.md)
-* [034 Search for a Range](034._Search for a Range.md)
+* [034 Search for a Range](034._Search_for_a_Range.md)
 * [035 search insert position](035._search_insert_position.md)
 * [038 Count and Say](038._Count_and_Say.md)
 * [039 combination sum](039._combination_sum.md)
