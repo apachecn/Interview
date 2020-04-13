@@ -5,22 +5,16 @@
 插入排序的前提是：左边是有序的数列
 而冒泡排序：相邻的值进行交换，一共进行n次交换
 """
-from __future__ import print_function
-
-
-def insertionSort(nums):
-    if not nums or len(nums) < 2:
-        return nums
-
+def insertion_sort(nums):
     for i in range(1, len(nums)):
-        for j in range(i):
-            if nums[i] < nums[j]:
-                nums[i], nums[j] = nums[j], nums[i]
+        while i:
+            if nums[i] < nums[i-1]:
+                nums[i], nums[i-1] = nums[i-1], nums[i]
+            i -= 1
     return nums
 
 
 if __name__ == "__main__":
-    nums = [5, 1, 9, 3, 2, 7]
-    print('input: ', nums)
-    nums = insertionSort(nums)
-    print("result: ", nums)
+    nums = [3, 6, 8, 5, 2, 4, 9, 1, 7]
+    insertion_sort(nums)
+    print('result:', nums)
