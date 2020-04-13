@@ -27,7 +27,7 @@
 * [024 swap nodes in pairs](024._swap_nodes_in_pairs.md)
 * [026 Remove Duplicates from Sorted Array](026._Remove_Duplicates_from_Sorted_Array.md)
 * [027 Remove Element](027._Remove_Element.md)
-* [028 implement strstr()](028._implement_strstr().md)
+* [028 implement strstr()](028._implement_strstr.md)
 * [030 Substring with Concatenation of All Words](030._Substring_with_Concatenation_of_All_Words.md)
 * [031 next permutation](031._next_permutation.md)
 * [032 longest valid parentheses](032._longest_valid_parentheses.md)
