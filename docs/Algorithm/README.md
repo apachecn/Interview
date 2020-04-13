@@ -37,7 +37,8 @@
 
 > **案例模版**
 
-[模版：001. Two Sum 两数之和](PULL_REQUEST_TEMPLATE.md)
+[模版 md: 001. Two Sum 两数之和](docs/Algorithm/Leetcode/Python/001._two_sum.md)
+[模版页面效果: 001. Two Sum 两数之和](https://interview.apachecn.org/docs/Algorithm/Leetcode/Python/001._two_sum.html)
 
 ## 推荐 LeetCode 网站
 
