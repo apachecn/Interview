@@ -2,7 +2,7 @@
 
 * [Introduction](README.md)
 * [算法刷题](https://interview.apachecn.org/docs/Algorithm)
-    * [数据结构](https://interview.apachecn.org/docs/Algorithm/DataStructure)
+    * [数据结构](docs/Algorithm/README.md)
     * LeetCode
         * [Python 版本](https://interview.apachecn.org/docs/Algorithm/Leetcode/Python)
         * [JavaScript 版本](https://interview.apachecn.org/docs/Algorithm/Leetcode/JavaScript)
