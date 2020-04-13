@@ -30,6 +30,6 @@ def quick_sort(nums, start, end):
 
 
 if __name__ == "__main__":
-    nums = [2, 6, 8, 5, 1, 4, 9, 3, 7]
+    nums = [3, 6, 8, 5, 2, 4, 9, 1, 7]
     quick_sort(nums, 0, len(nums) - 1)
     print('result:', nums)
