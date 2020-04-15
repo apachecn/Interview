@@ -80,11 +80,11 @@ jiangzl@jiangzhongliandeMacBook-Pro:~$
 
 > 2.点击 Settings, 添加ssh key
 
-![](/static/images/docs/GitHub/GitHub-Setting.png) 
+![](/img/docs/GitHub/GitHub-Setting.png) 
 
 > 3.点击 New SSH key
 
-![](/static/images/docs/GitHub/SSH-Key.jpg) 
+![](/img/docs/GitHub/SSH-Key.jpg) 
 
 > 4.链接验证
 
@@ -106,18 +106,18 @@ jiangzl@jiangzhongliandeMacBook-Pro:~$
 ## 基本命令
 
 <a href="https://www.bilibili.com/video/av15705305/" target="_blank">此图片链接为 bilibili 视频地址: (视频图片下面为文本操作指南)
-<img src="../../static/images/docs/GitHub/ApacheCN-GitHub入门操作-Fork到PullRequests.png">
+<img src="/img/docs/GitHub/ApacheCN-GitHub入门操作-Fork到PullRequests.png">
 </a>
 
 全局概况图(看不懂就多看几遍)
 
-![](/static/images/docs/GitHub/github_origin_online_remote.jpg)
+![](/img/docs/GitHub/github_origin_online_remote.jpg)
 
 > 一) fork apachecn/kaggle 项目
 
-![](/static/images/docs/GitHub/github-step-1-fork.jpg)
+![](/img/docs/GitHub/github-step-1-fork.jpg)
 
-![](/static/images/docs/GitHub/github-step-2-clone.jpg)
+![](/img/docs/GitHub/github-step-2-clone.jpg)
 
 
 > 二) jiangzhonglian/kaggle 第一次初始化
@@ -150,9 +150,9 @@ $ git push origin master
 
 > 四) pull requests 到 apachecn/kaggle
 
-![](/static/images/docs/GitHub/github-step-3-PullRequests.jpg)
+![](/img/docs/GitHub/github-step-3-PullRequests.jpg)
 
-![](/static/images/docs/GitHub/github-step-4-PullRequests.jpg)
+![](/img/docs/GitHub/github-step-4-PullRequests.jpg)
 
-![](/static/images/docs/GitHub/github-step-5-PullRequests.jpg)
+![](/img/docs/GitHub/github-step-5-PullRequests.jpg)
 
