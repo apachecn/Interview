@@ -35,7 +35,7 @@ def binary_search(nums, data):
         return False
     mid = n // 2
     if nums[mid] > data:
-        return binary_search(nums[0:mid], data)
+        return binary_search(nums[:mid], data)
     elif nums[mid] < data:
         return binary_search(nums[mid+1:], data)
     else:

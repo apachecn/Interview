@@ -105,24 +105,13 @@
 
 > 第二期 (2018-06-01)
 
-* [KrisYu的Github](https://github.com/KrisYu/LeetCode-CLRS-Python)
+* [@KrisYu](https://github.com/KrisYu/LeetCode-CLRS-Python)
 * 授权信息: <https://github.com/apachecn/Interview/tree/master/docs/Algorithm/ProjectCornerstone/ApproveLetter.md>
 * [@Lisanaaa](https://github.com/Lisanaaa) -- 由于个人商业化原因，退出
-* [@片刻](https://github.com/jiangzhonglian)
-* [@小瑶](https://github.com/chenyyx)
-* [cclauss](https://github.com/cclauss)
-* [yudaer](https://github.com/yudaer)
-* [yuzhoujr](https://github.com/yuzhoujr)
-* [wizardforcel](https://github.com/wizardforcel)
-* [Stuming](https://github.com/Stuming)
-* [GaofanHu](https://github.com/GaofanHu)
-* [er3456qi](https://github.com/er3456qi)
-* [xshahq](https://github.com/xshahq)
-* [xiaqunfeng](https://github.com/xiaqunfeng)
-* [CaviarChen](https://github.com/CaviarChen)
-* [royIdoodle](https://github.com/royIdoodle)
-* [MarsXue](https://github.com/MarsXue)
-* [nature1995](https://github.com/nature1995)
+* [@片刻](https://github.com/jiangzhonglian) - [@小瑶](https://github.com/chenyyx) - [@cclauss](https://github.com/cclauss) - [@yudaer](https://github.com/yudaer)
+* [@yuzhoujr](https://github.com/yuzhoujr) - [@wizardforcel](https://github.com/wizardforcel) - [@Stuming](https://github.com/Stuming) - [@GaofanHu](https://github.com/GaofanHu)
+* [@er3456qi](https://github.com/er3456qi) - [@xshahq](https://github.com/xshahq) - [@xiaqunfeng](https://github.com/xiaqunfeng) - [@CaviarChen](https://github.com/CaviarChen)
+* [@royIdoodle](https://github.com/royIdoodle) - [@MarsXue](https://github.com/MarsXue) - [@nature1995](https://github.com/nature1995)
 
 > 第三期 (2019-07-17)
 

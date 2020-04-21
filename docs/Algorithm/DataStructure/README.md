@@ -1,6 +1,6 @@
 ## 二分查找
 
-![](/img/Algorithm/DataStructure/冒泡排序.gif)
+![](/img/Algorithm/DataStructure/二分查找.gif)
 
 * 二分查找: [BinarySearch.py](/src/py3.x/DataStructure/BinarySearch.py)
 
