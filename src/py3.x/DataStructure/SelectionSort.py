@@ -8,8 +8,9 @@
 def selection_sort(nums):
     for i in range(len(nums)-1):
         index = i
+        # 考虑到数组会遇到多个最小值，所以比较的时候直接用index表示当前比较最小
         for j in range(i+1, len(nums)):
-            if nums[j] < nums[index]:
+            if nums[index] > nums[j]:
                 index = j
         nums[i], nums[index] = nums[index], nums[i]
 
