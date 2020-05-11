@@ -1,7 +1,5 @@
 #!/usr/bin/python
 # coding:utf8
-
-
 def quick_sort(nums, start, end):
     i = start
     j = end
