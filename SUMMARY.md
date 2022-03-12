@@ -15,4 +15,5 @@
     * [LeetCode JavaScript 版本↗](https://algo.apachecn.org/#/docs/leetcode/javascript/README)
     * [剑指offer↗](https://algo.apachecn.org/#/docs/jianzhioffer/java/README)
 * [Kaggle比赛](docs/Kaggle/README.md)
+  * [Kernel 备份](docs/Kaggle/kernel.md)
 * [GitHub快速入门](docs/GitHub/README.md)
