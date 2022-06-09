@@ -46,3 +46,5 @@
     +   [第五版记忆曲线学习日志使用说明书](docs/方十字应试/15.md)
 +   [导师评价网备份↗](https://rms.apachecn.org/#/)
 +   [校招污点公司记录↗](https://github.com/ShameCom/ShameCom)
++   [独立开发/自由职业/远程工作/数字游民知识库↗](https://idw.apachecn.org/#/)
+
