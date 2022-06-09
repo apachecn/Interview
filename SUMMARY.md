@@ -25,7 +25,7 @@
     +    [CCNA/NP/IE↗](https://github.com/apachecn/interview-books/tree/master/CCNA-NP-IE)
     +    [CEH↗](https://github.com/apachecn/interview-books/tree/master/CEH)
     +    [PMP↗](https://github.com/apachecn/interview-books/tree/master/PMP)
-+    [职位数据库↗](https://github.com/apachecn/interview-books/tree/master/%E8%81%8C%E4%BD%8D%E6%95%B0%E6%8D%AE%E5%BA%93)
++    [职位数据库↗](https://puwangwang8.com/#/home)
 +    [牛客面试题库↗](https://github.com/apachecn/interview-books/tree/master/NowCoder)
 +   [GitHub快速入门](docs/GitHub/README.md)
 +   [方十字应试](docs/方十字应试/README.md)
