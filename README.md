@@ -67,6 +67,7 @@
 > 非组织链接推荐：
 
 *  [【大数据面经】](https://github.com/WadeStack/BigDataIE)
+*  [【Apache Spark 面试题】](https://www.interviewbit.com/spark-interview-questions/)
 
 ## [算法刷题](https://github.com/apachecn/Interview/tree/master/docs/Algorithm)
 
