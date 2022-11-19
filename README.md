@@ -169,6 +169,33 @@
 * ApacheCN 纯粹出于学习目的与个人兴趣整理
 * ApacheCN 保留对此版本译文的署名权及其它相关权利
 
+
+## 下载
+
+### Docker
+
+```
+docker pull apachecn0/apachecn-interview
+docker run -tid -p <port>:80 apachecn0/apachecn-interview
+# 访问 http://localhost:{port} 查看文档
+```
+
+### PYPI
+
+```
+pip install apachecn-interview
+apachecn-interview <port>
+# 访问 http://localhost:{port} 查看文档
+```
+
+### NPM
+
+```
+npm install -g apachecn-interview
+apachecn-interview <port>
+# 访问 http://localhost:{port} 查看文档
+```
+
 ## **协议**
 
 * 以各项目协议为准。
