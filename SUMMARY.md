@@ -1,6 +1,7 @@
 +   [Introduction](README.md)
 +   面试求职
     +   [简历](docs/面试求职/简历.md)
+    +   [简历范文](docs/面试求职/简历范文.md)
     +   [学历](docs/面试求职/学历.md)
     +   [刷题](docs/面试求职/刷题.md)
     +   [公司](docs/面试求职/公司.md)
