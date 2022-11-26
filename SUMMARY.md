@@ -149,4 +149,5 @@
 +   [导师评价网备份↗](https://rms.apachecn.org/#/)
 +   [校招污点公司记录↗](https://github.com/ShameCom/ShameCom)
 +   [独立开发/自由职业/远程工作/数字游民知识库↗](https://idw.apachecn.org/#/)
++   [贡献者名单](CONTRIBUTORS.md)
 
