@@ -12,39 +12,10 @@
 
 
 > 程序员的双手是魔术师的双手，他们把枯燥无味的代码变成了丰富多彩的软件。——《疯狂的程序员》
-> 
-> 我们重启了简历付费优化业务，请咨询飞龙（🐧562826179，🛰wizardforcel）。
 
 ## 在线阅读
 
-* GitHub Pages(国外): https://interview.apachecn.org
-* Gitee  Pages(国内): https://apachecn.gitee.io/interview
-
-## 下载
-
-### Docker
-
-```
-docker pull apachecn0/apachecn-interview
-docker run -tid -p <port>:80 apachecn0/apachecn-interview
-# 访问 http://localhost:{port} 查看文档
-```
-
-### PYPI
-
-```
-pip install apachecn-interview
-apachecn-interview <port>
-# 访问 http://localhost:{port} 查看文档
-```
-
-### NPM
-
-```
-npm install -g apachecn-interview
-apachecn-interview <port>
-# 访问 http://localhost:{port} 查看文档
-```
+* 网址: https://interview.apachecn.org
 
 ## **协议**
 
